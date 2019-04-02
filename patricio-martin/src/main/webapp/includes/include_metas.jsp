@@ -31,7 +31,7 @@
     <!-- GOOGLE VERIFICATION -->
 	<meta name="google-site-verification" content="xOZtJiKTj_b6gC5Z_4aCH7aTeRD1rW73cGlpJ7-pspI" />	
 		
-	<!-- FAVICONS AND COLOURS -->
+	<!-- FAVICONS AND COLOURS xx -->
 <meta name="theme-color" content="#ffffff"></head>
 	
 	<!-- OTHER -->
