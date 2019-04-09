@@ -14,7 +14,7 @@
 
 <link rel="canonical" href="http://bootcamp.transformationpod.com/optin">
 
-<title>Transformhealth Optin Pagdecx</title>
+<title>Transformhealth Optin Page</title>
 
     <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
