@@ -10,25 +10,25 @@
 <div class="tile is-ancestor">
   <div class="tile is-parent">
     <article class="tile is-child box">
-      <p class="title">One</p>
+      <p class="title">La Cala Golf & Country Club</p>
       <p class="subtitle">Subtitle</p>
     </article>
   </div>
   <div class="tile is-parent">
     <article class="tile is-child box">
-      <p class="title">Two</p>
-      <p class="subtitle">Subtitle</p>
-    </article>8
-  </div>
-  <div class="tile is-parent">
-    <article class="tile is-child box">
-      <p class="title">Three</p>
+      <p class="title">San Eliseo Golf & Country Club</p>
       <p class="subtitle">Subtitle</p>
     </article>
   </div>
   <div class="tile is-parent">
     <article class="tile is-child box">
-      <p class="title">Four</p>
+      <p class="title">Rancho Santa Monica</p>
+      <p class="subtitle">Subtitle</p>
+    </article>
+  </div>
+  <div class="tile is-parent">
+    <article class="tile is-child box">
+      <p class="title">Domus Designs Villas</p>
       <p class="subtitle">Subtitle</p>
     </article>
   </div>
@@ -41,9 +41,10 @@
 
 
 
-
-
-
+<br><br></br><br><br></br><br><br></br><br><br></br>
+<br><br></br><br><br></br><br><br></br><br><br></br>
+<br><br></br><br><br></br><br><br></br><br><br></br>
+<br><br></br><br><br></br><br><br></br><br><br></br>
 
 
 
