@@ -21,7 +21,7 @@
 	    
 	      <div class="navbar-brand">
     <a class="navbar-item" href="https://bulma.io">
-      <img src="../img/logo-only.png" alt="Bulma: a modern CSS framework based on Flexbox">
+      <img src="../img/patricio-martin.png" alt="Bulma: a modern CSS framework based on Flexbox">
     </a>
     
        <div class="navbar-burger burger" data-target="navbarExampleTransparentExample">
