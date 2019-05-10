@@ -44,9 +44,9 @@
           <p>
             <a href="tel:+34952584444">
               
-<img class="responsive-img" src="../img/phone.png" srcset="../img/phone.png 1x,
-          ../img/phone.png 2x,
-          ../img/phone.png 3x" height="18" width="126">
+<img class="responsive-img" src="../img/phone2.png" srcset="../img/phone2.png 1x,
+          ../img/phone2.png 2x,
+          ../img/phone2.png 3x" height="18" width="126">
             </a>
           </p>
         </aside>
@@ -56,11 +56,14 @@
         
 <div class="wpml-ls-statics-shortcode_actions wpml-ls wpml-ls-legacy-list-horizontal">
 	<ul><li class="wpml-ls-slot-shortcode_actions wpml-ls-item wpml-ls-item-fr wpml-ls-current-language wpml-ls-first-item wpml-ls-item-legacy-list-horizontal">
-				<a href="https://ivanballiniestates.com/" class="wpml-ls-link"><span class="wpml-ls-native">Français</span></a>
-			</li><li class="wpml-ls-slot-shortcode_actions wpml-ls-item wpml-ls-item-en wpml-ls-last-item wpml-ls-item-legacy-list-horizontal">
-				<a href="https://ivanballiniestates.com/en/" class="wpml-ls-link"><span class="wpml-ls-native">English</span><span class="wpml-ls-display"><span class="wpml-ls-bracket"> (</span>Anglais<span class="wpml-ls-bracket">)</span></span></a>
-			</li></ul>
-</div>      </div>
+	<a href="https://ivanballiniestates.com/" class="wpml-ls-link"><span class="wpml-ls-native">Français</span></a>
+	</li><li class="wpml-ls-slot-shortcode_actions wpml-ls-item wpml-ls-item-en wpml-ls-last-item wpml-ls-item-legacy-list-horizontal">
+	<a href="https://ivanballiniestates.com/en/" class="wpml-ls-link"><span class="wpml-ls-native">English</span><span class="wpml-ls-display"><span class="wpml-ls-bracket"> (</span>Anglais<span class="wpml-ls-bracket">)</span></span></a>
+	</li></ul>
+</div> 
+  
+</div>
+
     </nav>
   </div>
 </div>
