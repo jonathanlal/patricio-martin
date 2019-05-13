@@ -3,24 +3,39 @@
 
 
 
-
 <footer class="footer">
-  <div class="content has-text-centered">
 
+  
 
-
-
-	<a href="https://www.facebook.com/TheWebsiteDevil/" class="footerlinks" title="Facebook" aria-label="Facebook"><span class="fab fa-facebook-f"></span></a>
-	<a href="https://plus.google.com/u/1/103143034164273089135" class="footerlinks" title="Google+" aria-label="Google+"><span class="fab fa-google-plus-g"></span></a>
-	<a href="https://twitter.com/thewebsitedevil" class="footerlinks" title="Twitter" aria-label="Twitter"><span class="fab fa-twitter"></span></a>
-		<a href="https://www.instagram.com/thewebsitedevil/" class="footerlinks" title="Instagram link" aria-label="Instagram"><span class="fab fa-instagram"></span></a>
-	<a href="https://www.pinterest.co.uk/thewebsitedevil/" class="footerlinks" title="Pinterest link" aria-label="Pinterest"><span class="fab fa-pinterest"></span></a>
-		<a href="https://www.linkedin.com/company/thewebdevil/" class="footerlinks" title="LinkedIn link" aria-label="Linkedin"><span class="fab fa-linkedin"></span></a>
-
-
-
-
+<div class="columns is-centered has-text-centered  is-gapless is-uppercase is-size-6 has-text-weight-semibold">
+  <div class="column">
+    Home
   </div>
+  <div class="column">
+    About
+  </div>
+  <div class="column">
+    Contact
+  </div>
+    <div class="column">
+    Projects
+  </div>
+      <div class="column">
+    Terms
+  </div>
+</div>
+
+  
+        <%@ include file="/WEB-INF/templates/pattern.jsp" %>
+        
+        
+  <p class="is-size-7 has-text-centered">+34 952 58 44 44</p>
+    <p class="is-size-7 has-text-centered">info@patriciomartin.com</p>
+    <p class="is-size-7 has-text-centered has-margin-4">Copyright @ 2019. All rights reserved.</p>
+    
+    
+
+  
 </footer>
 
 

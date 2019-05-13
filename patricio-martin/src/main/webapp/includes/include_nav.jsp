@@ -34,19 +34,13 @@
         <aside class="nav-contact">
           <p>
             <a class="open-modal" data-target="contactModal">
-              
-<img class="responsive-img" src="../img/mail3.png" srcset="../img/mail3.png 1x,
-          ../img/mail3.png 2x,
-          ../img/mail3.png 3x" height="18" width="210">
+              info@patriciomartin.com
             </a>
           </p>
 
           <p>
             <a href="tel:+34952584444">
-              
-<img class="responsive-img" src="../img/phone2.png" srcset="../img/phone2.png 1x,
-          ../img/phone2.png 2x,
-          ../img/phone2.png 3x" height="18" width="126">
+              +34 952 58 44 44
             </a>
           </p>
         </aside>
