@@ -1,22 +1,28 @@
+
   
-  
-  <div id="nav" class="nav navbar is-white">
+  <div id="navbar" class="nav navbar is-white">
   <div class="i-gradient">
   <div class="container">
     <nav class="nav-content ">
-      <div class="nav-brand">
+      <a class="nav-brand" href="../../">
       <img src="../img/patricio-martin2-w.png" alt="Bulma: a modern CSS framework based on Flexbox">
-      </div>
-
-      <a class="nav-burger" data-target="nav">
-        <span></span>
-        <span></span>
-        <span></span>
       </a>
 
-      <div class="nav-menu">
+<!--       <a class="nav-burger" data-target="nav"> -->
+<!--         <span></span> -->
+<!--         <span></span> -->
+<!--         <span></span> -->
+<!--       </a> -->
+
+	<a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+	  <span aria-hidden="true"></span>
+	  <span aria-hidden="true"></span>
+	  <span aria-hidden="true"></span>
+	</a>
+
+      <div class="nav-menu navbar-menu" id="navMenu">
         <div class="nav-list">
-          <div class="nav-item is-home">
+          <div class="nav-item navbar-item is-home">
             <a href="https://ivanballiniestates.com">
               About            </a>
           </div>
