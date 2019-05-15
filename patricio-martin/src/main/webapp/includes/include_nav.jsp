@@ -1,4 +1,6 @@
-
+<%@ page pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
   
   <div id="navbar" class="nav navbar is-white">
   <div class="i-gradient">
@@ -24,17 +26,17 @@
         <div class="nav-list">
           <div class="nav-item navbar-item is-home">
             <a href="https://ivanballiniestates.com">
-              About            </a>
+              <fmt:message key="nav.about"/>            </a>
           </div>
 
           <div class="nav-item is-properties">
-            <a href="https://ivanballiniestates.com/proprietes">Projects</a>
+            <a href="https://ivanballiniestates.com/proprietes"><fmt:message key="nav.projects"/></a>
             <div class="subnav">
-              <a href="https://ivanballiniestates.com/proprietes">Projects</a>              <a href="https://ivanballiniestates.com/ventes-recentes">Ventes récentes</a>            </div>
+              <a href="https://ivanballiniestates.com/proprietes">Projects</a>              <a href="https://ivanballiniestates.com/ventes-recentes">Ventes rÃ©centes</a>            </div>
           </div>
 
           <div class="nav-item is-regions">
-            <a href="https://ivanballiniestates.com/regions">Services</a>          </div>
+            <a href="https://ivanballiniestates.com/regions"><fmt:message key="nav.services"/></a>          </div>
         </div>
 
         <aside class="nav-contact">
@@ -56,7 +58,7 @@
         
 <div class="wpml-ls-statics-shortcode_actions wpml-ls wpml-ls-legacy-list-horizontal">
 	<ul><li class="wpml-ls-slot-shortcode_actions wpml-ls-item wpml-ls-item-fr wpml-ls-current-language wpml-ls-first-item wpml-ls-item-legacy-list-horizontal">
-	<a href="https://ivanballiniestates.com/" class="wpml-ls-link"><span class="wpml-ls-native">Français</span></a>
+	<a href="https://ivanballiniestates.com/" class="wpml-ls-link"><span class="wpml-ls-native">FranÃ§ais</span></a>
 	</li><li class="wpml-ls-slot-shortcode_actions wpml-ls-item wpml-ls-item-en wpml-ls-last-item wpml-ls-item-legacy-list-horizontal">
 	<a href="https://ivanballiniestates.com/en/" class="wpml-ls-link"><span class="wpml-ls-native">English</span><span class="wpml-ls-display"><span class="wpml-ls-bracket"> (</span>Anglais<span class="wpml-ls-bracket">)</span></span></a>
 	</li></ul>

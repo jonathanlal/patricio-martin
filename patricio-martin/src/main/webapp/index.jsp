@@ -74,9 +74,7 @@ top: 3px !important;
   </div>
   <div class="hero-overlay front-hero-overlay __web-inspector-hide-shortcut__"></div>
   
-  <jsp:include page="includes/include_nav.jsp"></jsp:include>
-  
-  
+  <%@ include file="includes/include_nav.jsp"%>
   
   
   
@@ -104,31 +102,21 @@ top: 3px !important;
   
  <div class="hero-content front-hero-content" >
     <div id="messages" class="messages">
-    <div class="message is-1 is-shown"><p class="message-surtitle">Welcome to</p><h1 class="title hero-title message-title">Patricio Martin Architects</h1></div>
-    <div class="message is-2"><p class="message-surtitle">Architects based on </p><h1 class="title hero-title message-title">The Costa del Sol, Spain</h1></div>
+    <div class="message is-1 is-shown"><p class="message-surtitle"><fmt:message key="index.hero.sTitle1"/></p><h1 class="title hero-title message-title"><fmt:message key="index.hero.lTitle1"/></h1></div>
+    <div class="message is-2"><p class="message-surtitle"><fmt:message key="index.hero.sTitle2"/></p><h1 class="title hero-title message-title"><fmt:message key="index.hero.lTitle2"/></h1></div>
     </div>
     
     <%@ include file="WEB-INF/templates/pattern.jsp" %>
 
 
     <div class="hero-subtitle front-hero-subtitle">
-      <p><fmt:message key="label.welcome" />Patricio Martin can provide a full architectural and building service.
-From the initial survey and design concept, through all stages of the building process, right up to the completed project and final result.</p>
+      <p><fmt:message key="index.hero.paragraph"/></p>
     </div>
     <nav class="buttons front-hero-buttons">
-      <a class="button is-info" href="../projects/">
-      <span class="button-text">
-  <strong>View</strong> all <strong style="padding-right:8px;">projects</strong>     </span>
-  
-<i class="fas fa-long-arrow-alt-right"></i>
-  </a>
-      <a class="button is-white-outlined" href="../contact/">
-      <span class="button-text">
-      <strong>Contact</strong> us <strong  style="padding-right:8px;">now</strong>    </span>
-      <i class="far fa-envelope"></i>
-  </a>
+      <a class="button is-info" href="../projects/"><span class="button-text"><fmt:message key="index.hero.btnProjects"/></span><i class="fas fa-long-arrow-alt-right"></i></a>
+      <a class="button is-white-outlined" href="../contact/"><span class="button-text"><fmt:message key="index.hero.btnContact"/></span><i class="far fa-envelope"></i></a>
     </nav>
-  </div>
+    </div>
 
 </section>
 
@@ -224,8 +212,8 @@ From the initial survey and design concept, through all stages of the building p
 
     <nav class="action front-properties-action">
       <a class="button is-info" href="../projects/" style="margin-bottom: 20px;">
-      <span class="button-text">
-      <strong style="padding-right:8px;">View all projects</strong></span><i class="fas fa-long-arrow-alt-right"></i></a>
+      <span class="button-text"><fmt:message key="index.projects.btnProjects"/>
+      </span><i class="fas fa-long-arrow-alt-right"></i></a>
     </nav>
     
   </div>
@@ -238,13 +226,13 @@ From the initial survey and design concept, through all stages of the building p
   <div class="container">
     <div class="box collaborate-box">
       <div class="box-content">
-        <h4 class="title collaborate-title" style="color:black !important;">Work with us</h4>
+        <h4 class="title collaborate-title" style="color:black !important;"><fmt:message key="index.contact.title"/></h4>
   		  <%@ include file="WEB-INF/templates/pattern.jsp" %>
         <div class="content collaborate-content">
-          <p>Patricio Martin can provide a full architectural and building service.</p>
+          <p><fmt:message key="index.contact.paragraph"/></p>
         </div>
        <div class="collaborate-buttons">
-         <a class="button is-info  open-modal" data-target="contactModal" href="#"><span class="button-text"  style="padding-right:8px;"><strong>Contact</strong> us</span><i class="fas fa-long-arrow-alt-right"></i></a>
+         <a class="button is-info  open-modal" data-target="contactModal" href="#"><span class="button-text" style="padding-right:8px;"><fmt:message key="index.contact.btnContact"/></span><i class="fas fa-long-arrow-alt-right"></i></a>
        </div>
       </div>
     </div>
@@ -254,8 +242,45 @@ From the initial survey and design concept, through all stages of the building p
 
 
 
+ <section id="newsletter" class="section is-medium" style="background-color:#E7E5E0">
+  <div class="container">
+    <div class="columns is-vcentered">
+      <div class="column" style="    margin-top: -20px;">
+        <p class="title"><fmt:message key="index.newsletter.title"/></p>
+        <p class="subtitle is-4 has-text-grey-light"><fmt:message key="index.newsletter.paragraph"/></p>
+      </div>
 
 
+
+
+      <div class="column">
+      
+        <form action="../../Subscribe" method="POST" accept-charset="utf-8">
+          <div class="field is-grouped">
+            <div class="control has-icons-left is-expanded">
+              <input type="email" value="" name="email" class="input is-medium is-flat" placeholder="<fmt:message key="index.newsletter.inputPlaceholder"/>" required>
+              <span class="icon is-small is-left">
+                <svg class="svg-inline--fa fa-envelope fa-w-16" aria-hidden="true" data-prefix="fas" data-icon="envelope" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z"></path></svg><!-- <i class="fas fa-envelope"></i> -->
+              </span>
+              <img class="bd-drawing bd-is-spam-free" src="https://bulma.io/images/drawing/spam-free.png" width="112" height="88" style="    position: absolute !important;bottom:100% !important;right:90% !important;">
+
+            </div>
+
+            <div class="control">
+              <div class="is-hidden">
+                <input type="text" name="hp" id="hp">
+              </div>
+              <input type="hidden" name="list" value="So5UY3O9gHJkq892bn763Tyf4A">
+              <button class="button is-medium is-info">
+                <strong><fmt:message key="index.newsletter.btnSubscribe"/></strong>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
 
 
 
@@ -315,5 +340,4 @@ document.addEventListener("DOMContentLoaded", function(){
 
 
 
-
-<jsp:include flush="true" page="includes/footer.jsp"/>
+<%@ include file="includes/footer.jsp"%>

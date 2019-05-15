@@ -3,12 +3,15 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<fmt:setLocale value="en" />
+
+<c:set var="language" value="${not empty param.lang ? param.lang : not empty language ? language : pageContext.request.locale}" scope="session" />
+<fmt:setLocale value="${language}" />
 <fmt:setBundle basename="text" />
 
 
 <!DOCTYPE HTML>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="${language}">
+
 <head>
 
 
@@ -34,6 +37,4 @@
 
 
 <body>
-
-<%-- <jsp:include page="include_nav.jsp"/> --%>
 
