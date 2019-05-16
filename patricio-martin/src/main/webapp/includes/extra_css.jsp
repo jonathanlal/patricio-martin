@@ -75,7 +75,10 @@ padding-bottom: 12.5px !important;
     padding: 4rem 2rem 4rem !important;
 }
 
-
+.title{
+color: white !important;
+font-family:'Soleil Bold' !important;
+}
 
 
 

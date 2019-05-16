@@ -1,4 +1,4 @@
-package patriciomartin.servlets;
+package com.patriciomartin.servlets;
 
 import java.io.IOException;
 import java.util.Locale;
@@ -26,9 +26,9 @@ public class Test extends HttpServlet {
 		session.removeAttribute("language");
 	
 	
-		Locale locale = request.getLocale();
+		String lang = request.getLocale().getLanguage();
 //		System.out.println("hello ");
-		System.out.println(locale.toLanguageTag());
+		System.out.println(lang);
 	
 	}
 

@@ -24,19 +24,17 @@
 
       <div class="nav-menu navbar-menu" id="navMenu">
         <div class="nav-list">
-          <div class="nav-item navbar-item is-home">
-            <a href="https://ivanballiniestates.com">
+          <div class="nav-item is-home">
+            <a href="<fmt:message key="url.about"/>">
               <fmt:message key="nav.about"/>            </a>
           </div>
 
           <div class="nav-item is-properties">
-            <a href="https://ivanballiniestates.com/proprietes"><fmt:message key="nav.projects"/></a>
-            <div class="subnav">
-              <a href="https://ivanballiniestates.com/proprietes">Projects</a>              <a href="https://ivanballiniestates.com/ventes-recentes">Ventes récentes</a>            </div>
+            <a href="<fmt:message key="url.projects"/>"><fmt:message key="nav.projects"/></a>
           </div>
 
           <div class="nav-item is-regions">
-            <a href="https://ivanballiniestates.com/regions"><fmt:message key="nav.services"/></a>          </div>
+            <a href="<fmt:message key="url.services"/>"><fmt:message key="nav.services"/></a>          </div>
         </div>
 
         <aside class="nav-contact">
@@ -54,17 +52,43 @@
         </aside>
       </div>
 
+<!-- 		    <form action="../../ChangeLanguage" method="post">     -->
+<%-- 		    <input type="hidden" value="${page}" name="page"/> --%>
 <div class="nav-languages">
-        
-<div class="wpml-ls-statics-shortcode_actions wpml-ls wpml-ls-legacy-list-horizontal">
-	<ul><li class="wpml-ls-slot-shortcode_actions wpml-ls-item wpml-ls-item-fr wpml-ls-current-language wpml-ls-first-item wpml-ls-item-legacy-list-horizontal">
-	<a href="https://ivanballiniestates.com/" class="wpml-ls-link"><span class="wpml-ls-native">Français</span></a>
-	</li><li class="wpml-ls-slot-shortcode_actions wpml-ls-item wpml-ls-item-en wpml-ls-last-item wpml-ls-item-legacy-list-horizontal">
-	<a href="https://ivanballiniestates.com/en/" class="wpml-ls-link"><span class="wpml-ls-native">English</span><span class="wpml-ls-display"><span class="wpml-ls-bracket"> (</span>Anglais<span class="wpml-ls-bracket">)</span></span></a>
-	</li></ul>
-</div> 
+
+  
+  
+  	<ul>
+  	
+  	<li class="wpml-ls-slot-shortcode_actions wpml-ls-item wpml-ls-item-fr  wpml-ls-first-item wpml-ls-item-legacy-list-horizontal ${language eq 'es' ? 'wpml-ls-current-language' : ''}">
+	<a href="../../ChangeLanguage?lang=es" class="wpml-ls-link"><span class="wpml-ls-native">Spanish</span></a>
+	  		
+	
+	
+	<li class="wpml-ls-slot-shortcode_actions wpml-ls-item wpml-ls-item-en wpml-ls-last-item wpml-ls-item-legacy-list-horizontal ${language eq 'en' || empty language ? 'wpml-ls-current-language' : ''}">
+	<a href="../../ChangeLanguage?lang=en" class="wpml-ls-link"><span class="wpml-ls-native">English</span><span class="wpml-ls-display"><span class="wpml-ls-bracket"> (</span>Anglais<span class="wpml-ls-bracket">)</span></span></a>
+	</li>
+	
+	</ul>
+		    
+		    
+<!--             <input class="flags" type="image" src="img/spain.png" name="selection" value="spain" alt="Submit Form" /> -->
+<!--             <input class="flags" type="image" src="img/english2.png" name="selection" value="england" alt="Submit Form" /> -->
+<!--             <input class="flags" type="image" src="img/norway.png" name="selection" value="norway" alt="Submit Form" /> -->
+       	
+
+<!--         <form action="../../ChangeLanguage"> -->
+<!-- <div class="wpml-ls-statics-shortcode_actions wpml-ls wpml-ls-legacy-list-horizontal"> -->
+<!-- 	<ul><li class="wpml-ls-slot-shortcode_actions wpml-ls-item wpml-ls-item-fr wpml-ls-current-language wpml-ls-first-item wpml-ls-item-legacy-list-horizontal"> -->
+<!-- 	<a href="../../ChangeLanguage?lang=es" class="wpml-ls-link"><span class="wpml-ls-native">Français</span></a> -->
+<!-- 	</li><li class="wpml-ls-slot-shortcode_actions wpml-ls-item wpml-ls-item-en wpml-ls-last-item wpml-ls-item-legacy-list-horizontal"> -->
+<!-- 	<a href="../../ChangeLanguage?lang=en" class="wpml-ls-link"><span class="wpml-ls-native">English</span><span class="wpml-ls-display"><span class="wpml-ls-bracket"> (</span>Anglais<span class="wpml-ls-bracket">)</span></span></a> -->
+<!-- 	</li></ul> -->
+<!-- </div>  -->
+<!--   </form> -->
   
 </div>
+<!-- 	</form> -->
 
     </nav>
   </div>

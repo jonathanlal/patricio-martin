@@ -4,13 +4,13 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 
-<c:set var="language" value="${not empty param.lang ? param.lang : not empty language ? language : pageContext.request.locale}" scope="session" />
+<c:set var="language" value="${not empty param.lang ? param.lang : not empty language ? language : pageContext.request.locale.language}" scope="session" />
 <fmt:setLocale value="${language}" />
 <fmt:setBundle basename="text" />
 
 
 <!DOCTYPE HTML>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="${language}">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="${language eq 'en' || language eq 'es' ? language : 'en'}">
 
 <head>
 
