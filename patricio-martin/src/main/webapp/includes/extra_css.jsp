@@ -1,5 +1,10 @@
 <style>
 
+.property-img{
+margin-bottom: -20px;margin-right: -10px;    opacity: 0.8;
+    max-width: 100px;
+}
+
 body {
     font-family:'Soleil Light' !important;
 }

@@ -1,9 +1,4 @@
-  <div class="front-properties">
-  <div class="container">
-  
-  
-    <div class="front-properties-list">
-    <div id="properties-list" class="list-properties">
+
       
 <article class="list-property">
 <a href="../projects/la-cala/" class="card property post-2098 type-property status-publish has-post-thumbnail hentry type-manoir region-deauville city-benerville-sur-mer has-5-to-9-rooms has-5-bedrooms region-blue">
@@ -78,14 +73,3 @@
 </a>
 </article>
 
-</div>    
-</div>
-
-    <nav class="action front-properties-action">
-      <a class="button is-info" href="../projects/" style="margin-bottom: 20px;">
-      <span class="button-text"><fmt:message key="index.projects.btnProjects"/>
-      </span><i class="fas fa-long-arrow-alt-right"></i></a>
-    </nav>
-    
-  </div>
-</div>
