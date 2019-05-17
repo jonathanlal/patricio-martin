@@ -19,12 +19,12 @@
   <div class="hero-content">
     <div class="container">
       <h1 class="title hero-title">
-        Régions      </h1>
+        <fmt:message key="projects.hero.title"/>      </h1>
 
 		  <%@ include file="WEB-INF/templates/pattern.jsp" %>
 
       <p class="hero-subtitle">
-        Découvrez les secteurs exclusifs de la campagne du Pays-d’Auge et de la Côte Fleurie.      </p>
+        <fmt:message key="projects.hero.subtitle"/>       </p>
 
           </div>
   </div>
