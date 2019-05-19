@@ -9,7 +9,16 @@
           <p><fmt:message key="index.contact.paragraph"/></p>
         </div>
        <div class="collaborate-buttons">
-         <a class="button is-info  open-modal" data-target="contactModal" href="#"><span class="button-text" style="padding-right:8px;"><fmt:message key="index.contact.btnContact"/></span><i class="fas fa-long-arrow-alt-right"></i></a>
+       
+             <button class="button is-info open-modal" data-target="contactModal">
+                <strong class="button-text" style="padding-right:8px;"><fmt:message key="index.contact.btnContact"/> </strong><i class="fas fa-long-arrow-alt-right" style="margin-top:-5px !important;"></i>
+              </button>
+       
+<!--          <a class="button is-info  open-modal" data-target="contactModal" href="#"> -->
+<!--          <strong class="button-text" style="padding-right:8px;font-size:20px;line-height:30px;font-family: inherit;"> -->
+<!--          <fmt:message key="index.contact.btnContact"/> -->
+<!--          </strong><i class="fas fa-long-arrow-alt-right"></i> -->
+<!--          </a> -->
        </div>
       </div>
     </div>

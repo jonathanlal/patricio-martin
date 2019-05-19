@@ -2,12 +2,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
   
-  <div id="navbar" class="nav navbar is-white">
+  <div id="navbar" class="nav navbar" style="background-color: transparent;">
   <div class="i-gradient">
   <div class="container">
     <nav class="nav-content ">
       <a class="nav-brand" href="../../">
-      <img src="../img/patricio-martin2-w.png" alt="Bulma: a modern CSS framework based on Flexbox">
+      <img src="../../img/patricio-martin2-w.png" alt="Bulma: a modern CSS framework based on Flexbox">
       </a>
 
 <!--       <a class="nav-burger" data-target="nav"> -->

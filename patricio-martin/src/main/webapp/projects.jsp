@@ -4,7 +4,7 @@
 <%@ include file="includes/header.jsp"%>
 
 <section class="hero">
-  <div class="hero-background" style="background-image: url(https://ivanballiniestates.com/wp-content/themes/ivan-ballini-v4/images/hab/b1.jpg);"></div>
+  <div class="hero-background" style="background-image: url(https://www.lacala.com/wp-content/uploads/2018/09/Gallery-Patio-Naranjo.jpg);"></div>
   <div class="hero-overlay"></div>
   <div class="hero-nav"><%@ include file="includes/include_nav.jsp"%></div>
   <div class="hero-content">

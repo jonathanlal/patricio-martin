@@ -3,7 +3,7 @@
   <div class="container">
     <div class="columns is-vcentered">
       <div class="column" style="    margin-top: -20px;">
-        <p class="title"><fmt:message key="index.newsletter.title"/></p>
+        <p class="title" style="color: #363636 !important;"><fmt:message key="index.newsletter.title"/></p>
         <p class="subtitle is-4 has-text-grey-light"><fmt:message key="index.newsletter.paragraph"/></p>
       </div>
 
@@ -24,7 +24,7 @@
               </div>
               <input type="hidden" name="list" value="So5UY3O9gHJkq892bn763Tyf4A">
               <button class="button is-medium is-info">
-                <strong><fmt:message key="index.newsletter.btnSubscribe"/></strong>
+                <strong class="button-text"><fmt:message key="index.newsletter.btnSubscribe"/></strong>
               </button>
             </div>
           </div>

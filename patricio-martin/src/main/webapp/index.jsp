@@ -39,8 +39,8 @@ top: 3px !important;
     <%@ include file="WEB-INF/templates/pattern.jsp" %>
     <div class="hero-subtitle front-hero-subtitle"><p><fmt:message key="index.hero.paragraph"/></p></div>
     <nav class="buttons front-hero-buttons">
-      <a class="button is-info" href="../projects/"><span class="button-text"><fmt:message key="index.hero.btnProjects"/></span><i class="fas fa-long-arrow-alt-right"></i></a>
-      <a class="button is-white-outlined" href="../contact/"><span class="button-text"><fmt:message key="index.hero.btnContact"/></span><i class="far fa-envelope"></i></a>
+      <a class="button is-info" href="../projects/"><fmt:message key="index.hero.btnProjects"/><i class="fas fa-long-arrow-alt-right"></i></a>
+      <a class="button is-white-outlined" href="../contact/"><fmt:message key="index.hero.btnContact"/><i class="far fa-envelope"></i></a>
     </nav>
     </div>
 </section>
@@ -50,7 +50,7 @@ top: 3px !important;
 <div class="front-properties-list">
 <div id="properties-list" class="list-properties"><%@ include file="WEB-INF/templates/projects.jsp" %></div></div>
 <nav class="action front-properties-action"><a class="button is-info" href="../projects/" style="margin-bottom: 20px;">
-<span class="button-text"><fmt:message key="index.projects.btnProjects"/></span><i class="fas fa-long-arrow-alt-right"></i></a>
+<fmt:message key="index.projects.btnProjects"/><i class="fas fa-long-arrow-alt-right"></i></a>
 </nav></div></div>
 
 <script>

@@ -1,5 +1,9 @@
 <style>
 
+.button-text{
+    margin-top: -4px !important;
+}
+
 .property-img{
 margin-bottom: -20px;margin-right: -10px;    opacity: 0.8;
     max-width: 100px;
