@@ -11,7 +11,7 @@
        <div class="collaborate-buttons">
        
              <button class="button is-info open-modal" data-target="contactModal">
-                <strong class="button-text" style="padding-right:8px;"><fmt:message key="index.contact.btnContact"/> </strong><i class="fas fa-long-arrow-alt-right" style="margin-top:-5px !important;"></i>
+                <strong class="button-text margin-top-minus-4px" style="padding-right:8px;"><fmt:message key="index.contact.btnContact"/> </strong><i class="fas fa-long-arrow-alt-right" style="margin-top:-5px !important;"></i>
               </button>
        
 <!--          <a class="button is-info  open-modal" data-target="contactModal" href="#"> -->
@@ -100,12 +100,12 @@ for (var i = 0; i < classname.length; i++) {
 }
 
 
-$(".open-modal").click(function() {
-	  $(".modal").addClass("is-active");  
-	});
+// $(".open-modal").click(function() {
+// 	  $(".modal").addClass("is-active");  
+// 	});
 
-	$(".modal-close").click(function() {
-	   $(".modal").removeClass("is-active");
-	});
+// 	$(".modal-close").click(function() {
+// 	   $(".modal").removeClass("is-active");
+// 	});
 
 </script>
