@@ -18,6 +18,10 @@
     left: 0 !important;
     }
     
+     .single-purchase{ 
+     top: -30px !important; 
+     } 
+    
     </style>
 
 <!-- <section class="hero"> -->
@@ -112,6 +116,9 @@
 <!--   </div> -->
 
   <div class="single-purchase-action">
+   <img src="../../img/homepage/la-cala.png" style="    margin: 0 auto !important;
+    display: flex;
+    margin-bottom: 20px !important;">
     <a class="button is-info" href="https://www.lacala.com" target="_blank">
       <span class="button-text"><strong><fmt:message key="lacala.btn.website"/></strong> <i class="fas fa-long-arrow-alt-right" style="margin-bottom:-2px !important;"></i></span>
   </a>
