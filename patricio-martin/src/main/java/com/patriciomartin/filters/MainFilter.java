@@ -17,18 +17,6 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 
 
-//"/about/", "/about",
-//"/acerca-de/", "/acerca-de",
-//"/projects/*", "/projects",
-//"/projectos/*", "/projectos",
-//"/services/*", "/services",
-//"/contact/", "/contact",
-//"/disclaimer", "/disclaimer/",
-//"/privacy-policy", "/privacy-policy/",
-//"/terms", "/terms/",
-//"/cookie-policy", "/cookie-policy/",
-//"/bootcamp/","/bootcamp", "/home.jsp", 
-
 @WebFilter({ "/*" })
 public class MainFilter implements Filter {
 
@@ -48,7 +36,7 @@ public class MainFilter implements Filter {
 //		 	if(requri.endsWith("/") && requri.length()>1) {
 //		 		page = requri.substring(1, requri.length()-1).concat(".jsp");
 //		 	}
-		 
+		 	System.out.println("requri: "+requri);
 	    	if(requri.equals("/"))
     			page = "index.jsp";
 	    	
@@ -90,7 +78,7 @@ public class MainFilter implements Filter {
 	    		page = "error.jsp";
 	    	}
 	    	
-	    	
+	    	System.out.println("PAGE: "+page);
 	    		if(!continueChain){	
 				    request.getRequestDispatcher("/GetPage?page="+page).forward(request, response);
 				    return;

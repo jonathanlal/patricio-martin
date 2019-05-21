@@ -23,6 +23,7 @@
         <div class="content">
         <p><fmt:message key="about.paragraph1"/></p>
         <p><fmt:message key="about.paragraph2"/></p>
+        <p><fmt:message key="about.paragraph3"/></p>
         </div>
       </div>
     </div>

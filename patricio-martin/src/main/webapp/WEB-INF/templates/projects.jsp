@@ -1,7 +1,7 @@
 
       
 <article class="list-property">
-<a href="../../projects/la-cala/" class="card property post-2098 type-property status-publish has-post-thumbnail hentry type-manoir region-deauville city-benerville-sur-mer has-5-to-9-rooms has-5-bedrooms region-blue">
+<a href="<fmt:message key="url.projects.la-cala"/>" class="card property type-property status-publish has-post-thumbnail hentry type-manoir region-deauville city-benerville-sur-mer has-5-to-9-rooms has-5-bedrooms region-blue">
   <figure class="card-image property-image">
 <img class="responsive-image" src="../../img/la-cala/3.jpg" sizes="(max-width: 540px) 100vw, 720px" srcset="../../img/la-cala/3.jpg 540w, ../../img/la-cala/3.jpg 1080w, ../../img/la-cala/3.jpg 1440w" height="480" width="720">
   </figure>
@@ -12,7 +12,7 @@
     </div>
     <div class="property-info">
     <p class="price property-price">
-    <img src="../../img/la-cala/logo-neg.png" class="property-img">
+    <img src="../../img/la-cala/logo-pos.png" class="property-img">
     </p>
     </div>
   </div>
@@ -21,7 +21,7 @@
 
 
 <article class="list-property">
-<a href="../../projects/san-eliseo/" class="card property post-610 type-property status-publish has-post-thumbnail hentry type-chateau region-bernay city-bernay has-10-rooms has-5-bedrooms region-red">
+<a href="<fmt:message key="url.projects.san-eliseo"/>" class="card property type-property status-publish has-post-thumbnail hentry type-chateau region-bernay city-bernay has-10-rooms has-5-bedrooms region-red">
   <figure class="card-image property-image">
 <img class="responsive-image" src="../../img/san-eliseo/2.jpg" sizes="(max-width: 540px) 100vw, 720px" srcset="../../img/san-eliseo/2.jpg 540w, ../../img/san-eliseo/2.jpg 1080w, ../../img/san-eliseo/2.jpg 1440w" height="480" width="720">
   </figure>
@@ -41,7 +41,7 @@
 
 
 <article class="list-property">
-<a  href="../../projects/rancho-santa-monica/" class="card property post-553 type-property status-publish has-post-thumbnail hentry type-manoir region-honfleur city-honfleur has-5-to-9-rooms has-3-to-4-bedrooms region-green">
+<a  href="<fmt:message key="url.projects.rancho"/>" class="card property type-property status-publish has-post-thumbnail hentry type-manoir region-honfleur city-honfleur has-5-to-9-rooms has-3-to-4-bedrooms region-green">
   <figure class="card-image property-image">
 <img class="responsive-image" src="
 " sizes="(max-width: 540px) 100vw, 720px" srcset="../../img/rancho/6.jpg 540w, ../../img/rancho/6.jpg 1080w, ../../img/rancho/6.jpg 1440w" height="480" width="720">
@@ -62,7 +62,7 @@
 
 
 <article class="list-property">
-<a href="../projects/domus-designs/" class="card property post-796 type-property status-publish has-post-thumbnail hentry type-manoir region-deauville city-tourgeville has-5-to-9-rooms has-3-to-4-bedrooms region-blue">
+<a href="<fmt:message key="url.projects.domus"/>" class="card property type-property status-publish has-post-thumbnail hentry type-manoir region-deauville city-tourgeville has-5-to-9-rooms has-3-to-4-bedrooms region-blue">
   <figure class="card-image property-image">
 <img class="responsive-image" src="../../img/domus/1.jpg" sizes="(max-width: 540px) 100vw, 720px" srcset="../../img/domus/1.jpg 540w, ../../img/domus/1.jpg 1080w, ../../img/domus/1.jpg 1440w" height="480" width="720">
   </figure>
