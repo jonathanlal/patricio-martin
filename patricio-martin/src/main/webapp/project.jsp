@@ -15,86 +15,54 @@
     
     
     <style>
-    
-    .pswp__minis-list{
-    
-    left: 0 !important;
-    }
-    
-     .single-purchase{ 
-     top: -30px !important; 
-     } 
-    
-.rowg {
-  display: -ms-flexbox; /* IE10 */
-  display: flex;
-  -ms-flex-wrap: wrap; /* IE10 */
-  flex-wrap: wrap;
-  padding: 0 4px;
-}
-
-/* Create four equal columns that sits next to each other */
-.columng {
-  -ms-flex: 25%; /* IE10 */
-  flex: 25%;
-  max-width: 25%;
-  padding: 0 4px;
-}
-
-.columng img {
-  margin-top: 8px;
-  vertical-align: middle;
-}
-
-/* Responsive layout - makes a two column-layout instead of four columns */
-@media screen and (max-width: 800px) {
-  .columng {
-    -ms-flex: 50%;
-    flex: 50%;
-    max-width: 50%;
-  }
-}
-
-/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 600px) {
-  .column {
-    -ms-flex: 100%;
-    flex: 100%;
-    max-width: 100%;
-  }
-}
+    .pswp__minis-list{left: 0 !important;}
+    .single-purchase{top: -30px !important;} 
+    .rowg {
+	  display: -ms-flexbox; /* IE10 */
+	  display: flex;
+	  -ms-flex-wrap: wrap; /* IE10 */
+	  flex-wrap: wrap;
+	  padding: 0 4px;
+	}
+	/* Create four equal columns that sits next to each other */
+	.columng {
+	  -ms-flex: 25%; /* IE10 */
+	  flex: 25%;
+	  max-width: 25%;
+	  padding: 0 4px;
+	}
+	.columng img {
+	  margin-top: 8px;
+	  vertical-align: middle;
+	}
+	/* Responsive layout - makes a two column-layout instead of four columns */
+	@media screen and (max-width: 800px) {
+	  .columng {
+	    -ms-flex: 50%;
+	    flex: 50%;
+	    max-width: 50%;
+	  }
+	}
+	/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+	@media screen and (max-width: 600px) {
+	  .column {
+	    -ms-flex: 100%;
+	    flex: 100%;
+	    max-width: 100%;
+	  }
+	}
     </style>
-
-<!-- <section class="hero"> -->
-<!--   <div class="hero-background" style="background-image: url(https://ivanballiniestates.com/wp-content/themes/ivan-ballini-v4/images/hab/maison-honfleur.jpg);"></div> -->
-<!--   <div class="hero-overlay"></div> -->
-<%--   <div class="hero-nav"><%@ include file="includes/include_nav.jsp"%></div> --%>
-<!--   <div class="hero-content"> -->
-<!--     <div class="container"> -->
-<%--       <h1 class="title hero-title has-text-white" style="margin-bottom:10px;"><fmt:message key="about.hero.title"/></h1> --%>
-<%--       <p class="hero-subtitle"><fmt:message key="about.hero.subtitle"/></p> --%>
-<%-- 		<%@ include file="WEB-INF/templates/pattern.jsp" %> --%>
-<!--     </div> -->
-<!--   </div> -->
-<!-- </section> -->
-
-
-
-
-
 
 
       <section class="single-hero">
-  <div class="single-hero-nav">
-<%@ include file="includes/include_nav.jsp"%>
-  </div>
-
+  <div class="single-hero-nav"><%@ include file="includes/include_nav.jsp"%></div>
   <div class="single-hero-image-container">
     <div class="single-hero-image">
-      <a class="psw-item"><img src="https://www.lacala.com/wp-content/uploads/2018/09/Gallery-Swimming-Pool.jpg" width="2880" height="1920" data-index="0"></a>    </div>
+      <a class="psw-item"><img src="https://www.${project}.com/wp-content/uploads/2018/09/Gallery-Swimming-Pool.jpg" width="2880" height="1920" data-index="0"></a>    
+    </div>
   </div>
 
-  <div class="single-hero-gradient"></div>
+<!--   <div class="single-hero-gradient"></div> -->
 </section>
 
     <header class="single-header">
@@ -108,35 +76,35 @@
 
   <div class="single-thumbnails-action">
     <a class="button is-info  is-small psw-trigger" href="">
-      <span class="button-text"><fmt:message key="lacala.btn.photos"/>   </span>
+      <span class="button-text"><fmt:message key="${project}.btn.photos"/>   </span>
  	</a>
   </div>
 </div>
             <div class="single-heading">
-  <h1 class="title single-heading-title" style="color:black !important;"><fmt:message key="lacala.title"/></h1>
+  <h1 class="title single-heading-title" style="color:black !important;"><fmt:message key="${project}.title"/></h1>
 
-  <h2 class="location single-heading-location"><fmt:message key="lacala.subtitle"/></h2>
+  <h2 class="location single-heading-location"><fmt:message key="${project}.subtitle"/></h2>
 
  <%@ include file="WEB-INF/templates/pattern.jsp" %>
  
 
-  <div class="single-heading-introduction"><fmt:message key="lacala.lead-paragraph"/></div>
+  <div class="single-heading-introduction"><fmt:message key="${project}.lead-paragraph"/></div>
   <div class="single-metas">
     <div class="single-meta">
       <p class="single-meta-label">
-        <fmt:message key="lacala.details.region"/> </p>   
+        <fmt:message key="${project}.details.region"/> </p>   
 
             <p class="single-meta-link"><strong>La Cala</strong></p>    </div>
 
     <div class="single-meta">
       <p class="single-meta-label">
-        <fmt:message key="lacala.details.city"/></p>
+        <fmt:message key="${project}.details.city"/></p>
 
             <p class="single-meta-link"><strong>Malaga</strong></p>    </div>
 
     <div class="single-meta">
       <p class="single-meta-label">
-        <fmt:message key="lacala.details.type"/>      </p>
+        <fmt:message key="${project}.details.type"/>      </p>
 
             <p class="single-meta-link"><a href="https://ivanballiniestates.com/type/manoir">Hotel</a></p>    </div>
 
@@ -159,8 +127,8 @@
    <img src="../../img/homepage/la-cala.png" style="    margin: 0 auto !important;
     display: flex;
     margin-bottom: 20px !important;">
-    <a class="button is-info" href="https://www.lacala.com" target="_blank">
-      <span class="button-text"><strong><fmt:message key="lacala.btn.website"/></strong> <i class="fas fa-long-arrow-alt-right" style="margin-bottom:-2px !important;"></i></span>
+    <a class="button is-info" href="https://www.${project}.com" target="_blank">
+      <span class="button-text"><strong><fmt:message key="${project}.btn.website"/></strong> <i class="fas fa-long-arrow-alt-right" style="margin-bottom:-2px !important;"></i></span>
   </a>
   </div>
 </div>
@@ -171,26 +139,26 @@
       <div class="stat">
 
     <strong class="stat-value">
-     <fmt:message key="lacala.details.golf.value"/>    </strong>
+     <fmt:message key="${project}.details.golf.value"/>    </strong>
 
     <em class="stat-label">
-      <fmt:message key="lacala.details.golf"/>      </em>
+      <fmt:message key="${project}.details.golf"/>      </em>
   </div>
   <div class="stat">
 
     <strong class="stat-value">
-     <fmt:message key="lacala.details.hectars.value"/>   </strong>
+     <fmt:message key="${project}.details.hectars.value"/>   </strong>
 
     <em class="stat-label">
-    <fmt:message key="lacala.details.hectars"/>  </em>
+    <fmt:message key="${project}.details.hectars"/>  </em>
   </div>
   <div class="stat">
 
     <strong class="stat-value">
-     <fmt:message key="lacala.details.units.value"/>    </strong>
+     <fmt:message key="${project}.details.units.value"/>    </strong>
 
     <em class="stat-label">
-      <fmt:message key="lacala.details.units"/>      </em>
+      <fmt:message key="${project}.details.units"/>      </em>
   </div>
 <!--   <div class="stat"> -->
 
@@ -211,7 +179,7 @@
       <div class="container">
         <div class="single-columns">
           <div class="single-column is-lead">
-            <div class="single-content content"><p><fmt:message key="lacala.description"/></p></div>
+            <div class="single-content content"><p><fmt:message key="${project}.description"/></p></div>
 
             <div class="single-grid" style="margin: 0 auto !important;">
 <!--   <div class="single-grid-container"> -->
@@ -256,7 +224,7 @@
 <!--   </div> -->
 
   <div class="single-grid-action">
-   <a class="button is-info  psw-trigger" href=""><span class="button-text"><fmt:message key="lacala.btn.photos"/></span></a>
+   <a class="button is-info  psw-trigger" href=""><span class="button-text"><fmt:message key="${project}.btn.photos"/></span></a>
   </div>
     
 </div>

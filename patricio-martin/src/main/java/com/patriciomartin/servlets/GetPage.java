@@ -22,6 +22,10 @@ public class GetPage extends HttpServlet {
 		
 		if(page == null || page.isEmpty()){
 			page= "error.jsp";
+		}else if(page.equals("project.jsp")) {
+			System.out.println("works");
+			request.setAttribute("project", "lalal");
+			
 		}
 		
 //		request.setAttribute("page", page.replace(".jsp", ""));

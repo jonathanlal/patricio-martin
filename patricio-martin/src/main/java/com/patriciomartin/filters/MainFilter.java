@@ -65,7 +65,7 @@ public class MainFilter implements Filter {
 	    			page = "projects.jsp";
 	    	
 	    	else if(requri.equals("/projects/la-cala/") || requri.equals("/projects/la-cala") || requri.equals("/projectos/la-cala/") || requri.equals("/projectos/la-cala"))
-		    		page = "la-cala.jsp";
+		    		page = "project.jsp";
 		    	
 	    	else if(requri.equals("/projects/san-eliseo/") || requri.equals("/projects/san-eliseo") || requri.equals("/projectos/san-eliseo/") || requri.equals("/projectos/san-eliseo"))
 	    			page = "san-eliseo.jsp";
@@ -79,12 +79,18 @@ public class MainFilter implements Filter {
 	    	else if(requri.equals("/terms/") || requri.equals("/terms"))
 	    			page = "terms.jsp";	
 	    	
+	    	else if(requri.equals(("/test.jsp")))
+	    		page = "test.jsp";
+	    	
+	    	
 	    	else if(requri.startsWith("/wd-admin/") || isAServlet(request))
 	    		continueChain = true;
 	    	
 	    	else {
 	    		page = "error.jsp";
 	    	}
+	    	
+	    	System.out.println("getting page: "+page);
 	    	
 	    		if(!continueChain){	
 				    request.getRequestDispatcher("/GetPage?page="+page).forward(request, response);
