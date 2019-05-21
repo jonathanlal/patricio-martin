@@ -65,16 +65,16 @@ public class MainFilter implements Filter {
 	    			page = "projects.jsp";
 	    	
 	    	else if(requri.equals("/projects/la-cala/") || requri.equals("/projects/la-cala") || requri.equals("/projectos/la-cala/") || requri.equals("/projectos/la-cala"))
-		    		page = "project.jsp";
+		    		page = "project.jsp&p=lacala";
 		    	
 	    	else if(requri.equals("/projects/san-eliseo/") || requri.equals("/projects/san-eliseo") || requri.equals("/projectos/san-eliseo/") || requri.equals("/projectos/san-eliseo"))
-	    			page = "san-eliseo.jsp";
+	    			page = "san-eliseo.jsp&p=saneliseo";
 	    	
 	    	else if(requri.equals("/projects/domus/") || requri.equals("/projects/domus") || requri.equals("/projectos/domus/") || requri.equals("/projectos/domus"))
-	    			page = "domus.jsp";
+	    			page = "domus.jsp&p=domus";
 	    	
 	    	else if(requri.equals("/projects/rancho/") || requri.equals("/projects/rancho") || requri.equals("/projectos/rancho/") || requri.equals("/projectos/rancho"))
-	    			page = "rancho.jsp";
+	    			page = "rancho.jsp&p=rancho";
 	
 	    	else if(requri.equals("/terms/") || requri.equals("/terms"))
 	    			page = "terms.jsp";	
@@ -90,7 +90,6 @@ public class MainFilter implements Filter {
 	    		page = "error.jsp";
 	    	}
 	    	
-	    	System.out.println("getting page: "+page);
 	    	
 	    		if(!continueChain){	
 				    request.getRequestDispatcher("/GetPage?page="+page).forward(request, response);

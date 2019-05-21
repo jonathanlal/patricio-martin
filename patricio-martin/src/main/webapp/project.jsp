@@ -17,40 +17,8 @@
     <style>
     .pswp__minis-list{left: 0 !important;}
     .single-purchase{top: -30px !important;} 
-    .rowg {
-	  display: -ms-flexbox; /* IE10 */
-	  display: flex;
-	  -ms-flex-wrap: wrap; /* IE10 */
-	  flex-wrap: wrap;
-	  padding: 0 4px;
-	}
-	/* Create four equal columns that sits next to each other */
-	.columng {
-	  -ms-flex: 25%; /* IE10 */
-	  flex: 25%;
-	  max-width: 25%;
-	  padding: 0 4px;
-	}
-	.columng img {
-	  margin-top: 8px;
-	  vertical-align: middle;
-	}
-	/* Responsive layout - makes a two column-layout instead of four columns */
-	@media screen and (max-width: 800px) {
-	  .columng {
-	    -ms-flex: 50%;
-	    flex: 50%;
-	    max-width: 50%;
-	  }
-	}
-	/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
-	@media screen and (max-width: 600px) {
-	  .column {
-	    -ms-flex: 100%;
-	    flex: 100%;
-	    max-width: 100%;
-	  }
-	}
+	/* image gallery stuff */
+	.rowg{display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;padding:0 4px}.columng{-ms-flex:25%;flex:25%;max-width:25%;padding:0 4px}.columng img{margin-top:8px;vertical-align:middle}@media screen and (max-width:800px){.columng{-ms-flex:50%;flex:50%;max-width:50%}}@media screen and (max-width:600px){.column{-ms-flex:100%;flex:100%;max-width:100%}}
     </style>
 
 
@@ -58,11 +26,10 @@
   <div class="single-hero-nav"><%@ include file="includes/include_nav.jsp"%></div>
   <div class="single-hero-image-container">
     <div class="single-hero-image">
-      <a class="psw-item"><img src="https://www.${project}.com/wp-content/uploads/2018/09/Gallery-Swimming-Pool.jpg" width="2880" height="1920" data-index="0"></a>    
+      <a class="psw-item"><img src="<fmt:message key="${project}.hero.cover"/>" width="2880" height="1920" data-index="0"></a>    
     </div>
   </div>
-
-<!--   <div class="single-hero-gradient"></div> -->
+  <div class="single-hero-gradient"></div>
 </section>
 
     <header class="single-header">
@@ -70,9 +37,14 @@
         <div class="single-columns">
           <div class="single-column is-head">
             <div class="single-thumbnails">
+            
+            
   <div class="single-thumbnails-list">
-    <a class="single-thumbnail psw-item">
-    <img src="https://ivanballiniestates.com/wp-content/uploads/2019/03/manoir-vue-mer-a-vendre-benerville-1206-2-360x240.jpg" width="180" height="120" data-index="1"sizes="180px"srcset="https://ivanballiniestates.com/wp-content/uploads/2019/03/manoir-vue-mer-a-vendre-benerville-1206-2-360x240.jpg 360w,https://ivanballiniestates.com/wp-content/uploads/2019/03/manoir-vue-mer-a-vendre-benerville-1206-2-540x360.jpg 540w,https://ivanballiniestates.com/wp-content/uploads/2019/03/manoir-vue-mer-a-vendre-benerville-1206-2-1080x720.jpg 1080w"></a><a class="single-thumbnail psw-item"><img src="https://ivanballiniestates.com/wp-content/uploads/2019/03/manoir-vue-mer-a-vendre-benerville-1206-3-360x240.jpg" width="180" height="120" data-index="2"sizes="180px"srcset="https://ivanballiniestates.com/wp-content/uploads/2019/03/manoir-vue-mer-a-vendre-benerville-1206-3-360x240.jpg 360w,https://ivanballiniestates.com/wp-content/uploads/2019/03/manoir-vue-mer-a-vendre-benerville-1206-3-540x360.jpg 540w,https://ivanballiniestates.com/wp-content/uploads/2019/03/manoir-vue-mer-a-vendre-benerville-1206-3-1080x720.jpg 1080w"></a><a class="single-thumbnail psw-item"><img src="https://ivanballiniestates.com/wp-content/uploads/2019/03/manoir-vue-mer-a-vendre-benerville-1206-4-360x240.jpg" width="180" height="120" data-index="3"sizes="180px"srcset="https://ivanballiniestates.com/wp-content/uploads/2019/03/manoir-vue-mer-a-vendre-benerville-1206-4-360x240.jpg 360w,https://ivanballiniestates.com/wp-content/uploads/2019/03/manoir-vue-mer-a-vendre-benerville-1206-4-540x360.jpg 540w,https://ivanballiniestates.com/wp-content/uploads/2019/03/manoir-vue-mer-a-vendre-benerville-1206-4-1080x720.jpg 1080w"></a>  </div>
+    <a class="single-thumbnail psw-item"><img src="<fmt:message key="${project}.hero.image1"/>" style="width:180px;height:120px;"></a>
+    <a class="single-thumbnail psw-item"><img src="<fmt:message key="${project}.hero.image2"/>" style="width:180px;height:120px;"></a>
+    <a class="single-thumbnail psw-item"><img src="<fmt:message key="${project}.hero.image3"/>" style="width:180px;height:120px;"></a>
+
+    </div>
 
   <div class="single-thumbnails-action">
     <a class="button is-info  is-small psw-trigger" href="">
@@ -94,19 +66,19 @@
       <p class="single-meta-label">
         <fmt:message key="${project}.details.region"/> </p>   
 
-            <p class="single-meta-link"><strong>La Cala</strong></p>    </div>
+            <p class="single-meta-link"><strong><fmt:message key="${project}.details.region.value"/></strong></p>    </div>
 
     <div class="single-meta">
       <p class="single-meta-label">
         <fmt:message key="${project}.details.city"/></p>
 
-            <p class="single-meta-link"><strong>Malaga</strong></p>    </div>
+            <p class="single-meta-link"><strong><fmt:message key="${project}.details.city.value"/></strong></p>    </div>
 
     <div class="single-meta">
       <p class="single-meta-label">
         <fmt:message key="${project}.details.type"/>      </p>
 
-            <p class="single-meta-link"><a href="https://ivanballiniestates.com/type/manoir">Hotel</a></p>    </div>
+            <p class="single-meta-link"><a href="#"><fmt:message key="${project}.details.type.value"/></a></p>    </div>
 
   </div>
 </div>
@@ -124,10 +96,8 @@
 <!--   </div> -->
 
   <div class="single-purchase-action">
-   <img src="../../img/homepage/la-cala.png" style="    margin: 0 auto !important;
-    display: flex;
-    margin-bottom: 20px !important;">
-    <a class="button is-info" href="https://www.${project}.com" target="_blank">
+   <img src='<fmt:message key="${project}.hero.website"/>' style="margin: 0 auto !important;display: flex;margin-bottom: 20px !important;">
+    <a class="button is-info" href="<fmt:message key="${project}.website"/>" target="_blank">
       <span class="button-text"><strong><fmt:message key="${project}.btn.website"/></strong> <i class="fas fa-long-arrow-alt-right" style="margin-bottom:-2px !important;"></i></span>
   </a>
   </div>
@@ -160,14 +130,6 @@
     <em class="stat-label">
       <fmt:message key="${project}.details.units"/>      </em>
   </div>
-<!--   <div class="stat"> -->
-
-<!--     <strong class="stat-value"> -->
-<!--       1 ha    </strong> -->
-
-<!--     <em class="stat-label"> -->
-<!--       Terrain      </em> -->
-<!--   </div> -->
   </div>
 </div>
           </div>
@@ -182,17 +144,8 @@
             <div class="single-content content"><p><fmt:message key="${project}.description"/></p></div>
 
             <div class="single-grid" style="margin: 0 auto !important;">
-<!--   <div class="single-grid-container"> -->
-<!--     <div class="single-grid-items"> -->
-<!--       <a class="single-cell psw-item"><img src="https://ivanballiniestates.com/wp-content/uploads/2019/03/manoir-vue-mer-a-vendre-benerville-1206-5-1080x720.jpg" width="480" height="320" data-index="4" sizes="480px" srcset="https://ivanballiniestates.com/wp-content/uploads/2019/03/manoir-vue-mer-a-vendre-benerville-1206-5-1080x720.jpg 1080w,https://ivanballiniestates.com/wp-content/uploads/2019/03/manoir-vue-mer-a-vendre-benerville-1206-5-1440x960.jpg 1440w" title="" style=""></a><a class="single-cell psw-item"><img src="https://ivanballiniestates.com/wp-content/uploads/2019/03/manoir-vue-mer-a-vendre-benerville-1206-6-540x360.jpg" width="240" height="160" data-index="5" sizes="240px" srcset="https://ivanballiniestates.com/wp-content/uploads/2019/03/manoir-vue-mer-a-vendre-benerville-1206-6-540x360.jpg 540w,https://ivanballiniestates.com/wp-content/uploads/2019/03/manoir-vue-mer-a-vendre-benerville-1206-6-1080x720.jpg 1080w,https://ivanballiniestates.com/wp-content/uploads/2019/03/manoir-vue-mer-a-vendre-benerville-1206-6-1440x960.jpg 1440w"></a><a class="single-cell psw-item"><img src="https://ivanballiniestates.com/wp-content/uploads/2019/03/manoir-vue-mer-a-vendre-benerville-1206-7-540x360.jpg" width="240" height="160" data-index="6" sizes="240px" srcset="https://ivanballiniestates.com/wp-content/uploads/2019/03/manoir-vue-mer-a-vendre-benerville-1206-7-540x360.jpg 540w,https://ivanballiniestates.com/wp-content/uploads/2019/03/manoir-vue-mer-a-vendre-benerville-1206-7-1080x720.jpg 1080w,https://ivanballiniestates.com/wp-content/uploads/2019/03/manoir-vue-mer-a-vendre-benerville-1206-7-1440x960.jpg 1440w"></a><a class="single-cell psw-item"><img src="https://ivanballiniestates.com/wp-content/uploads/2019/03/manoir-vue-mer-a-vendre-benerville-1206-8-540x360.jpg" width="240" height="160" data-index="7" sizes="240px" srcset="https://ivanballiniestates.com/wp-content/uploads/2019/03/manoir-vue-mer-a-vendre-benerville-1206-8-540x360.jpg 540w,https://ivanballiniestates.com/wp-content/uploads/2019/03/manoir-vue-mer-a-vendre-benerville-1206-8-1080x720.jpg 1080w,https://ivanballiniestates.com/wp-content/uploads/2019/03/manoir-vue-mer-a-vendre-benerville-1206-8-1440x960.jpg 1440w"></a><a class="single-cell psw-item"><img src="https://ivanballiniestates.com/wp-content/uploads/2019/03/manoir-vue-mer-a-vendre-benerville-1206-9-540x360.jpg" width="240" height="160" data-index="8" sizes="240px" srcset="https://ivanballiniestates.com/wp-content/uploads/2019/03/manoir-vue-mer-a-vendre-benerville-1206-9-540x360.jpg 540w,https://ivanballiniestates.com/wp-content/uploads/2019/03/manoir-vue-mer-a-vendre-benerville-1206-9-1080x720.jpg 1080w,https://ivanballiniestates.com/wp-content/uploads/2019/03/manoir-vue-mer-a-vendre-benerville-1206-9-1440x960.jpg 1440w" title="" style=""></a><a class="single-cell psw-item"><img src="https://ivanballiniestates.com/wp-content/uploads/2019/03/manoir-vue-mer-a-vendre-benerville-1206-10-540x360.jpg" width="240" height="160" data-index="9" sizes="240px" srcset="https://ivanballiniestates.com/wp-content/uploads/2019/03/manoir-vue-mer-a-vendre-benerville-1206-10-540x360.jpg 540w,https://ivanballiniestates.com/wp-content/uploads/2019/03/manoir-vue-mer-a-vendre-benerville-1206-10-1080x720.jpg 1080w,https://ivanballiniestates.com/wp-content/uploads/2019/03/manoir-vue-mer-a-vendre-benerville-1206-10-1440x960.jpg 1440w"></a>    </div> -->
-<!--   </div> -->
-
-
-
-
 
   
-<!--     <div class="single-grid-container"> -->
     
     <div class="rowg" > 
   <div class="columng">
@@ -214,12 +167,6 @@
   </div>
 </div>
     
-    
-<!--     <div class="single-grid-items"> -->
-<!--                    <a class="single-cell psw-item"><img src="../../img/la-cala/3.jpg" ></a>   -->
-<!--           <a class="single-cell psw-item"><img src="../../img/la-cala/1.jpg" ></a>   -->
-<!--              <a class="single-cell psw-item"><img src="../../img/la-cala/4.jpg" ></a>   -->
-<!--         </div> -->
  
 <!--   </div> -->
 
