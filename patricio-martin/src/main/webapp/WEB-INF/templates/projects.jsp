@@ -12,7 +12,7 @@
     </div>
     <div class="property-info">
     <p class="price property-price">
-    <img src="../../img/la-cala/la-cala-white-text.png" class="property-img">
+    <img src="../../img/la-cala/logo-neg.png" class="property-img">
     </p>
     </div>
   </div>
@@ -23,7 +23,7 @@
 <article class="list-property">
 <a href="../../projects/san-eliseo/" class="card property post-610 type-property status-publish has-post-thumbnail hentry type-chateau region-bernay city-bernay has-10-rooms has-5-bedrooms region-red">
   <figure class="card-image property-image">
-<img class="responsive-image" src="../../img/san-eliseo/4.jpg" sizes="(max-width: 540px) 100vw, 720px" srcset="../../img/san-eliseo/4.jpg 540w, ../../img/san-eliseo/4.jpg 1080w, ../../img/san-eliseo/4.jpg 1440w" height="480" width="720">
+<img class="responsive-image" src="../../img/san-eliseo/2.jpg" sizes="(max-width: 540px) 100vw, 720px" srcset="../../img/san-eliseo/2.jpg 540w, ../../img/san-eliseo/2.jpg 1080w, ../../img/san-eliseo/2.jpg 1440w" height="480" width="720">
   </figure>
   <div class="card-content property-content clearfix">
     <div class="property-heading">

@@ -6,7 +6,7 @@
 <section class="hero">
   <div class="hero-background" style="background-image: url(https://www.lacala.com/wp-content/uploads/2018/09/Gallery-Patio-Naranjo.jpg);"></div>
   <div class="hero-overlay"></div>
-  <div class="hero-nav"><%@ include file="includes/include_nav.jsp"%></div>
+  <div class="hero-nav"><%@ include file="includes/nav.jsp"%></div>
   <div class="hero-content">
     <div class="container">
       <h1 class="title hero-title"><fmt:message key="projects.hero.title"/></h1>

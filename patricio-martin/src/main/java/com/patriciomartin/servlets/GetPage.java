@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.ResourceBundle;
 
 import javax.imageio.ImageIO;
 import javax.imageio.ImageReader;
@@ -33,7 +34,7 @@ public class GetPage extends HttpServlet {
 		String page = request.getParameter("page");
     	System.out.println("getting page: "+page);
 
-		
+//    	ResourceBundle.clearCache();   
 		if(page == null || page.isEmpty()){
 			
 			page= "error.jsp";
@@ -65,12 +66,18 @@ public class GetPage extends HttpServlet {
 		for (int i = 0; i < listOfFiles.length; i++) {
 		  if (listOfFiles[i].isFile()) {
 			  tmp = new JSONObject();
-			  String image = "img/"+project+"/"+listOfFiles[i].getName();
+			  
+			  String name = listOfFiles[i].getName();
+			  
+			  if(!name.contains("logo")) {
+			  String image = "img/"+project+"/"+name;
 			  tmp.put("src", "../../"+image);
 			  Dimension d = getImageDimension(image);
 			  tmp.put("w",  String.format("%.0f", d.getWidth()));
 			  tmp.put("h", String.format("%.0f", d.getHeight()));
 			  arr.add(tmp);
+			  
+			  }
 		  }
 		}
 		return "window.photoswipe_items = "+arr.toJSONString();
