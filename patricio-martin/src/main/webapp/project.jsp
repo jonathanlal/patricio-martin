@@ -23,7 +23,7 @@
 
 
       <section class="single-hero">
-  <div class="single-hero-nav"><%@ include file="includes/include_nav.jsp"%></div>
+  <div class="single-hero-nav"><%@ include file="includes/nav.jsp"%></div>
   <div class="single-hero-image-container">
     <div class="single-hero-image">
       <a class="psw-item"><img src="<fmt:message key="${project}.hero.cover"/>" width="2880" height="1920" data-index="0"></a>    

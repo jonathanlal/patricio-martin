@@ -1,116 +1,96 @@
-<nav class="navbar is-fixed-top is-closed" id="navbar" style="padding:20px;">
-<div class="container">
-
-
-
-
-
-
- 
-
-
-
-
-
-
-
- 
+<%@ page pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
   
-<!-- 	    <div class="navbar-start"> -->
-	    
-	    
-	      <div class="navbar-brand">
-    <a class="navbar-item" href="https://bulma.io">
-      <img src="../img/patricio-martin.png" alt="Bulma: a modern CSS framework based on Flexbox">
-    </a>
-    
-       <div class="navbar-burger burger" data-target="navbarExampleTransparentExample">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-    
-  </div>
-	    
-	      <a class="navbar-item is-size-6 lang-selected" href="https://bulma.io/" style="padding-left:15px;">
-	        <span>EN</span>
-	      </a>
-	            <a class="navbar-item is-size-6" href="https://bulma.io/" style="padding-left:5px;">
-	         <span>ES</span>
-	      </a>
-<!-- 	    </div> -->
-    
-    
-    
-    
-    
- <div id="navbarExampleTransparentExample" class="nav-menu" style="position:absolute;width: 100%;">
-      
-      <div class="nav-list">
+  <div id="navbar" class="nav navbar" style="background-color: transparent;">
+  <div class="i-gradient">
+  <div class="container">
+    <nav class="nav-content ">
+      <a class="nav-brand" href="../../">
+      <img src="../../img/logo/navbar.png" alt="Bulma: a modern CSS framework based on Flexbox">
+      </a>
+
+<!--       <a class="nav-burger" data-target="nav"> -->
+<!--         <span></span> -->
+<!--         <span></span> -->
+<!--         <span></span> -->
+<!--       </a> -->
+
+	<a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+	  <span aria-hidden="true"></span>
+	  <span aria-hidden="true"></span>
+	  <span aria-hidden="true"></span>
+	</a>
+
+      <div class="nav-menu navbar-menu" id="navMenu">
+        <div class="nav-list">
           <div class="nav-item is-home">
-            <a href="https://ivanballiniestates.com">
-              Accueil            </a>
+            <a href="<fmt:message key="url.about"/>">
+              <fmt:message key="nav.about"/>            </a>
           </div>
 
           <div class="nav-item is-properties">
-            <a href="https://ivanballiniestates.com/proprietes">Propriétés</a>
-            <div class="subnav">
-              <a href="https://ivanballiniestates.com/proprietes">Propriétés à vendre</a>              <a href="https://ivanballiniestates.com/ventes-recentes">Ventes récentes</a>            </div>
+            <a href="<fmt:message key="url.projects"/>"><fmt:message key="nav.projects"/></a>
           </div>
 
           <div class="nav-item is-regions">
-            <a href="https://ivanballiniestates.com/regions">Régions</a>          </div>
+            <a href="<fmt:message key="url.services"/>"><fmt:message key="nav.services"/></a>          </div>
         </div>
-  
 
-<!--        <a class="navbar-item is-size-6" href="https://bulma.io/"> -->
-<!--         ABOUT -->
-<!--       </a> -->
-<!--              <a class="navbar-item is-size-6" href="https://bulma.io/"> -->
-<!--         PROJECTS -->
-<!--       </a> -->
-      
-<!--                    <a class="navbar-item is-size-6" href="https://bulma.io/"> -->
-<!--         SERVICES -->
-<!--       </a> -->
-
-
-      
-      
-      
-      
-      
-      
-
-<!--     <div class="navbar-end"> -->
-<!--       <div class="navbar-item is-size-6"> -->
-<!--       info@patriciomartin.com<br> -->
-<!--       +34 952 58 44 44 -->
-<!--       </div> -->
-
-    
-    <aside class="nav-contact ">
+        <aside class="nav-contact">
           <p>
             <a class="open-modal" data-target="contactModal">
-              
-<img class="responsive-img" src="https://ivanballiniestates.com/wp-content/themes/ivan-ballini-v4/images/contact/mail.png" srcset="https://ivanballiniestates.com/wp-content/themes/ivan-ballini-v4/images/contact/mail.png 1x,
-          https://ivanballiniestates.com/wp-content/themes/ivan-ballini-v4/images/contact/mail@2x.png 2x,
-          https://ivanballiniestates.com/wp-content/themes/ivan-ballini-v4/images/contact/mail@3x.png 3x" height="18" width="210">
+              info@patriciomartin.com
             </a>
           </p>
 
           <p>
-            <a href="tel:+33233241193">
-              
-<img class="responsive-img" src="https://ivanballiniestates.com/wp-content/themes/ivan-ballini-v4/images/contact/phone.png" srcset="https://ivanballiniestates.com/wp-content/themes/ivan-ballini-v4/images/contact/phone.png 1x,
-          https://ivanballiniestates.com/wp-content/themes/ivan-ballini-v4/images/contact/phone@2x.png 2x,
-          https://ivanballiniestates.com/wp-content/themes/ivan-ballini-v4/images/contact/phone@3x.png 3x" height="18" width="126">
+            <a href="tel:+34952584444">
+              +34 952 58 44 44
             </a>
           </p>
         </aside>
-<!--             </div> -->
-    
-  </div>
-  </div>
-</nav>
+      </div>
 
+<!-- 		    <form action="../../ChangeLanguage" method="post">     -->
+<%-- 		    <input type="hidden" value="${page}" name="page"/> --%>
+<div class="nav-languages">
+
+  
+  
+  	<ul>
+  	
+  	<li class="wpml-ls-slot-shortcode_actions wpml-ls-item wpml-ls-item-fr  wpml-ls-first-item wpml-ls-item-legacy-list-horizontal ${language eq 'es' ? 'wpml-ls-current-language' : ''}">
+	<a href="../../ChangeLanguage?lang=es" class="wpml-ls-link"><span class="wpml-ls-native">Spanish</span></a>
+	  		
+	
+	
+	<li class="wpml-ls-slot-shortcode_actions wpml-ls-item wpml-ls-item-en wpml-ls-last-item wpml-ls-item-legacy-list-horizontal ${language eq 'en' || empty language ? 'wpml-ls-current-language' : ''}">
+	<a href="../../ChangeLanguage?lang=en" class="wpml-ls-link"><span class="wpml-ls-native">English</span><span class="wpml-ls-display"><span class="wpml-ls-bracket"> (</span>Anglais<span class="wpml-ls-bracket">)</span></span></a>
+	</li>
+	
+	</ul>
+		    
+		    
+<!--             <input class="flags" type="image" src="img/spain.png" name="selection" value="spain" alt="Submit Form" /> -->
+<!--             <input class="flags" type="image" src="img/english2.png" name="selection" value="england" alt="Submit Form" /> -->
+<!--             <input class="flags" type="image" src="img/norway.png" name="selection" value="norway" alt="Submit Form" /> -->
+       	
+
+<!--         <form action="../../ChangeLanguage"> -->
+<!-- <div class="wpml-ls-statics-shortcode_actions wpml-ls wpml-ls-legacy-list-horizontal"> -->
+<!-- 	<ul><li class="wpml-ls-slot-shortcode_actions wpml-ls-item wpml-ls-item-fr wpml-ls-current-language wpml-ls-first-item wpml-ls-item-legacy-list-horizontal"> -->
+<!-- 	<a href="../../ChangeLanguage?lang=es" class="wpml-ls-link"><span class="wpml-ls-native">FranÃ§ais</span></a> -->
+<!-- 	</li><li class="wpml-ls-slot-shortcode_actions wpml-ls-item wpml-ls-item-en wpml-ls-last-item wpml-ls-item-legacy-list-horizontal"> -->
+<!-- 	<a href="../../ChangeLanguage?lang=en" class="wpml-ls-link"><span class="wpml-ls-native">English</span><span class="wpml-ls-display"><span class="wpml-ls-bracket"> (</span>Anglais<span class="wpml-ls-bracket">)</span></span></a> -->
+<!-- 	</li></ul> -->
+<!-- </div>  -->
+<!--   </form> -->
+  
+</div>
+<!-- 	</form> -->
+
+    </nav>
+  </div>
+</div>
+ </div>

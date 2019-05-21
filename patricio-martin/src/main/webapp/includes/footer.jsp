@@ -34,7 +34,7 @@
 
 
 <!--         <div class=""> -->
-        <img src="../../img/logo-only.png" style="width:50px;display: flex;margin:0 auto;opacity: 0.9;    margin-bottom: 10px;    margin-top: 10px;">
+        <img src="../../img/logo/logo.png" style="width:50px;display: flex;margin:0 auto;opacity: 0.9;    margin-bottom: 10px;    margin-top: 10px;">
   <p class="is-size-6 has-text-centered">+34 952 58 44 44</p>
     <p class="is-size-6 has-text-centered">info@patriciomartin.com</p>
     <p class="is-size-6 has-text-centered has-margin-4"><i class="far fa-copyright"></i> ${year} Patricio Martin. <fmt:message key="footer.rights"/></p>

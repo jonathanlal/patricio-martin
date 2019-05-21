@@ -10,7 +10,10 @@
       <p class="location property-location">La Cala</p>
 	<h3 class="title property-name">Golf & Country Club</h3>
     </div>
-    <div class="property-info"><p class="price property-price"><img src="../../img/homepage/la-cala2.png" class="property-img"></p>
+    <div class="property-info">
+    <p class="price property-price">
+    <img src="../../img/la-cala/la-cala-white-text.png" class="property-img">
+    </p>
     </div>
   </div>
 </a>
@@ -27,7 +30,10 @@
       <p class="location property-location">Argentina</p>
       <h3 class="title property-name">San Eliseo</h3>
     </div>
-    <div class="property-info"><p class="price property-price"><img src="../../img/homepage/san-eliseo.png" class="property-img"></p>
+    <div class="property-info">
+    <p class="price property-price">
+    <img src="../../img/san-eliseo/logo.png" class="property-img">
+    </p>
     </div>
   </div>
 </a>
@@ -47,7 +53,7 @@
     </div>
         <div class="property-info">
       <p class="price property-price">
-        <img src="../img/homepage/rancho.png" class="property-img">
+        <img src="../img/rancho/logo.png" class="property-img">
         </p>
     </div>
   </div>
@@ -67,7 +73,7 @@
     </div>
     <div class="property-info">
       <p class="price property-price">
-        <img src="../img/homepage/domus.png" class="property-img">
+        <img src="../img/domus/logo.png" class="property-img">
         </p>
     </div>
   </div>

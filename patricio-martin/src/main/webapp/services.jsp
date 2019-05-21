@@ -35,7 +35,7 @@ marign-top:30px !important;
 <section class="hero">
   <div class="hero-background" style="background-image: url(https://ivanballiniestates.com/wp-content/themes/ivan-ballini-v4/images/hab/b1.jpg);"></div>
   <div class="hero-overlay"></div>
-  <div class="hero-nav"><%@ include file="includes/include_nav.jsp"%></div>
+  <div class="hero-nav"><%@ include file="includes/nav.jsp"%></div>
   <div class="hero-content">
     <div class="container">
       <h1 class="title hero-title"><fmt:message key="services.hero.title"/></h1>

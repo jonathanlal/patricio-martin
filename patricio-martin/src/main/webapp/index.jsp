@@ -30,7 +30,7 @@ top: 3px !important;
     </video>
  </div>
  	<div class="hero-overlay front-hero-overlay __web-inspector-hide-shortcut__"></div>
- 	<%@ include file="includes/include_nav.jsp"%>
+ 	<%@ include file="includes/nav.jsp"%>
  <div class="hero-content front-hero-content" >
     <div id="messages" class="messages">
     <div class="message is-1 is-shown"><p class="message-surtitle"><fmt:message key="index.hero.sTitle1"/></p><h1 class="title hero-title message-title"><fmt:message key="index.hero.lTitle1"/></h1></div>
