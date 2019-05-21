@@ -149,21 +149,21 @@
     
     <div class="rowg" > 
   <div class="columng">
-    <img src="../../img/la-cala/1.jpg" style="width:100%">
-    <img src="../../img/la-cala/2.jpg" style="width:100%">
+    <img src="<fmt:message key="${project}.mason.1"/>" style="width:100%">
+    <img src="<fmt:message key="${project}.mason.2"/>" style="width:100%">
   </div>
   <div class="columng">
-      <img src="../../img/la-cala/3.jpg" style="width:100%">
-          <img src="../../img/la-cala/8.jpg" style="width:100%">
+      <img src="<fmt:message key="${project}.mason.3"/>" style="width:100%">
+          <img src="<fmt:message key="${project}.mason.4"/>" style="width:100%">
      
   </div>  
   <div class="columng">
-      <img src="../../img/la-cala/5.jpg" style="width:100%">
-    <img src="../../img/la-cala/6.jpg" style="width:100%">
+      <img src="<fmt:message key="${project}.mason.5"/>" style="width:100%">
+    <img src="<fmt:message key="${project}.mason.6"/>" style="width:100%">
   </div>
     <div class="columng">
-    <img src="../../img/la-cala/7.jpg" style="width:100%">
- <img src="../../img/la-cala/4.jpg" style="width:100%">
+    <img src="<fmt:message key="${project}.mason.7"/>" style="width:100%">
+ <img src="<fmt:message key="${project}.mason.8"/>" style="width:100%">
   </div>
 </div>
     
@@ -186,96 +186,17 @@
     
     
     
+    <SCRIPT>
+<%--     console.log('<%=request.getAttribute("photos")%>'); --%>
+<%--     alert('<%=request.getAttribute("photos")%>'); --%>
     
+    </SCRIPT>
     
     
     
     
 
-    <script type="text/javascript">
-      window.photoswipe_items = [
-    	  {"thumbnail":
-    	  {"src":"https:\/\/ivanballiniestates.com\/wp-content\/uploads\/2019\/03\/manoir-vue-mer-a-vendre-benerville-1206-1-360x240.jpg","w":360,"h":240},
-    	  "medium_large":
-    	  {"src":"https:\/\/ivanballiniestates.com\/wp-content\/uploads\/2019\/03\/manoir-vue-mer-a-vendre-benerville-1206-1-1440x960.jpg","w":1440,"h":960},
-    	  "large":
-    	  {"src":"https:\/\/ivanballiniestates.com\/wp-content\/uploads\/2019\/03\/manoir-vue-mer-a-vendre-benerville-1206-1.jpg","w":2880,"h":1920}},
-    	  {"thumbnail":
-    	  {"src":"https:\/\/ivanballiniestates.com\/wp-content\/uploads\/2019\/03\/manoir-vue-mer-a-vendre-benerville-1206-2-360x240.jpg","w":360,"h":240},
-    	  "medium_large":
-    	  {"src":"https:\/\/ivanballiniestates.com\/wp-content\/uploads\/2019\/03\/manoir-vue-mer-a-vendre-benerville-1206-2-1440x960.jpg","w":1440,"h":960},
-    	  "large":{"src":"https:\/\/ivanballiniestates.com\/wp-content\/uploads\/2019\/03\/manoir-vue-mer-a-vendre-benerville-1206-2.jpg","w":2880,"h":1920}},
-    	  {"thumbnail":{"src":"https:\/\/ivanballiniestates.com\/wp-content\/uploads\/2019\/03\/manoir-vue-mer-a-vendre-benerville-1206-3-360x240.jpg","w":360,"h":240},
-    	"medium_large":
-    	{"src":"https:\/\/ivanballiniestates.com\/wp-content\/uploads\/2019\/03\/manoir-vue-mer-a-vendre-benerville-1206-3-1440x960.jpg","w":1440,"h":960},
-    	"large":{"src":"https:\/\/ivanballiniestates.com\/wp-content\/uploads\/2019\/03\/manoir-vue-mer-a-vendre-benerville-1206-3.jpg","w":2880,"h":1920}},
-{"thumbnail":{"src":"https:\/\/ivanballiniestates.com\/wp-content\/uploads\/2019\/03\/manoir-vue-mer-a-vendre-benerville-1206-4-360x240.jpg","w":360,"h":240},
-	"medium_large":{"src":"https:\/\/ivanballiniestates.com\/wp-content\/uploads\/2019\/03\/manoir-vue-mer-a-vendre-benerville-1206-4-1440x960.jpg","w":1440,"h":960},
-	"large":{"src":"https:\/\/ivanballiniestates.com\/wp-content\/uploads\/2019\/03\/manoir-vue-mer-a-vendre-benerville-1206-4.jpg","w":2880,"h":1920}},
-	{"thumbnail":{"src":"https:\/\/ivanballiniestates.com\/wp-content\/uploads\/2019\/03\/manoir-vue-mer-a-vendre-benerville-1206-5-360x240.jpg","w":360,"h":240},
-		"medium_large":{"src":"https:\/\/ivanballiniestates.com\/wp-content\/uploads\/2019\/03\/manoir-vue-mer-a-vendre-benerville-1206-5-1440x960.jpg","w":1440,"h":960},
-		"large":{"src":"https:\/\/ivanballiniestates.com\/wp-content\/uploads\/2019\/03\/manoir-vue-mer-a-vendre-benerville-1206-5.jpg","w":2880,"h":1920}},
-		{"thumbnail":{"src":"https:\/\/ivanballiniestates.com\/wp-content\/uploads\/2019\/03\/manoir-vue-mer-a-vendre-benerville-1206-6-360x240.jpg","w":360,"h":240},
-			"medium_large":{"src":"https:\/\/ivanballiniestates.com\/wp-content\/uploads\/2019\/03\/manoir-vue-mer-a-vendre-benerville-1206-6-1440x960.jpg","w":1440,"h":960},
-			"large":{"src":"https:\/\/ivanballiniestates.com\/wp-content\/uploads\/2019\/03\/manoir-vue-mer-a-vendre-benerville-1206-6.jpg","w":2880,"h":1920}},
-			{"thumbnail":{"src":"https:\/\/ivanballiniestates.com\/wp-content\/uploads\/2019\/03\/manoir-vue-mer-a-vendre-benerville-1206-7-360x240.jpg","w":360,"h":240},
-				"medium_large":{"src":"https:\/\/ivanballiniestates.com\/wp-content\/uploads\/2019\/03\/manoir-vue-mer-a-vendre-benerville-1206-7-1440x960.jpg","w":1440,"h":960},
-				"large":{"src":"https:\/\/ivanballiniestates.com\/wp-content\/uploads\/2019\/03\/manoir-vue-mer-a-vendre-benerville-1206-7.jpg","w":2880,"h":1920}},
-				{"thumbnail":{"src":"https:\/\/ivanballiniestates.com\/wp-content\/uploads\/2019\/03\/manoir-vue-mer-a-vendre-benerville-1206-8-360x240.jpg","w":360,"h":240},
-					"medium_large":{"src":"https:\/\/ivanballiniestates.com\/wp-content\/uploads\/2019\/03\/manoir-vue-mer-a-vendre-benerville-1206-8-1440x960.jpg","w":1440,"h":960},
-					"large":{"src":"https:\/\/ivanballiniestates.com\/wp-content\/uploads\/2019\/03\/manoir-vue-mer-a-vendre-benerville-1206-8.jpg","w":2880,"h":1920}},
-					{"thumbnail":{"src":"https:\/\/ivanballiniestates.com\/wp-content\/uploads\/2019\/03\/manoir-vue-mer-a-vendre-benerville-1206-9-360x240.jpg","w":360,"h":240},
-						"medium_large":{"src":"https:\/\/ivanballiniestates.com\/wp-content\/uploads\/2019\/03\/manoir-vue-mer-a-vendre-benerville-1206-9-1440x960.jpg","w":1440,"h":960},
-						"large":{"src":"https:\/\/ivanballiniestates.com\/wp-content\/uploads\/2019\/03\/manoir-vue-mer-a-vendre-benerville-1206-9.jpg","w":2880,"h":1920}},
-						{"thumbnail":{"src":"https:\/\/ivanballiniestates.com\/wp-content\/uploads\/2019\/03\/manoir-vue-mer-a-vendre-benerville-1206-10-360x240.jpg","w":360,"h":240},
-							"medium_large":{"src":"https:\/\/ivanballiniestates.com\/wp-content\/uploads\/2019\/03\/manoir-vue-mer-a-vendre-benerville-1206-10-1440x960.jpg","w":1440,"h":960},
-							"large":{"src":"https:\/\/ivanballiniestates.com\/wp-content\/uploads\/2019\/03\/manoir-vue-mer-a-vendre-benerville-1206-10.jpg","w":2880,"h":1920}},
-							{"thumbnail":{"src":"https:\/\/ivanballiniestates.com\/wp-content\/uploads\/2019\/03\/manoir-vue-mer-a-vendre-benerville-1206-11-360x240.jpg","w":360,"h":240},
-								"medium_large":{"src":"https:\/\/ivanballiniestates.com\/wp-content\/uploads\/2019\/03\/manoir-vue-mer-a-vendre-benerville-1206-11-1440x960.jpg","w":1440,"h":960},
-								"large":{"src":"https:\/\/ivanballiniestates.com\/wp-content\/uploads\/2019\/03\/manoir-vue-mer-a-vendre-benerville-1206-11.jpg","w":2880,"h":1920}},
-								{"thumbnail":{"src":"https:\/\/ivanballiniestates.com\/wp-content\/uploads\/2019\/03\/manoir-vue-mer-a-vendre-benerville-1206-12-360x240.jpg","w":360,"h":240},
-									"medium_large":{"src":"https:\/\/ivanballiniestates.com\/wp-content\/uploads\/2019\/03\/manoir-vue-mer-a-vendre-benerville-1206-12-1440x960.jpg","w":1440,"h":960},
-									"large":{"src":"https:\/\/ivanballiniestates.com\/wp-content\/uploads\/2019\/03\/manoir-vue-mer-a-vendre-benerville-1206-12.jpg","w":2880,"h":1920}},
-									{"thumbnail":{"src":"https:\/\/ivanballiniestates.com\/wp-content\/uploads\/2019\/03\/manoir-vue-mer-a-vendre-benerville-1206-13-360x240.jpg","w":360,"h":240},
-										"medium_large":{"src":"https:\/\/ivanballiniestates.com\/wp-content\/uploads\/2019\/03\/manoir-vue-mer-a-vendre-benerville-1206-13-1440x960.jpg","w":1440,"h":960},
-										"large":{"src":"https:\/\/ivanballiniestates.com\/wp-content\/uploads\/2019\/03\/manoir-vue-mer-a-vendre-benerville-1206-13.jpg","w":2880,"h":1920}},
-										{"thumbnail":{"src":"https:\/\/ivanballiniestates.com\/wp-content\/uploads\/2019\/03\/manoir-vue-mer-a-vendre-benerville-1206-14-360x240.jpg","w":360,"h":240},
-"medium_large":{"src":"https:\/\/ivanballiniestates.com\/wp-content\/uploads\/2019\/03\/manoir-vue-mer-a-vendre-benerville-1206-14-1440x960.jpg","w":1440,"h":960},
-"large":{"src":"https:\/\/ivanballiniestates.com\/wp-content\/uploads\/2019\/03\/manoir-vue-mer-a-vendre-benerville-1206-14.jpg","w":2880,"h":1920}},
-{"thumbnail":{"src":"https:\/\/ivanballiniestates.com\/wp-content\/uploads\/2019\/03\/manoir-vue-mer-a-vendre-benerville-1206-15-360x240.jpg","w":360,"h":240},
-	"medium_large":{"src":"https:\/\/ivanballiniestates.com\/wp-content\/uploads\/2019\/03\/manoir-vue-mer-a-vendre-benerville-1206-15-1440x960.jpg","w":1440,"h":960},
-	"large":{"src":"https:\/\/ivanballiniestates.com\/wp-content\/uploads\/2019\/03\/manoir-vue-mer-a-vendre-benerville-1206-15.jpg","w":2880,"h":1920}},
-	{"thumbnail":{"src":"https:\/\/ivanballiniestates.com\/wp-content\/uploads\/2019\/03\/manoir-vue-mer-a-vendre-benerville-1206-16-360x240.jpg","w":360,"h":240},
-		"medium_large":{"src":"https:\/\/ivanballiniestates.com\/wp-content\/uploads\/2019\/03\/manoir-vue-mer-a-vendre-benerville-1206-16-1440x960.jpg","w":1440,"h":960},
-		"large":{"src":"https:\/\/ivanballiniestates.com\/wp-content\/uploads\/2019\/03\/manoir-vue-mer-a-vendre-benerville-1206-16.jpg","w":2880,"h":1920}},
-		{"thumbnail":{"src":"https:\/\/ivanballiniestates.com\/wp-content\/uploads\/2019\/03\/manoir-vue-mer-a-vendre-benerville-1206-17-360x240.jpg","w":360,"h":240},
-			"medium_large":{"src":"https:\/\/ivanballiniestates.com\/wp-content\/uploads\/2019\/03\/manoir-vue-mer-a-vendre-benerville-1206-17-1440x960.jpg","w":1440,"h":960},
-			"large":{"src":"https:\/\/ivanballiniestates.com\/wp-content\/uploads\/2019\/03\/manoir-vue-mer-a-vendre-benerville-1206-17.jpg","w":2880,"h":1920}},
-			{"thumbnail":{"src":"https:\/\/ivanballiniestates.com\/wp-content\/uploads\/2019\/03\/manoir-vue-mer-a-vendre-benerville-1206-18-360x240.jpg","w":360,"h":240},
-				"medium_large":{"src":"https:\/\/ivanballiniestates.com\/wp-content\/uploads\/2019\/03\/manoir-vue-mer-a-vendre-benerville-1206-18-1440x960.jpg","w":1440,"h":960},
-				"large":{"src":"https:\/\/ivanballiniestates.com\/wp-content\/uploads\/2019\/03\/manoir-vue-mer-a-vendre-benerville-1206-18.jpg","w":2880,"h":1920}},
-				{"thumbnail":{"src":"https:\/\/ivanballiniestates.com\/wp-content\/uploads\/2019\/03\/manoir-vue-mer-a-vendre-benerville-1206-19-360x240.jpg","w":360,"h":240},
-					"medium_large":{"src":"https:\/\/ivanballiniestates.com\/wp-content\/uploads\/2019\/03\/manoir-vue-mer-a-vendre-benerville-1206-19-1440x960.jpg","w":1440,"h":960},
-					"large":{"src":"https:\/\/ivanballiniestates.com\/wp-content\/uploads\/2019\/03\/manoir-vue-mer-a-vendre-benerville-1206-19.jpg","w":2880,"h":1920}},
-					{"thumbnail":{"src":"https:\/\/ivanballiniestates.com\/wp-content\/uploads\/2019\/03\/manoir-vue-mer-a-vendre-benerville-1206-20-360x240.jpg","w":360,"h":240},
-						"medium_large":{"src":"https:\/\/ivanballiniestates.com\/wp-content\/uploads\/2019\/03\/manoir-vue-mer-a-vendre-benerville-1206-20-1440x960.jpg","w":1440,"h":960},
-						"large":{"src":"https:\/\/ivanballiniestates.com\/wp-content\/uploads\/2019\/03\/manoir-vue-mer-a-vendre-benerville-1206-20.jpg","w":2880,"h":1920}},
-						{"thumbnail":{"src":"https:\/\/ivanballiniestates.com\/wp-content\/uploads\/2019\/03\/manoir-vue-mer-a-vendre-benerville-1206-21-360x240.jpg","w":360,"h":240},
-							"medium_large":{"src":"https:\/\/ivanballiniestates.com\/wp-content\/uploads\/2019\/03\/manoir-vue-mer-a-vendre-benerville-1206-21-1440x960.jpg","w":1440,"h":960},
-							"large":{"src":"https:\/\/ivanballiniestates.com\/wp-content\/uploads\/2019\/03\/manoir-vue-mer-a-vendre-benerville-1206-21.jpg","w":2880,"h":1920}},
-							{"thumbnail":{"src":"https:\/\/ivanballiniestates.com\/wp-content\/uploads\/2019\/03\/manoir-vue-mer-a-vendre-benerville-1206-22-360x240.jpg","w":360,"h":240},
-								"medium_large":{"src":"https:\/\/ivanballiniestates.com\/wp-content\/uploads\/2019\/03\/manoir-vue-mer-a-vendre-benerville-1206-22-1440x960.jpg","w":1440,"h":960},
-								"large":{"src":"https:\/\/ivanballiniestates.com\/wp-content\/uploads\/2019\/03\/manoir-vue-mer-a-vendre-benerville-1206-22.jpg","w":2880,"h":1920}},
-								{"thumbnail":{"src":"https:\/\/ivanballiniestates.com\/wp-content\/uploads\/2019\/03\/manoir-vue-mer-a-vendre-benerville-1206-23-360x240.jpg","w":360,"h":240},
-									"medium_large":{"src":"https:\/\/ivanballiniestates.com\/wp-content\/uploads\/2019\/03\/manoir-vue-mer-a-vendre-benerville-1206-23-1440x960.jpg","w":1440,"h":960},
-									"large":{"src":"https:\/\/ivanballiniestates.com\/wp-content\/uploads\/2019\/03\/manoir-vue-mer-a-vendre-benerville-1206-23.jpg","w":2880,"h":1920}},
-									{"thumbnail":{"src":"https:\/\/ivanballiniestates.com\/wp-content\/uploads\/2019\/03\/manoir-vue-mer-a-vendre-benerville-1206-24-360x240.jpg","w":360,"h":240},
-										"medium_large":{"src":"https:\/\/ivanballiniestates.com\/wp-content\/uploads\/2019\/03\/manoir-vue-mer-a-vendre-benerville-1206-24-1440x960.jpg","w":1440,"h":960},
-										"large":{"src":"https:\/\/ivanballiniestates.com\/wp-content\/uploads\/2019\/03\/manoir-vue-mer-a-vendre-benerville-1206-24.jpg","w":2880,"h":1920}},
-										{"thumbnail":{"src":"https:\/\/ivanballiniestates.com\/wp-content\/uploads\/2019\/03\/manoir-vue-mer-a-vendre-benerville-1206-25-360x240.jpg","w":360,"h":240},
-											"medium_large":{"src":"https:\/\/ivanballiniestates.com\/wp-content\/uploads\/2019\/03\/manoir-vue-mer-a-vendre-benerville-1206-25-1440x960.jpg","w":1440,"h":960},
-											"large":{"src":"https:\/\/ivanballiniestates.com\/wp-content\/uploads\/2019\/03\/manoir-vue-mer-a-vendre-benerville-1206-25.jpg","w":2880,"h":1920}},{"thumbnail":{"src":"https:\/\/ivanballiniestates.com\/wp-content\/uploads\/2019\/03\/manoir-vue-mer-a-vendre-benerville-1206-26-360x240.jpg","w":360,"h":240},"medium_large":{"src":"https:\/\/ivanballiniestates.com\/wp-content\/uploads\/2019\/03\/manoir-vue-mer-a-vendre-benerville-1206-26-1440x960.jpg","w":1440,"h":960},"large":{"src":"https:\/\/ivanballiniestates.com\/wp-content\/uploads\/2019\/03\/manoir-vue-mer-a-vendre-benerville-1206-26.jpg","w":2880,"h":1920}},{"thumbnail":{"src":"https:\/\/ivanballiniestates.com\/wp-content\/uploads\/2019\/03\/manoir-vue-mer-a-vendre-benerville-1206-27-360x240.jpg","w":360,"h":240},"medium_large":{"src":"https:\/\/ivanballiniestates.com\/wp-content\/uploads\/2019\/03\/manoir-vue-mer-a-vendre-benerville-1206-27-1440x960.jpg","w":1440,"h":960},"large":{"src":"https:\/\/ivanballiniestates.com\/wp-content\/uploads\/2019\/03\/manoir-vue-mer-a-vendre-benerville-1206-27.jpg","w":2880,"h":1920}},{"thumbnail":{"src":"https:\/\/ivanballiniestates.com\/wp-content\/uploads\/2019\/03\/manoir-vue-mer-a-vendre-benerville-1206-28-360x240.jpg","w":360,"h":240},"medium_large":{"src":"https:\/\/ivanballiniestates.com\/wp-content\/uploads\/2019\/03\/manoir-vue-mer-a-vendre-benerville-1206-28-1440x960.jpg","w":1440,"h":960},"large":{"src":"https:\/\/ivanballiniestates.com\/wp-content\/uploads\/2019\/03\/manoir-vue-mer-a-vendre-benerville-1206-28.jpg","w":2880,"h":1920}},{"thumbnail":{"src":"https:\/\/ivanballiniestates.com\/wp-content\/uploads\/2019\/03\/manoir-vue-mer-a-vendre-benerville-1206-29-360x240.jpg","w":360,"h":240},"medium_large":{"src":"https:\/\/ivanballiniestates.com\/wp-content\/uploads\/2019\/03\/manoir-vue-mer-a-vendre-benerville-1206-29-1440x960.jpg","w":1440,"h":960},"large":{"src":"https:\/\/ivanballiniestates.com\/wp-content\/uploads\/2019\/03\/manoir-vue-mer-a-vendre-benerville-1206-29.jpg","w":2880,"h":1920}},{"thumbnail":{"src":"https:\/\/ivanballiniestates.com\/wp-content\/uploads\/2019\/03\/manoir-vue-mer-a-vendre-benerville-1206-30-360x240.jpg","w":360,"h":240},"medium_large":{"src":"https:\/\/ivanballiniestates.com\/wp-content\/uploads\/2019\/03\/manoir-vue-mer-a-vendre-benerville-1206-30-1440x960.jpg","w":1440,"h":960},"large":{"src":"https:\/\/ivanballiniestates.com\/wp-content\/uploads\/2019\/03\/manoir-vue-mer-a-vendre-benerville-1206-30.jpg","w":2880,"h":1920}},{"thumbnail":{"src":"https:\/\/ivanballiniestates.com\/wp-content\/uploads\/2019\/03\/manoir-vue-mer-a-vendre-benerville-1206-31-360x240.jpg","w":360,"h":240},"medium_large":{"src":"https:\/\/ivanballiniestates.com\/wp-content\/uploads\/2019\/03\/manoir-vue-mer-a-vendre-benerville-1206-31-1440x960.jpg","w":1440,"h":960},"large":{"src":"https:\/\/ivanballiniestates.com\/wp-content\/uploads\/2019\/03\/manoir-vue-mer-a-vendre-benerville-1206-31.jpg","w":2880,"h":1920}}];
-    </script>
+    <script type="text/javascript">${photos}</script>
 
     
   
@@ -345,10 +266,9 @@ function buildItems() {
   if (Array.isArray(all_items) && all_items.length > 0) {
     all_items.forEach(original => {
       const item = {
-        src: original.large.src,
-        msrc: original.medium_large.src,
-        w: original.large.w,
-        h: original.large.h
+        src: original.src,
+        w: original.w,
+        h: original.h
       };
 
       items.push(item);
@@ -424,9 +344,9 @@ function addMinis(psw_gallery) {
     all_items.forEach((image, index) => {
       const link_el = document.createElement('a');
       const image_el = document.createElement('img');
-      image_el.setAttribute('src', image.thumbnail.src);
-      image_el.setAttribute('width', image.thumbnail.w);
-      image_el.setAttribute('height', image.thumbnail.h);
+      image_el.setAttribute('src', image.src);
+      image_el.setAttribute('width', image.w);
+      image_el.setAttribute('height', image.h);
       image_el.setAttribute('data-index', index);
       image_el.addEventListener('click', event => {
         return onMiniClick(event, psw_gallery);

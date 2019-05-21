@@ -65,16 +65,16 @@ public class MainFilter implements Filter {
 	    			page = "projects.jsp";
 	    	
 	    	else if(requri.equals("/projects/la-cala/") || requri.equals("/projects/la-cala") || requri.equals("/projectos/la-cala/") || requri.equals("/projectos/la-cala"))
-		    		page = "project.jsp&p=lacala";
+		    		page = "project.jsp&p=la-cala";
 		    	
 	    	else if(requri.equals("/projects/san-eliseo/") || requri.equals("/projects/san-eliseo") || requri.equals("/projectos/san-eliseo/") || requri.equals("/projectos/san-eliseo"))
-	    			page = "san-eliseo.jsp&p=saneliseo";
+	    			page = "project.jsp&p=san-eliseo";
 	    	
 	    	else if(requri.equals("/projects/domus/") || requri.equals("/projects/domus") || requri.equals("/projectos/domus/") || requri.equals("/projectos/domus"))
-	    			page = "domus.jsp&p=domus";
+	    			page = "project.jsp&p=domus";
 	    	
 	    	else if(requri.equals("/projects/rancho/") || requri.equals("/projects/rancho") || requri.equals("/projectos/rancho/") || requri.equals("/projectos/rancho"))
-	    			page = "rancho.jsp&p=rancho";
+	    			page = "project.jsp&p=rancho";
 	
 	    	else if(requri.equals("/terms/") || requri.equals("/terms"))
 	    			page = "terms.jsp";	
