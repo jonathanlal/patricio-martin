@@ -10,6 +10,8 @@
 <!DOCTYPE HTML>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="${language eq 'en' || language eq 'es' ? language : 'en'}">
 <head>
+<!-- <link rel="stylesheet" href="https://unpkg.com/bulmaswatch/lux/bulmaswatch.min.css"> -->
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
 <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
 <jsp:include page="/includes/metas.jsp"/>

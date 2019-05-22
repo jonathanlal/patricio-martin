@@ -4,14 +4,20 @@
 
 <fmt:bundle basename = "text">
 
-<div id="navbar" class="nav navbar" style="background-color: transparent;">
+<div id="navbar" class="nav navbar" style="background-color: transparent;z-index: 1001;">
 	<div class="i-gradient">
 		<div class="container">
 			<nav class="nav-content">
 				<!-- LOGO -->
 				<a class="nav-brand" href="../../"><img src="../../img/logo/navbar.png" alt="Patricio Martin"></a>
+				<!-- BURGER -->
+				<a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+				  <span aria-hidden="true"></span>
+				  <span aria-hidden="true"></span>
+				  <span aria-hidden="true"></span>
+				</a>
 				<!-- LANGUAGE -->
-				<div class="nav-languages">
+				<div class="nav-languages" id="nav-languages">
 					<ul>
 					<li class="wpml-ls-slot-shortcode_actions wpml-ls-item wpml-ls-item-fr  wpml-ls-first-item wpml-ls-item-legacy-list-horizontal ${language eq 'es' ? 'wpml-ls-current-language' : ''}">
 					<a href="../../ChangeLanguage?lang=es" class="wpml-ls-link"><span class="wpml-ls-native">Spanish</span></a>
@@ -32,12 +38,6 @@
 						<p><a href="tel:+34952584444">+34 952 58 44 44</a></p>
 					</aside>
 				</div>
-				<!-- BURGER -->
-				<a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
-				  <span aria-hidden="true"></span>
-				  <span aria-hidden="true"></span>
-				  <span aria-hidden="true"></span>
-				</a>
 			</nav>
 		</div>
 	</div>

@@ -43,8 +43,7 @@
 <article class="list-property">
 <a  href="<fmt:message key="url.projects.rancho"/>" class="card property type-property status-publish has-post-thumbnail hentry type-manoir region-honfleur city-honfleur has-5-to-9-rooms has-3-to-4-bedrooms region-green">
   <figure class="card-image property-image">
-<img class="responsive-image" src="
-" sizes="(max-width: 540px) 100vw, 720px" srcset="../../img/rancho/6.jpg 540w, ../../img/rancho/6.jpg 1080w, ../../img/rancho/6.jpg 1440w" height="480" width="720">
+<img class="responsive-image" src="../../img/rancho/6.jpg" sizes="(max-width: 540px) 100vw, 720px" srcset="../../img/rancho/6.jpg 540w, ../../img/rancho/6.jpg 1080w, ../../img/rancho/6.jpg 1440w" height="480" width="720">
   </figure>
   <div class="card-content property-content clearfix">
     <div class="property-heading">
