@@ -1,5 +1,7 @@
 package com.patriciomartin.models;
 
+import java.util.ResourceBundle;
+
 import javax.servlet.http.HttpServletRequest;
 
 
@@ -93,7 +95,17 @@ public class HtmlSnippets {
 		htmlMessage += "</html>";
 		return htmlMessage;
 	}
-	public static String emailContact(String name, String msg){
+	public static String emailContact(String name, String msg, String lang){
+		
+		String hello = "Hello";
+		
+		Globals g = new Globals();
+		if(g.isMultiLingual()) {
+			 ResourceBundle bundle = ResourceBundle.getBundle("text");
+		hello = bundle.getString("contact.hero.title");
+		
+		}
+		
 		//WHITE BOX
 		String htmlMessage = "<div style=\"background-color: white;display: inline-block;padding: 20px;text-align: center;margin-top:10px;\">";
 		//GREETING PART
