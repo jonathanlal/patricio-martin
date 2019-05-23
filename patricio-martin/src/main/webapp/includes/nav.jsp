@@ -32,7 +32,7 @@
 						<div class="nav-item is-home"><a href="<fmt:message key="url.about"/>"><fmt:message key="nav.about"/></a></div>
 						<div class="nav-item is-properties"><a href="<fmt:message key="url.projects"/>"><fmt:message key="nav.projects"/></a></div>
 						<div class="nav-item is-regions"><a href="<fmt:message key="url.services"/>"><fmt:message key="nav.services"/></a></div>
-						<div class="nav-item is-contact"><a href="<fmt:message key="url.services"/>"><fmt:message key="nav.services"/></a></div>
+						<div class="nav-item is-contact"><a href="<fmt:message key="url.contact"/>"><fmt:message key="nav.contact"/></a></div>
 					</div>
 					<aside class="nav-contact">
 						<p><a class="open-modal" data-target="contactModal">info@patriciomartin.com</a></p>

@@ -1,7 +1,9 @@
 package com.patriciomartin.servlets;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Locale;
+import java.util.ResourceBundle;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,16 +22,18 @@ public class Test extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+//		Bundle bundle = Platform.getBundle("text");
+
+		
 	
-		HttpSession session = request.getSession(true);
+//		HttpSession session = request.getSession(true);
 		//session.setAttribute("language", "en");
-		session.removeAttribute("language");
-	
-	
-		String lang = request.getLocale().getLanguage();
-//		System.out.println("hello ");
-		System.out.println(lang);
-	
+//		session.removeAttribute("language");
+		isMultiLingual();    
+		    ResourceBundle bundle = ResourceBundle.getBundle(propsFile);
+		    System.out.println(bundle.getString("contact.hero.title"));
 	}
+
+
 
 }

@@ -10,6 +10,19 @@
   .button {padding: .625em 2em .875em !important;}
   .card-content{position:relative !important;padding: 2rem 1.5rem 1.5rem !important;background-image: none;}
   .card, .card-content, .card:hover{box-shadow: inherit !important;background-color: #E7E5E0 !important;}
+      .google-maps {
+        position: relative;
+        padding-bottom: 75%; // This is the aspect ratio
+        height: 0;
+        overflow: hidden;
+    }
+    .google-maps iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100% !important;
+        height: 100% !important;
+    }
 </style>
 
 <section class="hero">
@@ -31,51 +44,48 @@
    <div class="container">
     <div class="content">
     <h3 class=" has-text-centered has-text-grey-darker"><fmt:message key="contact.intro"/></h3>
+    
     <div class="card">
         <div class="card-content">
 		<div class="columns" style="margin-bottom:0 !important;">
 			<div class="column" style="padding-bottom:0 !important;">
 				<div class="field">
 					<div class="control has-icons-left">
-						<input class="input" type="text" placeholder="<fmt:message key="contact.form.name"/>">
+						<input id="fname" class="input" type="text" placeholder="<fmt:message key="contact.form.name"/>">
 			    		<span class="icon is-small is-left"><i class="fas fa-user"></i></span>
 			  		</div>
 				</div>
 				<div class="field">
 					<div class="control has-icons-left">
-			    		<input class="input is-danger" type="email" placeholder="<fmt:message key="contact.form.email"/>" value="">
+			    		<input id="femail" class="input is-danger" type="email" placeholder="<fmt:message key="contact.form.email"/>" value="">
 			    		<span class="icon is-small is-left"><i class="fas fa-envelope"></i></span>
 			  		</div>
 				</div>
 				<div class="field has-addons">
 					<div class="control">
-			    		<span class="select">
+			    		<span class="select" id="fphonecode">
 			      			<select>
-			        			<option style="font-size: 12px !important;">+44</option>
-			        			<option>+34</option>
-			        			<option>+69</option>
+			        			<option value="+44">+44</option>
+			        			<option value="+34">+34</option>
+			        			<option value="+69">+69</option>
 			      			</select>
 			    		</span>
 <!-- 			       		<span class="icon is-small is-left"><i class="fas fa-envelope"></i></span> -->
 			  		</div>
-			 		<div class="control is-expanded"><input class="input" type="text" placeholder="<fmt:message key="contact.form.phone"/>"></div>
+			 		<div class="control is-expanded"><input id="fphone" class="input" type="text" placeholder="<fmt:message key="contact.form.phone"/>"></div>
 				</div>
 			</div>
 			<div class="column">
 				<div class="field">
-					<div class="control"><textarea class="textarea" placeholder="<fmt:message key="contact.form.message"/>"></textarea></div>
+					<div class="control"><textarea id="fmessage" class="textarea" placeholder="<fmt:message key="contact.form.message"/>"></textarea></div>
 				</div>
 			</div>
 		</div>
-		
 		<div class="field" style="float: right;">
-		<div class="control"><button class="button is-success is-small"><fmt:message key="contact.form.send"/></button></div>
+		<div class="control"><button class="button is-success is-small" id="btnContactSubmit"><fmt:message key="contact.form.send"/></button></div>
 		</div>
-		  
-		   </div>   </div>
-		
-		
-		<br><br>
+		   </div>   
+	</div>
 		
 		
 		
@@ -84,8 +94,9 @@
 		
 		
 		
-		<nav class="panel is-size-5">
-		  <a class="panel-block"><span class="panel-icon"><i class="fas fa-phone" aria-hidden="true"></i></span>+34 952 58 44 44</a>
+		
+<nav class="panel is-size-5" style="margin-top:1.5rem;">
+  <a class="panel-block"><span class="panel-icon"><i class="fas fa-phone" aria-hidden="true"></i></span>+34 952 58 44 44</a>
   <a class="panel-block"><span class="panel-icon"><i class="far fa-envelope" aria-hidden="true"></i></span>info@patriciomartin.com</a>
   <a class="panel-block"><span class="panel-icon"><i class="fas fa-map-marker-alt" aria-hidden="true"></i></span>Av. Jesús Santos Rein, 15, Of. 4, 29640 Fuengirola</a>
 </nav>
@@ -94,13 +105,9 @@
 		
 		
 		
-		
-		
-		
-		
-		
-		
-		
+		<div class="google-maps">
+		<iframe width="600" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=Av.%20Jes%C3%BAs%20Santos%20Rein%2C%2015%2C%20Of.%204%2C%2029640%20Fuengirola&key=AIzaSyB5tocSbBnYlgmrlj0qQJH1VQXXNdUXivA" allowfullscreen></iframe>
+		</div>
 		
 		
 		
@@ -110,6 +117,18 @@
   </div>
  </div>
 </section>
+
+<!-- <script type="text/javascript" src="../../js/contact.js?v=2"></script> -->
+
+
+<%@ include file="js/contact.jsp" %>
+<script>
+
+
+
+
+</script>
+
 
 
 <%@ include file="WEB-INF/templates/newsletter.jsp" %>
