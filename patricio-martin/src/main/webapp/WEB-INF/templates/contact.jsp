@@ -11,7 +11,7 @@
        <div class="collaborate-buttons">
        
              <a class="button is-info" href="<fmt:message key="url.contact"/>">
-                <strong class="button-text margin-top-minus-4px" style="padding-right:8px;"><fmt:message key="index.contact.btnContact"/> </strong><i class="fas fa-long-arrow-alt-right" style="margin-top:-5px !important;"></i>
+                <strong class="button-text" style="padding-right:8px;"><fmt:message key="index.contact.btnContact"/> </strong><i class="fas fa-long-arrow-alt-right"></i>
               </a>
        </div>
       </div>

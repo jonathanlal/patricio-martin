@@ -1,5 +1,5 @@
 
- <section id="newsletter" class="section" style="background-color:#E7E5E0">
+ <section id="newsletter" class="section" style="background-color:#E7E5E0;    padding-bottom: 4.3rem;">
   <div class="container">
     <div class="columns" style="margin-top:10px;">
       <div class="column">

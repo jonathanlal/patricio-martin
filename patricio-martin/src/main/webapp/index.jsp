@@ -49,7 +49,7 @@ top: 3px !important;
 <div class="container">
 <div class="front-properties-list">
 <div id="properties-list" class="list-properties"><%@ include file="WEB-INF/templates/projects.jsp" %></div></div>
-<nav class="action front-properties-action"><a class="button is-info" href="../projects/" style="margin-bottom: 20px;">
+<nav class="action front-properties-action"><a class="button is-info" href="../projects/" style="margin-bottom: 40px;margin-top:10px;">
 <fmt:message key="index.projects.btnProjects"/><i class="fas fa-long-arrow-alt-right"></i></a>
 </nav></div></div>
 
