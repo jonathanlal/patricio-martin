@@ -55,7 +55,7 @@ public class SendEmail {
 	
 
 	
-	public void sendContactMail(String visitor_name, String visitor_email, String msg, String lang, String phone) throws NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException, MalformedURLException {
+	public void sendContactMail(String visitor_name, String visitor_email, String msg, String phone, String lang)  {
 		
 		//SEND USER EMAIL
 		Envelope visitor_env = new Envelope();
@@ -64,7 +64,13 @@ public class SendEmail {
 		visitor_env.setVisitor_name(visitor_name);
 		visitor_env.setVisitor_email(visitor_email);
 		visitor_env.setAdmin_flag(false);
-		visitor_env = HtmlSnippets.createContactEmail(visitor_env); //check if this works lol
+		
+		try {
+			visitor_env = HtmlSnippets.createContactEmail(visitor_env);
+		} catch (NoSuchFieldException | SecurityException | IllegalArgumentException | IllegalAccessException e1) {
+			e1.printStackTrace();
+		}	
+			
 		send(visitor_env.getVisitor_email(), visitor_env.getBody(), visitor_env.getSubject());
 		 
 		//SEND ADMIN EMAILS
@@ -80,7 +86,14 @@ public class SendEmail {
 			admin_env.setAdmin_flag(true);
 			admin_env.setVisitor_email(visitor_email);
 			admin_env.setVisitor_name(visitor_name);
-			admin_env = HtmlSnippets.createContactEmail(admin_env); 
+			admin_env.setPhone(phone);
+			
+			try {
+				admin_env = HtmlSnippets.createContactEmail(admin_env);
+			} catch (NoSuchFieldException | SecurityException | IllegalArgumentException | IllegalAccessException e1) {
+				e1.printStackTrace();
+			} 
+			
 			send(admin_email, admin_env.getBody(), admin_env.getSubject()); //make a switch here... so based on what mail sender implementation we use we send with that
 		}
 	}

@@ -11,6 +11,7 @@ public class Envelope {
 	boolean admin_flag;
 	String subject;
 	String body;
+	String phone;
 	
 	
 	
@@ -67,6 +68,12 @@ public class Envelope {
 	}
 	public void setAdmin_flag(boolean admin_flag) {
 		this.admin_flag = admin_flag;
+	}
+	public String getPhone() {
+		return phone;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 	
 

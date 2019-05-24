@@ -168,6 +168,11 @@ public class HtmlSnippets {
 		
 		if(e.isAdmin_flag()) {
 			htmlMessage += "<hr><br><p style=\"color:#999999;\">Their contact email is: "+e.getVisitor_email()+"</p>";
+			
+			if(!e.getPhone().isEmpty()) {
+				htmlMessage += "<p style=\"color:#999999;\">Their phone number is: "+e.getPhone()+"</p>";
+			}
+			
 			htmlMessage += "<p style=\"color:#999999;\">And their name is: "+e.getVisitor_name()+"</p><br><hr>";
 		}
 		htmlMessage += p(join("This paragraph has", b("bold"), "and", i("italic"), "text.")).render(); //recreate all the emails with this stuff - it's fun.

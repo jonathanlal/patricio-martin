@@ -1,6 +1,7 @@
 package com.patriciomartin.filters;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 import javax.servlet.Filter;
@@ -15,6 +16,8 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import com.patriciomartin.models.Urls;
 
 
 @WebFilter({ "/*" })
@@ -32,58 +35,37 @@ public class MainFilter implements Filter {
 	        
 		 	String page = "";
 		 	boolean continueChain = false;
+		 	boolean urlExists = false;
 		 	
-		 	//long startTime = System.nanoTime();
 		 	//THIS WILL REWRITE THE URL IF SOMEONE IS READING ENGLISH PAGE AND THEY REQUEST THE SPANISH URL FOR ANOTHER PAGE - IT WILL CHANGE IT BACK TO ENGLISH
 		 	checkIfNeedToReWriteURLCauseLanguage(request, response, req);
-		    //long endTime = System.nanoTime();
-		    //long durationInNano = (endTime - startTime);  //Total execution time in nano seconds
-		    //System.out.println(durationInNano);
-		    //System.out.println("time in mili: "+durationInNano / 1000000.0);
+
+		 	
+		 	
+//		 	else if(req.equals("/about/") || req.equals("/acerca-de/"))
+//    			page = "about.jsp";
+		 	
+		 	HashMap<String, String> urls = (HashMap<String, String>) Urls.URL_MAP;
+			for(Entry<?, ?> e: urls.entrySet()){
+				String url = (String) e.getKey();
+				String jsp = (String) e.getValue();
 			
+				if(req.equals(url)) {
+					page = jsp;
+					urlExists = true;
+					break;
+				}
 			
-			
-//		 	System.out.println("req: "+req);
-	    	if(req.equals("/"))
-    			page = "index.jsp";
-	    	
-	    	else if(req.equals("/about/") || req.equals("/acerca-de/"))
-	    			page = "about.jsp";
-	    	
-	    	else if(req.equals("/services/") || req.equals("/servicios/"))
-	    			page = "services.jsp";
-	    	
-	    	else if(req.equals("/contact/") || req.equals("/contacto/"))
-    				page = "contact.jsp";
-	    	
-	    	else if(req.equals("/projects/") || req.equals("/projectos/"))
-	    			page = "projects.jsp";
-	    	
-	    	else if(req.equals("/projects/la-cala/") || req.equals("/projectos/la-cala/"))
-		    		page = "project.jsp&p=la-cala";
-		    	
-	    	else if(req.equals("/projects/san-eliseo/") || req.equals("/projectos/san-eliseo/"))
-	    			page = "project.jsp&p=san-eliseo";
-	    	
-	    	else if(req.equals("/projects/domus/") || req.equals("/projectos/domus/"))
-	    			page = "project.jsp&p=domus";
-	    	
-	    	else if(req.equals("/projects/rancho/") || req.equals("/projectos/rancho/"))
-	    			page = "project.jsp&p=rancho";
-	
-	    	else if(req.equals("/terms/"))
-	    			page = "terms.jsp";	
-	    	
-	    	else if(req.equals(("/test.jsp")))
-	    		page = "test.jsp";
-	    	
-	    	
-	    	else if(req.startsWith("/wd-admin/") || isAServlet(request))
-	    		continueChain = true;
-	    	
-	    	else {
-	    		page = "error.jsp";
-	    	}
+			}
+			if(!urlExists) {
+				if(req.startsWith("/wd-admin/") || isAServlet(request)) {
+		    		continueChain = true;
+					}else {
+						page = "error.jsp";
+					}
+			}
+		
+		 	
 	    	
 //	    	System.out.println("PAGE: "+page);
 	    		if(!continueChain){	
