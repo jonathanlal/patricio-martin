@@ -3,16 +3,19 @@ package com.patriciomartin.models;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.ResourceBundle;
 
 public class Globals {
 	
+	public static boolean IS_i18n = true; //  Sometimes the term internationalization is abbreviated as i18n, because there are 18 letters between the first "i" and the last "n."
+	public static boolean EMAIL_SENDER_TYPE_GOOGLE = true; //
 	
 	//METAS
 	public static String META_fbid = "";
 	public static String META_googleplus = "";
 	public static String META_IMAGE = "https://storage.googleapis.com/somegoat/logo.png";
-	public static String META_TITLE = "The Web Devil - Custom Website Design and Development";
-	public static String META_DESCRIPTION = "Custom webite development or design work & custom web applications for individuals and businesses on Costa Del Sol, Spain or in the UK.";
+	public static String META_TITLE = "Patricio Martin - Architects based on the Costa del Sol";
+	public static String META_DESCRIPTION = "Patricio Martin can provide a full architectural and building service. From the initial survey and design concept, through all stages of the building process, right up to the completed project and final result.";
 	
 	
 	//SESSION STRINGS
@@ -63,17 +66,20 @@ public class Globals {
 	
 
 
-	public boolean isMultiLingual() {
-		//check if project has language files
-	    String propsFile = "text";
-	    String propsPath = this.getClass().getClassLoader().getResource(".").getPath();
-	    File f = new File(propsPath, propsFile + ".properties");
-	    if(f.exists()){
-	        return true;
-	    }else {
-	    	return false;
-	    }
-	}
+//	public static boolean isMultiLingual() {
+//		//check if project has language files
+//	    String propsFile = "text";
+//	    String propsPath = Globals.class.getClassLoader().getResource(".").getPath();
+//	    File f = new File(propsPath, propsFile + ".properties");
+//	    if(f.exists()){
+//	        return true;
+//	    }else {
+//	    	return false;
+//	    }
+//	}
 
+	public static String getBundleString(String key) {
+		return ResourceBundle.getBundle("text").getString(key);
+	}
 	
 }

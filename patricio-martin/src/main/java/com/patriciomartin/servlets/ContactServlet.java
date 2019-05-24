@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import models.SendEmail;
+import com.patriciomartin.models.SendEmail;
 
 @WebServlet("/ContactServlet")
 public class ContactServlet extends HttpServlet {
@@ -28,7 +28,9 @@ public class ContactServlet extends HttpServlet {
 		}else{
 			name = "Someone";
 		}
-//		SendEmail sm = new SendEmail();
+		SendEmail sm = new SendEmail();
+		
+		sm.sendContactMail(name, email, msg, lang);
 //		sm.sendAdminContactLead(name,email,hearfrom,msg); //ADMIN 
 //		sm.sendContactMailConfirmation(name, email,msg); // USER CONFIRMATION EMAIL
 
