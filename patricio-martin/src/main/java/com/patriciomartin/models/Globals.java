@@ -7,8 +7,9 @@ import java.util.ResourceBundle;
 
 public class Globals {
 	
-	public static boolean IS_i18n = true; //  Sometimes the term internationalization is abbreviated as i18n, because there are 18 letters between the first "i" and the last "n."
+	public static boolean IS_i18n = true; //  internationalization is abbreviated as i18n, because there are 18 letters between "i" and "n."
 	public static boolean EMAIL_SENDER_TYPE_GOOGLE = true; //
+	public static String DEFAULT_LANG = "en";
 	
 	//METAS
 	public static String META_fbid = "";

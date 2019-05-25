@@ -1,5 +1,6 @@
 package com.patriciomartin.models;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -10,52 +11,135 @@ import com.patriciomartin.objects.Url;
 
 public class Urls {
 	
-	public static List<Url> URL_MAP;
-	public static Url url;
+//	public static HashMap<String,String> URLS = getUrlJspMappings(null);
 
-	public static String URL_ABOUT = "/about/";
-	public static String URL_ABOUT_ES = "/acerca-de/";
 	
-	static {
+	/**
+	 * SET REQUESTED_LANG AS NULL IF YOU@RE NOT INTERESTED IN GETTING THE URLS BY LANGUAGE 
+	 * SETTING NULL GETS ALL THE URLS IN MAPPINGS
+	 * 
+	 * the two values taht get passed are:
+	 * 
+	 * '/about/', 'about.jsp'
+	 * 
+	 * respectively.
+	 * 
+	 */
+	public static HashMap<String,String> getUrlJspMappings(String requested_lang){
 		
-		URL_MAP = new ArrayList<Url>();
 		
-		HashMap<String>
-		//with url we would have to check the whole list to see ifi there is url.something
-		//so we need to create like a link between the url object and the hashmap
-		//the hashmap will be then <String "/about/", Integer list_index>
-		url = new Url("about.jsp", URL_ABOUT("es", "no"));
-		URL_MAP.add(url);
+		HashMap<String,String> URLS = new HashMap<String,String>();
 		
-		url.setUrl_en("/");url.setUrl_es("/");url.setJsp("index.jsp");URL_MAP.add(url);
-		URL_MAP.add("/", "index.jsp");
-		URL_MAP.put(URL_ABOUT, "about.jsp");
-		URL_MAP.put("/acerca-de/", "about.jsp");
-		URL_MAP.put("/services/", "services.jsp");
-		URL_MAP.put("/servicios/", "services.jsp");
-		URL_MAP.put("/contact/", "contact.jsp");
-		URL_MAP.put("/contacto/", "contact.jsp");
-		URL_MAP.put("/projects/", "projects.jsp");
-		URL_MAP.put("/projectos/", "projects.jsp");
-		URL_MAP.put("/projects/la-cala/", "projects.jsp?p=la-cala");
-		URL_MAP.put("/projectos/la-cala/", "projects.jsp?p=la-cala");
-		URL_MAP.put("/projects/san-eliseo/", "projects.jsp?p=san-eliseo");
-		URL_MAP.put("/projectos/san-eliseo/", "projects.jsp?p=san-eliseo");
-		URL_MAP.put("/projects/domus/", "projects.jsp?p=domus");
-		URL_MAP.put("/projectos/domus/", "projects.jsp?p=domus");
-		URL_MAP.put("/projects/rancho/", "projects.jsp?p=rancho");
-		URL_MAP.put("/projectos/domus/", "projects.jsp?p=rancho");
-		URL_MAP.put("/terms/", "terms.jsp");
-		URL_MAP.put("/test.jsp", "test.jsp");
-//		URL_MAP.put("/xxxxxxxxxxx/", "xxxxxxxxxxx");
+		//REFLECTION API
+		Field[] fields = Mappings.class.getDeclaredFields();
+		
+		for(Field f: fields) {
+				try {
+				
+					Object[] map = (Object[]) f.get(null);
+					
+					//It the field is a static field (public static ...) pass null as parameter to the get and set methods, instead of the objectInstance parameter passed above.
+					String url = (String) map[0]; // /about/
+					String jsp = (String) map[1];// about.jsp
+		
+					
+					
+					if(requested_lang != null && Globals.IS_i18n) {
+						String lang = (String) map[2]; // en
+//						String name = f.getName(); // URL_ABOUT_ES
+//						String lang_ending = name.substring(Math.max(name.length() - 2, 0)).toLowerCase(); //es
+//						System.out.println(substring);
+						if(lang.equals(requested_lang)) {
+							URLS.put(url, jsp);
+						}
+					}else {
+						URLS.put(url, jsp);
+					}
+				
+					
+				} catch (IllegalArgumentException | IllegalAccessException e) {
+					e.printStackTrace();
+				} 
+		
+		}
+		
+		return URLS;
 	}
 
-	private static String URL_ABOUT(String string, String string2) {
-		// TODO Auto-generated method stub
-		return null;
+	/**
+	*This creates a hash map of the urls and the language of that url.. for example:
+	*
+	*'/acerca-de/','es'
+	*
+	*...assumes Globals.IS_i18n = true
+	*/
+	public static HashMap<String, String> getUrlLanguageMappings() {
+		
+		HashMap<String,String> URLS = new HashMap<String,String>();
+		
+		//REFLECTION API
+		Field[] fields = Mappings.class.getDeclaredFields();
+		
+		for(Field f: fields) {
+				try {
+				
+					Object[] map = (Object[]) f.get(null);
+					
+					//It the field is a static field (public static ...) pass null as parameter to the get and set methods, instead of the objectInstance parameter passed above.
+					String url = (String) map[0]; // /about/
+					String jsp = (String) map[2];// en
+		
+
+					URLS.put(url, jsp);
+				
+					
+				} catch (IllegalArgumentException | IllegalAccessException e) {
+					e.printStackTrace();
+				} 
+		
+		}
+		
+		return URLS;
 	}
+
+/**
+* 
+* 
+*/
+public static String getURLanguageEquivalent(String lang, String requri){
+		
+		String new_url = null;
+//		HashMap<String,String> URLS = new HashMap<String,String>();
+		
+		//REFLECTION API
+		Field[] fields = Mappings.class.getDeclaredFields();
+		
+		for(Field f: fields) {
+				try {
+				
+					Object[] map = (Object[]) f.get(null);
+					String url = (String) map[0]; // /acerca-de/
+					
+					if(requri.equals(url)) {
+						
+						String s = f.getName(); // URL_ABOUT_ES
+						String class_variable_name = s.substring(0, s.length() - 3); // URL_ABOUT     -('_ES')
+						class_variable_name = class_variable_name + "_"+lang.toUpperCase(); //URL_ABOUT_XX
+						
+						Field fx = Mappings.class.getDeclaredField(class_variable_name);
+						Object[] mapx = (Object[]) fx.get(null);
+						new_url = (String) mapx[0]; // /about/
+					}
+					
+					
+				} catch (IllegalArgumentException | IllegalAccessException | NoSuchFieldException | SecurityException e) {
+					e.printStackTrace();
+				} 
+		
+		}
 	
-	
+		return new_url;
+	}
 
 
 }

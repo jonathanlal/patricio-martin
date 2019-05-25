@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.patriciomartin.models.Globals;
 import com.patriciomartin.models.Urls;
 
 
@@ -31,96 +32,53 @@ public class MainFilter implements Filter {
 	
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		
-			String req = ((HttpServletRequest) request).getRequestURI();
-	        
-		 	String page = "";
+			String requri = ((HttpServletRequest) request).getRequestURI();
 		 	boolean continueChain = false;
-		 	boolean urlExists = false;
+		 	HashMap<String, String> urls = Urls.getUrlJspMappings(null); //gets all url mappings via Reflection -> '/about/ , 'about.jsp'
 		 	
-		 	//THIS WILL REWRITE THE URL IF SOMEONE IS READING ENGLISH PAGE AND THEY REQUEST THE SPANISH URL FOR ANOTHER PAGE - IT WILL CHANGE IT BACK TO ENGLISH
-		 	checkIfNeedToReWriteURLCauseLanguage(request, response, req);
-
+		 	if(Globals.IS_i18n)
+		 	checkIfNeedToReWriteURLCauseLanguage(request, response, requri); //THIS WILL REWRITE THE URL IF SESSION VARIABLE IS ENGLISH PAGE AND THEY REQUEST THE SPANISH URL FOR ANOTHER PAGE - IT WILL CHANGE IT BACK TO ENGLISH BY GETTING THE ENGLISH URL
 		 	
+		 	String page = urls.get(requri); //will return the value which would be the jsp 'about.jsp' with key '/about/'(requri is the same as the key)
 		 	
-//		 	else if(req.equals("/about/") || req.equals("/acerca-de/"))
-//    			page = "about.jsp";
-		 	
-		 	HashMap<String, String> urls = (HashMap<String, String>) Urls.URL_MAP;
-			for(Entry<?, ?> e: urls.entrySet()){
-				String url = (String) e.getKey();
-				String jsp = (String) e.getValue();
-			
-				if(req.equals(url)) {
-					page = jsp;
-					urlExists = true;
-					break;
-				}
-			
-			}
-			if(!urlExists) {
-				if(req.startsWith("/wd-admin/") || isAServlet(request)) {
+			if(page == null) {
+				if(requri.startsWith("/wd-admin/") || isAServlet(request)) {
 		    		continueChain = true;
 					}else {
 						page = "error.jsp";
 					}
 			}
-		
-		 	
 	    	
-//	    	System.out.println("PAGE: "+page);
-	    		if(!continueChain){	
-				    request.getRequestDispatcher("/GetPage?page="+page).forward(request, response);
-				    return;
-		    	}else{
-		    		chain.doFilter(request, response);
-		    	}
+    		if(!continueChain){	
+			    request.getRequestDispatcher("/GetPage?page="+page).forward(request, response);
+			    return;
+	    	}else{
+	    		chain.doFilter(request, response);
+	    	}
 	    	
 	}
-	public void checkIfNeedToReWriteURLCauseLanguage(ServletRequest request, ServletResponse response, String req) throws IOException {
+	public void checkIfNeedToReWriteURLCauseLanguage(ServletRequest request, ServletResponse response, String requri) throws IOException {
 		
 		HttpSession session = ((HttpServletRequest) request).getSession();
-		String lang = (String) session.getAttribute("language");
-
-		if(lang == null || lang.equals("en")) {
+		String current_lang = (String) session.getAttribute("language");
+		
+		if(current_lang == null) { current_lang = Globals.DEFAULT_LANG;}
+		
+		 HashMap<String, String> urls = Urls.getUrlLanguageMappings(); // <'/about/', 'en'>
+		 	//if page_lange is null here then the requested url isn't in the map. Which means page_lang is null.
+			String page_lang = urls.get(requri);
 			
-			if(req.equals("/acerca-de/"))
-				((HttpServletResponse) response).sendRedirect("../about/");
-			else if(req.equals("/servicios/"))
-				((HttpServletResponse) response).sendRedirect("../services/");
-			else if(req.equals("/contacto/"))
-				((HttpServletResponse) response).sendRedirect("../contact/");
-			else if(req.equals("/projectos/"))
-				((HttpServletResponse) response).sendRedirect("../projects/");
-			else if(req.equals("/projectos/domus/"))
-				((HttpServletResponse) response).sendRedirect("../projects/domus/");
-			else if(req.equals("/projectos/la-cala/"))
-				((HttpServletResponse) response).sendRedirect("../projects/la-cala/");
-			else if(req.equals("/projectos/san-eliseo/"))
-				((HttpServletResponse) response).sendRedirect("../projects/san-eliseo/");
-			else if(req.equals("/projectos/rancho/"))
-				((HttpServletResponse) response).sendRedirect("../projects/rancho/");
 			
-		}else if(lang.equals("es")) {
-			
-			if(req.equals("/about/"))
-				((HttpServletResponse) response).sendRedirect("../acerca-de/");
-			else if(req.equals("/services/"))
-				((HttpServletResponse) response).sendRedirect("../servicios/");
-			else if(req.equals("/contact/"))
-				((HttpServletResponse) response).sendRedirect("../contacto/");
-			else if(req.equals("/projects/"))
-				((HttpServletResponse) response).sendRedirect("../projectos/");
-			else if(req.equals("/projects/domus/"))
-				((HttpServletResponse) response).sendRedirect("../projectos/domus/");
-			else if(req.equals("/projects/la-cala/"))
-				((HttpServletResponse) response).sendRedirect("../projectos/la-cala/");
-			else if(req.equals("/projects/san-eliseo/"))
-				((HttpServletResponse) response).sendRedirect("../projectos/san-eliseo/");
-			else if(req.equals("/projects/rancho/"))
-				((HttpServletResponse) response).sendRedirect("../projectos/rancho/");
-			
-		}
+			//requested url exists and the language of that url does not match the session language 
+			if(page_lang != null && !current_lang.equals(page_lang)) {
+				//REWRITE LOGIC
+				
+				String alternate_url = Urls.getURLanguageEquivalent(current_lang, requri);
+				((HttpServletResponse) response).sendRedirect("../../../.."+alternate_url); //just incase whatever application has more than a couple directory deeps
+				
+			}
 	}
+
 	public boolean isAServlet(ServletRequest request){
 		boolean check = false;
 	    ServletContext servletContext = ((HttpServletRequest) request).getSession().getServletContext();
@@ -137,4 +95,5 @@ public class MainFilter implements Filter {
 
 	public void init(FilterConfig fConfig) throws ServletException {
 	}
+	
 }

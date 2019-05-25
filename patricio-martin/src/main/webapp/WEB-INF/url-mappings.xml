@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<url-mappings>
+
+<map name="ABOUT">
+<url lang="es">/acerca-de/</url>
+<url lang="en">/about/</url>
+<jsp>about.jsp</jsp>
+</map>
+
+
+	public static String[] URL_ABOUT_EN = {"/about/","about.jsp", "en"};
+	public static String[] URL_ABOUT_ES = {"/acerca-de/","about.jsp", "es"};
+	public static String[] URL_SERVICES_EN = {"/services/","services.jsp", "en"};
+	public static String[] URL_SERVICES_ES = {"/servicios/","services.jsp", "es"};
+	public static String[] URL_CONTACT_EN = {"/contact/","contact.jsp", "en"};
+	public static String[] URL_CONTACT_ES = {"/contacto/","contact.jsp", "es"};
+	public static String[] URL_PROJECTS_EN = {"/projects/","projects.jsp", "en"};
+	public static String[] URL_PROJECTS_ES = {"/projectos/","projects.jsp", "es"};
+	public static String[] URL_PROJECTS_LACALA_EN = {"/projects/la-cala/","projects.jsp?p=la-cala", "en"};
+	public static String[] URL_PROJECTS_SANELISEO_EN = {"/projects/san-eliseo/","projects.jsp?p=san-eliseo", "en"};
+	public static String[] URL_PROJECTS_DOMUS_EN = {"/projects/domus/","projects.jsp?p=domus", "en"};
+	public static String[] URL_PROJECTS_RANCHO_EN = {"/projects/rancho/","projects.jsp?p=rancho", "en"};
+	public static String[] URL_PROJECTS_LACALA_ES = {"/projectos/la-cala/","projects.jsp?p=la-cala", "es"};
+	public static String[] URL_PROJECTS_SANELISEO_ES = {"/projectos/san-eliseo/","projects.jsp?p=san-eliseo", "es"};
+	public static String[] URL_PROJECTS_DOMUS_ES = {"/projectos/domus/","projects.jsp?p=domus", "es"};
+	public static String[] URL_PROJECTS_RANCHO_ES = {"/projectos/rancho/","projects.jsp?p=rancho", "es"};
+
+
+</url-mappings>
+
+
+<?xml version="1.0" encoding="utf-8"?>
+<appengine-web-app xmlns="http://appengine.google.com/ns/1.0">
+
+  <threadsafe>true</threadsafe>
+  <sessions-enabled>true</sessions-enabled>
+  <runtime>java8</runtime>
+
+  <system-properties>
+    <property name="java.util.logging.config.file" value="WEB-INF/logging.properties"/>
+  </system-properties>
+
+</appengine-web-app>
