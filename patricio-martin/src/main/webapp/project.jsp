@@ -1,7 +1,3 @@
-<%@ page pageEncoding="UTF-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ include file="includes/header.jsp"%>
 
 <script src="../../vendors/photoswipe/photoswipe.min.js"></script>
 <script src="../../vendors/photoswipe/photoswipe-ui-default.min.js"></script>
@@ -141,4 +137,3 @@ window.psw_current_index=0;function buildItems(){const all_items=window.photoswi
 
 <%@ include file="WEB-INF/templates/contact.jsp" %>
 <%@ include file="WEB-INF/templates/newsletter.jsp" %>
-<%@ include file="includes/footer.jsp"%>

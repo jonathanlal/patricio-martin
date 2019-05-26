@@ -1,7 +1,3 @@
-<%@ page pageEncoding="UTF-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ include file="includes/header.jsp"%>
 
 <section class="hero">
   <div class="hero-background" style="background-image: url(https://ivanballiniestates.com/wp-content/themes/ivan-ballini-v4/images/hab/maison-honfleur.jpg);"></div>
@@ -32,4 +28,3 @@
 
 <%@ include file="WEB-INF/templates/contact.jsp" %>
 <%@ include file="WEB-INF/templates/newsletter.jsp" %>
-<%@ include file="includes/footer.jsp"%>

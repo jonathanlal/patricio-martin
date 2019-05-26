@@ -1,7 +1,3 @@
-<%@ page pageEncoding="UTF-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ include file="includes/header.jsp"%>
 
 <style>
 .panel-block{justify-content: center !important;}
@@ -98,7 +94,7 @@
 <nav class="panel is-size-5" style="margin-top:1.5rem;">
   <a class="panel-block"><span class="panel-icon"><i class="fas fa-phone" aria-hidden="true"></i></span>+34 952 58 44 44</a>
   <a class="panel-block"><span class="panel-icon"><i class="far fa-envelope" aria-hidden="true"></i></span>info@patriciomartin.com</a>
-  <a class="panel-block"><span class="panel-icon"><i class="fas fa-map-marker-alt" aria-hidden="true"></i></span>Av. JesÃºs Santos Rein, 15, Of. 4, 29640 Fuengirola</a>
+  <a class="panel-block"><span class="panel-icon"><i class="fas fa-map-marker-alt" aria-hidden="true"></i></span>Av. Jesús Santos Rein, 15, Of. 4, 29640 Fuengirola</a>
 </nav>
 		
 		
@@ -132,4 +128,3 @@
 
 
 <%@ include file="WEB-INF/templates/newsletter.jsp" %>
-<%@ include file="includes/footer.jsp"%>

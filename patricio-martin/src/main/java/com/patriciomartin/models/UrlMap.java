@@ -1,18 +1,20 @@
 package com.patriciomartin.models;
 
+import java.io.File;
 import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Unmarshaller;
 
 import com.patriciomartin.objects.Url;
+import com.patriciomartin.objects.Urls;
 
-public class Urls {
+public class UrlMap {
 	
-//	public static HashMap<String,String> URLS = getUrlJspMappings(null);
-
+	
 	
 	/**
 	 * SET REQUESTED_LANG AS NULL IF YOU@RE NOT INTERESTED IN GETTING THE URLS BY LANGUAGE 
@@ -26,7 +28,6 @@ public class Urls {
 	 * 
 	 */
 	public static HashMap<String,String> getUrlJspMappings(String requested_lang){
-		
 		
 		HashMap<String,String> URLS = new HashMap<String,String>();
 		
@@ -103,7 +104,7 @@ public class Urls {
 	}
 
 /**
-* 
+* changes the url language back to whatever is set as session lang variable
 * 
 */
 public static String getURLanguageEquivalent(String lang, String requri){
@@ -140,6 +141,127 @@ public static String getURLanguageEquivalent(String lang, String requri){
 	
 		return new_url;
 	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+public HashMap<String, String> getUrlNameMappingsXML(List<Url> url_maps){
+	HashMap<String,String> URLS = new HashMap<String,String>();
+	for(Url um: url_maps) {
+		URLS.put(um.name, um.url);
+	}
+	return URLS;
+} 
+public HashMap<String, String> getUrlLanguageMappingsXML(){
+	HashMap<String,String> URLS = new HashMap<String,String>();
+	for(Url um: getUrlMappings()) {
+		URLS.put(um.url, um.lang);
+	}
+	return URLS;
+} 
+/**
+ * 
+ * @return hashmap of <'/about/', 'about.jsp>
+ */
+public HashMap<String, String> getUrlJspMappingsXML(){
+	HashMap<String,String> URLS = new HashMap<String,String>();
+	for(Url um: getUrlMappings()) {
+		URLS.put(um.url, um.call);
+	}
+	return URLS;
+} 
+public String getURLanguageEquivalentXML(String session_lang, String requri){
+String new_url = null;
+List<Url> url_maps = getUrlMappings();
+for(Url um: url_maps) {
+	if(requri.equals(um.url)) {
+	String c_name = um.name;
+	String c_call = um.call;
+		for(Url um2: url_maps) {
+			if(um2.name.equals(c_name) &&  um2.call.equals(c_call) && um2.lang.equals(session_lang)){
+				new_url = um2.url;
+				break;
+			}
+		}
+	if(new_url != null) {break;}
+	}
+}
+return new_url;
+}
+public static List<Url> getUrlMappings(){
+	 File xmlFile = new File(Globals.URL_MAPPINGS_LOCATION);	 ///USE JAXB TO MAKE OBJECT FROM XML
+	 List<Url> urls =  null;
+	 try {
+	 urls = (List<Url>) unmarshall(xmlFile);
+	} catch (JAXBException e) {e.printStackTrace();}
+return urls;
+}
+public static List<Url> unmarshall(File xmlFile) throws JAXBException{
+    Urls urls = new Urls();
+    JAXBContext jaxbCtxt = JAXBContext.newInstance(Urls.class);
+    Unmarshaller jaxbUnmarshaller = jaxbCtxt.createUnmarshaller();
+    urls= (Urls)jaxbUnmarshaller.unmarshal(xmlFile);    
+return urls.getUrls();
+}
+
+
+
+
+
+
+
+
+
 
 
 }

@@ -1,10 +1,16 @@
 package com.patriciomartin.models;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class Mappings {
 
 	//turn these into hashmaps??? 
 	//IF APPLICATION IS NOT MULTILINGUAL LEAVE OUT THE LAST VARIABLE SO ONLY TWO 
 //	public static String[] URL_INDEX = {"/","index.jsp"};
+	
+//	public static List<String> URL_TEST = Arrays.asList(new String[]{"/test.jsp","test.jsp", "en"});
+	public static String[] URL_TEST = {"/test.jsp","test.jsp", "en"};
 	public static String[] URL_ABOUT_EN = {"/about/","about.jsp", "en"};
 	public static String[] URL_ABOUT_ES = {"/acerca-de/","about.jsp", "es"};
 	public static String[] URL_SERVICES_EN = {"/services/","services.jsp", "en"};

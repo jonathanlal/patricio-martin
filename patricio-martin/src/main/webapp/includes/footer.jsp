@@ -1,5 +1,5 @@
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<jsp:useBean id="now" class="java.util.Date" />
+<%-- <jsp:useBean id="now" class="java.util.Date" /> --%>
 <fmt:formatDate var="year" value="${now}" pattern="yyyy" />
 
 <footer class="footer has-text-grey-lighter is-centered has-text-centered">

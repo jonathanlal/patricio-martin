@@ -1,6 +1,8 @@
 package com.patriciomartin.models;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
@@ -8,8 +10,12 @@ import java.util.ResourceBundle;
 public class Globals {
 	
 	public static boolean IS_i18n = true; //  internationalization is abbreviated as i18n, because there are 18 letters between "i" and "n."
-	public static boolean EMAIL_SENDER_TYPE_GOOGLE = true; //
-	public static String DEFAULT_LANG = "en";
+	public static boolean EMAIL_SENDER_TYPE_GOOGLE = true; //Use java mail api and send via google or some other implementation (via mailgun for example)
+	public static String DEFAULT_LANG = "en"; //default language of the website
+	public static String[] LANGUAGES = {"en","es"}; //languages of the website
+//	public static String URL_MAPPINGS_LOCATION_REL = "/WEB-INF/url-mappings.xml";
+
+	public static String URL_MAPPINGS_LOCATION = "C:/workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp17/patricio-martin/WEB-INF/url-mappings.xml";
 	
 	//METAS
 	public static String META_fbid = "";
@@ -81,6 +87,32 @@ public class Globals {
 
 	public static String getBundleString(String key) {
 		return ResourceBundle.getBundle("text").getString(key);
+	}
+	/**
+	 * in the header.jsp there is jstl that checks if param.lang is checked or if session langage set and if not it sets it as request.locale.language
+	 * so we pass that result to getLanguage to make sure that whatever language we got there is a language that the application supports. 
+	 * If the language is not in supported languages then it will get the default language.
+	 * 
+	 * @param lang
+	 * @return String
+	 */
+	public static String getLanguage(String lang) {
+//		List<String> URL_TEST = Arrays.asList(new String[]{"/test.jsp","test.jsp", "en"});
+//		ArrayList<String> languages = (ArrayList<String>) Arrays.asList(Globals.LANGUAGES);
+		
+		//if requested lang does not exist in our array of languages then default to default lang
+		if(!Arrays.stream(Globals.LANGUAGES).anyMatch(lang::equals)) {
+			lang = DEFAULT_LANG;
+		}
+		//keep this
+		//not empty param.lang ? param.lang : not empty language ? language : pageContext.request.locale.language
+		
+		
+		//language eq 'en' || language eq 'es' ? language : 'en'
+		
+		
+		
+		return  lang;
 	}
 	
 }

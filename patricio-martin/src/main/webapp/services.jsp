@@ -1,7 +1,3 @@
-<%@ page pageEncoding="UTF-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ include file="includes/header.jsp"%>
 
 <style>
 
@@ -149,4 +145,3 @@ marign-top:30px !important;
 
 <%@ include file="WEB-INF/templates/contact.jsp" %>
 <%@ include file="WEB-INF/templates/newsletter.jsp" %>
-<%@ include file="includes/footer.jsp"%>
