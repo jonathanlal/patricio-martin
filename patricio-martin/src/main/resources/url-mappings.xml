@@ -1,0 +1,42 @@
+<!-- rules -->
+<!-- url attribute must be unique! -->
+<!-- call attribute can be a jsp or html -->
+<!-- if you are doing multiple languages: -->
+<!-- - call & name attribute must be the same value across all languages for same url  -->
+
+<!-- SERVLETS -->
+<!-- Servlets have their own mappings, they are excluded from this list.  -->
+
+<!-- WILDCARD MAPPINGS -->
+<!-- For wildcard mappings, add '*' to the name attribute to signify that it's a wildcard mapping  -->
+<!-- the call attribute must be ommitted  -->
+<!-- wildcard mappings cannot have multiple different languages  -->
+
+<!-- MULTILINGUAL REQUIREMENTS -->
+<!-- "name" and "lang" attribute required -->
+<!-- name attribute value must be the same for all languages -->
+<!-- name attribute value must be in capital letters and be plain text, no numbers or special characters etc... -->
+<url-mappings>
+<map url="/about/" call="about.jsp" name="ABOUT" lang="en"/>
+<map url="/acerca-de/" call="about.jsp" name="ABOUT" lang="es"/>
+<map url="/contact/" call="contact.jsp" name="CONTACT" lang="en"/>
+<map url="/contacto/" call="contact.jsp" name="CONTACT" lang="es"/>
+<map url="/services/" call="services.jsp" name="SERVICES" lang="en"/>
+<map url="/servicios/" call="services.jsp" name="SERVICES" lang="es"/>
+<map url="/projects/" call="projects.jsp" name="PROJECTS" lang="en"/>
+<map url="/projectos/" call="projects.jsp" name="PROJECTS" lang="es"/>
+<map url="/projectos/la-cala/" call="project.jsp?p=la-cala" name="PROJECTS-LA-CALA" lang="es"/>
+<map url="/projectos/san-eliseo/" call="project.jsp?p=san-eliseo" name="PROJECTS-SAN-ELISEO" lang="es"/>
+<map url="/projectos/domus/" call="project.jsp?p=domus" name="PROJECTS-DOMUS" lang="es"/>
+<map url="/projectos/rancho/" call="project.jsp?p=rancho" name="PROJECTS-RANCHO" lang="es"/>
+<map url="/projects/la-cala/" call="project.jsp?p=la-cala" name="PROJECTS-LA-CALA" lang="en"/>
+<map url="/projects/san-eliseo/" call="project.jsp?p=san-eliseo" name="PROJECTS-SAN-ELISEO" lang="en"/>
+<map url="/projects/domus/" call="project.jsp?p=domus" name="PROJECTS-DOMUS" lang="en"/>
+<map url="/projects/rancho/" call="project.jsp?p=rancho" name="PROJECTS-RANCHO" lang="en"/>
+
+<map url="/test.jsp" call="test.jsp" name="TEST" lang="en"/>
+<map url="/wd-admin/" name="*"/>
+
+</url-mappings>
+
+

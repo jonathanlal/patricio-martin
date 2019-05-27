@@ -52,7 +52,7 @@
     </div>
         <div class="property-info">
       <p class="price property-price">
-        <img src="../img/rancho/logo.png" class="property-img">
+        <img src="../../img/rancho/logo.png" class="property-img">
         </p>
     </div>
   </div>
@@ -72,7 +72,7 @@
     </div>
     <div class="property-info">
       <p class="price property-price">
-        <img src="../img/domus/logo.png" class="property-img">
+        <img src="../../img/domus/logo.png" class="property-img">
         </p>
     </div>
   </div>

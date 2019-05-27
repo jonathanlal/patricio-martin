@@ -32,26 +32,26 @@ public class GetPage extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String page = request.getParameter("page");
-    	System.out.println("getting page: "+page);
+    	//System.out.println("getting page: "+page);
 
-//    	ResourceBundle.clearCache();   
 		if(page == null || page.isEmpty()){
-			
+			request.setAttribute("error", "page variable was null or empty!");
 			page= "error.jsp";
 			
-		}else if(page.contains("project.jsp")) {
+		}else if(page.startsWith("error.jsp")) { //check that this doesn't fire after first check is true.. (shoudn't in else if ?) 
+			String error = page.replace("error.jsp?error=", "");
+			if(error == null) {
+				error = "error parameter was null wtf?";
+			}
+			request.setAttribute("error", error);
 			
-			String project = request.getParameter("p");
+		}else if(page.startsWith("project.jsp")) { //changed from contains
+			
+			String project = page.replace("project.jsp?p=", "");
 			String photos = createPhotoswipeArray(project);
 			request.setAttribute("photos", photos);
-			System.out.println("project: "+project);
 			request.setAttribute("project", project);
-				 
 		}
-			
-			
-
-		
 		RequestDispatcher rd = request.getRequestDispatcher(page);
 		rd.forward(request, response);
 	}

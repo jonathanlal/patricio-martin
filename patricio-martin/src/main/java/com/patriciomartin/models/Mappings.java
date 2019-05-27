@@ -1,36 +1,23 @@
 package com.patriciomartin.models;
 
-import java.util.Arrays;
-import java.util.List;
-
 public class Mappings {
-
-	//turn these into hashmaps??? 
-	//IF APPLICATION IS NOT MULTILINGUAL LEAVE OUT THE LAST VARIABLE SO ONLY TWO 
-//	public static String[] URL_INDEX = {"/","index.jsp"};
-	
-//	public static List<String> URL_TEST = Arrays.asList(new String[]{"/test.jsp","test.jsp", "en"});
-	public static String[] URL_TEST = {"/test.jsp","test.jsp", "en"};
-	public static String[] URL_ABOUT_EN = {"/about/","about.jsp", "en"};
-	public static String[] URL_ABOUT_ES = {"/acerca-de/","about.jsp", "es"};
-	public static String[] URL_SERVICES_EN = {"/services/","services.jsp", "en"};
-	public static String[] URL_SERVICES_ES = {"/servicios/","services.jsp", "es"};
-	public static String[] URL_CONTACT_EN = {"/contact/","contact.jsp", "en"};
-	public static String[] URL_CONTACT_ES = {"/contacto/","contact.jsp", "es"};
-	public static String[] URL_PROJECTS_EN = {"/projects/","projects.jsp", "en"};
-	public static String[] URL_PROJECTS_ES = {"/projectos/","projects.jsp", "es"};
-	public static String[] URL_PROJECTS_LACALA_EN = {"/projects/la-cala/","projects.jsp?p=la-cala", "en"};
-	public static String[] URL_PROJECTS_SANELISEO_EN = {"/projects/san-eliseo/","projects.jsp?p=san-eliseo", "en"};
-	public static String[] URL_PROJECTS_DOMUS_EN = {"/projects/domus/","projects.jsp?p=domus", "en"};
-	public static String[] URL_PROJECTS_RANCHO_EN = {"/projects/rancho/","projects.jsp?p=rancho", "en"};
-	public static String[] URL_PROJECTS_LACALA_ES = {"/projectos/la-cala/","projects.jsp?p=la-cala", "es"};
-	public static String[] URL_PROJECTS_SANELISEO_ES = {"/projectos/san-eliseo/","projects.jsp?p=san-eliseo", "es"};
-	public static String[] URL_PROJECTS_DOMUS_ES = {"/projectos/domus/","projects.jsp?p=domus", "es"};
-	public static String[] URL_PROJECTS_RANCHO_ES = {"/projectos/rancho/","projects.jsp?p=rancho", "es"};
-
-	
-	
-	
-	
-	
+	public static String[] 
+	URL_TEST = {"/test.jsp","test.jsp", "en"},
+	URL_ABOUT_EN = {"/about/","about.jsp", "en"},
+	URL_ABOUT_ES = {"/acerca-de/","about.jsp", "es"},
+	URL_SERVICES_EN = {"/services/","services.jsp", "en"},
+	URL_SERVICES_ES = {"/servicios/","services.jsp", "es"},
+	URL_CONTACT_EN = {"/contact/","contact.jsp", "en"},
+	URL_CONTACT_ES = {"/contacto/","contact.jsp", "es"},
+	URL_PROJECTS_EN = {"/projects/","projects.jsp", "en"},
+	URL_PROJECTS_ES = {"/projectos/","projects.jsp", "es"},
+	URL_PROJECTS_LACALA_EN = {"/projects/la-cala/","project.jsp?p=la-cala", "en"},
+	URL_PROJECTS_SANELISEO_EN = {"/projects/san-eliseo/","project.jsp?p=san-eliseo", "en"},
+	URL_PROJECTS_DOMUS_EN = {"/projects/domus/","project.jsp?p=domus", "en"},
+	URL_PROJECTS_RANCHO_EN = {"/projects/rancho/","project.jsp?p=rancho", "en"},
+	URL_PROJECTS_LACALA_ES = {"/projectos/la-cala/","project.jsp?p=la-cala", "es"},
+	URL_PROJECTS_SANELISEO_ES = {"/projectos/san-eliseo/","project.jsp?p=san-eliseo", "es"},
+	URL_PROJECTS_DOMUS_ES = {"/projectos/domus/","project.jsp?p=domus", "es"},
+	URL_PROJECTS_RANCHO_ES = {"/projectos/rancho/","project.jsp?p=rancho", "es"},
+	WD_ADMIN_WILDCARD = {"/wd-admin/","*", "*"};
 }

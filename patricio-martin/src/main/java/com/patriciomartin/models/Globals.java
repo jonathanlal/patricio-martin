@@ -1,21 +1,36 @@
 package com.patriciomartin.models;
 
 import java.io.File;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
 
+import com.patriciomartin.objects.Url;
+
 public class Globals {
 	
+	//CONFIG
 	public static boolean IS_i18n = true; //  internationalization is abbreviated as i18n, because there are 18 letters between "i" and "n."
+	public static boolean REWRITE_i18n_URLS = true; //if session variable lang is 'en' and user tries to access /acerca-de/ then it will rewrite url to /about/ (other wise it won't and only change page language)
 	public static boolean EMAIL_SENDER_TYPE_GOOGLE = true; //Use java mail api and send via google or some other implementation (via mailgun for example)
+	public static boolean IS_URLMAPS_XML = false; //make false if you want to define your URL mappings in Mappings.java instead of url-mappings.xml (Mappings.java is like 20-100ms faster....)
 	public static String DEFAULT_LANG = "en"; //default language of the website
 	public static String[] LANGUAGES = {"en","es"}; //languages of the website
-//	public static String URL_MAPPINGS_LOCATION_REL = "/WEB-INF/url-mappings.xml";
-
-	public static String URL_MAPPINGS_LOCATION = "C:/workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp17/patricio-martin/WEB-INF/url-mappings.xml";
+	public static String URL_MAPPINGS_FILENAME = "url-mappings.xml"; //must be in the resources folder
+	public static String STATIC_CONTENT_EXT[] = {".png",".jpg",".js",".css",".gif",".mp4",".xml",".ico",".MF", ".tld"}; // it's important you do not create urls that "contains" these strings
+	
+	//DATABASE
+	public static String DB_INSTANCE_CONNECTION_NAME = "the-web-devil:europe-west1:the-web-devil"; //google cloud sql old:  client-cms-1008:europe-west1:client-cms-instance
+	public static String DB_SCHEMA_NAME = "webdevil";
+	public static String DB_LOCALHOST = "localhost:3306";
+	public static String DB_LOCAL_USER = "root";
+	public static String DB_LOCAL_PASSWORD = "1234";
 	
 	//METAS
 	public static String META_fbid = "";
@@ -30,6 +45,7 @@ public class Globals {
 	public static String USER_TYPE = "user_type";	
 	public static String USER_NAME = "user_name";
 	public static String USER_EMAIL = "user_email";
+	public static List<Url> URL_MAPS = UrlMap.getUrlMappingsXML();
 	
 	//COOKIES
 	public static String COOKIE_LOGIN = "patricio-martin_auth";
@@ -51,7 +67,7 @@ public class Globals {
 	public static Map<String, String> EMAIL_ADMIN_HASHMAP = new HashMap<String, String>()
 	{{
 	     put("Jonathan", "jonathan@thewebdevil.com");
-	     put("Patricio", EMAIL_ADDRESS_CONTACT);
+	     //put("Patricio", EMAIL_ADDRESS_CONTACT);
 	}};
 	
 	//EMAIL SOCIAL BTNS
@@ -85,6 +101,17 @@ public class Globals {
 //	    }
 //	}
 
+	public static File getUrlMappingFile() {
+		URL res = Globals.class.getClassLoader().getResource(Globals.URL_MAPPINGS_FILENAME);
+		File f = null;
+		try {
+			f = Paths.get(res.toURI()).toFile();
+		} catch (URISyntaxException e) {
+			e.printStackTrace();
+		}
+		return f;
+	}
+	
 	public static String getBundleString(String key) {
 		return ResourceBundle.getBundle("text").getString(key);
 	}

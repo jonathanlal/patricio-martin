@@ -11,6 +11,7 @@ import java.lang.reflect.Field;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.net.URLDecoder;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -72,8 +73,11 @@ public class Test extends HttpServlet {
 //		System.out.println(fullPath);
 		
 //		String pathname;
-		File f = new File(Globals.URL_MAPPINGS_LOCATION);
-		System.out.println(f.exists());
+		
+		
+		
+		System.out.println(Globals.getUrlMappingFile().exists());
+	
 		
 //			System.out.println(reponsePath);
 //			

@@ -10,15 +10,7 @@ public class Url {
 	public Url() {}
 	
 	  @XmlAttribute
-	  public String name,url,lang,call,id;
-//	  @XmlAttribute
-//	  public String url;
-//	  @XmlAttribute
-//	  public String lang;
-//	  @XmlAttribute
-//	  public String call;
-//	  @XmlAttribute
-//	  public String id;
+	  public String name,url,lang,call;
 
 
 	public String getLang() {
@@ -53,13 +45,6 @@ public class Url {
 		this.call = call;
 	}
 
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
 
 
 
