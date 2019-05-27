@@ -8,6 +8,27 @@
 /* 	} */
 /* } */
 
+.nav-item a::after {
+    background-color: #de7f2b;
+    bottom: -2px;
+    height: 1px;
+}
+.nav-contact a::after, .nav-item a::after {
+    content: "";
+    display: block;
+    left: 0;
+    position: absolute;
+    -webkit-transform: scaleX(0);
+    transform: scaleX(0);
+    -webkit-transform-origin: center left;
+    transform-origin: center left;
+    transition-duration: .4s;
+    transition-property: -webkit-transform;
+    transition-property: transform;
+    transition-property: transform,-webkit-transform;
+    width: 100%;
+}
+
 .languages-neg{
     background-image: url(../../img/languages@2x-neg.png) !important;
     background-position: 0 0;

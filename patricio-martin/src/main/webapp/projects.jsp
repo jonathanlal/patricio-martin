@@ -23,4 +23,3 @@
 
 <%@ include file="WEB-INF/templates/contact.jsp" %>
 <%@ include file="WEB-INF/templates/newsletter.jsp" %>
-<%@ include file="includes/footer.jsp"%>

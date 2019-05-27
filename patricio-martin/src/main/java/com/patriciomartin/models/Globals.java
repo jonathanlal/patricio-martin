@@ -119,26 +119,14 @@ public class Globals {
 	 * in the header.jsp there is jstl that checks if param.lang is checked or if session langage set and if not it sets it as request.locale.language
 	 * so we pass that result to getLanguage to make sure that whatever language we got there is a language that the application supports. 
 	 * If the language is not in supported languages then it will get the default language.
-	 * 
+	 * //not empty param.lang ? param.lang : not empty language ? language : pageContext.request.locale.language
 	 * @param lang
 	 * @return String
 	 */
 	public static String getLanguage(String lang) {
-//		List<String> URL_TEST = Arrays.asList(new String[]{"/test.jsp","test.jsp", "en"});
-//		ArrayList<String> languages = (ArrayList<String>) Arrays.asList(Globals.LANGUAGES);
-		
-		//if requested lang does not exist in our array of languages then default to default lang
 		if(!Arrays.stream(Globals.LANGUAGES).anyMatch(lang::equals)) {
 			lang = DEFAULT_LANG;
 		}
-		//keep this
-		//not empty param.lang ? param.lang : not empty language ? language : pageContext.request.locale.language
-		
-		
-		//language eq 'en' || language eq 'es' ? language : 'en'
-		
-		
-		
 		return  lang;
 	}
 	
