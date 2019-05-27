@@ -1,20 +1,13 @@
 package com.patriciomartin.models;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Properties;
-import java.util.ResourceBundle;
 import java.util.Set;
 
 import javax.mail.Message;
@@ -42,7 +35,7 @@ import com.patriciomartin.objects.Envelope;
 public class SendEmail {
 	
 	//for each new type of email, define a variable for the subject here. (it's defined here because of the i18n implementation)
-	//is language is spanish then these variables are overridden by reflection
+	//if language is spanish then these variables are overridden by reflection
 	public static String email_contact_subject = "We have received your message and we will reply shortly!";
 	public static String email_contact_intro = "Thanks for contacting us. Here's a copy of the message you sent us:";
 	public static String email_contact_admin = "Here's a copy of the message they sent:";

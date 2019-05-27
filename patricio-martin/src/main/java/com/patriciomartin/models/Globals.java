@@ -4,7 +4,6 @@ import java.io.File;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -64,6 +63,7 @@ public class Globals {
 	public static String EMAIL_LOGO = "img/email-logo-v2.png"; //mailgun
 	public static String EMAIL_CID_LOGO = "cid:email-logo-v2.png"; // google
 	public static String EMAIL_ADDRESS_CONTACT = "info@patriciomartin.com";
+	@SuppressWarnings("serial")
 	public static Map<String, String> EMAIL_ADMIN_HASHMAP = new HashMap<String, String>()
 	{{
 	     put("Jonathan", "jonathan@thewebdevil.com");

@@ -2,8 +2,6 @@ package com.patriciomartin.models;
 
 import java.io.File;
 import java.lang.reflect.Field;
-import java.net.URL;
-import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.List;
 
@@ -23,8 +21,6 @@ import com.patriciomartin.objects.Urls;
  * Depending on the IS_URLMAPS_XML flag in Globals we choose what implementation to do
  * 
  * Note that setting it by class variables is faster... but ugglier :(
- *
- *
  *
  */
 public class UrlMap {
@@ -60,8 +56,6 @@ public class UrlMap {
 		}
 		return URLS;
 	} 
-	
-	
 	/**
 	*'/acerca-de/','es'
 	*...assumes Globals.IS_i18n = true

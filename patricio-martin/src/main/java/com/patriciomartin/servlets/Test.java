@@ -1,40 +1,21 @@
 package com.patriciomartin.servlets;
 
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
-import java.io.StringReader;
-import java.lang.reflect.Array;
 import java.lang.reflect.Field;
-import java.net.URISyntaxException;
-import java.net.URL;
-import java.net.URLDecoder;
-import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
-import java.util.ResourceBundle;
-import java.util.Map.Entry;
-
-import javax.servlet.ServletConfig;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 
 import com.patriciomartin.models.Globals;
-import com.patriciomartin.models.HtmlSnippets;
-import com.patriciomartin.models.Mappings;
 import com.patriciomartin.objects.Url;
 import com.patriciomartin.objects.Urls;
 

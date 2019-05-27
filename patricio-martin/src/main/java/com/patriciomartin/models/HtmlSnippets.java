@@ -1,13 +1,9 @@
 package com.patriciomartin.models;
 
 import java.lang.reflect.Field;
-import java.util.HashMap;
 import java.util.Locale;
-import java.util.Map;
 import java.util.ResourceBundle;
 import static j2html.TagCreator.*;
-
-import javax.servlet.http.HttpServletRequest;
 
 import com.patriciomartin.objects.Envelope;
 

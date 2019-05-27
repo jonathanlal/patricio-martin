@@ -13,9 +13,6 @@ import javax.xml.bind.annotation.XmlAccessType;
 @XmlRootElement(name = "url-mappings")
 public class Urls {
 	
-//	public static HashMap<String,String> URLS = getUrlJspMappings(null);
-	
-
     @XmlElement(name = "map")
     private List<Url> urls = new ArrayList<Url>();
 	
@@ -29,9 +26,4 @@ public class Urls {
         this.urls = urls;
     } 
     
-	
-	
-
-
-
 }
