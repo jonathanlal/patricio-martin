@@ -33,6 +33,8 @@ public class GetPage extends HttpServlet {
 			request.setAttribute("photos", photos);
 			request.setAttribute("project", project);
 		}
+		
+		request.setAttribute("steps", request.getContextPath());
 		RequestDispatcher rd = request.getRequestDispatcher(page);
 		rd.forward(request, response);
 	}

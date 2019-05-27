@@ -5,7 +5,7 @@
   <div class="hero-nav"><%@ include file="includes/nav.jsp"%></div>
   <div class="hero-content">
     <div class="container">
-      <h1 class="title hero-title has-text-white" style="margin-bottom:10px;">${cf:getLanguage('en')}</h1>
+      <h1 class="title hero-title has-text-white" style="margin-bottom:10px;">${steps}</h1>
 <%--       <p class="hero-subtitle"><fmt:message key="about.hero.subtitle"/></p> --%>
 <%-- 		<%@ include file="WEB-INF/templates/pattern.jsp" %> --%>
     </div>

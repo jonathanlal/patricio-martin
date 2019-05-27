@@ -1,8 +1,8 @@
 
-<script src="../../vendors/photoswipe/photoswipe.min.js"></script>
-<script src="../../vendors/photoswipe/photoswipe-ui-default.min.js"></script>
-<link rel="stylesheet" href="../../vendors/photoswipe/photoswipe.css">
-<link rel="stylesheet" href="../../vendors/photoswipe/default-skin.css">
+<script src="${steps}/vendors/photoswipe/photoswipe.min.js"></script>
+<script src="${steps}/vendors/photoswipe/photoswipe-ui-default.min.js"></script>
+<link rel="stylesheet" href="${steps}/vendors/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="${steps}/vendors/photoswipe/default-skin.css">
     
 <style>
 	@media all and (min-width : 768px) and (max-width : 1363px)  { .single-thumbnail {width: 180px !important; height: 120px !important;}}

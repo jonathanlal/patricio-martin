@@ -44,20 +44,33 @@ public class MainFilter implements Filter {
 		//startTest(request); //testing
 
 	    String requri = ((HttpServletRequest) request).getRequestURI();
+	    System.out.println(requri);
 		page = null; //reset
 		continueChain = false; //reset
-
-//	    boolean isResource = isResourceFile(requri); //check if request is a resource (we don't really need to do this shit?...)
-//	    if(!isResource) {
+		int steps = 0; // ../../../../../
+		
+		
+		if(Globals.IS_i18n)
+	 		requri = checkIfNeedToReWriteLanguageBase(request, response, requri); 
+		
+		
+		//WE CAN@T USE THIS IF APPLICATION IS NOT MULTILINGUAL....
+		if(requri.length()>4) { // '/en/' == 4 anything smaller than 4 means its not valid (if IS_i18n)
+			 System.out.println("length greather than 4");
 			if(Globals.IS_URLMAPS_XML) { //our url mapping implementation (are we storing it as url-mappings.xml or Mappings.java ?
-	    	//if(test_type.equals("xml")) { //testing
+	    	//if(test_type.equals("xml")) {8 //testing
 				doXML(request, response, chain, requri);
 			}else {
 				doReflection(request, response, chain, requri);
 			}
-//	    }
+			
+		}else {page="index.jsp";}
+			
+			
 	    //calculateCosts(runtime, start, requri, test_type); //testing
 		decideFate(request, response, chain);
+		
+		
 	}
 	private void decideFate(ServletRequest request, ServletResponse response, FilterChain chain) {
 		try { if(!continueChain){	
@@ -78,9 +91,6 @@ public class MainFilter implements Filter {
 	 	 checkIfWildCardOrServlet(requri, request, isWildCardXML(requri, UrlMap.getUrlMappingsXML()));
 	}
 	private void doReflection(ServletRequest request, ServletResponse response, FilterChain chain, String requri) throws IOException, ServletException {
-	 	if(Globals.IS_i18n)
-	 		requri = checkIfNeedToReWriteLanguageBase(request, response, requri); //need to modify request string and remove /en/ to not confuse when we check if url exists
-	 	
 		Field[] url_map = Mappings.class.getDeclaredFields();//REFLECTION API
 		HashMap<String, String> urls = UrlMap.getUrlJspMappings(null, url_map);  //gets all url mappings via REFLECTION -> '/about/ , 'about.jsp'	
 		if(Globals.IS_i18n && Globals.REWRITE_i18n_URLS)//if website is multilingual and you want to rewrite the url because they requested the wrong language url (kinda a waste to do, shouldn't really do it to support an edge case)
@@ -97,29 +107,25 @@ public class MainFilter implements Filter {
 		return current_lang;
 	}
 	private String checkIfNeedToReWriteLanguageBase(ServletRequest request,ServletResponse response, String requri) throws IOException {
-
 		String current_lang = getSessionLanguage(request);
-		
-		//here the url doesn't have a language base so we should rewrite...
-		
 		String[] languages = Globals.LANGUAGES;
-		//for each 
 		String base_in_url = null;
 		boolean hasBase = false;
 		for(String lang: languages) {hasBase = Pattern.compile("\\/"+lang+"\\/").matcher(requri).find();
-			if(hasBase) {base_in_url = lang;break;}
-		}
-		if(hasBase) {
-			if(!base_in_url.equals(current_lang)) {
-				requri = requri.replace("/"+base_in_url+"/", "/"+current_lang+"/"); //change wrong base 
-				((HttpServletResponse) response).sendRedirect("../../../.."+getCorrectRequriDirectoryMapping(requri));	
+			if(hasBase) {
+			base_in_url = lang;
+			break;
 			}
-			
-		}else {
-			//add language_base to url
-			((HttpServletResponse) response).sendRedirect("../../../../"+getCorrectRequriDirectoryMapping(current_lang+requri));	
 		}
-		return requri.replace("/"+current_lang+"/", "/");
+		if(hasBase) {	
+			if(!base_in_url.equals(current_lang)) {
+			requri = requri.replace("/"+base_in_url+"/", "/"+current_lang+"/"); //if current session language not equal to the language in the base url then change it 
+			((HttpServletResponse) response).sendRedirect(calculateSteps(requri));}
+		}else{       
+			System.out.println("current_lang+requri: "+current_lang+"+"+requri);
+			((HttpServletResponse) response).sendRedirect(calculateSteps(current_lang+requri));		//add language_base to url because it doesn't have a base
+		}
+		return requri.replace("/"+current_lang+"/", "/"); //replace it back to normal so that doesn't fuck up the hashmap check thing
 	}
 	private void checkIfWildCardOrServlet(String requri, ServletRequest request, boolean isWildcard) {
 		if(isWildcard|| isAServlet(request)) {
@@ -143,7 +149,8 @@ public class MainFilter implements Filter {
 			if(page_lang != null && !language_base.equals(page_lang)) {//requested url exists and the language of that url does not match the session language 
 				String alternate_url = null;//REWRITE LOGIC BLOCK
 				 alternate_url = UrlMap.getURLanguageEquivalent(language_base, requri, fields);
-				((HttpServletResponse) response).sendRedirect("../../../../"+getCorrectRequriDirectoryMapping(language_base+alternate_url)); //just incase whatever application has more than a couple directory deeps
+				 System.out.println("What the shit: ");
+				((HttpServletResponse) response).sendRedirect(calculateSteps(language_base+alternate_url)); //just incase whatever application has more than a couple directory deeps
 			}
 	}
 	private void checkIfNeedToReWriteURLCauseLanguageXML(ServletRequest request, ServletResponse response, String requri, List<Url> url_map) throws IOException {
@@ -154,7 +161,7 @@ public class MainFilter implements Filter {
 			if(page_lang != null && !language_base.equals(page_lang)) {//requested url exists and the language of that url does not match the session language 
 				String alternate_url = null;//REWRITE LOGIC BLOCK
 				 alternate_url = UrlMap.getURLanguageEquivalentXML(language_base, requri, url_map);
-				((HttpServletResponse) response).sendRedirect("../../../../"+getCorrectRequriDirectoryMapping(language_base+alternate_url)); //just incase whatever application has more than a couple directory deeps
+				((HttpServletResponse) response).sendRedirect(calculateSteps(language_base+alternate_url)); //just incase whatever application has more than a couple directory deeps
 			}
 	}
 	private boolean isAServlet(ServletRequest request){
@@ -168,10 +175,19 @@ public class MainFilter implements Filter {
 			}
 		return check;
 	}
-	public String getCorrectRequriDirectoryMapping(String requri) {
+	public String calculateSteps(String requri) {
 		//takes the url and counts the number of forward slashes and returns requri with the correct mapping
-		System.out.println("COUNTING:");
-		System.out.println(requri.chars().filter(num -> num == '/').count());
+		String steps = "../"; 
+		int slashes = (int) requri.chars().filter(num -> num == '/').count();
+		for(int x = 0; x < slashes; x++) {
+			steps += steps;
+			
+			if(x == slashes -1) {
+				steps = steps.substring(0, steps.length()-1);
+			}
+		}
+		String final_requri = steps+requri;
+		System.out.println("final_requri:"+final_requri);
 		return requri;
 	}
 //	public void calculateCosts(Runtime runtime, long start, String requri, String type) {

@@ -30,7 +30,7 @@
 }
 
 .languages-neg{
-    background-image: url(../../img/languages@2x-neg.png) !important;
+    background-image: url(<%=request.getAttribute("steps")%>/img/languages@2x-neg.png) !important;
     background-position: 0 0;
     background-repeat: no-repeat;
     background-size: 40px 20px;
@@ -133,19 +133,19 @@ h1,h2,h3,h4,h5,h6{
 }
 @font-face {
 	font-family: 'Soleil Light';
-	src: url('../../fonts/Soleil-Light.eot'); /* IE9 Compat Modes */
-	src: url('../../fonts/Soleil-Light.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-		 url('../../fonts/Soleil-Light.woff') format('woff'), /* Modern Browsers */
-		 url('../../fonts/Soleil-Light.ttf')  format('truetype'), /* Safari, Android, iOS */
-		 url('../../fonts/Soleil-Light.svg#svgFontName') format('svg') /* Legacy iOS */
+	src: url('<%=request.getAttribute("steps")%>/fonts/Soleil-Light.eot'); /* IE9 Compat Modes */
+	src: url('<%=request.getAttribute("steps")%>/fonts/Soleil-Light.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+		 url('<%=request.getAttribute("steps")%>/fonts/Soleil-Light.woff') format('woff'), /* Modern Browsers */
+		 url('<%=request.getAttribute("steps")%>/fonts/Soleil-Light.ttf')  format('truetype'), /* Safari, Android, iOS */
+		 url('<%=request.getAttribute("steps")%>/fonts/Soleil-Light.svg#svgFontName') format('svg') /* Legacy iOS */
 }
 @font-face { 
  	font-family: 'Soleil Bold'; 
- 	src: url('../../fonts/Soleil-Bold.eot'); /* IE9 Compat Modes */ 
- 	src: url('../../fonts/Soleil-Bold.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */ 
-		 url('../../fonts/Soleil-Bold.woff') format('woff'), /* Modern Browsers */ 
- 		 url('../../fonts/Soleil-Bold.ttf')  format('truetype'), /* Safari, Android, iOS */ 
- 		 url('../../fonts/Soleil-Bold.svg#svgFontName') format('svg') /* Legacy iOS */ 
+ 	src: url('<%=request.getAttribute("steps")%>/fonts/Soleil-Bold.eot'); /* IE9 Compat Modes */ 
+ 	src: url('<%=request.getAttribute("steps")%>/fonts/Soleil-Bold.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */ 
+		 url('<%=request.getAttribute("steps")%>/fonts/Soleil-Bold.woff') format('woff'), /* Modern Browsers */ 
+ 		 url('<%=request.getAttribute("steps")%>/fonts/Soleil-Bold.ttf')  format('truetype'), /* Safari, Android, iOS */ 
+ 		 url('<%=request.getAttribute("steps")%>/fonts/Soleil-Bold.svg#svgFontName') format('svg') /* Legacy iOS */ 
  } 
  
  
@@ -1331,7 +1331,7 @@ div.wpcf7-response-output {
 }
 
 .nav-languages a {
-    background-image: url(../../img/languages@2x.png);
+    background-image: url(<%=request.getAttribute("steps")%>/img/languages@2x.png);
     background-position: 0 0;
     background-repeat: no-repeat;
     background-size: 40px 20px;
@@ -2867,7 +2867,7 @@ body.body-page-template-sold-properties .nav-item.is-properties .subnav a:last-c
 
 .collaborate {
     background-color: #1d1d1b;
-    background-image: url(../../img/b2.jpg);
+    background-image: url(<%=request.getAttribute("steps")%>/img/b2.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;

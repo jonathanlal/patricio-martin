@@ -10,7 +10,7 @@
         </div>
        <div class="collaborate-buttons">
        
-             <a class="button is-info" href="<fmt:message key="url.contact"/>">
+             <a class="button is-info" href="${steps}<fmt:message key="url.contact"/>">
                 <strong class="button-text" style="padding-right:8px;"><fmt:message key="index.contact.btnContact"/> </strong><i class="fas fa-long-arrow-alt-right"></i>
               </a>
        </div>

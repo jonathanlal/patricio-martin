@@ -1,5 +1,9 @@
 package com.patriciomartin.models;
 
+//FIRST FIELD NEEDS TO BE UNIQUE!!!!!!
+
+
+
 public class Mappings {
 	public static String[] 
 	URL_ABOUT_EN = {"/about/","about.jsp", "en"},
@@ -18,6 +22,6 @@ public class Mappings {
 	URL_PROJECTS_SANELISEO_ES = {"/projectos/san-eliseo/","project.jsp?p=san-eliseo", "es"},
 	URL_PROJECTS_DOMUS_ES = {"/projectos/domus/","project.jsp?p=domus", "es"},
 	URL_PROJECTS_RANCHO_ES = {"/projectos/rancho/","project.jsp?p=rancho", "es"},
-	URL_TEST = {"/test.jsp","test.jsp", "en"},
+	URL_TEST_ES = {"/test.jsp","test.jsp", "en"}, 
 	WD_ADMIN_WILDCARD = {"/wd-admin/","*", "*"};
 }
