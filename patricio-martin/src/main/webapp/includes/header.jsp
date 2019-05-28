@@ -11,6 +11,9 @@
 <!DOCTYPE HTML>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="${language}">
 <head>
+  <c:set var="url">${pageContext.request.requestURL}</c:set>
+<!-- INFO ON BASE TAG: https://stackoverflow.com/questions/1889076/what-are-the-recommendations-for-html-base-tag ****This means using named/hash fragment anchors like <a href="#anchor"> should be instead:  <a href="${uri}#anchor">hash fragment</a> -->
+   <base href="${fn:substring(url, 0, fn:length(url) - fn:length(pageContext.request.requestURI))}${pageContext.request.contextPath}/${not empty language ? language : cf:getDefaultLang()}/" /><!--[if lte IE 6]></base><![endif]-->
 
 <link rel="stylesheet" href="/css/bulma.css?v=10"/>
 <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>

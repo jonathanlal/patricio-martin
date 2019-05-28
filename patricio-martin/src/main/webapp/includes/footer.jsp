@@ -5,7 +5,7 @@
 <footer class="footer has-text-grey-lighter is-centered has-text-centered">
 
 <div class="footer-links-container">
-    <span class="main-footer__links"><a href="../../"><fmt:message key="nav.home"/></a></span>
+    <span class="main-footer__links"><a href="${steps}"><fmt:message key="nav.home"/></a></span>
     <span class="main-footer__links"><a href="<fmt:message key="url.about"/>"><fmt:message key="nav.about"/></a></span>
     <span class="main-footer__links"><a href="<fmt:message key="url.contact"/>"><fmt:message key="nav.contact"/></a></span>
     <span class="main-footer__links"><a href="<fmt:message key="url.services"/>"><fmt:message key="nav.services"/></a></span>
@@ -17,7 +17,7 @@
 	<div class="columns is-gapless">
 		<div class="column"></div>
 		<div class="column">
-		  					<img src="../../img/logo/logo.png" style="width:50px;display: flex;margin:0 auto;opacity: 0.9;margin-bottom: 10px;margin-top: 10px;">
+		  					<img src="${steps}/img/logo/logo.png" style="width:50px;display: flex;margin:0 auto;opacity: 0.9;margin-bottom: 10px;margin-top: 10px;">
 		
 		     		<%@ include file="/WEB-INF/templates/pattern.jsp" %>
 		

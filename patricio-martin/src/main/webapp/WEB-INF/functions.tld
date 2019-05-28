@@ -7,7 +7,7 @@
 
     <display-name>Custom Functions</display-name> 
         <tlib-version>1.0</tlib-version>
-        <short-name>test</short-name>
+        <short-name>cf</short-name>
      <uri>http://example.com/functions</uri>  
 
 
@@ -15,5 +15,11 @@
         <name>getLanguage</name>
         <function-class>com.patriciomartin.models.Globals</function-class>
         <function-signature>java.lang.String getLanguage(java.lang.String)</function-signature>
+    </function>
+    
+        <function>
+        <name>getDefaultLang</name>
+        <function-class>com.patriciomartin.models.Globals</function-class>
+        <function-signature>java.lang.String getDefaultLang()</function-signature>
     </function>
 </taglib>

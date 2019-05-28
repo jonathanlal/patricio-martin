@@ -129,5 +129,10 @@ public class Globals {
 		}
 		return  lang;
 	}
+	public static String getDefaultLang() {
+		return DEFAULT_LANG;
+	}
+	
+	
 	
 }

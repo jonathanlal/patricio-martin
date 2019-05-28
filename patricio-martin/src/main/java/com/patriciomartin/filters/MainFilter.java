@@ -47,7 +47,6 @@ public class MainFilter implements Filter {
 	    System.out.println(requri);
 		page = null; //reset
 		continueChain = false; //reset
-		int steps = 0; // ../../../../../
 		
 		
 		if(Globals.IS_i18n)
@@ -119,11 +118,12 @@ public class MainFilter implements Filter {
 		}
 		if(hasBase) {	
 			if(!base_in_url.equals(current_lang)) {
+				System.out.println("THIS IS WHERE THE PROBLEM IS ");
 			requri = requri.replace("/"+base_in_url+"/", "/"+current_lang+"/"); //if current session language not equal to the language in the base url then change it 
-			((HttpServletResponse) response).sendRedirect(calculateSteps(requri));}
+			((HttpServletResponse) response).sendRedirect(requri);}
 		}else{       
 			System.out.println("current_lang+requri: "+current_lang+"+"+requri);
-			((HttpServletResponse) response).sendRedirect(calculateSteps(current_lang+requri));		//add language_base to url because it doesn't have a base
+			((HttpServletResponse) response).sendRedirect(current_lang+requri);		//add language_base to url because it doesn't have a base
 		}
 		return requri.replace("/"+current_lang+"/", "/"); //replace it back to normal so that doesn't fuck up the hashmap check thing
 	}
@@ -145,12 +145,16 @@ public class MainFilter implements Filter {
 		String language_base = getSessionLanguage(request);// does not have any slashes 'en'
 		HashMap<String, String> urls = new HashMap<>();
 			urls = UrlMap.getUrlLanguageMappings(fields); // <'/about/', 'en'>
+			System.out.println("getting page_lang from hash map with requri: "+requri);
 			String page_lang = urls.get(requri);//if page_lange is null here then the requested url isn't in the map or key is null(wildcards)
 			if(page_lang != null && !language_base.equals(page_lang)) {//requested url exists and the language of that url does not match the session language 
 				String alternate_url = null;//REWRITE LOGIC BLOCK
 				 alternate_url = UrlMap.getURLanguageEquivalent(language_base, requri, fields);
-				 System.out.println("What the shit: ");
-				((HttpServletResponse) response).sendRedirect(calculateSteps(language_base+alternate_url)); //just incase whatever application has more than a couple directory deeps
+
+				 StringBuffer url = ((HttpServletRequest) request).getRequestURL();
+				 String uri = ((HttpServletRequest) request).getRequestURI();
+				 String base = url.substring(0, url.length() - uri.length()) + "/";
+				((HttpServletResponse) response).sendRedirect(base+language_base+alternate_url); //just incase whatever application has more than a couple directory deeps
 			}
 	}
 	private void checkIfNeedToReWriteURLCauseLanguageXML(ServletRequest request, ServletResponse response, String requri, List<Url> url_map) throws IOException {
@@ -161,7 +165,7 @@ public class MainFilter implements Filter {
 			if(page_lang != null && !language_base.equals(page_lang)) {//requested url exists and the language of that url does not match the session language 
 				String alternate_url = null;//REWRITE LOGIC BLOCK
 				 alternate_url = UrlMap.getURLanguageEquivalentXML(language_base, requri, url_map);
-				((HttpServletResponse) response).sendRedirect(calculateSteps(language_base+alternate_url)); //just incase whatever application has more than a couple directory deeps
+				((HttpServletResponse) response).sendRedirect(language_base+alternate_url); //just incase whatever application has more than a couple directory deeps
 			}
 	}
 	private boolean isAServlet(ServletRequest request){
@@ -175,7 +179,7 @@ public class MainFilter implements Filter {
 			}
 		return check;
 	}
-	public String calculateSteps(String requri) {
+	public String getFuckIt(String requri) {
 		//takes the url and counts the number of forward slashes and returns requri with the correct mapping
 		String steps = "../"; 
 		int slashes = (int) requri.chars().filter(num -> num == '/').count();

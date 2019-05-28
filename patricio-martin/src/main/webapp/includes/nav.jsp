@@ -9,7 +9,7 @@
 		<div class="container">
 			<nav class="nav-content">
 				<!-- LOGO -->
-				<a class="nav-brand" href="${steps}"><img src="${steps}/img/logo/navbar.png" alt="Patricio Martin"></a>
+				<a class="nav-brand" href=""><img src="/img/logo/navbar.png" alt="Patricio Martin"></a>
 				<!-- BURGER -->
 				<a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
 				  <span aria-hidden="true"></span>
@@ -20,19 +20,19 @@
 				<div class="nav-languages" id="nav-languages">
 					<ul>
 					<li class="wpml-ls-slot-shortcode_actions wpml-ls-item wpml-ls-item-fr  wpml-ls-first-item wpml-ls-item-legacy-list-horizontal ${language eq 'es' ? 'wpml-ls-current-language' : ''}">
-					<a href="${steps}/ChangeLanguage?lang=es" class="wpml-ls-link"><span class="wpml-ls-native">Spanish</span></a>
+					<a href="/ChangeLanguage?lang=es" class="wpml-ls-link"><span class="wpml-ls-native">Spanish</span></a>
 					<li class="wpml-ls-slot-shortcode_actions wpml-ls-item wpml-ls-item-en wpml-ls-last-item wpml-ls-item-legacy-list-horizontal ${language eq 'en' || empty language ? 'wpml-ls-current-language' : ''}">
-					<a href="${steps}/ChangeLanguage?lang=en" class="wpml-ls-link"><span class="wpml-ls-native">English</span><span class="wpml-ls-display"><span class="wpml-ls-bracket"> (</span>Anglais<span class="wpml-ls-bracket">)</span></span></a>
+					<a href="/ChangeLanguage?lang=en" class="wpml-ls-link"><span class="wpml-ls-native">English</span><span class="wpml-ls-display"><span class="wpml-ls-bracket"> (</span>Anglais<span class="wpml-ls-bracket">)</span></span></a>
 					</li>
 					</ul>
 				</div>
 				<!-- MAIN LINKS -->
 				<div class="navbar-menu" id="navMenu">
 					<div class="nav-list">
-						<div class="nav-item is-home"><a href="${steps}<fmt:message key="url.about"/>"><fmt:message key="nav.about"/></a></div>
-						<div class="nav-item is-properties"><a href="${steps}<fmt:message key="url.projects"/>"><fmt:message key="nav.projects"/></a></div>
-						<div class="nav-item is-regions"><a href="${steps}<fmt:message key="url.services"/>"><fmt:message key="nav.services"/></a></div>
-						<div class="nav-item is-contact"><a href="${steps}<fmt:message key="url.contact"/>"><fmt:message key="nav.contact"/></a></div>
+						<div class="nav-item is-home"><a href="<fmt:message key="url.about"/>"><fmt:message key="nav.about"/></a></div>
+						<div class="nav-item is-properties"><a href="<fmt:message key="url.projects"/>"><fmt:message key="nav.projects"/></a></div>
+						<div class="nav-item is-regions"><a href="<fmt:message key="url.services"/>"><fmt:message key="nav.services"/></a></div>
+						<div class="nav-item is-contact"><a href="<fmt:message key="url.contact"/>"><fmt:message key="nav.contact"/></a></div>
 					</div>
 					<aside class="nav-contact">
 						<p><a class="open-modal" data-target="contactModal">info@patriciomartin.com</a></p>
