@@ -25,6 +25,26 @@ import com.patriciomartin.objects.Urls;
  */
 public class UrlMap {
 	
+	
+	
+	public static HashMap<String,String> getProjectURLMapping(){
+		
+		if(Globals.IS_URLMAPS_XML) {
+			List<Url> url_map = UrlMap.getUrlMappingsXML();//JAXB XML
+			return getUrlJspMappingsXML(url_map);
+		}else {
+			Field[] url_map = Mappings.class.getDeclaredFields();//REFLECTION API
+			return getUrlJspMappings(null, url_map);  //gets all url mappings via REFLECTION -> '/about/ , 'about.jsp'
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 //	REFLECTION IMPLEMENTATION
 	/**
 	 * Set requested_lang as null if you want the whole map or specify language or map of specific language

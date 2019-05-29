@@ -1,11 +1,13 @@
 package com.patriciomartin.models;
 
-//FIRST FIELD NEEDS TO BE UNIQUE!!!!!!
+//FIRST FIELD NEEDS TO BE UNIQUE!!!!!! EVEN FOR LANGUAGES
 
 
 
 public class Mappings {
 	public static String[] 
+	URL_INDEX_EN = {"/","index.jsp", "en"},
+	URL_INDEX_ES = {"/inicio/","index.jsp", "es"},
 	URL_ABOUT_EN = {"/about/","about.jsp", "en"},
 	URL_ABOUT_ES = {"/acerca-de/","about.jsp", "es"},
 	URL_SERVICES_EN = {"/services/","services.jsp", "en"},

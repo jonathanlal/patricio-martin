@@ -9,7 +9,7 @@
 /* } */
 
 .nav-item a::after {
-    background-color: #de7f2b;
+    background-color: #209CEE;
     bottom: -2px;
     height: 1px;
 }
@@ -557,14 +557,14 @@ body {
 }
 
 a {
-    color: #de7f2b;
+    color: #209CEE;
     text-decoration: none;
     transition-duration: .2s;
     transition-property: color
 }
 
 hr {
-    background-color: #de7f2b;
+    background-color: #209CEE;
     border: none;
     height: 2px
 }
@@ -584,12 +584,12 @@ html.has-modal-open {
 }
 
 ::-moz-selection {
-    background-color: #de7f2b;
+    background-color: #209CEE;
     color: #fff
 }
 
 ::selection {
-    background-color: #de7f2b;
+    background-color: #209CEE;
     color: #fff
 }
 
@@ -721,7 +721,7 @@ html.has-modal-open {
 }
 
 .button.is-primary {
-    background-color: #de7f2b;
+    background-color: #209CEE;
     box-shadow: 0 1rem 1rem -.5rem rgba(0, 0, 0, .2);
     color: #fff;
     text-shadow: 0 2px 4px rgba(0, 0, 0, .1)
@@ -745,7 +745,7 @@ html.has-modal-open {
 
 .button.is-primary-outlined {
     background-color: rgba(222, 127, 43, .2);
-    box-shadow: inset 0 0 0 2px #de7f2b, 0 4px 10px rgba(222, 127, 43, .2);
+    box-shadow: inset 0 0 0 2px #209CEE, 0 4px 10px rgba(222, 127, 43, .2);
     color: #fff;
     font-size: 1rem;
     height: auto;
@@ -756,7 +756,7 @@ html.has-modal-open {
 .button.is-primary-outlined:focus,
 .button.is-primary-outlined:hover {
     background-color: rgba(222, 127, 43, .3);
-    box-shadow: inset 0 0 0 2px #de7f2b, 0 4px 20px rgba(222, 127, 43, .5);
+    box-shadow: inset 0 0 0 2px #209CEE, 0 4px 20px rgba(222, 127, 43, .5);
     -webkit-transform: translateY(-.125rem);
     transform: translateY(-.125rem)
 }
@@ -779,7 +779,7 @@ html.has-modal-open {
 }
 
 .button.is-alternate {
-    background-color: #de7f2b;
+    background-color: #209CEE;
     border-radius: 290486px;
     color: #fff;
     font-size: 1rem;
@@ -849,7 +849,7 @@ html.has-modal-open {
 .select select:hover,
 .textarea:focus,
 .textarea:hover {
-    box-shadow: 0 0 1px #de7f2b, 0 0 .5rem rgba(222, 127, 43, .5)
+    box-shadow: 0 0 1px #209CEE, 0 0 .5rem rgba(222, 127, 43, .5)
 }
 
 .input[type=search] {
@@ -891,7 +891,7 @@ html.has-modal-open {
 }
 
 .select::after {
-    border-color: #de7f2b;
+    border-color: #209CEE;
     right: 1.125em;
     z-index: 4
 }
@@ -1065,7 +1065,7 @@ div.wpcf7-response-output {
 }
 
 .delete:hover {
-    color: #de7f2b;
+    color: #209CEE;
     opacity: 1
 }
 
@@ -1137,7 +1137,7 @@ div.wpcf7-response-output {
 }
 
 .pattern path {
-    fill: #de7f2b
+    fill: #209CEE
 }
 
 .price {
@@ -1213,7 +1213,7 @@ div.wpcf7-response-output {
 
 .footer-nav-list a:hover,
 .front-discover-list a:hover {
-    color: #de7f2b
+    color: #209CEE
 }
 
 .footer-nav-list>li,
@@ -1370,7 +1370,7 @@ div.wpcf7-response-output {
 }
 
 .nav-item a::after {
-    background-color: #de7f2b;
+    background-color: #209CEE;
     bottom: -2px;
     height: 1px
 }
@@ -1411,7 +1411,7 @@ body.body-tax-type .nav-item.is-types>a::after {
 
 body.body-page-template-properties .nav-item.is-properties .subnav a:first-child,
 body.body-page-template-sold-properties .nav-item.is-properties .subnav a:last-child {
-    color: #de7f2b
+    color: #209CEE
 }
 
 @media screen and (max-width:991px) {
@@ -1555,7 +1555,7 @@ body.body-page-template-sold-properties .nav-item.is-properties .subnav a:last-c
 
 .footer-social-brand a:hover,
 .footer-social-icon:hover {
-    color: #de7f2b
+    color: #209CEE
 }
 
 .footer-social-brand a path,
@@ -1588,7 +1588,7 @@ body.body-page-template-sold-properties .nav-item.is-properties .subnav a:last-c
 }
 
 .footer-nav-label a:hover {
-    color: #de7f2b
+    color: #209CEE
 }
 
 .footer-nav-contact:not(:last-child) {
@@ -1867,7 +1867,7 @@ body.body-page-template-sold-properties .nav-item.is-properties .subnav a:last-c
 }
 
 .pswp__mini.is-active {
-    border-color: #de7f2b;
+    border-color: #209CEE;
     opacity: 1
 }
 
@@ -2847,7 +2847,7 @@ body.body-page-template-sold-properties .nav-item.is-properties .subnav a:last-c
 }
 
 .cc-link:hover {
-    border-bottom-color: #de7f2b
+    border-bottom-color: #209CEE
 }
 
 .cc-compliance {
@@ -3020,7 +3020,7 @@ body.body-page-template-sold-properties .nav-item.is-properties .subnav a:last-c
 }
 
 .front-discover-header p {
-    color: #de7f2b;
+    color: #209CEE;
     font-size: 1em
 }
 
@@ -3142,7 +3142,7 @@ body.body-page-template-sold-properties .nav-item.is-properties .subnav a:last-c
 
 .properties-filter.is-search .input:focus+.search::after,
 .properties-filter.is-search .input:focus+.search::before {
-    border-color: #de7f2b
+    border-color: #209CEE
 }
 
 .properties-filter.is-search:hover .search {
@@ -3601,7 +3601,7 @@ body.body-page-template-sold-properties .nav-item.is-properties .subnav a:last-c
 }
 
 .single-meta-link a:hover {
-    color: #de7f2b
+    color: #209CEE
 }
 
 @media screen and (max-width:767px) {
