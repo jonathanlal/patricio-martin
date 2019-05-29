@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import com.patriciomartin.models.SendEmail;
 
+
 @WebServlet("/ContactServlet")
 public class ContactServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -20,6 +21,7 @@ public class ContactServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
+		
 			HttpSession session = ((HttpServletRequest) request).getSession();
 			String lang = (String) session.getAttribute("language");
 			

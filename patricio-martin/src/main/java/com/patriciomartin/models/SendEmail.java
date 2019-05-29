@@ -134,8 +134,21 @@ public class SendEmail {
 	public void sendWithGoogle(String useremail, String htmlBody,String subject) throws MalformedURLException{
 
 		//ADD IMAGES
-		Map<String, String> mapInlineImages = new HashMap<String, String>(); //what to do about images? 
-		mapInlineImages.put("logo1", Globals.EMAIL_LOGO);
+		Map<String, String> mapInlineImages = new HashMap<String, String>();
+		mapInlineImages.put(Globals.EMAIL_LOGO, "img/email/"+Globals.EMAIL_LOGO);
+		
+	   if(Globals.EMAIL_FACEBOOK_ON)
+	   mapInlineImages.put(Globals.EMAIL_FACEBOOK, "img/email/"+Globals.EMAIL_FACEBOOK);
+	   if(Globals.EMAIL_TWITTER_ON)
+		   mapInlineImages.put(Globals.EMAIL_TWITTER, "img/email/"+Globals.EMAIL_TWITTER);
+	   if(Globals.EMAIL_LINKEDIN_ON)
+		   mapInlineImages.put(Globals.EMAIL_LINKEDIN, "img/email/"+Globals.EMAIL_LINKEDIN);
+	   if(Globals.EMAIL_PINTEREST_ON)
+		   mapInlineImages.put(Globals.EMAIL_PINTEREST, "img/email/"+Globals.EMAIL_PINTEREST);
+	   if(Globals.EMAIL_GOOGLEPLUS_ON)
+		   mapInlineImages.put(Globals.EMAIL_GOOGLEPLUS, "img/email/"+Globals.EMAIL_GOOGLEPLUS);
+	   if(Globals.EMAIL_INSTAGRAM_ON)
+		   mapInlineImages.put(Globals.EMAIL_INSTAGRAM, "img/email/"+Globals.EMAIL_INSTAGRAM);
 		
 	    Properties props = new Properties();
 	    Session session = Session.getDefaultInstance(props, null);
@@ -178,15 +191,22 @@ public class SendEmail {
 	   form.field("to", useremail);
 	   form.field("subject", subject);
 	   form.field("html", htmlBody);
-	   File logo = new File("img/email-logo-v2.png");
-	   form.bodyPart(new FileDataBodyPart("inline",logo,MediaType.APPLICATION_OCTET_STREAM_TYPE));
 	   
-	   File shareFacebook = new File("img/facebook-32.png");
-	   File shareTwitter = new File("img/twitter-32.png");
-	   File shareLinkedIn = new File("img/link-32.png");
-	   form.bodyPart(new FileDataBodyPart("inline",shareFacebook,MediaType.APPLICATION_OCTET_STREAM_TYPE));
-	   form.bodyPart(new FileDataBodyPart("inline",shareTwitter,MediaType.APPLICATION_OCTET_STREAM_TYPE));
-	   form.bodyPart(new FileDataBodyPart("inline",shareLinkedIn,MediaType.APPLICATION_OCTET_STREAM_TYPE));
+	   form.bodyPart(new FileDataBodyPart("inline", new File("img/email/"+Globals.EMAIL_LOGO),MediaType.APPLICATION_OCTET_STREAM_TYPE));
+	   
+	   
+	   if(Globals.EMAIL_FACEBOOK_ON)
+	   form.bodyPart(new FileDataBodyPart("inline",new File("img/email/"+Globals.EMAIL_FACEBOOK),MediaType.APPLICATION_OCTET_STREAM_TYPE));
+	   if(Globals.EMAIL_TWITTER_ON)
+	   form.bodyPart(new FileDataBodyPart("inline",new File("img/email/"+Globals.EMAIL_TWITTER),MediaType.APPLICATION_OCTET_STREAM_TYPE));
+	   if(Globals.EMAIL_LINKEDIN_ON)
+	   form.bodyPart(new FileDataBodyPart("inline",new File("img/email/"+Globals.EMAIL_LINKEDIN),MediaType.APPLICATION_OCTET_STREAM_TYPE));
+	   if(Globals.EMAIL_PINTEREST_ON)
+	   form.bodyPart(new FileDataBodyPart("inline",new File("img/email/"+Globals.EMAIL_PINTEREST),MediaType.APPLICATION_OCTET_STREAM_TYPE));
+	   if(Globals.EMAIL_GOOGLEPLUS_ON)
+	   form.bodyPart(new FileDataBodyPart("inline",new File("img/email/"+Globals.EMAIL_GOOGLEPLUS),MediaType.APPLICATION_OCTET_STREAM_TYPE));
+	   if(Globals.EMAIL_INSTAGRAM_ON)
+	   form.bodyPart(new FileDataBodyPart("inline",new File("img/email/"+Globals.EMAIL_INSTAGRAM),MediaType.APPLICATION_OCTET_STREAM_TYPE));
 	   
 	   return webResource.type(MediaType.MULTIPART_FORM_DATA_TYPE).post(ClientResponse.class, form);
 	}

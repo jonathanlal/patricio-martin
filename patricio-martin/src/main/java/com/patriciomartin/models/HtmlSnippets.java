@@ -48,7 +48,12 @@ public class HtmlSnippets {
 		//TITLE PART
 		htmlMessage += "<div style=\"text-align: center;margin-top: 0px;\">";
 		htmlMessage += "<a href=\""+Globals.DOMAIN_FULL+"\" style=\"text-decoration:none;\">";
-		htmlMessage += "<img style=\"vertical-align:middle;width:70%;max-width:300px;\" alt=\""+Globals.BRAND+"\" src=\""+Globals.EMAIL_CID_LOGO+"\">";
+		
+		htmlMessage += "<img style=\"vertical-align:middle;width:70%;max-width:300px;\" alt=\""+Globals.BRAND+"\" ";
+		if(Globals.EMAIL_SENDER_TYPE_GOOGLE)
+		htmlMessage += "src=\"cid:"+Globals.EMAIL_LOGO+"\">";
+		else
+		htmlMessage += "src=\"img/email/"+Globals.EMAIL_LOGO+"\">";
 		htmlMessage += "</a>";
 		htmlMessage += "</div>";
 		htmlMessage += "<div style=\"background-color: white;display: inline-block;padding: 20px;text-align: center;margin-top:10px;\">";
@@ -56,6 +61,7 @@ public class HtmlSnippets {
 	}
 	private static String emailFoot(){
 		
+		boolean isCID = Globals.EMAIL_SENDER_TYPE_GOOGLE;
 		
 		String htmlMessage = "<p style=\"color:#999999;\">"+SendEmail.email_footer_confirm+"</p>";
 		htmlMessage += "<p style=\"color:#999999;\">"+SendEmail.email_footer_noreply+"</p><br>";
@@ -68,28 +74,44 @@ public class HtmlSnippets {
 		
 		//FACEBOOK
 		htmlMessage += "<a style=\"text-decoration:none;\" href=\""+Globals.SOCIAL_FACEBOOK+"\"> ";
-		htmlMessage += "<img alt=\"Facebook\" src=\""+Globals.EMAIL_CID_FACEBOOK+"\">";
+		htmlMessage += "<img alt=\"Facebook\" ";
+		htmlMessage +=  isCID ? "src=\"cid:"+Globals.EMAIL_FACEBOOK+"\">": "src=\"img/email/"+Globals.EMAIL_FACEBOOK;
+		htmlMessage +="\">";
 		htmlMessage += "</a>";
 		//GOOGLE+
 		htmlMessage += "<a style=\"text-decoration:none;\" href=\""+Globals.SOCIAL_GOOGLEPLUS+"\"> ";
-		htmlMessage += "<img alt=\"Google\" src=\""+Globals.EMAIL_CID_GOOGLEPLUS+"\">";
+		htmlMessage += "<img alt=\"Google\" ";
+		htmlMessage +=  isCID ? "src=\"cid:"+Globals.EMAIL_GOOGLEPLUS+"\">": "src=\"img/email/"+Globals.EMAIL_GOOGLEPLUS;
+		htmlMessage +="\">";
 		htmlMessage += "</a>";
 		//TWITTER
 		htmlMessage += "<a style=\"text-decoration:none;\" href=\""+Globals.SOCIAL_TWITTER+"\"> ";
-		htmlMessage += "<img alt=\"Twitter\" src=\""+Globals.EMAIL_CID_TWITTER+"\">";
+		htmlMessage += "<img alt=\"Twitter\" ";
+		htmlMessage +=  isCID ? "src=\"cid:"+Globals.SOCIAL_TWITTER+"\">": "src=\"img/email/"+Globals.SOCIAL_TWITTER;
+		htmlMessage +="\">";
 		htmlMessage += "</a>";
 		//INSTAGRAM
 		htmlMessage += "<a style=\"text-decoration:none;\" href=\""+Globals.SOCIAL_INSTAGRAM+"\"> ";
-		htmlMessage += "<img alt=\"Instagram\" src=\""+Globals.EMAIL_CID_INSTAGRAM+"\">";
+		htmlMessage += "<img alt=\"Instagram\" ";
+		htmlMessage +=  isCID ? "src=\"cid:"+Globals.SOCIAL_INSTAGRAM+"\">": "src=\"img/email/"+Globals.SOCIAL_INSTAGRAM;
+		htmlMessage +="\">";
 		htmlMessage += "</a>";
 		//PINTEREST
 		htmlMessage += "<a style=\"text-decoration:none;\" href=\""+Globals.SOCIAL_PINTEREST+"\"> ";
-		htmlMessage += "<img alt=\"Pinterest\" src=\""+Globals.EMAIL_CID_PINTEREST+"\">";
+		htmlMessage += "<img alt=\"Pinterest\" ";
+		htmlMessage +=  isCID ? "src=\"cid:"+Globals.SOCIAL_PINTEREST+"\">": "src=\"img/email/"+Globals.SOCIAL_PINTEREST;
+		htmlMessage +="\">";
 		htmlMessage += "</a>";
 		//LINKEDIN
 		htmlMessage += "<a style=\"text-decoration:none;\" href=\""+Globals.SOCIAL_LINKEDIN+"\"> ";
-		htmlMessage += "<img alt=\"Linkedin\" src=\""+Globals.EMAIL_CID_LINKEDIN+"\">";
+		htmlMessage += "<img alt=\"LinkedIn\" ";
+		htmlMessage +=  isCID ? "src=\"cid:"+Globals.SOCIAL_LINKEDIN+"\">": "src=\"img/email/"+Globals.SOCIAL_LINKEDIN;
+		htmlMessage +="\">";
 		htmlMessage += "</a>";
+		
+//		htmlMessage += "<a style=\"text-decoration:none;\" href=\""+Globals.SOCIAL_LINKEDIN+"\"> ";
+//		htmlMessage += "<img alt=\"Linkedin\" src=\""+Globals.EMAIL_CID_LINKEDIN+"\">";
+//		htmlMessage += "</a>";
 		
 		htmlMessage += "<br>";
 		 htmlMessage += "<a style=\"text-decoration:none;font-size:22px;weight:700;color:#1071b1;\" href=\""+Globals.DOMAIN_FULL+"\">"+Globals.DOMAIN_NAKED+"</a>";

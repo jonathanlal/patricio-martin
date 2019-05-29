@@ -36,7 +36,7 @@ public class MainFilter implements Filter {
 	public void destroy() {}
 	
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-	    String requri = ((HttpServletRequest) request).getRequestURI();
+		String requri = ((HttpServletRequest) request).getRequestURI();
 		page = null; //reset
 		continueChain = false; //reset
 		if(Globals.IS_i18n)

@@ -14,5 +14,5 @@
 
 
 
-
-<%@ include file="WEB-INF/templates/contact.jsp" %>
+<%-- <%@ include file="resources/common/error.jsp"%> --%>
+<jsp:include path="/common/error.jsp" />

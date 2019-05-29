@@ -15,6 +15,7 @@ import com.patriciomartin.objects.Url;
 public class Globals {
 	
 	//CONFIG
+	public static String PROJECT_ID = "patricio-martin"; //the GOOGLE PROJECT ID WHICH IS ALSO USED AS THE DB NAME in the web devil sql server
 	public static boolean IS_i18n = true; //  internationalization is abbreviated as i18n, because there are 18 letters between "i" and "n."
 	public static boolean REWRITE_i18n_URLS = true; //if session variable lang is 'en' and user tries to access /acerca-de/ then it will rewrite url to /about/ (other wise it won't and only change page language)
 	public static boolean EMAIL_SENDER_TYPE_GOOGLE = true; //Use java mail api and send via google or some other implementation (via mailgun for example)
@@ -22,10 +23,9 @@ public class Globals {
 	public static String DEFAULT_LANG = "en"; //default language of the website
 	public static String[] LANGUAGES = {"en","es"}; //languages of the website
 	public static String URL_MAPPINGS_FILENAME = "url-mappings.xml"; //must be in the resources folder
-	public static String STATIC_CONTENT_EXT[] = {".png",".jpg",".js",".css",".gif",".mp4",".xml",".ico",".MF", ".tld"}; // it's important you do not create urls that "contains" these strings
 	
 	//DATABASE
-	public static String DB_INSTANCE_CONNECTION_NAME = "the-web-devil:europe-west1:the-web-devil"; //google cloud sql old:  client-cms-1008:europe-west1:client-cms-instance
+	public static String DB_INSTANCE_CONNECTION_NAME = "the-web-devil:europe-west1:the-web-devil"; //google cloud sql old:  
 	public static String DB_SCHEMA_NAME = "webdevil";
 	public static String DB_LOCALHOST = "localhost:3306";
 	public static String DB_LOCAL_USER = "root";
@@ -60,8 +60,7 @@ public class Globals {
 	public static String MAILGUN_BASE_URL = "\r\n" + "";
 	public static String MAILGUN_MAIL_DOMAIN = "mail."+DOMAIN_NAKED;
 	public static String MAILGUN_FROM = BRAND;
-	public static String EMAIL_LOGO = "img/email-logo-v2.png"; //mailgun
-	public static String EMAIL_CID_LOGO = "cid:email-logo-v2.png"; // google
+	public static String EMAIL_LOGO = "email-logo.png"; //300x217 is good
 	public static String EMAIL_ADDRESS_CONTACT = "info@patriciomartin.com";
 	@SuppressWarnings("serial")
 	public static Map<String, String> EMAIL_ADMIN_HASHMAP = new HashMap<String, String>()
@@ -70,14 +69,22 @@ public class Globals {
 	     //put("Patricio", EMAIL_ADDRESS_CONTACT);
 	}};
 	
-	//EMAIL SOCIAL BTNS
-    public static String EMAIL_CID_FACEBOOK = "cid:facebook-32.png";
-	public static String EMAIL_CID_GOOGLEPLUS = "cid:google-32.png";
-	public static String EMAIL_CID_TWITTER = "cid:twitter-32.png";
-    public static String EMAIL_CID_INSTAGRAM = "cid:instagram-32.png";
-	public static String EMAIL_CID_PINTEREST = "cid:pinterest-32.png";
-	public static String EMAIL_CID_LINKEDIN = "cid:linkedin-32.png";
 	
+	//EMAIL SOCIAL BTNS DISABLE OR ENABLE //make false to turn them off in the footer of the email
+	public static boolean EMAIL_FACEBOOK_ON = true;
+	public static boolean EMAIL_GOOGLEPLUS_ON = true;
+	public static boolean EMAIL_TWITTER_ON = true;
+	public static boolean EMAIL_INSTAGRAM_ON = true;
+	public static boolean EMAIL_PINTEREST_ON = true;
+	public static boolean EMAIL_LINKEDIN_ON = true;
+	
+	//EMAIL SOCIAL BTNS IMGS
+    public static String EMAIL_FACEBOOK = "facebook-32.png";
+	public static String EMAIL_GOOGLEPLUS = "google-32.png";
+	public static String EMAIL_TWITTER = "twitter-32.png";
+    public static String EMAIL_INSTAGRAM = "instagram-32.png";
+	public static String EMAIL_PINTEREST = "pinterest-32.png";
+	public static String EMAIL_LINKEDIN = "linkedin-32.png";
 	
 	//SOCIAL WEB LINKS
 	public static String SOCIAL_FACEBOOK = "";
@@ -89,17 +96,6 @@ public class Globals {
 	
 
 
-//	public static boolean isMultiLingual() {
-//		//check if project has language files
-//	    String propsFile = "text";
-//	    String propsPath = Globals.class.getClassLoader().getResource(".").getPath();
-//	    File f = new File(propsPath, propsFile + ".properties");
-//	    if(f.exists()){
-//	        return true;
-//	    }else {
-//	    	return false;
-//	    }
-//	}
 
 	public static File getUrlMappingFile() {
 		URL res = Globals.class.getClassLoader().getResource(Globals.URL_MAPPINGS_FILENAME);
