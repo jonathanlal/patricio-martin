@@ -13,6 +13,5 @@
 </section>
 
 
-
-<%-- <%@ include file="resources/common/error.jsp"%> --%>
-<jsp:include path="/common/error.jsp" />
+<%-- <%@ include file="/cms/login.jsp"%> --%>
+<%-- <jsp:include path="/cms/login.jsp" /> --%>

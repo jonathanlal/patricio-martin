@@ -3,7 +3,6 @@
 	<name>patricio-martin</name>
 	<comment></comment>
 	<projects>
-		<project>the-web-devil</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
@@ -42,9 +41,9 @@
 	</natures>
 	<linkedResources>
 		<link>
-			<name>common</name>
+			<name>src/main/webapp/cms</name>
 			<type>2</type>
-			<location>C:/Users/jonat/git/the-web-devil/the-web-devil/src/main/webapp/META-INF/resources/common</location>
+			<location>C:/Users/Jonathan/git/the-web-devil/the-web-devil/src/main/webapp/cms</location>
 		</link>
 	</linkedResources>
 </projectDescription>

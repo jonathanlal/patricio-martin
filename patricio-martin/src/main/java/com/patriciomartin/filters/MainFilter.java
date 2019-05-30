@@ -36,46 +36,68 @@ public class MainFilter implements Filter {
 	public void destroy() {}
 	
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-		String requri = ((HttpServletRequest) request).getRequestURI();
-		page = null; //reset
-		continueChain = false; //reset
-		if(Globals.IS_i18n)
-	 		requri = checkBaseURLLanguage(request, response, requri); // /es/ --> /en/
-			if(Globals.IS_URLMAPS_XML) { 
-				doXML(request, response, chain, requri);
-			}else {
-				doReflection(request, response, chain, requri);
-			}
-			decideFate(request, response, chain);
+//		String requri = ((HttpServletRequest) request).getRequestURI();
+//		page = null; //reset
+//		continueChain = false; //reset
+//		if(Globals.IS_i18n)
+//	 		requri = checkBaseURLLanguage(request, response, requri); // /es/ --> /en/
+//			if(Globals.IS_URLMAPS_XML) { 
+//				doXML(request, response, chain, requri);
+//			}else {
+//				doReflection(request, response, chain, requri);
+//			}
+//			decideFate(request, response, chain);
+		continueChain = true;
+		decideFate(request, response, chain);
 	}
 	private void doXML(ServletRequest request, ServletResponse response, FilterChain chain, String requri) throws IOException, ServletException {
 		List<Url> url_map = UrlMap.getUrlMappingsXML();
 		HashMap<String, String> urls = UrlMap.getUrlJspMappingsXML(url_map); //gets all url mappings via XML -> '/about/ , 'about.jsp'	
 		if(Globals.IS_i18n && Globals.REWRITE_i18n_URLS) //if website is multilingual and you want to rewrite the url because they requested the wrong language url (kinda a waste to do, shouldn't really do it to support an edge case)
 		checkIfNeedToReWriteURLCauseLanguageXML(request, response, requri,url_map); //THIS WILL REWRITE THE URL IF SESSION VARIABLE IS ENGLISH PAGE AND THEY REQUEST THE SPANISH URL FOR ANOTHER PAGE - IT WILL CHANGE IT BACK TO ENGLISH BY GETTING THE ENGLISH URL
-		wildCardOrServlet(request, requri, urls, isWildCardXML(requri, url_map));
+		wildCardOrServlet(request, response, chain, requri, urls, isWildCardXML(requri, url_map));
 	}
 	private void doReflection(ServletRequest request, ServletResponse response, FilterChain chain, String requri) throws IOException, ServletException {
 		Field[] url_map = Mappings.class.getDeclaredFields(); //reflection
 		HashMap<String, String> urls = UrlMap.getUrlJspMappings(null, url_map);  //gets all url mappings via REFLECTION -> '/about/ , 'about.jsp'	
 		if(Globals.IS_i18n && Globals.REWRITE_i18n_URLS)//if website is multilingual and you want to rewrite the url because they requested the wrong language url (kinda a waste to do, shouldn't really do it to support an edge case)
 	 	checkIfNeedToReWriteURLCauseLanguage(request, response, requri, url_map); //THIS WILL REWRITE THE URL IF SESSION VARIABLE IS ENGLISH PAGE AND THEY REQUEST THE SPANISH URL FOR ANOTHER PAGE - IT WILL CHANGE IT BACK TO ENGLISH BY GETTING THE ENGLISH URL
-		wildCardOrServlet(request, requri, urls, isWildCard(requri, url_map));
+		wildCardOrServlet(request, response, chain, requri, urls, isWildCard(requri, url_map));
 	}
 	private void decideFate(ServletRequest request, ServletResponse response, FilterChain chain) {
 		try { if(!continueChain){	
 		    request.getRequestDispatcher("/GetPage?page="+page).forward(request, response); return;
     	}else{chain.doFilter(request, response);}}catch(Exception e){e.printStackTrace();}
 	}
-	private void wildCardOrServlet(ServletRequest request, String requri, HashMap<String, String> urls, boolean isWildcard) {
+	private void wildCardOrServlet(ServletRequest request, ServletResponse response, FilterChain chain, String requri, HashMap<String, String> urls, boolean isWildcard) {
 	 	 page = urls.get(requri); //it will return null here for wildcard mappings because they have not call attribute. 
 	 	 if(page == null || page.equals("*"))  //if page is null at this point it means the url is not in map (with exception of wildcards)
-	 	 checkIfWildCardOrServlet(request, isWildcard);
+	 	 checkIfWildCardOrServlet(request, response, chain, isWildcard);
 	}
-	private void checkIfWildCardOrServlet(ServletRequest request, boolean isWildcard) {
-		if(isWildcard|| isAServlet(request)) {
-   		continueChain = true;
-			}else {page = "error.jsp";}
+	private void checkIfWildCardOrServlet(ServletRequest request, ServletResponse response, FilterChain chain, boolean isWildcard) {
+		
+		if(isWildcard) {
+			try {
+				processWildCard(request, response, chain);
+			} catch (IOException | ServletException e) {
+				e.printStackTrace();
+			}
+		}else if(isAServlet(request)) {
+			continueChain = true;
+		}else {
+			page = "error.jsp";
+		}
+	}
+	private void processWildCard(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+		
+		try {
+//		WDAdmin wd = new WDAdmin();
+//		wd.hello("hello");
+//		wd.AdminAreaFilter(request, response, chain);
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 	}
 	private String getSessionLanguage(ServletRequest request) {
 		HttpSession session = ((HttpServletRequest) request).getSession();

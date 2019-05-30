@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.List;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -27,7 +29,7 @@ public class Test extends HttpServlet {
         super();
     }
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		System.out.println("hello");
 //		String path = this.getClass().getClassLoader().getResource("").getPath();
 //		String fullPath = URLDecoder.decode(path, "UTF-8");
 //		String pathArr[] = fullPath.split(Globals.URL_MAPPINGS_LOCATION);
@@ -56,8 +58,9 @@ public class Test extends HttpServlet {
 //		String pathname;
 		
 		
-		
-		System.out.println(Globals.getUrlMappingFile().exists());
+		RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
+		rd.forward(request, response);
+//		System.out.println(Globals.getUrlMappingFile().exists());
 	
 		
 //			System.out.println(reponsePath);

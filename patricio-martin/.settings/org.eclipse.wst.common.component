@@ -3,10 +3,6 @@
         <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/common"/>
-        <dependent-module archiveName="some.goat-0.1.0-SNAPSHOT.war" deploy-path="/WEB-INF/lib" handle="module:/resource/the-web-devil/the-web-devil">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
         <property name="context-root" value="patricio-martin"/>
         <property name="java-output-path" value="/patricio-martin/target/patricio-martin-0.1.0-SNAPSHOT/WEB-INF/classes"/>
     </wb-module>

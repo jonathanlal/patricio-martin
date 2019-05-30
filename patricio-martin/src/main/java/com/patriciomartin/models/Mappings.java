@@ -25,5 +25,6 @@ public class Mappings {
 	URL_PROJECTS_DOMUS_ES = {"/projectos/domus/","project.jsp?p=domus", "es"},
 	URL_PROJECTS_RANCHO_ES = {"/projectos/rancho/","project.jsp?p=rancho", "es"},
 	URL_TEST_ES = {"/test.jsp","test.jsp", "en"}, 
-	WD_ADMIN_WILDCARD = {"/wd-admin/","*", "*"};
+	WD_ADMIN_WILDCARD_EN = {"/wd-admin/","*", "*"},
+	WD_ADMIN_WILDCARD_ES = {"/wd-admina/","*", "*"};
 }
