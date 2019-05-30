@@ -39,21 +39,25 @@
   <div class="page-content">
    <div class="container">
     <div class="content">
-    <h3 class=" has-text-centered has-text-grey-darker"><fmt:message key="contact.intro"/></h3>
     
+    <div id="emailsent" style="background-color:#209CEE;width:100%;border-radius:3px;padding:5px;display:none;">
+<h1 class="text-center" id="fmsgSent" style="text-align: center;margin-top: 20px;color:white !important;"></h1>
+</div>
+    <div id="emailcontainer">
+    <h3 class=" has-text-centered has-text-grey-darker"><fmt:message key="contact.intro"/></h3>
     <div class="card">
         <div class="card-content">
 		<div class="columns" style="margin-bottom:0 !important;">
 			<div class="column" style="padding-bottom:0 !important;">
 				<div class="field">
 					<div class="control has-icons-left">
-						<input id="fname" class="input" type="text" placeholder="<fmt:message key="contact.form.name"/>">
+						<input id="fname" class="input" type="text">
 			    		<span class="icon is-small is-left"><i class="fas fa-user"></i></span>
 			  		</div>
 				</div>
 				<div class="field">
 					<div class="control has-icons-left">
-			    		<input id="femail" class="input is-danger" type="email" placeholder="<fmt:message key="contact.form.email"/>" value="">
+			    		<input id="femail" class="input is-danger" type="email" value="">
 			    		<span class="icon is-small is-left"><i class="fas fa-envelope"></i></span>
 			  		</div>
 				</div>
@@ -68,21 +72,22 @@
 			    		</span>
 <!-- 			       		<span class="icon is-small is-left"><i class="fas fa-envelope"></i></span> -->
 			  		</div>
-			 		<div class="control is-expanded"><input id="fphone" class="input" type="text" placeholder="<fmt:message key="contact.form.phone"/>"></div>
+			 		<div class="control is-expanded"><input id="fphone" class="input" type="text"></div>
 				</div>
 			</div>
 			<div class="column">
 				<div class="field">
-					<div class="control"><textarea id="fmessage" class="textarea" placeholder="<fmt:message key="contact.form.message"/>"></textarea></div>
+					<div class="control"><textarea id="fmessage" class="textarea"></textarea></div>
 				</div>
 			</div>
 		</div>
 		<div class="field" style="float: right;">
-		<div class="control"><button class="button is-success is-small" id="btnContactSubmit"><fmt:message key="contact.form.send"/></button></div>
+		<div class="control"><button class="button is-success is-small" id="fbtn"></button></div>
 		</div>
 		   </div>   
 	</div>
-		
+	</div>
+			 
 		
 		
 		
@@ -114,7 +119,6 @@
  </div>
 </section>
 
-<!-- <script type="text/javascript" src="../../js/contact.js?v=2"></script> -->
 
 
 <%@ include file="js/contact.jsp" %>

@@ -1,22 +1,39 @@
-<input id="fnametxt" type="hidden" value="<fmt:message key="contact.form.name"/>"/>
-<input id="femailtxt" type="hidden" value="<fmt:message key="contact.form.email"/>"/>
-<input id="fphonetxt" type="hidden" value="<fmt:message key="contact.form.phone"/>"/>
-<input id="fmessagetxt" type="hidden" value="<fmt:message key="contact.form.message"/>"/>
+<input class="input_field_init" id="fnametxt" type="hidden" value="<fmt:message key="contact.form.name"/>"/>
+<input class="input_field_init" id="femailtxt" type="hidden" value="<fmt:message key="contact.form.email"/>"/>
+<input class="input_field_init" id="fphonetxt" type="hidden" value="<fmt:message key="contact.form.phone"/>"/>
+<input class="input_field_init" id="fmessagetxt" type="hidden" value="<fmt:message key="contact.form.message"/>"/>
+<input class="input_field_init" id="fmsgSenttxt" type="hidden" value="<fmt:message key="contact.form.success"/>"/>
+
+<input class="input_field_init" id="fbtntxt" type="hidden" value="<fmt:message key="contact.form.send"/>">
+
+<input class="input_field_init" id="fnametxt-placeholdererror" type="hidden" value="<fmt:message key="contact.form.name.error"/>">
+<input class="input_field_init" id="femailtxt-placeholdererror" type="hidden" value="<fmt:message key="contact.form.email.error"/>">
+
+<style>
+.errorInput::-webkit-input-placeholder {
+    color: red !important;
+}
+</style>
+
+
 
 <script>
-//MULTILINGUAL SITES (in order for java code to be able to run here we need to put this in a .jsp file...)	
-var language = '<%=session.getAttribute("language")%>'; 
-function getValidationText(elementID){
-	if(language.indexOf('null')>=0 || language.indexOf('en')>=0){
-		if(elementID.indexOf('fname')>=0){return "*Type in your name.";}
-		if(elementID.indexOf('femail')>=0){return "*Type in your email.";}
-	}
-	if(language.indexOf('es')>=0){
-		if(elementID.indexOf('fname')>=0){return "*Escribe tu nombre.";}
-		if(elementID.indexOf('femail')>=0){return "*Ingrese su correo electrónico.";}
+//get all init fields and put their placeholders
+window.onload = function(){
+	var x = document.getElementsByClassName("input_field_init");
+	for (var i = 0; i < x.length; i++) {
+		var input_id = x[i].id;
+		var input_value = x[i].value;
+		if(!input_id.includes("placeholdererror" && !input_id.includes('fbtn') && !input_id.includes('fmsgSenttxt'))){
+			document.getElementById(input_id.substring(0, input_id.length - 3)).placeholder=getTextFromNode(input_id);	
+		}
+		if(input_id.includes('fbtn') || input_id.includes('fmsgSent')){
+			document.getElementById(input_id.substring(0, input_id.length - 3)).innerHTML = document.getElementById(input_id).value;	
+		}
 	}
 }
-document.getElementById("btnContactSubmit").onclick = function() {
+
+document.getElementById("fbtn").onclick = function() {
 	if(validateForm()){submitContact()}
 };
 function validateForm() {
@@ -31,26 +48,27 @@ function validateForm() {
 	}else{check=true;}
 	return check;
 }
-function resetErrorInput(){
-	changePlaceHolderTextByElementID("fname");
-    var name = document.getElementById("fname");
-    name.classList.remove("errorInput");
-    changePlaceHolderTextByElementID("femail");
-    var email = document.getElementById("femail");
-    email.classList.remove("errorInput");
+function resetErrorInput(elementID){
+	changePlaceHolderTextByElementID(elementID, elementID+"txt");
+    document.getElementById(elementID).classList.remove("errorInput");
 }
-function changePlaceHolderTextByElementID(elementID){
-	document.getElementById(elementID).placeholder=getTextFromNode(elementID+'txt');
+function changePlaceHolderTextByElementID(elementID, elementIDPlaceholder){
+	document.getElementById(elementID).placeholder=getTextFromNode(elementIDPlaceholder);
 }
 function getTextFromNode(elementID){
-	var node = document.getElementById(elementID);
-	return node.textContent || node.innerText;
+	var text = document.getElementById(elementID).value;
+	return text;
 }
 function errorInput(elementID){
 	 var element = document.getElementById(elementID);
-	 element.placeholder=getValidationText(elementID);
+	 element.placeholder = getValidationText(elementID);
 	 element.className += " errorInput";
-	 window.setTimeout(resetErrorInput, 3000);
+	 window.setTimeout(function(){
+		 resetErrorInput(elementID);
+	 }, 3000);
+}
+function getValidationText(elementID){
+	return document.getElementById(elementID+"txt-placeholdererror").value;
 }
 function submitContact(){
 	var fmessage = document.getElementById('fmessage').value;
@@ -63,7 +81,7 @@ function submitContact(){
   document.getElementById("emailcontainer").style.display = "none";
 	var e = "name="+fname+"&email="+femail+"&msg="+fmessage+"&phone="+fphone;//+"&hearfrom="+hearfrom;
 	var n=new XMLHttpRequest();
-	n.open("POST","../../../ContactServlet",!0),
+	n.open("POST","../../../../ContactServlet",!0),
 	n.setRequestHeader("Content-type","application/x-www-form-urlencoded"),
 	n.onreadystatechange=function(){
 		  if (n.readyState == 4) {

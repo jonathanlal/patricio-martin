@@ -8,7 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.patriciomartin.models.Globals;
 import com.patriciomartin.models.SendEmail;
+import com.patriciomartin.objects.Envelope;
 
 
 @WebServlet("/ContactServlet")
@@ -20,10 +22,14 @@ public class ContactServlet extends HttpServlet {
     }
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
+		SendEmail sm = new SendEmail();
+		Envelope visitor_env = new Envelope();
 		
+		if(Globals.IS_i18n) {
 			HttpSession session = ((HttpServletRequest) request).getSession();
 			String lang = (String) session.getAttribute("language");
+			visitor_env.setLang(lang);
+		}
 			
 			String name = request.getParameter("name");
 			String email = request.getParameter("email");
@@ -32,11 +38,17 @@ public class ContactServlet extends HttpServlet {
 			
 			if(name != null && !name.isEmpty()){
 			name = name.substring(0, 1).toUpperCase() + name.substring(1); //UPPERCASE FIRST LETTER
-			}else{name = "Someone"; //this should never happen}
-		
-		}
-			SendEmail sm = new SendEmail();
-			sm.sendContactMail(name, email, msg, phone, lang);
+			}else{name = "Someone"; }//this should never happen
+			
+			
+			visitor_env.setMsg(msg);
+			visitor_env.setVisitor_name(name);
+			visitor_env.setVisitor_email(email);
+			visitor_env.setPhone(phone);
+			visitor_env.setAdmin_flag(false); 
+			
+			
+			sm.sendContactMail(visitor_env);
 	}
 
 }

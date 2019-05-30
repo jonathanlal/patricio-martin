@@ -48,47 +48,32 @@ public class SendEmail {
 	
 
 	
-	public void sendContactMail(String visitor_name, String visitor_email, String msg, String phone, String lang)  {
+	public void sendContactMail(Envelope visitor_env)  {
 		
-		//SEND USER EMAIL
-		Envelope visitor_env = new Envelope();
-		visitor_env.setMsg(msg);
-		visitor_env.setLang(lang);
-		visitor_env.setVisitor_name(visitor_name);
-		visitor_env.setVisitor_email(visitor_email);
-		visitor_env.setAdmin_flag(false);
-		
-		try {
-			visitor_env = HtmlSnippets.createContactEmail(visitor_env);
-		} catch (NoSuchFieldException | SecurityException | IllegalArgumentException | IllegalAccessException e1) {
-			e1.printStackTrace();
-		}	
-			
+		//CREATE USER CONTACT EMAIL & SEND
+		visitor_env = HtmlSnippets.createContactEmail(visitor_env);
 		send(visitor_env.getVisitor_email(), visitor_env.getBody(), visitor_env.getSubject());
 		 
-		//SEND ADMIN EMAILS
+		//FOR EACH ADMIN EMAIL
 		Map<String,String> admin_emails = getAdminEmails();
 		for(Entry<?, ?> e: admin_emails.entrySet()){
 			String admin_name = (String) e.getKey();
 			String admin_email = (String) e.getValue();
 			Envelope admin_env = new Envelope();
-			admin_env.setMsg(msg);
-			admin_env.setLang(lang);
+			admin_env.setMsg(visitor_env.getMsg());
+			admin_env.setLang(visitor_env.getLang());
 			admin_env.setAdmin_name(admin_name);
 			admin_env.setAdmin_email(admin_email);
 			admin_env.setAdmin_flag(true);
-			admin_env.setVisitor_email(visitor_email);
-			admin_env.setVisitor_name(visitor_name);
-			admin_env.setPhone(phone);
-			
-			try {
-				admin_env = HtmlSnippets.createContactEmail(admin_env);
-			} catch (NoSuchFieldException | SecurityException | IllegalArgumentException | IllegalAccessException e1) {
-				e1.printStackTrace();
-			} 
-			
-			send(admin_email, admin_env.getBody(), admin_env.getSubject()); //make a switch here... so based on what mail sender implementation we use we send with that
+			admin_env.setVisitor_email(visitor_env.getVisitor_email());
+			admin_env.setVisitor_name(visitor_env.getVisitor_name());
+			admin_env.setPhone(visitor_env.getPhone());
+			//CREATE ADMIN CONTACT EMAIL & SEND
+			admin_env = HtmlSnippets.createContactEmail(admin_env);
+			send(admin_email, admin_env.getBody(), admin_env.getSubject()); 
 		}
+		
+		
 	}
   public void sendNewsLetterMail(String email) throws MalformedURLException {
 	  

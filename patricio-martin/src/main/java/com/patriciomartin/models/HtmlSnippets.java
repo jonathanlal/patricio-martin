@@ -127,7 +127,7 @@ public class HtmlSnippets {
 		htmlMessage += "</html>";
 		return htmlMessage;
 	}
-	private static void overrideTextWithLanguageIfi18n(String lang, String[] overrides) throws NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException {
+	private static void overrideTextWithLanguageIfi18n(String lang, String[] overrides)  {
 		//overrides the text values set in emails and replaces it with the value for the correct language
 		
 		if(Globals.IS_i18n) {
@@ -137,12 +137,19 @@ public class HtmlSnippets {
 			
 			 for(int i = 0; i < overrides.length;i++) {
 				 //REFLECTION (to get the class variable value and change it based on the language)
-				 Field declaredField = SendEmail.class.getDeclaredField(overrides[i]);
+				 Field declaredField;
+				try {
+					declaredField = SendEmail.class.getDeclaredField(overrides[i]);
+	
 		         boolean accessible = declaredField.isAccessible();
 		         declaredField.setAccessible(true);
 		         String new_email_greeting = b.getString(overrides[i].replace("_", "."));
 		         declaredField.set(SendEmail.class, new_email_greeting);
 		         declaredField.setAccessible(accessible);
+		         
+				} catch (NoSuchFieldException | SecurityException | IllegalArgumentException | IllegalAccessException e) {
+					e.printStackTrace();
+				}
 			 }
 			 //same for every mail so do manually...(same thing as above line)
 			 SendEmail.email_greeting = b.getString("email.greeting");
@@ -157,9 +164,9 @@ public class HtmlSnippets {
 	
 	
 	//MOVE THIS METHOD OVER TO SENDEMAIL and keep all the html in this class...
-	public static Envelope createContactEmail(Envelope e) throws NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException{
+	public static Envelope createContactEmail(Envelope e) {
 		
-		if(e.getLang() != null) {
+		if(Globals.IS_i18n && e.getLang() != null) {
 		//i18n, whatever we put in the array below, will make it so that when you call overrideTextWithLanguageIfi18n(), the variable is overridden with whatever language
 		String[] overrides = {"email_contact_subject", "email_contact_intro"};
 		overrideTextWithLanguageIfi18n(e.getLang(), overrides); //really really cool lol

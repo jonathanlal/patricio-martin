@@ -36,19 +36,19 @@ public class MainFilter implements Filter {
 	public void destroy() {}
 	
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-//		String requri = ((HttpServletRequest) request).getRequestURI();
-//		page = null; //reset
-//		continueChain = false; //reset
-//		if(Globals.IS_i18n)
-//	 		requri = checkBaseURLLanguage(request, response, requri); // /es/ --> /en/
-//			if(Globals.IS_URLMAPS_XML) { 
-//				doXML(request, response, chain, requri);
-//			}else {
-//				doReflection(request, response, chain, requri);
-//			}
-//			decideFate(request, response, chain);
-		continueChain = true;
-		decideFate(request, response, chain);
+		String requri = ((HttpServletRequest) request).getRequestURI();
+		page = null; //reset
+		continueChain = false; //reset
+		if(Globals.IS_i18n)
+	 		requri = checkBaseURLLanguage(request, response, requri); // /es/ --> /en/
+			if(Globals.IS_URLMAPS_XML) { 
+				doXML(request, response, chain, requri);
+			}else {
+				doReflection(request, response, chain, requri);
+			}
+			decideFate(request, response, chain);
+//		continueChain = true;
+//		decideFate(request, response, chain);
 	}
 	private void doXML(ServletRequest request, ServletResponse response, FilterChain chain, String requri) throws IOException, ServletException {
 		List<Url> url_map = UrlMap.getUrlMappingsXML();

@@ -8,6 +8,13 @@
 /* 	} */
 /* } */
 
+@media screen and (max-width: 767px){
+.hero-content {
+    min-height: 350px !important;
+}
+}
+
+
 .nav-item a::after {
     background-color: #209CEE;
     bottom: -2px;
