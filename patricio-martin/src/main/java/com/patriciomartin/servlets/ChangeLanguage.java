@@ -60,6 +60,8 @@ public class ChangeLanguage extends HttpServlet {
 		String resuri = request.getContextPath()+new_url;
 		response.sendRedirect(resuri);
 		return;
+//		response.re
+//		return;
 	
 		//get current 
 		

@@ -69,9 +69,13 @@ public class MainFilter implements Filter {
 	private void decideFate(ServletRequest request, ServletResponse response, FilterChain chain) throws ServletException, IOException {
 		 if(!continueChain){	
 			 System.out.println("GETTING PAGE: "+page);
+			 if(!response.isCommitted()) {
 			RequestDispatcher rd = request.getRequestDispatcher("/GetPage?page="+page);
 		    rd.forward(request, response);
 		    return;
+			 }else {
+				 return;
+			 }
     	}else{chain.doFilter(request, response);}
 	}
 	private void wildCardOrServlet(ServletRequest request, ServletResponse response, FilterChain chain, String requri, HashMap<String, String> urls, boolean isWildcard) {
