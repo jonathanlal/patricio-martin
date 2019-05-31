@@ -10,6 +10,5 @@
       <include-coda>/includes/footer.jsp</include-coda>
       <trim-directive-whitespaces>true</trim-directive-whitespaces>
     </jsp-property-group>
-
   </jsp-config>
 </web-app>

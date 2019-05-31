@@ -11,7 +11,7 @@
       
       
       
-        <form action="/Subscribe" method="POST" accept-charset="utf-8">
+        <form action="/Subscribe" method="GET" accept-charset="utf-8">
         
           <div class="field is-grouped">
           

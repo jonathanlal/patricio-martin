@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,6 +20,9 @@ public class ChangeLanguage extends HttpServlet {
         super();
     }
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("");	System.out.println("");
+		System.out.println("############### CHANGE LANGUAGE ################");
+		System.out.println("------------------------------------------------");
 		HttpSession session = request.getSession(true);
 		String selection = request.getParameter("lang");
 		if(selection == null) {selection = "en";}
@@ -35,8 +39,6 @@ public class ChangeLanguage extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println("************************************************");
-		System.out.println("************************************************");
 		String path = uri.getPath(); // /en/about/
 		
 		System.out.println("referer: "+referer);
@@ -54,21 +56,17 @@ public class ChangeLanguage extends HttpServlet {
 
 		String new_url = request.getContextPath()+path.replace(lang_base, "/"+selection+"/");//language swap
 		System.out.println("new_url "+new_url);
-		System.out.println("GETTING: "+request.getContextPath()+new_url);
-		System.out.println("************************************************");
-		System.out.println("************************************************");
+
 		String resuri = request.getContextPath()+new_url;
-		response.sendRedirect(resuri);
-		return;
-//		response.re
-//		return;
-	
-		//get current 
+		System.out.println("GETTING: "+resuri);
 		
 	
-	
-	
-	
+		System.out.println("------------------------------------------------");
+		System.out.println("############### CHANGE LANGUAGE ################");
+		System.out.println("");	System.out.println("");
+		
+		response.sendRedirect(resuri);
+		return;
 	}
 	
 	

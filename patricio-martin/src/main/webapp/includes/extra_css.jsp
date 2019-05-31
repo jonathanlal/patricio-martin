@@ -1,14 +1,5 @@
 <style>
 
-/* @media screen and (max-width: 1087px){ */
-/* 	.navbar-menu { */
-/* 	    background-color: transparent; */
-/* 	    box-shadow: none; */
-/* 	    padding: 0; */
-/* 	} */
-/* } */
-
-
 @media screen and (max-width: 767px){
 .hero-content, .hero {
         overflow: visible !important;
