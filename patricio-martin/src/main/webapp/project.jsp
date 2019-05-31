@@ -314,5 +314,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
 </script>
 
-<%@ include file="WEB-INF/templates/contact.jsp" %>
+<%@ include file="WEB-INF/templates/contactCTA.jsp" %>
 <%@ include file="WEB-INF/templates/newsletter.jsp" %>

@@ -15,17 +15,11 @@
 <!-- INFO ON BASE TAG: https://stackoverflow.com/questions/1889076/what-are-the-recommendations-for-html-base-tag ****This means using named/hash fragment anchors like <a href="#anchor"> should be instead:  <a href="${uri}#anchor">hash fragment</a> -->
    <base href="${fn:substring(url, 0, fn:length(url) - fn:length(pageContext.request.requestURI))}${pageContext.request.contextPath}/${not empty language ? language : cf:getDefaultLang()}/" /><!--[if lte IE 6]></base><![endif]-->
 
-<link rel="stylesheet" href="/css/bulma.css?v=10"/>
+<link rel="stylesheet" href="/css/bulma.css?v=22"/>
 <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
-
-<!-- <link rel="stylesheet" href="https://unpkg.com/bulmaswatch/lux/bulmaswatch.min.css"> -->
-
 
 
 <%@ include file="/includes/metas.jsp"%>
 <%@ include file="/includes/extra_css.jsp"%>
 
-
-<%-- <jsp:include page="/includes/metas.jsp"/> --%>
-<%-- <jsp:include page="/includes/extra_css.jsp"/> --%>
 <body>

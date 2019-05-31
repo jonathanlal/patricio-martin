@@ -11,6 +11,7 @@ import java.util.regex.Pattern;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRegistration;
@@ -37,6 +38,7 @@ public class MainFilter implements Filter {
 	
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		String requri = ((HttpServletRequest) request).getRequestURI();
+		System.out.println("filter hit with: "+requri);
 		page = null; //reset
 		continueChain = false; //reset
 		if(Globals.IS_i18n)
@@ -64,10 +66,13 @@ public class MainFilter implements Filter {
 	 	checkIfNeedToReWriteURLCauseLanguage(request, response, requri, url_map); //THIS WILL REWRITE THE URL IF SESSION VARIABLE IS ENGLISH PAGE AND THEY REQUEST THE SPANISH URL FOR ANOTHER PAGE - IT WILL CHANGE IT BACK TO ENGLISH BY GETTING THE ENGLISH URL
 		wildCardOrServlet(request, response, chain, requri, urls, isWildCard(requri, url_map));
 	}
-	private void decideFate(ServletRequest request, ServletResponse response, FilterChain chain) {
-		try { if(!continueChain){	
-		    request.getRequestDispatcher("/GetPage?page="+page).forward(request, response); return;
-    	}else{chain.doFilter(request, response);}}catch(Exception e){e.printStackTrace();}
+	private void decideFate(ServletRequest request, ServletResponse response, FilterChain chain) throws ServletException, IOException {
+		 if(!continueChain){	
+			 System.out.println("GETTING PAGE: "+page);
+			RequestDispatcher rd = request.getRequestDispatcher("/GetPage?page="+page);
+		    rd.forward(request, response);
+		    return;
+    	}else{chain.doFilter(request, response);}
 	}
 	private void wildCardOrServlet(ServletRequest request, ServletResponse response, FilterChain chain, String requri, HashMap<String, String> urls, boolean isWildcard) {
 	 	 page = urls.get(requri); //it will return null here for wildcard mappings because they have not call attribute. 
@@ -133,6 +138,7 @@ public class MainFilter implements Filter {
 		if(UrlMap.getWildcardMappings(fields).get(url) != null) {return true;
 		}else {return false;}
 	}
+	
 	private void checkIfNeedToReWriteURLCauseLanguage(ServletRequest request, ServletResponse response, String requri, Field[] fields) throws IOException {
 		String language_base = getSessionLanguage(request);// does not have any slashes 'en'
 		HashMap<String, String> urls = new HashMap<>();
@@ -145,6 +151,7 @@ public class MainFilter implements Filter {
 				 String uri = ((HttpServletRequest) request).getRequestURI();
 				 String base = url.substring(0, url.length() - uri.length()) + "/";
 				((HttpServletResponse) response).sendRedirect(base+language_base+alternate_url); //just incase whatever application has more than a couple directory deeps
+				return;
 			}
 	}
 	private void checkIfNeedToReWriteURLCauseLanguageXML(ServletRequest request, ServletResponse response, String requri, List<Url> url_map) throws IOException {
@@ -155,6 +162,7 @@ public class MainFilter implements Filter {
 			if(page_lang != null && !language_base.equals(page_lang)) {//requested url exists and the language of that url does not match the session language 
 				String alternate_url = UrlMap.getURLanguageEquivalentXML(language_base, requri, url_map);//REWRITE LOGIC BLOCK
 				((HttpServletResponse) response).sendRedirect(language_base+alternate_url); //just incase whatever application has more than a couple directory deeps
+				return;
 			}
 	}
 	private boolean isAServlet(ServletRequest request){

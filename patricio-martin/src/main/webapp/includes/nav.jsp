@@ -26,18 +26,42 @@
 					</li>
 					</ul>
 				</div>
+				
+				
+				
+				
 				<!-- MAIN LINKS -->
 				<div class="navbar-menu" id="navMenu">
-					<div class="nav-list">
-						<div class="nav-item is-home"><a href="<fmt:message key="url.about"/>"><fmt:message key="nav.about"/></a></div>
-						<div class="nav-item is-properties"><a href="<fmt:message key="url.projects"/>"><fmt:message key="nav.projects"/></a></div>
-						<div class="nav-item is-regions"><a href="<fmt:message key="url.services"/>"><fmt:message key="nav.services"/></a></div>
-						<div class="nav-item is-contact"><a href="<fmt:message key="url.contact"/>"><fmt:message key="nav.contact"/></a></div>
+				
+				
+				<div  class="is-hidden-desktop" style="background-color: white;display:block;position:absolute;width:100%;height:100%;margin-top:-10px !important;opacity:0.7;"></div>
+				
+				
+					<div class="nav-list ">
+						<div class="nav-item "><a href="<fmt:message key="url.about"/>"><fmt:message key="nav.about"/></a></div>
+						<div class="nav-item "><a href="<fmt:message key="url.projects"/>"><fmt:message key="nav.projects"/></a></div>
+						<div class="nav-item "><a href="<fmt:message key="url.services"/>"><fmt:message key="nav.services"/></a></div>
+						<div class="nav-item "><a href="<fmt:message key="url.contact"/>"><fmt:message key="nav.contact"/></a></div>
 					</div>
-					<aside class="nav-contact">
-						<p><a class="open-modal" data-target="contactModal">info@patriciomartin.com</a></p>
+					
+										<div id="mobileLanguage" class="is-hidden-desktop">
+					<div class="nav-list">
+				<div class="nav-item">
+				<a href="/ChangeLanguage?lang=en" style="margin-right: 10px;"><img alt="English" src="/img/en_flag.png"></a>
+				<a href="/ChangeLanguage?lang=es"><img alt="Spanish" src="/img/es_flag.png"></a>
+				</div>
+					</div>
+					</div>
+					
+					<aside class="nav-contact is-hidden-mobile">
+						<p><a href="mailto:info@patriciomartin.com">info@patriciomartin.com</a></p>
 						<p><a href="tel:+34952584444">+34 952 58 44 44</a></p>
 					</aside>
+					
+
+					
+					
+					
 				</div>
 			</nav>
 		</div>

@@ -5969,9 +5969,10 @@ a.navbar-item.is-active,
         display: none
     }
     .navbar-menu {
-/*         background-color: #fff; */
-/*         box-shadow: 0 8px 16px rgba(10, 10, 10, 0.1); */
-/*         padding: .5rem 0 */
+     display:none; 
+        background-color: #fff;
+        box-shadow: 0 8px 16px rgba(10, 10, 10, 0.1);
+        padding: .5rem 0
     }
     .navbar-menu.is-active {
         display: block;
@@ -6020,6 +6021,7 @@ a.navbar-item.is-active,
         display: flex
     }
     .navbar {
+ 
         min-height: 3.25rem
     }
     .navbar.is-spaced {

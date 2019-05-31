@@ -1,6 +1,6 @@
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<jsp:useBean id="now" class="java.util.Date" />
-<fmt:formatDate var="year" value="${now}" pattern="yyyy" />
+<%-- <jsp:useBean id="now" class="java.util.Date" /> --%>
+<%-- <fmt:formatDate var="year" value="${now}" pattern="yyyy" /> --%>
 
 <footer class="footer has-text-grey-lighter is-centered has-text-centered">
 
@@ -23,7 +23,7 @@
 		
  			<p class="is-size-6 has-text-centered">+34 952 58 44 44</p>
    			<p class="is-size-6 has-text-centered">info@patriciomartin.com</p>
-   			<p class="is-size-6 has-text-centered has-margin-4"><i class="far fa-copyright"></i> ${year} Patricio Martin. <fmt:message key="footer.rights"/></p>
+   			<p class="is-size-6 has-text-centered has-margin-4"><i class="far fa-copyright"></i> 2019 Patricio Martin. <fmt:message key="footer.rights"/></p>
   		
   		</div>
   		<div class="column"></div>
@@ -60,16 +60,16 @@ window.addEventListener("load", function(){
 window.cookieconsent.initialise({
   "palette": {
     "popup": {
-      "background": "#343c66",
+      "background": "#ffff",
       "text": "#cfcfe8"
     },
     "button": {
-      "background": "#f71559"
+      "background": "#209CEE"
     }
   },
   "theme": "classic",
   "content": {
-    "message": "change this --&gt; https://cookieconsent.insites.com/download/"
+    "message": "This website uses cookies to ensure you get the best experience on our website."
   }
 })});
 </script>

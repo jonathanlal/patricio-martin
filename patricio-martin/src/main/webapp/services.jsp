@@ -143,5 +143,5 @@ marign-top:30px !important;
 </div>
 </section>
 
-<%@ include file="WEB-INF/templates/contact.jsp" %>
+<%@ include file="WEB-INF/templates/contactCTA.jsp" %>
 <%@ include file="WEB-INF/templates/newsletter.jsp" %>

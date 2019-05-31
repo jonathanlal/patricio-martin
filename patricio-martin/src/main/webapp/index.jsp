@@ -54,5 +54,5 @@ top: 3px !important;
 document.addEventListener("DOMContentLoaded",function(){const e="is-shown",s=3600;setTimeout(function t(){const n=document.getElementById("messages"),o=n.querySelectorAll(".message"),i=n.getElementsByClassName("message is-shown")[0],m=i.nextElementSibling?i.nextElementSibling:o[0];i.classList.remove(e),m.classList.add(e),setTimeout(t,s)},s)});
 </script>
 
-<%@ include file="WEB-INF/templates/contact.jsp" %>
+<%@ include file="WEB-INF/templates/contactCTA.jsp" %>
 <%@ include file="WEB-INF/templates/newsletter.jsp" %>

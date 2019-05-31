@@ -8,9 +8,15 @@
 /* 	} */
 /* } */
 
+
 @media screen and (max-width: 767px){
-.hero-content {
-    min-height: 350px !important;
+.hero-content, .hero {
+        overflow: visible !important;
+}
+}
+@media screen and (max-width: 991px){
+.hero-content, .hero {
+        overflow: visible !important;
 }
 }
 
@@ -37,7 +43,7 @@
 }
 
 .languages-neg{
-    background-image: url(<%=request.getAttribute("steps")%>/img/languages@2x-neg.png) !important;
+    background-image: url(/img/languages@2x-neg.png) !important;
     background-position: 0 0;
     background-repeat: no-repeat;
     background-size: 40px 20px;
@@ -50,20 +56,7 @@
     transition-property: opacity;
     width: 20px;
 }
-/*     .cc-compliance { */
-/*     margin-top: 1rem */
-/* 	} */
 
-/* @media screen and (min-width:768px) { */
-/*     .cc-window { */
-/*         align-items: center; */
-/*         display: flex */
-/*     } */
-/*     .cc-compliance { */
-/*         margin-left: auto; */
-/*         margin-top: 0 */
-/*     } */
-/* } */
 
 .navbar-burger span:nth-child(1) {
     top: calc(50% - 8px);
@@ -86,10 +79,14 @@ height: 3rem !important;
 .navbar-menu.is-active{
 position: absolute;
 top:50px;
+    background-image: url('/img/design.jpg');
+    background-size: cover;
 }
+
 .navbar-menu.is-active div div a{
-color:black !important;
-font-size:17px !important
+color:#363636 !important;
+font-family:'Soleil Bold' !important;
+font-size:16px !important;
 }
 .navbar-burger.is-active span:nth-child(1){
 top: calc(50% - 6px) !important;
@@ -140,19 +137,19 @@ h1,h2,h3,h4,h5,h6{
 }
 @font-face {
 	font-family: 'Soleil Light';
-	src: url('<%=request.getAttribute("steps")%>/fonts/Soleil-Light.eot'); /* IE9 Compat Modes */
-	src: url('<%=request.getAttribute("steps")%>/fonts/Soleil-Light.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-		 url('<%=request.getAttribute("steps")%>/fonts/Soleil-Light.woff') format('woff'), /* Modern Browsers */
-		 url('<%=request.getAttribute("steps")%>/fonts/Soleil-Light.ttf')  format('truetype'), /* Safari, Android, iOS */
-		 url('<%=request.getAttribute("steps")%>/fonts/Soleil-Light.svg#svgFontName') format('svg') /* Legacy iOS */
+	src: url('/fonts/Soleil-Light.eot'); /* IE9 Compat Modes */
+	src: url('/fonts/Soleil-Light.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+		 /* -->this is corrupted??  url('/fonts/Soleil-Light.woff') format('woff'),  Modern Browsers */
+		 url('/fonts/Soleil-Light.ttf')  format('truetype'), /* Safari, Android, iOS */
+		 url('/fonts/Soleil-Light.svg#svgFontName') format('svg') /* Legacy iOS */
 }
 @font-face { 
  	font-family: 'Soleil Bold'; 
- 	src: url('<%=request.getAttribute("steps")%>/fonts/Soleil-Bold.eot'); /* IE9 Compat Modes */ 
- 	src: url('<%=request.getAttribute("steps")%>/fonts/Soleil-Bold.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */ 
-		 url('<%=request.getAttribute("steps")%>/fonts/Soleil-Bold.woff') format('woff'), /* Modern Browsers */ 
- 		 url('<%=request.getAttribute("steps")%>/fonts/Soleil-Bold.ttf')  format('truetype'), /* Safari, Android, iOS */ 
- 		 url('<%=request.getAttribute("steps")%>/fonts/Soleil-Bold.svg#svgFontName') format('svg') /* Legacy iOS */ 
+ 	src: url('/fonts/Soleil-Bold.eot'); /* IE9 Compat Modes */ 
+ 	src: url('/fonts/Soleil-Bold.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */ 
+		 url('/fonts/Soleil-Bold.woff') format('woff'), /* Modern Browsers */ 
+ 		 url('/fonts/Soleil-Bold.ttf')  format('truetype'), /* Safari, Android, iOS */ 
+ 		 url('/fonts/Soleil-Bold.svg#svgFontName') format('svg') /* Legacy iOS */ 
  } 
  
  
@@ -1338,7 +1335,7 @@ div.wpcf7-response-output {
 }
 
 .nav-languages a {
-    background-image: url(<%=request.getAttribute("steps")%>/img/languages@2x.png);
+    background-image: url(/img/languages@2x.png);
     background-position: 0 0;
     background-repeat: no-repeat;
     background-size: 40px 20px;
@@ -1454,7 +1451,8 @@ body.body-page-template-sold-properties .nav-item.is-properties .subnav a:last-c
         margin-top: 1.5rem
     }
     .nav-contact {
-        text-align: center
+        text-align: center;
+        
     }
     .nav-contact p {
         margin-top: 1.5rem
@@ -1481,20 +1479,37 @@ body.body-page-template-sold-properties .nav-item.is-properties .subnav a:last-c
     }
     .navbar-menu {
         align-items: center;
-        display: flex;
+/*         display: none; */
         height: 2.5rem;
         justify-content: center
     }
+    .navbar-menu.is-active{
+        display: block !important;
+    box-shadow: 0 8px 16px rgba(10, 10, 10, 0.1);
+    padding: .5rem 0;
+    }
+    .nav-list {
+/*     flex-direction: column; */
+/*     padding-top: 1rem; */
+/*     background-color: white; */
+}
+    .nav-item {
+    margin-top: 1.5rem;
+}
+    
+    
     .nav-brand {
         left: 0;
         position: absolute;
         top: calc(50% - 15px)
     }
     .nav-languages {
-        bottom: 0;
-        left: calc(165px + 2rem);
-        position: absolute;
-        top: 0
+         bottom: 0; 
+        left: calc(175px + 2rem); 
+        position: absolute; 
+         top: 0; 
+/* display: none; */
+        
     }
     .nav-languages li:not(:first-child) {
         margin-left: .5em
@@ -1504,9 +1519,12 @@ body.body-page-template-sold-properties .nav-item.is-properties .subnav a:last-c
     }
     .nav-contact {
         position: absolute;
-        right: 0;
+        right: 20px !important;
         text-align: right;
-        top: 0
+        top: 20px !important;
+    }
+    .nav-contact p a {
+/*     color:black !important; */
     }
     .nav-item.is-properties {
         position: relative

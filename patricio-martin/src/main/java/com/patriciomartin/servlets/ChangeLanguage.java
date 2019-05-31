@@ -54,9 +54,12 @@ public class ChangeLanguage extends HttpServlet {
 
 		String new_url = request.getContextPath()+path.replace(lang_base, "/"+selection+"/");//language swap
 		System.out.println("new_url "+new_url);
+		System.out.println("GETTING: "+request.getContextPath()+new_url);
 		System.out.println("************************************************");
 		System.out.println("************************************************");
-		response.sendRedirect(request.getContextPath()+new_url);
+		String resuri = request.getContextPath()+new_url;
+		response.sendRedirect(resuri);
+		return;
 	
 		//get current 
 		
