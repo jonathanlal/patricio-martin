@@ -13,7 +13,7 @@ public class HtmlSnippets {
 
 	
 	
-	public String customMetaTags(String title, String description, String image, String url_end){
+	public static String customMetaTags(String title, String description, String image, String url_end){
 	String canonical = Globals.DOMAIN_FULL+url_end;
 	if(null == title || title.isEmpty()){
 		title = Globals.META_TITLE;
@@ -27,7 +27,7 @@ public class HtmlSnippets {
 	String metas = 	
 	"<title>"+title+"</title>"+
     "<meta property=\"title\" content=\""+title+"\">"+ //title and description of page as they appear in search results.
-    "<meta property=\"description\" content=\""+description+"\">"+
+    "<meta property=\"description\" name=\"description\" content=\""+description+"\">"+
     "<meta property=\"og:title\" content=\""+title+"\">"+
     "<meta property=\"og:url\" content=\""+canonical+"\">"+
     "<meta property=\"og:image\" content=\""+image+"\">"+
@@ -38,6 +38,11 @@ public class HtmlSnippets {
     "<meta property=\"twitter:image:src\" content=\""+image+"\">";
 	return metas;
 	}
+	
+	
+	
+	
+	
 	
 	private static String emailHead(){
 		//START EMAIL BODY			
@@ -57,9 +62,13 @@ public class HtmlSnippets {
 		htmlMessage += "</a>";
 		htmlMessage += "</div>";
 		htmlMessage += "<div style=\"background-color: white;display: inline-block;padding: 20px;text-align: center;margin-top:10px;\">";
+		
+		System.out.println(htmlMessage);
 		return htmlMessage;
 	}
 	private static String emailFoot(){
+		
+		
 		
 		boolean isCID = Globals.EMAIL_SENDER_TYPE_GOOGLE;
 		
@@ -118,6 +127,11 @@ public class HtmlSnippets {
 		 htmlMessage += "<p style=\"font-size:16;font-weight:bold;color:#58595b;margin-top:0;text-decoration:none;\">"+Globals.EMAIL_ADDRESS_CONTACT+"</p>";
 		 htmlMessage += "</div>";
 		//END EMAIL BODY
+		 
+			htmlMessage += p(join("This paragraph has", b("bold"), "and", i("italic"), "text.")).render(); //recreate all the emails with this stuff - it's fun.
+
+		 
+		 
 			//END OF WHITE BOX
 			htmlMessage += " </div>";
 			//END OF GREY BOX
@@ -165,17 +179,13 @@ public class HtmlSnippets {
 	
 	//MOVE THIS METHOD OVER TO SENDEMAIL and keep all the html in this class...
 	public static Envelope createContactEmail(Envelope e) {
-		
 		if(Globals.IS_i18n && e.getLang() != null) {
 		//i18n, whatever we put in the array below, will make it so that when you call overrideTextWithLanguageIfi18n(), the variable is overridden with whatever language
 		String[] overrides = {"email_contact_subject", "email_contact_intro"};
 		overrideTextWithLanguageIfi18n(e.getLang(), overrides); //really really cool lol
 		}
-		
 		e.setSubject(SendEmail.email_contact_subject);// (important to do after the override method above)
-		
 		String htmlMessage = emailHead();
-		
 		if(e.isAdmin_flag()) {
 			//GREETING & INTRO PART
 			htmlMessage += "<h1 style=\"margin-top: 0px;color: #84A9E5;font-weight: bolder;text-align:center;font-size: 20px;\">"+SendEmail.email_greeting+e.getAdmin_name()+",</h1>";
@@ -185,34 +195,36 @@ public class HtmlSnippets {
 			htmlMessage += "<h1 style=\"margin-top: 0px;color: #84A9E5;font-weight: bolder;text-align:center;font-size: 20px;\">"+SendEmail.email_greeting+e.getVisitor_name()+",</h1>";
 			htmlMessage += "<h3 style=\"color:#55C5AE;font-weight: bolder;\">"+SendEmail.email_contact_intro+"</h3>";
 		}
-		
 		//USER MSG COPY BOX
 		htmlMessage += "<div style=\"background-color: #FAFAFA;display: inline-block;padding: 20px;max-width: 700px;\"><p style=\"font-size:16px;\">\"";
 		htmlMessage += e.getMsg();
 		htmlMessage += "\"</p></div><br>";
-		
 		if(e.isAdmin_flag()) {
 			htmlMessage += "<hr><br><p style=\"color:#999999;\">Their contact email is: "+e.getVisitor_email()+"</p>";
-			
 			if(!e.getPhone().isEmpty()) {
 				htmlMessage += "<p style=\"color:#999999;\">Their phone number is: "+e.getPhone()+"</p>";
 			}
-			
 			htmlMessage += "<p style=\"color:#999999;\">And their name is: "+e.getVisitor_name()+"</p><br><hr>";
 		}
-		htmlMessage += p(join("This paragraph has", b("bold"), "and", i("italic"), "text.")).render(); //recreate all the emails with this stuff - it's fun.
 		htmlMessage += emailFoot();
-		
 		e.setBody(htmlMessage);
-		
 		return e;
 	}
 	
-	//MOVE THIS METHOD OVER TO SENDEMAIL and keep all the html in this class...
-	public static Envelope createNewsletterEmail(Envelope admin_env) {
-
-		
-		return null;
+	
+	public static Envelope createNewsletterSignUpEmail(Envelope e) {
+		e.setSubject(SendEmail.email_contact_subject);// (important to do after the override method above)
+		String htmlMessage = emailHead();
+		//GREETING & INTRO PART
+		htmlMessage += "<h1 style=\"margin-top: 0px;color: #84A9E5;font-weight: bolder;text-align:center;font-size: 20px;\">"+SendEmail.email_greeting+e.getAdmin_name()+",</h1>";
+		htmlMessage += "<h3 style=\"color:#55C5AE;font-weight: bolder;\">"+SendEmail.email_newsletter_intro+"</h3>";	
+		//USER MSG COPY BOX
+		htmlMessage += "<div style=\"background-color: #FAFAFA;display: inline-block;padding: 20px;max-width: 700px;\"><p style=\"font-size:16px;\">\"";
+		htmlMessage += e.getVisitor_email();
+		htmlMessage += "\"</p></div><br>";
+		htmlMessage += emailFoot();
+		e.setBody(htmlMessage);
+		return e;
 	}
 	
 	

@@ -26,7 +26,7 @@ public class Globals {
 	
 	//DATABASE
 	public static String DB_INSTANCE_CONNECTION_NAME = "the-web-devil:europe-west1:the-web-devil"; //google cloud sql old:  
-	public static String DB_SCHEMA_NAME = "webdevil";
+	public static String DB_SCHEMA_NAME = "patricio_martin";
 	public static String DB_LOCALHOST = "localhost:3306";
 	public static String DB_LOCAL_USER = "root";
 	public static String DB_LOCAL_PASSWORD = "1234";
@@ -34,10 +34,9 @@ public class Globals {
 	//METAS
 	public static String META_fbid = "";
 	public static String META_googleplus = "";
-	public static String META_IMAGE = "https://storage.googleapis.com/somegoat/logo.png";
+	public static String META_IMAGE = "https://storage.googleapis.com/patricio-martin.appspot.com/logo-share.jpg";
 	public static String META_TITLE = "Patricio Martin - Architects based on the Costa del Sol";
 	public static String META_DESCRIPTION = "Patricio Martin can provide a full architectural and building service. From the initial survey and design concept, through all stages of the building process, right up to the completed project and final result.";
-	
 	
 	//SESSION STRINGS
 	public static String USER_ID = "user_id";
@@ -71,12 +70,12 @@ public class Globals {
 	
 	
 	//EMAIL SOCIAL BTNS DISABLE OR ENABLE //make false to turn them off in the footer of the email
-	public static boolean EMAIL_FACEBOOK_ON = true;
-	public static boolean EMAIL_GOOGLEPLUS_ON = true;
-	public static boolean EMAIL_TWITTER_ON = true;
-	public static boolean EMAIL_INSTAGRAM_ON = true;
-	public static boolean EMAIL_PINTEREST_ON = true;
-	public static boolean EMAIL_LINKEDIN_ON = true;
+	public static boolean EMAIL_FACEBOOK_ON = false;
+	public static boolean EMAIL_GOOGLEPLUS_ON = false;
+	public static boolean EMAIL_TWITTER_ON = false;
+	public static boolean EMAIL_INSTAGRAM_ON = false;
+	public static boolean EMAIL_PINTEREST_ON = false;
+	public static boolean EMAIL_LINKEDIN_ON = false;
 	
 	//EMAIL SOCIAL BTNS IMGS
     public static String EMAIL_FACEBOOK = "facebook-32.png";
@@ -125,6 +124,13 @@ public class Globals {
 		}
 		return  lang;
 	}
+	
+	public static String getLanguageFromURL(String requri) {
+		System.out.println(requri);
+		return "en";
+	}
+	
+	
 	public static String getDefaultLang() {
 		return DEFAULT_LANG;
 	}

@@ -7,15 +7,15 @@
     
     <c:if test="${empty metaShare}">
     <fmt:bundle basename = "text">
-    <title><fmt:message key="meta.title"/></title>
-    <meta name="description" content="<fmt:message key="meta.description"/>">
+    <title><fmt:message key="meta.index.title"/></title>
+    <meta property="description" name="description" content="<fmt:message key="meta.index.description"/>">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://patriciomartin.com/">
     <meta name="twitter:card" content="summary_large_image">
-    <meta property="og:title" content="<fmt:message key="meta.title"/>">
-    <meta name="twitter:title" content="<fmt:message key="meta.title"/>">
-    <meta property="og:description" content="<fmt:message key="meta.description"/>">
-    <meta name="twitter:description" content="<fmt:message key="meta.description"/>">
+    <meta property="og:title" content="<fmt:message key="meta.index.title"/>">
+    <meta name="twitter:title" content="<fmt:message key="meta.index.title"/>">
+    <meta property="og:description" content="<fmt:message key="meta.index.description"/>">
+    <meta name="twitter:description" content="<fmt:message key="meta.index.description"/>">
     <meta property="og:image" content="">
     <meta name="twitter:image" content="">
     </fmt:bundle>
@@ -31,15 +31,15 @@
 	<!-- <meta name="google-site-verification" content="ada-xxxxxxxxxxxxxxxxxxxxxxxxx" />	 -->
 		
 	<!-- FAVICONS AND COLOURS -->
-	<link rel="apple-touch-icon" sizes="180x180" href="../../favicon/apple-touch-icon.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="../../favicon/favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="../../favicon/favicon-16x16.png">
-	<link rel="manifest" href="../../favicon/site.webmanifest">
-	<link rel="mask-icon" href="../../favicon/safari-pinned-tab.svg" color="#5bbad5">
-	<link rel="shortcut icon" href="../../favicon/favicon.ico">
+	<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+	<link rel="manifest" href="/favicon/site.webmanifest">
+	<link rel="mask-icon" href="/favicon/safari-pinned-tab.svg" color="#5bbad5">
+	<link rel="shortcut icon" href="/favicon/favicon.ico">
 	<meta name="msapplication-TileColor" content="#2d89ef">
-	<meta name="msapplication-config" content="../../favicon/browserconfig.xml">
-	<meta name="theme-color" content="#ffffff"></head>
+	<meta name="msapplication-config" content="/favicon/browserconfig.xml">
+	<meta name="theme-color" content="#209CEE">
 	
 	<!-- OTHER -->
 	<!-- <meta content="https://www.facebook.com/pg/TheWebsiteDevil/about/" property="fb:profile_id"> -->
@@ -47,3 +47,4 @@
 	<!-- <link href="https://thewebdevil.com/" rel="home"> -->
     <meta name="referrer" content="no-referrer-when-downgrade">
     <meta name="robots" content="all">
+    

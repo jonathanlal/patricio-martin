@@ -40,6 +40,10 @@ public class SendEmail {
 	public static String email_contact_intro = "Thanks for contacting us. Here's a copy of the message you sent us:";
 	public static String email_contact_admin = "Here's a copy of the message they sent:";
 	
+	public static String email_newsletter_subject = "New newsletter signup!";
+	public static String email_newsletter_intro = "Someone signuped for the newsletter with the following email address:";
+	
+	
 	//used at the bottom of emails to users so that they don't reply to a noreply address...
 	public static String email_greeting = "Hello ";
 	public static String email_footer_confirm = "This is an automated email just to confirm that we got your message!";
@@ -72,25 +76,31 @@ public class SendEmail {
 			admin_env = HtmlSnippets.createContactEmail(admin_env);
 			send(admin_email, admin_env.getBody(), admin_env.getSubject()); 
 		}
-		
-		
+		//RECORD IN DB
+		LeadManager lm = new LeadManager();
+		lm.newContact(visitor_env);
 	}
-  public void sendNewsLetterMail(String email) throws MalformedURLException {
+  public void sendNewsLetterSignUpMail(String email) throws MalformedURLException {
 	  
 		//SEND USER EMAIL -no need..."confirmed that you are now signed up" waste...
-	  
+	   System.out.println("Sending admin email");
 		//SEND ADMIN EMAILS
 		Map<String,String> admin_emails = getAdminEmails();
 		for(Entry<?, ?> e: admin_emails.entrySet()){
 			String admin_name = (String) e.getKey();
 			String admin_email = (String) e.getValue();
 			Envelope admin_env = new Envelope();
+			admin_env.setVisitor_email(email);
 			admin_env.setAdmin_name(admin_name);
 			admin_env.setAdmin_email(admin_email);
 			admin_env.setAdmin_flag(true);
-			admin_env = HtmlSnippets.createNewsletterEmail(admin_env); 
+			admin_env = HtmlSnippets.createNewsletterSignUpEmail(admin_env); 
 			send(admin_email, admin_env.getBody(), admin_env.getSubject());
+			  System.out.println("Email sent!");
 		}
+		//RECORD IN DB
+		LeadManager lm = new LeadManager();
+		lm.newNewsLetter(email);
   }
 	public Map<String, String> getAdminEmails(){
 		return Globals.EMAIL_ADMIN_HASHMAP;
@@ -103,6 +113,7 @@ public class SendEmail {
 		//what to do about images? ??????
 		if(Globals.EMAIL_SENDER_TYPE_GOOGLE) {
 			try {
+				  System.out.println("Sending with google");
 				sendWithGoogle(email, body, subject);
 			} catch (MalformedURLException e) {
 				e.printStackTrace();
@@ -120,7 +131,7 @@ public class SendEmail {
 
 		//ADD IMAGES
 		Map<String, String> mapInlineImages = new HashMap<String, String>();
-		mapInlineImages.put(Globals.EMAIL_LOGO, "img/email/"+Globals.EMAIL_LOGO);
+//		mapInlineImages.put(Globals.EMAIL_LOGO, "img/email/"+Globals.EMAIL_LOGO);
 		
 	   if(Globals.EMAIL_FACEBOOK_ON)
 	   mapInlineImages.put(Globals.EMAIL_FACEBOOK, "img/email/"+Globals.EMAIL_FACEBOOK);
@@ -139,6 +150,7 @@ public class SendEmail {
 	    Session session = Session.getDefaultInstance(props, null);
 	    String msgBody = "...";
 	    try {
+	    	  System.out.println("try clause");
 	      Message msg = new MimeMessage(session);
 	      msg.setFrom(new InternetAddress("noreply@"+Globals.DOMAIN_APPSPOT, Globals.BRAND));
 	      msg.addRecipient(Message.RecipientType.TO,new InternetAddress(useremail, "Admin"));

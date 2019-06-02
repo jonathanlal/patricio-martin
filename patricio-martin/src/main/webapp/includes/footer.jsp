@@ -9,8 +9,8 @@
     <span class="main-footer__links"><a href="<fmt:message key="url.about"/>"><fmt:message key="nav.about"/></a></span>
     <span class="main-footer__links"><a href="<fmt:message key="url.contact"/>"><fmt:message key="nav.contact"/></a></span>
     <span class="main-footer__links"><a href="<fmt:message key="url.services"/>"><fmt:message key="nav.services"/></a></span>
-    <span class="main-footer__links"><a href="<fmt:message key="url.projects"/>"><fmt:message key="nav.projects"/></a></span>
-    <span class="main-footer__links last"><a href="<fmt:message key="url.terms"/>"><fmt:message key="nav.terms"/></a></span>
+    <span class="main-footer__links last"><a href="<fmt:message key="url.projects"/>"><fmt:message key="nav.projects"/></a></span>
+<%--     <span class="main-footer__links "><a href="<fmt:message key="url.terms"/>"><fmt:message key="nav.terms"/></a></span> --%>
 </div>
 <br><br>
 

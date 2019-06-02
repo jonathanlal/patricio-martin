@@ -23,10 +23,6 @@
             </div>
 
             <div class="control">
-              <div class="is-hidden">
-                <input type="text" name="hp" id="hp">
-              </div>
-<!--               <input type="hidden" name="list" value="So5UY3O9gHJkq892bn763Tyf4A"> -->
               <button class="button is-medium is-info" style="padding-bottom: calc(.375em - 1px) !important;padding-left: .75em !important;padding-right: .75em !important;padding-top: calc(.375em - 1px) !important;">
                 <strong class="button-text"><fmt:message key="index.newsletter.btnSubscribe"/></strong>
               </button>

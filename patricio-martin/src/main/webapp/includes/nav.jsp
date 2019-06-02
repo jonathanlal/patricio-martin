@@ -20,9 +20,9 @@
 				<div class="nav-languages" id="nav-languages">
 					<ul>
 					<li class="wpml-ls-slot-shortcode_actions wpml-ls-item wpml-ls-item-fr  wpml-ls-first-item wpml-ls-item-legacy-list-horizontal ${language eq 'es' ? 'wpml-ls-current-language' : ''}">
-					<a href="/ChangeLanguage?lang=es" class="wpml-ls-link"><span class="wpml-ls-native">Spanish</span></a>
+					<a rel="nofollow" href="/ChangeLanguage?lang=es" class="wpml-ls-link"><span class="wpml-ls-native">Spanish</span></a>
 					<li class="wpml-ls-slot-shortcode_actions wpml-ls-item wpml-ls-item-en wpml-ls-last-item wpml-ls-item-legacy-list-horizontal ${language eq 'en' || empty language ? 'wpml-ls-current-language' : ''}">
-					<a href="/ChangeLanguage?lang=en" class="wpml-ls-link"><span class="wpml-ls-native">English</span><span class="wpml-ls-display"><span class="wpml-ls-bracket"> (</span>Anglais<span class="wpml-ls-bracket">)</span></span></a>
+					<a rel="nofollow" href="/ChangeLanguage?lang=en" class="wpml-ls-link"><span class="wpml-ls-native">English</span><span class="wpml-ls-display"><span class="wpml-ls-bracket"> (</span>Anglais<span class="wpml-ls-bracket">)</span></span></a>
 					</li>
 					</ul>
 				</div>
@@ -47,8 +47,8 @@
 										<div id="mobileLanguage" class="is-hidden-desktop">
 					<div class="nav-list">
 				<div class="nav-item">
-				<a href="/ChangeLanguage?lang=en" style="margin-right: 10px;"><img alt="English" src="/img/en_flag.png"></a>
-				<a href="/ChangeLanguage?lang=es"><img alt="Spanish" src="/img/es_flag.png"></a>
+				<a rel="nofollow" href="/ChangeLanguage?lang=en" style="margin-right: 10px;"><img alt="English" src="/img/en_flag.png"></a>
+				<a rel="nofollow" href="/ChangeLanguage?lang=es"><img alt="Spanish" src="/img/es_flag.png"></a>
 				</div>
 					</div>
 					</div>

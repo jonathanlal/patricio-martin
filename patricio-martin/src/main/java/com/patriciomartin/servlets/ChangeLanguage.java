@@ -21,6 +21,7 @@ public class ChangeLanguage extends HttpServlet {
     }
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("");	System.out.println("");
+		boolean abort = false;
 		System.out.println("############### CHANGE LANGUAGE ################");
 		System.out.println("------------------------------------------------");
 		HttpSession session = request.getSession(true);
@@ -43,7 +44,14 @@ public class ChangeLanguage extends HttpServlet {
 		
 		System.out.println("referer: "+referer);
 		System.out.println("path: "+path);
-		String lang_base = path.substring(0, 4);	//now we just get the first 4 characters from path
+		String lang_base  = null;
+		if(path.length()>=4) {
+			lang_base = path.substring(0, 4);
+		}else {
+			//youre fucked if else... 
+			abort = true;
+		}
+//		String lang_base = (path.length() >= 4 ? path : path.substring(0, 4));	//now we just get the first 4 characters from path
 		System.out.println("lang_base: "+lang_base);
 		System.out.println("lang_selection: "+"/"+selection+"/");
 		
@@ -65,8 +73,13 @@ public class ChangeLanguage extends HttpServlet {
 		System.out.println("############### CHANGE LANGUAGE ################");
 		System.out.println("");	System.out.println("");
 		
+		if(!abort) {
 		response.sendRedirect(resuri);
 		return;
+		}else {
+			response.sendRedirect("/");
+			return;	
+		}
 	}
 	
 	

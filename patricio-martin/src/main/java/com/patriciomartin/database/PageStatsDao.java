@@ -11,7 +11,7 @@ public class PageStatsDao {
 	
 
 	public static void recordRequest(String url, String mem, String load_time, String url_mapping_type) {
-		  try(Connection conn= DBConnection.getConnection()){  
+		  try(Connection conn= DBConnection.getConnection(null)){  
 		PreparedStatement	pst = conn.prepareStatement("insert into page_speed (url,mem,load_time,url_mapping_type,date) values (?,?,?,?,?);");
 		  
 		  pst.setString(1, url);  

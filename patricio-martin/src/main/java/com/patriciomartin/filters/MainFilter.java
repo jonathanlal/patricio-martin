@@ -32,6 +32,8 @@ import com.patriciomartin.objects.Url;
 public class MainFilter implements Filter {
 	
 	 String page = null;
+//	 boolean doRedirect = false;
+	 String redirectURL = null;
     public MainFilter() {}
 	public void init(FilterConfig fConfig) throws ServletException {}
 	public void destroy() {}
@@ -40,6 +42,7 @@ public class MainFilter implements Filter {
 		//System.out.println("-------------------------------------");
 		//System.out.println("***************FILTER****************");
 		 boolean continueChain = false;
+		 redirectURL = null;
 		String requri = ((HttpServletRequest) request).getRequestURI();
 		//System.out.println("filter hit with: "+requri);
 //		continueChain = false; //reset
@@ -74,15 +77,23 @@ public class MainFilter implements Filter {
 		//System.out.println("-------------------------------------");
 
 //		 if(!response.isCommitted()) {
-		if(!continueChain){	
+		if(continueChain){	
+			
+			chain.doFilter(request, response);
+    		return;
 		
-			RequestDispatcher rd = request.getRequestDispatcher("/GetPage?page="+page);
+		
+			
+    	}else if(redirectURL != null){
+    		
+    		doRedirect(response, redirectURL);
+    		
+    	}else{
+    		
+    		RequestDispatcher rd = request.getRequestDispatcher("/GetPage?page="+page);
 		    rd.forward(request, response);
 		    return;
-			
-    	}else{
-    		chain.doFilter(request, response);
-    		return;
+    	
     	}
 		
 //		 }else {
@@ -95,9 +106,9 @@ public class MainFilter implements Filter {
 		//System.out.println("PAGE: "+page);
 	 	 if(page == null || page.equals("*"))  //if page is null at this point it means the url is not in map (with exception of wildcards)
 	 	 return checkIfWildCardOrServlet(request, response, chain, isWildcard, continueChain);
-	 	 else {
-	 		 return false;
-	 	 }
+	 	 else 
+	 	 return false;
+	 	 
 	}
 	private boolean checkIfWildCardOrServlet(ServletRequest request, ServletResponse response, FilterChain chain, boolean isWildcard, boolean continueChain) {
 		
@@ -111,12 +122,6 @@ public class MainFilter implements Filter {
 		if(isAServlet(request)) {
 			//System.out.println("CONTINUING CHAIN BITCH");
 			continueChain = true;
-//			try {
-//				chain.doFilter(request, response);
-//				return;
-//			} catch (IOException | ServletException e) {
-//				e.printStackTrace();
-//			}return;
 		}else {
 			page = "error.jsp";
 		}
@@ -155,15 +160,16 @@ public class MainFilter implements Filter {
 			requri = requri.replace("/"+base_in_url+"/", "/"+current_lang+"/"); //if current session language not equal to the language in the base url then change it 
 		
 			//System.out.println("current base NOT EQUAL to current lang:");
-			 doRedirect(response, requri);
-			
+//			 doRedirect(response, requri);
+			redirectURL = requri;
 			}
 			
-		}else{   
-			//System.out.println("current base EQUAL to current lang:");
-			if(!requri.contains("ChangeLanguage")) //JESUS FUCK THIS IS IMPORTANT !!! GOOGLE CLOUD REALLY FUCKS YOU UP IF YOU DONT HAVE THIS LINE
-			doRedirect(response, current_lang+requri);
 		}
+//		else{   
+			//System.out.println("current base EQUAL to current lang:");
+//			if(!requri.contains("ChangeLanguage") && !requri.contains("Subscribe")) //JESUS FUCK THIS IS IMPORTANT !!! GOOGLE CLOUD REALLY FUCKS YOU UP IF YOU DONT HAVE THIS LINE
+//			doRedirect(response, current_lang+requri);
+//		}
 		return requri.replace("/"+current_lang+"/", "/"); //replace it back to normal so that doesn't fuck up the hashmap check thing
 	}
 	private boolean isWildCardXML(String url, List<Url> url_maps) {
@@ -178,6 +184,7 @@ public class MainFilter implements Filter {
 		//System.out.println("DOING REDIRECT TO: "+requri);
 		 try {
 			((HttpServletResponse) response).sendRedirect(requri);
+			 return;
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -193,8 +200,8 @@ public class MainFilter implements Filter {
 				 StringBuffer url = ((HttpServletRequest) request).getRequestURL();
 				 String uri = ((HttpServletRequest) request).getRequestURI();
 				 String base = url.substring(0, url.length() - uri.length()) + "/";
-				 doRedirect(response, base+language_base+alternate_url);
-				 return;
+//				 doRedirect(response, base+language_base+alternate_url);
+				 redirectURL = base+language_base+alternate_url;
 			}
 	}
 	private void checkIfNeedToReWriteURLCauseLanguageXML(ServletRequest request, ServletResponse response, String requri, List<Url> url_map) throws IOException {
@@ -204,8 +211,9 @@ public class MainFilter implements Filter {
 			String page_lang = urls.get(requri);//if page_lange is null here then the requested url isn't in the map or key is null(wildcards)
 			if(page_lang != null && !language_base.equals(page_lang)) {//requested url exists and the language of that url does not match the session language 
 				String alternate_url = UrlMap.getURLanguageEquivalentXML(language_base, requri, url_map);//REWRITE LOGIC BLOCK
-				 doRedirect(response, language_base+alternate_url);
-				 return;
+				 redirectURL = language_base+alternate_url;
+//				doRedirect(response, language_base+alternate_url);
+//				 return;
 			}
 	}
 	private boolean isAServlet(ServletRequest request){

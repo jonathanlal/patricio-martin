@@ -4,7 +4,10 @@
 <%@ taglib prefix="cf" uri="http://example.com/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
+<!-- if language is empty then get the langage of the url.  -->
+<%-- <c:set var="language" value="${cf:getLanguage(not empty param.lang ? param.lang : not empty language ? language : pageContext.request.locale.language)}" scope="session" /> --%>
 <c:set var="language" value="${cf:getLanguage(not empty param.lang ? param.lang : not empty language ? language : pageContext.request.locale.language)}" scope="session" />
+
 <fmt:setLocale value="${language}" /> 
 <fmt:setBundle basename="text" />
 
@@ -21,5 +24,5 @@
 
 <%@ include file="/includes/metas.jsp"%>
 <%@ include file="/includes/extra_css.jsp"%>
-
+    </head>
 <body>
