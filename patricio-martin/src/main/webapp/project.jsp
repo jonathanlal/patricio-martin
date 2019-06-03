@@ -133,6 +133,41 @@
 <%-- <jsp:include page="WEB-INF/templates/photoswipe.jsp"></jsp:include> --%>
 <%@ include file="WEB-INF/templates/photoswipe.jsp" %>
 
+
+<!-- <script src="/css/imagesloaded.pkgd.js"></script> -->
+<!-- <script src="/plugins/gallery/vendor/velocity.min.js"></script> -->
+<!-- <script src="/plugins/gallery/vendor/velocity.ui.min.js"></script> -->
+<script src="/css/js/imgrid.min.js"></script>
+
+
+<script>
+$(document).ready(function () {
+        $(".imgrid").imgrid({
+            gridLoader: true,
+			thumbSize: 200,
+            gridLayout: 'masonry',
+            gridAnimation: false,
+            gridColumns: 4,
+            thumbMargin: 4,
+            thumbHoverEffect: 'apollo',
+			gridAnimation: {
+                trigger: 'onStart',
+                animationType: 'bounceDown',
+                animationDuration: 700,
+                delay: true,
+                offsetTop: 50,
+                timeout: 0
+            },
+		});
+		
+		$('.filter').click(function (e) {
+            e.preventDefault();
+            console.log($(this).data('filter'));
+            $(".imgrid").imgrid('filter', $(this).data('filter'));
+        });
+    });
+</script>
+
 <script>
 
 
