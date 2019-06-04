@@ -22,4 +22,11 @@
         <function-class>com.patriciomartin.models.Globals</function-class>
         <function-signature>java.lang.String getDefaultLang()</function-signature>
     </function>
+    
+            <function>
+        <name>getLanguageFromURL</name>
+        <function-class>com.patriciomartin.models.Globals</function-class>
+        <function-signature>java.lang.String getLanguageFromURL(java.lang.StringBuffer)</function-signature>
+    </function>
+    
 </taglib>

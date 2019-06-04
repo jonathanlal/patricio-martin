@@ -2,6 +2,7 @@ package com.patriciomartin.filters;
 
 import java.io.IOException;
 import java.lang.reflect.Field;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -47,7 +48,7 @@ public class MainFilter implements Filter {
 		//System.out.println("filter hit with: "+requri);
 //		continueChain = false; //reset
 		if(Globals.IS_i18n)
-	 		requri = checkBaseURLLanguage(request, response, requri); // /es/ --> /en/
+	 		requri = checkBaseURLLanguage(request, response, requri); // /es/ --> /en/ (returns URI without language base
 			if(Globals.IS_URLMAPS_XML) { 
 				continueChain = doXML(request, response, chain, requri, continueChain);
 			}else {
@@ -78,32 +79,19 @@ public class MainFilter implements Filter {
 
 //		 if(!response.isCommitted()) {
 		if(continueChain){	
-			
 			chain.doFilter(request, response);
     		return;
-		
-		
-			
     	}else if(redirectURL != null){
-    		
     		doRedirect(response, redirectURL);
-    		
     	}else{
     		
     		RequestDispatcher rd = request.getRequestDispatcher("/GetPage?page="+page);
 		    rd.forward(request, response);
 		    return;
-    	
     	}
-		
-//		 }else {
-//			 return;
-//		 }
 	}
 	private boolean wildCardOrServlet(ServletRequest request, ServletResponse response, FilterChain chain, String requri, HashMap<String, String> urls, boolean isWildcard, boolean continueChain) {
-	 	//System.out.println("CHECKING IF PAGE EXISTS FOR URI: "+requri);
 		page = urls.get(requri); //it will return null here for wildcard mappings because they have not call attribute. 
-		//System.out.println("PAGE: "+page);
 	 	 if(page == null || page.equals("*"))  //if page is null at this point it means the url is not in map (with exception of wildcards)
 	 	 return checkIfWildCardOrServlet(request, response, chain, isWildcard, continueChain);
 	 	 else 
@@ -120,7 +108,6 @@ public class MainFilter implements Filter {
 			}
 		}
 		if(isAServlet(request)) {
-			//System.out.println("CONTINUING CHAIN BITCH");
 			continueChain = true;
 		}else {
 			page = "error.jsp";
@@ -155,21 +142,23 @@ public class MainFilter implements Filter {
 			break;
 			}
 		}
-		if(hasBase) {	
-			if(!base_in_url.equals(current_lang)) {
-			requri = requri.replace("/"+base_in_url+"/", "/"+current_lang+"/"); //if current session language not equal to the language in the base url then change it 
 		
-			//System.out.println("current base NOT EQUAL to current lang:");
-//			 doRedirect(response, requri);
-			redirectURL = requri;
+		
+		if(current_lang == null && hasBase) {
+			current_lang = base_in_url;
+			}
+		
+	
+		if(hasBase) {	
+			//if session language is empty and base in url is different
+			if(!base_in_url.equals(current_lang)) {
+				HttpSession session = ((HttpServletRequest) request).getSession();
+				session.setAttribute("language", base_in_url);
+				redirectURL = requri;
 			}
 			
 		}
-//		else{   
-			//System.out.println("current base EQUAL to current lang:");
-//			if(!requri.contains("ChangeLanguage") && !requri.contains("Subscribe")) //JESUS FUCK THIS IS IMPORTANT !!! GOOGLE CLOUD REALLY FUCKS YOU UP IF YOU DONT HAVE THIS LINE
-//			doRedirect(response, current_lang+requri);
-//		}
+		
 		return requri.replace("/"+current_lang+"/", "/"); //replace it back to normal so that doesn't fuck up the hashmap check thing
 	}
 	private boolean isWildCardXML(String url, List<Url> url_maps) {

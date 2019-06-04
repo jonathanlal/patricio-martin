@@ -125,13 +125,14 @@ public class Globals {
 		return  lang;
 	}
 	
-	public static String getLanguageFromURL(String requri) {
-		System.out.println(requri);
+	public static String getLanguageFromURL(StringBuffer requri) {
+		System.out.println("GETTING LANGUAGE FROM URLL");
+		System.out.println(requri.toString());
 		return "en";
 	}
 	
-	
 	public static String getDefaultLang() {
+		System.out.println("GETTING DEFAULT LANG");
 		return DEFAULT_LANG;
 	}
 	
