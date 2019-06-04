@@ -157,6 +157,8 @@ public class MainFilter implements Filter {
 				redirectURL = requri;
 			}
 			
+		}else {
+			redirectURL = "/"+current_lang+requri;
 		}
 		
 		return requri.replace("/"+current_lang+"/", "/"); //replace it back to normal so that doesn't fuck up the hashmap check thing

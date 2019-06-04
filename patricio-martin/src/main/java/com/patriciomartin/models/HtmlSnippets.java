@@ -54,13 +54,13 @@ public class HtmlSnippets {
 		htmlMessage += "<div style=\"text-align: center;margin-top: 0px;\">";
 		htmlMessage += "<a href=\""+Globals.DOMAIN_FULL+"\" style=\"text-decoration:none;\">";
 		
-		htmlMessage += "<img style=\"vertical-align:middle;width:70%;max-width:300px;\" alt=\""+Globals.BRAND+"\" ";
+		htmlMessage += "<img style=\"vertical-align:middle;width:70%;max-width:200px;\" alt=\""+Globals.BRAND+"\" ";
 		if(Globals.EMAIL_SENDER_TYPE_GOOGLE)
-		htmlMessage += "src=\"cid:"+Globals.EMAIL_LOGO+"\">";
+		htmlMessage += "src=\"cid:"+Globals.EMAIL_LOGO+"\" />";
 		else
-		htmlMessage += "src=\"img/email/"+Globals.EMAIL_LOGO+"\">";
+		htmlMessage += "src=\"img/email/"+Globals.EMAIL_LOGO+"\" />";
 		htmlMessage += "</a>";
-		htmlMessage += "</div>";
+		htmlMessage += "<br/></div><br/>";
 		htmlMessage += "<div style=\"background-color: white;display: inline-block;padding: 20px;text-align: center;margin-top:10px;\">";
 		
 		System.out.println(htmlMessage);
@@ -81,42 +81,48 @@ public class HtmlSnippets {
 		//END OF GREY BOX
 		htmlMessage += "<br><div style=\"text-align:center;\"><br>";
 		
+		if(Globals.EMAIL_FACEBOOK_ON) {
 		//FACEBOOK
 		htmlMessage += "<a style=\"text-decoration:none;\" href=\""+Globals.SOCIAL_FACEBOOK+"\"> ";
 		htmlMessage += "<img alt=\"Facebook\" ";
-		htmlMessage +=  isCID ? "src=\"cid:"+Globals.EMAIL_FACEBOOK+"\">": "src=\"img/email/"+Globals.EMAIL_FACEBOOK;
-		htmlMessage +="\">";
+		htmlMessage +=  isCID ? "src=\"cid:"+Globals.EMAIL_FACEBOOK+"\" />": "src=\"img/email/"+Globals.EMAIL_FACEBOOK+"\" />";
 		htmlMessage += "</a>";
+		}
+		if(Globals.EMAIL_GOOGLEPLUS_ON) {
 		//GOOGLE+
 		htmlMessage += "<a style=\"text-decoration:none;\" href=\""+Globals.SOCIAL_GOOGLEPLUS+"\"> ";
 		htmlMessage += "<img alt=\"Google\" ";
-		htmlMessage +=  isCID ? "src=\"cid:"+Globals.EMAIL_GOOGLEPLUS+"\">": "src=\"img/email/"+Globals.EMAIL_GOOGLEPLUS;
-		htmlMessage +="\">";
+		htmlMessage +=  isCID ? "src=\"cid:"+Globals.EMAIL_GOOGLEPLUS+"\" />": "src=\"img/email/"+Globals.EMAIL_GOOGLEPLUS+"\" />";
 		htmlMessage += "</a>";
+		}
+		if(Globals.EMAIL_TWITTER_ON) {
 		//TWITTER
 		htmlMessage += "<a style=\"text-decoration:none;\" href=\""+Globals.SOCIAL_TWITTER+"\"> ";
 		htmlMessage += "<img alt=\"Twitter\" ";
-		htmlMessage +=  isCID ? "src=\"cid:"+Globals.SOCIAL_TWITTER+"\">": "src=\"img/email/"+Globals.SOCIAL_TWITTER;
-		htmlMessage +="\">";
+		htmlMessage +=  isCID ? "src=\"cid:"+Globals.SOCIAL_TWITTER+"\" />": "src=\"img/email/"+Globals.SOCIAL_TWITTER+"\" />";
 		htmlMessage += "</a>";
+		}
+		if(Globals.EMAIL_INSTAGRAM_ON) {
 		//INSTAGRAM
 		htmlMessage += "<a style=\"text-decoration:none;\" href=\""+Globals.SOCIAL_INSTAGRAM+"\"> ";
 		htmlMessage += "<img alt=\"Instagram\" ";
-		htmlMessage +=  isCID ? "src=\"cid:"+Globals.SOCIAL_INSTAGRAM+"\">": "src=\"img/email/"+Globals.SOCIAL_INSTAGRAM;
-		htmlMessage +="\">";
+		htmlMessage +=  isCID ? "src=\"cid:"+Globals.SOCIAL_INSTAGRAM+"\" />": "src=\"img/email/"+Globals.SOCIAL_INSTAGRAM+"\" />";
 		htmlMessage += "</a>";
+		}
+		if(Globals.EMAIL_PINTEREST_ON) {
 		//PINTEREST
 		htmlMessage += "<a style=\"text-decoration:none;\" href=\""+Globals.SOCIAL_PINTEREST+"\"> ";
 		htmlMessage += "<img alt=\"Pinterest\" ";
-		htmlMessage +=  isCID ? "src=\"cid:"+Globals.SOCIAL_PINTEREST+"\">": "src=\"img/email/"+Globals.SOCIAL_PINTEREST;
-		htmlMessage +="\">";
+		htmlMessage +=  isCID ? "src=\"cid:"+Globals.SOCIAL_PINTEREST+"\" />": "src=\"img/email/"+Globals.SOCIAL_PINTEREST+"\" />";
 		htmlMessage += "</a>";
+		}
+		if(Globals.EMAIL_LINKEDIN_ON) {
 		//LINKEDIN
 		htmlMessage += "<a style=\"text-decoration:none;\" href=\""+Globals.SOCIAL_LINKEDIN+"\"> ";
 		htmlMessage += "<img alt=\"LinkedIn\" ";
-		htmlMessage +=  isCID ? "src=\"cid:"+Globals.SOCIAL_LINKEDIN+"\">": "src=\"img/email/"+Globals.SOCIAL_LINKEDIN;
-		htmlMessage +="\">";
+		htmlMessage +=  isCID ? "src=\"cid:"+Globals.SOCIAL_LINKEDIN+"\" />": "src=\"img/email/"+Globals.SOCIAL_LINKEDIN+"\" />";
 		htmlMessage += "</a>";
+		}
 		
 //		htmlMessage += "<a style=\"text-decoration:none;\" href=\""+Globals.SOCIAL_LINKEDIN+"\"> ";
 //		htmlMessage += "<img alt=\"Linkedin\" src=\""+Globals.EMAIL_CID_LINKEDIN+"\">";

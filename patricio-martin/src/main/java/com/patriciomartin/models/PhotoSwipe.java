@@ -20,7 +20,12 @@ public class PhotoSwipe {
 	public static String createPhotoswipeArray(String project) throws IOException {
 	    JSONArray arr = new JSONArray();
 	    JSONObject tmp;
-		File folder = new File("img/"+project);
+	    File folder;
+//	    if(!project.equals("domus"))
+//		folder = new File("img/"+project);
+//	    else 
+	    folder = new File("img/"+project+"/dd");
+	    
 		File[] listOfFiles = folder.listFiles();
 		for (int i = 0; i < listOfFiles.length; i++) {
 		  if (listOfFiles[i].isFile()) {
@@ -28,15 +33,15 @@ public class PhotoSwipe {
 			  
 			  String name = listOfFiles[i].getName();
 			  
-			  if(!name.contains("logo")) {
-			  String image = "img/"+project+"/"+name;
-			  tmp.put("src", "../../"+image);
+//			  if(!name.contains("logo")) {
+			  String image = "img/"+project+"/dd/"+name;
+			  tmp.put("src", "/"+image);
 			  Dimension d = getImageDimension(image);
 			  tmp.put("w",  String.format("%.0f", d.getWidth()));
 			  tmp.put("h", String.format("%.0f", d.getHeight()));
 			  arr.add(tmp);
 			  
-			  }
+//			  }
 		  }
 		}
 		return "window.photoswipe_items = "+arr.toJSONString();

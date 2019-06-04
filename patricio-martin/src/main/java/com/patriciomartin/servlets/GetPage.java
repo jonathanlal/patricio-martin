@@ -1,6 +1,7 @@
 package com.patriciomartin.servlets;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
@@ -15,6 +16,7 @@ import javax.servlet.http.HttpSession;
 import com.patriciomartin.models.PhotoSwipe;
 import com.patriciomartin.models.Globals;
 import com.patriciomartin.models.HtmlSnippets;
+import com.patriciomartin.models.Imgrid;
 
 
 @WebServlet("/GetPage")
@@ -39,8 +41,13 @@ public class GetPage extends HttpServlet {
 //			request.setAttribute("error", "Requested url is not a wildcard or a servlet either!");
 		}else if(page.startsWith("project.jsp")) { //changed from contains
 			String project = page.replace("project.jsp?p=", "");
+			
 			String photos = PhotoSwipe.createPhotoswipeArray(project);
 			request.setAttribute("photos", photos);
+			
+			ArrayList<String> dd = Imgrid.createImgGrid(project);
+			request.setAttribute("dd_photos", dd);
+	
 			request.setAttribute("project", project);
 			System.out.println("CREATING MEAT TAGS");
 //			metaShare = getMetaShareTags(page, request);

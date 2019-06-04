@@ -53,6 +53,8 @@ public class Globals {
 	public static String DOMAIN_FULL = "https://www.patriciomartin.com";
 	public static String DOMAIN_NAKED = "patriciomartin.com";
 	public static String DOMAIN_APPSPOT = "patricio-martin.appspot.com";
+	public static String DOMAIN_APPSPOT_MAIL = "patricio-martin.appspotmail.com";
+	
 	
 	//EMAIL STUFF
 	public static String MAILGUN_API_KEY = "";
@@ -70,9 +72,9 @@ public class Globals {
 	
 	
 	//EMAIL SOCIAL BTNS DISABLE OR ENABLE //make false to turn them off in the footer of the email
-	public static boolean EMAIL_FACEBOOK_ON = false;
-	public static boolean EMAIL_GOOGLEPLUS_ON = false;
-	public static boolean EMAIL_TWITTER_ON = false;
+	public static boolean EMAIL_FACEBOOK_ON = true;
+	public static boolean EMAIL_GOOGLEPLUS_ON = true;
+	public static boolean EMAIL_TWITTER_ON = true;
 	public static boolean EMAIL_INSTAGRAM_ON = false;
 	public static boolean EMAIL_PINTEREST_ON = false;
 	public static boolean EMAIL_LINKEDIN_ON = false;

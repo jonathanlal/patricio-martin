@@ -11,7 +11,7 @@
 <fmt:setLocale value="${language}" /> 
 <fmt:setBundle basename="text" />
 
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="${language}">
 <head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-130244260-2"></script>

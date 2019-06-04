@@ -131,7 +131,7 @@ public class SendEmail {
 
 		//ADD IMAGES
 		Map<String, String> mapInlineImages = new HashMap<String, String>();
-//		mapInlineImages.put(Globals.EMAIL_LOGO, "img/email/"+Globals.EMAIL_LOGO);
+		mapInlineImages.put(Globals.EMAIL_LOGO, "img/email/"+Globals.EMAIL_LOGO);
 		
 	   if(Globals.EMAIL_FACEBOOK_ON)
 	   mapInlineImages.put(Globals.EMAIL_FACEBOOK, "img/email/"+Globals.EMAIL_FACEBOOK);
@@ -152,7 +152,7 @@ public class SendEmail {
 	    try {
 	    	  System.out.println("try clause");
 	      Message msg = new MimeMessage(session);
-	      msg.setFrom(new InternetAddress("noreply@"+Globals.DOMAIN_APPSPOT, Globals.BRAND));
+	      msg.setFrom(new InternetAddress("noreply@"+Globals.DOMAIN_APPSPOT_MAIL, Globals.BRAND));
 	      msg.addRecipient(Message.RecipientType.TO,new InternetAddress(useremail, "Admin"));
 	      msg.setSubject(subject);
 	      msg.setText(msgBody);
