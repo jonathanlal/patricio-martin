@@ -172,7 +172,7 @@ public class MainFilter implements Filter {
 		}else {return false;}
 	}
 	private void doRedirect(ServletResponse response, String requri) {
-		//System.out.println("DOING REDIRECT TO: "+requri);
+		System.out.println("DOING REDIRECT TO: "+requri);
 		 try {
 			((HttpServletResponse) response).sendRedirect(requri);
 			 return;

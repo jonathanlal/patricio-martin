@@ -16,8 +16,8 @@
     <meta name="twitter:title" content="<fmt:message key="meta.index.title"/>">
     <meta property="og:description" content="<fmt:message key="meta.index.description"/>">
     <meta name="twitter:description" content="<fmt:message key="meta.index.description"/>">
-    <meta property="og:image" content="">
-    <meta name="twitter:image" content="">
+    <meta property="og:image" content="https://storage.googleapis.com/patricio-martin.appspot.com/logo-share.jpg">
+    <meta name="twitter:image" content="https://storage.googleapis.com/patricio-martin.appspot.com/logo-share.jpg">
     </fmt:bundle>
 	</c:if>
 	

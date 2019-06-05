@@ -52,28 +52,28 @@ marign-top:30px !important;
    <div class="card "><div class="card-content is-vertical-center"><div class="is-fullwidth">
 		<p class="title is-size-2">
 		<i class="fas fa-home"></i></p>
-		<p class="subtitle">Full dimensional survey of property</p>
+		<p class="subtitle"><fmt:message key="services.icon.1"/></p>
    </div></div></div>
 </div>
   
 <div class="column has-text-centered">
   <div class="card "><div class="card-content is-vertical-center"><div class="is-fullwidth">
 		<p class="title is-size-2"><i class="fas fa-user-friends"></i></p>
- 		<p class="subtitle">Client design briefings</p>
+ 		<p class="subtitle"><fmt:message key="services.icon.2"/></p>
   </div></div></div>
 </div>
   
 <div class="column has-text-centered">
   <div class="card"><div class="card-content is-vertical-center"><div class="is-fullwidth">
  		<p class="title is-size-2"><i class="fas fa-layer-group"></i></p>
-		<p class="subtitle">Preparation of initial design proposals</p>
+		<p class="subtitle"><fmt:message key="services.icon.3"/></p>
   </div></div></div>
 </div>
   
 <div class="column has-text-centered">
   <div class="card"><div class="card-content is-vertical-center"><div class="is-fullwidth">
  		<p class="title is-size-2"><i class="fas fa-route"></i></p>
- 		<p class="subtitle">Preparation of full design plans and elevation</p>
+ 		<p class="subtitle"><fmt:message key="services.icon.4"/></p>
   </div></div></div>
 </div>
   
@@ -84,28 +84,28 @@ marign-top:30px !important;
 <div class="column has-text-centered ">
    <div class="card "><div class="card-content is-vertical-center"><div class="is-fullwidth">
 		<p class="title is-size-2"><i class="fas fa-palette"></i></p>
-		<p class="subtitle">Internal layouts and design</p>
+		<p class="subtitle"><fmt:message key="services.icon.5"/></p>
    </div></div></div>
 </div>
   
 <div class="column has-text-centered">
   <div class="card "><div class="card-content is-vertical-center"><div class="is-fullwidth">
 		<p class="title is-size-2"><i class="fas fa-drafting-compass"></i></p>
- 		<p class="subtitle">Construction design incl. material selection & construction methods</p>
+ 		<p class="subtitle"><fmt:message key="services.icon.6"/></p>
   </div></div></div>
 </div>
   
 <div class="column has-text-centered">
   <div class="card"><div class="card-content is-vertical-center"><div class="is-fullwidth">
  		<p class="title is-size-2"><i class="fas fa-balance-scale"></i></p>
-		<p class="subtitle">Structural design</p>
+		<p class="subtitle"><fmt:message key="services.icon.7"/></p>
   </div></div></div>
 </div>
   
 <div class="column has-text-centered">
   <div class="card"><div class="card-content is-vertical-center"><div class="is-fullwidth">
  		<p class="title is-size-2"><i class="fas fa-stamp"></i></p>
- 		<p class="subtitle">Preparation of building regulation approval</p>
+ 		<p class="subtitle"><fmt:message key="services.icon.8"/></p>
   </div></div></div>
 </div>
   
@@ -117,21 +117,21 @@ marign-top:30px !important;
 <div class="column has-text-centered ">
    <div class="card "><div class="card-content is-vertical-center"><div class="is-fullwidth">
 		<p class="title is-size-2"><i class="fas fa-file-signature"></i></p>
-		<p class="subtitle">Preparation of contracts between client and contractor</p>
+		<p class="subtitle"><fmt:message key="services.icon.9"/></p>
    </div></div></div>
 </div>
   
 <div class="column has-text-centered">
   <div class="card "><div class="card-content is-vertical-center"><div class="is-fullwidth">
 		<p class="title is-size-2"><i class="fas fa-comment-dollar"></i></p>
- 		<p class="subtitle">Valuations and certificates of payment</p>
+ 		<p class="subtitle"><fmt:message key="services.icon.10"/></p>
   </div></div></div>
 </div>
   
 <div class="column has-text-centered">
   <div class="card"><div class="card-content is-vertical-center"><div class="is-fullwidth">
  		<p class="title is-size-2"><i class="fas fa-search"></i></p>
-		<p class="subtitle">Site inspections and quality control during contract</p>
+		<p class="subtitle"><fmt:message key="services.icon.11"/></p>
   </div></div></div>
 </div>
   

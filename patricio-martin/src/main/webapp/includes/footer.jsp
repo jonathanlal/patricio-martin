@@ -52,24 +52,30 @@ document.addEventListener('DOMContentLoaded', () => {
 	});
 </script>
 
+<input type="hidden" value="<fmt:message key="cookie.consent.message"/>" id="cookieConsentMessage"/>
 
 <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
 <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
 <script>
+
+
+
+
 window.addEventListener("load", function(){
 window.cookieconsent.initialise({
   "palette": {
     "popup": {
       "background": "#ffff",
-      "text": "#cfcfe8"
+      "text": "#1d1d1b"
     },
     "button": {
-      "background": "#209CEE"
+      "background": "#209CEE", text: '#ffff'
     }
   },
   "theme": "classic",
   "content": {
-    "message": "This website uses cookies to ensure you get the best experience on our website."
+    "message": document.getElementById("cookieConsentMessage").value,
+    dismiss: "Ok!"
   }
 })});
 </script>
