@@ -4,7 +4,7 @@
 .card{
 background-color: white !important;
 }
-.title svg{
+.title svg, .fa-li svg{
 color:#209cee  !important;
 }
 .card-content{
@@ -24,12 +24,22 @@ width: 100% !important;
 marign-top:30px !important;
 }
 
-
+.box{
+padding:2rem !important;
+    margin: 5px !important;
+    height: 100% !important;
+}
+.content{
+padding-bottom:10px !important;
+}
+.title{
+top: 12px !important;position:relative !important;
+}
 
 </style>
 
 <section class="hero">
-  <div class="hero-background" style="background-image: url(https://ivanballiniestates.com/wp-content/themes/ivan-ballini-v4/images/hab/b1.jpg);"></div>
+  <div class="hero-background" style="background-image: url('/img/services.png');"></div>
   <div class="hero-overlay"></div>
   <div class="hero-nav"><%@ include file="includes/nav.jsp"%></div>
   <div class="hero-content">
@@ -43,102 +53,45 @@ marign-top:30px !important;
 
 <section class="main sold-properties-main ">
   <div class="container" style="padding:20px;">
-        <p class="hero-subtitle"><fmt:message key="services.hero.subtitle"/></p>
+        <p class="hero-subtitle has-text-centered"><fmt:message key="services.hero.subtitle"/></p>
 
 <br>
-<div class="columns is-centered ">
 
-<div class="column has-text-centered ">
-   <div class="card "><div class="card-content is-vertical-center"><div class="is-fullwidth">
-		<p class="title is-size-2">
-		<i class="fas fa-home"></i></p>
-		<p class="subtitle"><fmt:message key="services.icon.1"/></p>
-   </div></div></div>
-</div>
-  
-<div class="column has-text-centered">
-  <div class="card "><div class="card-content is-vertical-center"><div class="is-fullwidth">
-		<p class="title is-size-2"><i class="fas fa-user-friends"></i></p>
- 		<p class="subtitle"><fmt:message key="services.icon.2"/></p>
-  </div></div></div>
-</div>
-  
-<div class="column has-text-centered">
-  <div class="card"><div class="card-content is-vertical-center"><div class="is-fullwidth">
- 		<p class="title is-size-2"><i class="fas fa-layer-group"></i></p>
-		<p class="subtitle"><fmt:message key="services.icon.3"/></p>
-  </div></div></div>
-</div>
-  
-<div class="column has-text-centered">
-  <div class="card"><div class="card-content is-vertical-center"><div class="is-fullwidth">
- 		<p class="title is-size-2"><i class="fas fa-route"></i></p>
- 		<p class="subtitle"><fmt:message key="services.icon.4"/></p>
-  </div></div></div>
-</div>
-  
-</div>
+<c:if test="${param.v eq 1}">
 
-<div class="columns is-centered ">
 
-<div class="column has-text-centered ">
-   <div class="card "><div class="card-content is-vertical-center"><div class="is-fullwidth">
-		<p class="title is-size-2"><i class="fas fa-palette"></i></p>
-		<p class="subtitle"><fmt:message key="services.icon.5"/></p>
-   </div></div></div>
+<div class="columns is-multiline is-centered">
+<c:forEach items="${services}" var="s" varStatus="count">
+
+<div class="column is-one-quarter has-text-centered">
+<div class="box" >
+  <article class="media"><div class="media-content"><div class="content">
+<p class="title is-size-2">${s.value}</p>
+<p class="subtitle"><c:out value="${s.key}"/></p>
+ </div></div></article>
 </div>
-  
-<div class="column has-text-centered">
-  <div class="card "><div class="card-content is-vertical-center"><div class="is-fullwidth">
-		<p class="title is-size-2"><i class="fas fa-drafting-compass"></i></p>
- 		<p class="subtitle"><fmt:message key="services.icon.6"/></p>
-  </div></div></div>
-</div>
-  
-<div class="column has-text-centered">
-  <div class="card"><div class="card-content is-vertical-center"><div class="is-fullwidth">
- 		<p class="title is-size-2"><i class="fas fa-balance-scale"></i></p>
-		<p class="subtitle"><fmt:message key="services.icon.7"/></p>
-  </div></div></div>
-</div>
-  
-<div class="column has-text-centered">
-  <div class="card"><div class="card-content is-vertical-center"><div class="is-fullwidth">
- 		<p class="title is-size-2"><i class="fas fa-stamp"></i></p>
- 		<p class="subtitle"><fmt:message key="services.icon.8"/></p>
-  </div></div></div>
-</div>
-  
 </div>
 
 
-<div class="columns is-centered ">
 
-<div class="column has-text-centered ">
-   <div class="card "><div class="card-content is-vertical-center"><div class="is-fullwidth">
-		<p class="title is-size-2"><i class="fas fa-file-signature"></i></p>
-		<p class="subtitle"><fmt:message key="services.icon.9"/></p>
-   </div></div></div>
+<div class="columns">
 </div>
-  
-<div class="column has-text-centered">
-  <div class="card "><div class="card-content is-vertical-center"><div class="is-fullwidth">
-		<p class="title is-size-2"><i class="fas fa-comment-dollar"></i></p>
- 		<p class="subtitle"><fmt:message key="services.icon.10"/></p>
-  </div></div></div>
+</c:forEach>
 </div>
-  
-<div class="column has-text-centered">
-  <div class="card"><div class="card-content is-vertical-center"><div class="is-fullwidth">
- 		<p class="title is-size-2"><i class="fas fa-search"></i></p>
-		<p class="subtitle"><fmt:message key="services.icon.11"/></p>
-  </div></div></div>
+</c:if> 
+
+<c:if test="${empty param.v || param.v eq 2}">
+<div class="box">
+<div class="content">
+<c:forEach items="${services}" var="s" varStatus="count">
+<ul class="fa-ul is-size-4">
+  <li><span class="fa-li" >${s.value}</span>${s.key}</li>
+</ul>
+</c:forEach>
 </div>
-  
-<div class="column">
 </div>
-  
-</div>
+</c:if> 
+
 
 </div>
 </section>

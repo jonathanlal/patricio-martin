@@ -21,6 +21,9 @@ import com.patriciomartin.models.Globals;
 import com.patriciomartin.objects.Url;
 import com.patriciomartin.objects.Urls;
 
+import net.tanesha.recaptcha.ReCaptcha;
+import net.tanesha.recaptcha.ReCaptchaFactory;
+
 @WebServlet("/Test")
 public class Test extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -56,9 +59,12 @@ public class Test extends HttpServlet {
 //		System.out.println(fullPath);
 		
 //		String pathname;
+	    ReCaptcha c = ReCaptchaFactory.newReCaptcha("6LdnQKcUAAAAAC5zuGJEcDsDU555aKVt0ZQTfLOQ", "6LdnQKcUAAAAAI43aVbujpheAy4gXwEgUDvBVTp9", false);
+       
+	    String recaptcha = c.createRecaptchaHtml(null, null);
+	    request.setAttribute("captcha", recaptcha);
 		
-		
-		RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("test.jsp");
 		rd.forward(request, response);
 //		System.out.println(Globals.getUrlMappingFile().exists());
 	

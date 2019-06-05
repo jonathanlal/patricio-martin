@@ -2,7 +2,9 @@ package com.patriciomartin.servlets;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 import javax.servlet.RequestDispatcher;
@@ -49,8 +51,23 @@ public class GetPage extends HttpServlet {
 			request.setAttribute("dd_photos", dd);
 	
 			request.setAttribute("project", project);
-			System.out.println("CREATING MEAT TAGS");
-//			metaShare = getMetaShareTags(page, request);
+		}else if(page.equals("services.jsp")) {
+			HashMap<String, String> s = new HashMap<>();
+			
+			HttpSession session = ((HttpServletRequest) request).getSession();
+			String current_lang = (String) session.getAttribute("language");
+			if(current_lang == null) {current_lang = Globals.DEFAULT_LANG;}
+			 Locale l = new Locale(current_lang); // "es", "en" ...
+			 ResourceBundle b = ResourceBundle.getBundle("text", l);
+			
+
+			  for (String key : b.keySet()) {
+			     if(key.contains("services.icon")) {
+			    	 s.put(b.getString(key.replace(".icon.",".text.")), b.getString(key));
+			     }
+			    }
+			  request.setAttribute("services", s);
+			
 		}
 		metaShare = getMetaShareTags(page, request);
 	

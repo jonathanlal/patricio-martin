@@ -1,5 +1,11 @@
 <style>
 
+.single-hero-image-container {
+ 	min-height: unset !important;
+}
+
+
+
 @media screen and (max-width: 767px){
 .hero-content, .hero {
         overflow: visible !important;
@@ -8,6 +14,14 @@
 @media screen and (max-width: 991px){
 .hero-content, .hero {
         overflow: visible !important;
+}
+
+}
+
+@media screen and (min-width: 991px){
+
+#main_nav{
+position: relative; top: -13px; left: 26px;
 }
 }
 

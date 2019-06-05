@@ -33,7 +33,7 @@
 				<!-- MAIN LINKS -->
 				<div class="navbar-menu" id="navMenu">							
 				<div  class="is-hidden-desktop" style="background-color: white;display:block;position:absolute;width:100%;height:100%;margin-top:-10px !important;opacity:0.7;"></div>								
-					<div class="nav-list " style="position: relative; top: -13px; left: 26px; transition: none 0s ease 0s;">
+					<div class="nav-list " id="main_nav">
 						<div class="nav-item "><a href="<fmt:message key="url.about"/>"><fmt:message key="nav.about"/></a></div>
 						<div class="nav-item "><a href="<fmt:message key="url.projects"/>"><fmt:message key="nav.projects"/></a></div>
 						<div class="nav-item "><a href="<fmt:message key="url.services"/>"><fmt:message key="nav.services"/></a></div>

@@ -80,5 +80,15 @@ window.cookieconsent.initialise({
 })});
 </script>
 
+
+  <script src="https://www.google.com/recaptcha/api.js?render=6LdnQKcUAAAAAC5zuGJEcDsDU555aKVt0ZQTfLOQ"></script>
+  <script>
+  grecaptcha.ready(function() {
+      grecaptcha.execute('reCAPTCHA_site_key', {action: 'homepage'}).then(function(token) {
+       alert(token);
+      });
+  });
+  </script>
+
 </body>
 </html>
