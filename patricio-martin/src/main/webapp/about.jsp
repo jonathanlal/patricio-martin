@@ -17,7 +17,6 @@
     <div class="page-content">
       <div class="container">
         <div class="content">
-        <p>&lt;</p>
         <p><fmt:message key="about.paragraph1"/></p>
         <p><fmt:message key="about.paragraph2"/></p>
         <p><fmt:message key="about.paragraph3"/></p>

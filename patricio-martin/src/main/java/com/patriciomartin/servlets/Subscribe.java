@@ -22,7 +22,7 @@ public class Subscribe extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		HttpSession session = request.getSession(true);
-		String language = (String) session.getAttribute("lang");
+		String language = (String) session.getAttribute("language");
 		if(language == null) {language = "en";}
 		System.out.println("SUBSCRIBE SERVLET HIT");
 		
@@ -37,10 +37,11 @@ public class Subscribe extends HttpServlet {
 		
 		
 		String url = "";
-		if(language.equals("en"))
+		if(language.equals("en")) {
 			url = "/en/thank-you/";
-		else
+		}else {
 			url = "/es/gracias/";
+		}
 		System.out.println("REDIRECTING TO: "+url);
 		response.sendRedirect(url);
 		return;

@@ -40,10 +40,11 @@ public class MainFilter implements Filter {
 	public void destroy() {}
 	
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-		//System.out.println("-------------------------------------");
-		//System.out.println("***************FILTER****************");
+//		System.out.println("-------------------------------------");
+//		System.out.println("***************FILTER****************");
 		 boolean continueChain = false;
 		 redirectURL = null;
+		 page = null;
 		String requri = ((HttpServletRequest) request).getRequestURI();
 		//System.out.println("filter hit with: "+requri);
 //		continueChain = false; //reset
@@ -74,8 +75,8 @@ public class MainFilter implements Filter {
 	}
 	private void decideFate(ServletRequest request, ServletResponse response, FilterChain chain, boolean continueChain) throws ServletException, IOException {
 		//System.out.println("continueChain: "+continueChain);
-		//System.out.println("***************FILTER****************");
-		//System.out.println("-------------------------------------");
+//		System.out.println("***************FILTER****************");
+//		System.out.println("-------------------------------------");
 
 //		 if(!response.isCommitted()) {
 		if(continueChain){	
@@ -92,7 +93,9 @@ public class MainFilter implements Filter {
 	}
 	private boolean wildCardOrServlet(ServletRequest request, ServletResponse response, FilterChain chain, String requri, HashMap<String, String> urls, boolean isWildcard, boolean continueChain) {
 		page = urls.get(requri); //it will return null here for wildcard mappings because they have not call attribute. 
-	 	 if(page == null || page.equals("*"))  //if page is null at this point it means the url is not in map (with exception of wildcards)
+		System.out.println("wildCardOrServlet requri: "+requri);
+		System.out.println("wildCardOrServlet page: "+page);
+		if(page == null || page.equals("*"))  //if page is null at this point it means the url is not in map (with exception of wildcards)
 	 	 return checkIfWildCardOrServlet(request, response, chain, isWildcard, continueChain);
 	 	 else 
 	 	 return false;
@@ -125,14 +128,26 @@ public class MainFilter implements Filter {
 		}
 		
 	}
-	private String getSessionLanguage(ServletRequest request) {
+	/**This takes the request and checks to see what language has been set, if no language has been set and no language in url then default 
+	 * 
+	 * @param request
+	 * @param lang_in_url
+	 * @return
+	 */
+	private String getCurrentLang(ServletRequest request, String lang_in_url) {
+		
+		//here we need to get the language of the URL also... if the langauge in the url is "es" 
+//		if(lang_in_url == null) {
 		HttpSession session = ((HttpServletRequest) request).getSession();
 		String current_lang = (String) session.getAttribute("language");
-		if(current_lang == null) {current_lang = Globals.DEFAULT_LANG;}
+			if(current_lang == null) {current_lang = Globals.DEFAULT_LANG;}
 		return current_lang;
+//		}else {
+//			return lang_in_url;
+//		}
 	}
 	private String checkBaseURLLanguage(ServletRequest request,ServletResponse response, String requri) throws IOException {
-		String current_lang = getSessionLanguage(request);
+	
 		String[] languages = Globals.LANGUAGES;
 		String base_in_url = null;
 		boolean hasBase = false;
@@ -143,21 +158,32 @@ public class MainFilter implements Filter {
 			}
 		}
 		
-		
+		String current_lang = getCurrentLang(request, base_in_url); //coool
 		if(current_lang == null && hasBase) {
 			current_lang = base_in_url;
 			}
-		
+//		System.out.println("requri: "+requri);
+//		System.out.println("hasBase : "+hasBase);
 	
 		if(hasBase) {	
 			//if session language is empty and base in url is different
+
 			if(!base_in_url.equals(current_lang)) {
+//				System.out.println("CURRENT LANG: "+current_lang);
+//				System.out.println("base_in_url: "+base_in_url);
 				HttpSession session = ((HttpServletRequest) request).getSession();
 				session.setAttribute("language", base_in_url);
-				redirectURL = requri;
+				//we need to make a check here
+				//this redirect is here because if the base language changes, then it will rewrite the url so it's in whatever language it needs to be
+				//
+				//System.out.println("CHANGE REDIRECTURL: HAS BASE");
+				//redirectURL = requri;
 			}
 			
-		}else {
+		}
+		else {
+//			System.out.println("CHANGE REDIRECTURL: DOES NOT HAVE BASE");
+			//we only need to redirect here when we are doing like servlet actions and we want to rewrite the url after
 			redirectURL = "/"+current_lang+requri;
 		}
 		
@@ -172,7 +198,7 @@ public class MainFilter implements Filter {
 		}else {return false;}
 	}
 	private void doRedirect(ServletResponse response, String requri) {
-		System.out.println("DOING REDIRECT TO: "+requri);
+//		System.out.println("DOING REDIRECT TO: "+requri);
 		 try {
 			((HttpServletResponse) response).sendRedirect(requri);
 			 return;
@@ -181,10 +207,32 @@ public class MainFilter implements Filter {
 		}
 	}
 	private void checkIfNeedToReWriteURLCauseLanguage(ServletRequest request, ServletResponse response, String requri, Field[] fields) throws IOException {
-		String language_base = getSessionLanguage(request);// does not have any slashes 'en'
+		String language_base = getCurrentLang(request, null);// does not have any slashes 'en'
 		HashMap<String, String> urls = new HashMap<>();
 			urls = UrlMap.getUrlLanguageMappings(fields); // <'/about/', 'en'>
+			
+//			 System.out.println("requri: "+requri);
+			 
+			 
+				String[] languages = Globals.LANGUAGES;
+				String base_in_url = null;
+				boolean hasBase = false;
+				for(String lang: languages) {
+					hasBase = Pattern.compile("\\/"+lang+"\\/").matcher(requri).find();
+					if(hasBase) {
+					base_in_url = lang;
+					break;
+					}
+				}
+				if(hasBase) {
+					requri = requri.replace("/"+base_in_url+"/", "/");
+				}
+			 
 			String page_lang = urls.get(requri);//if page_lange is null here then the requested url isn't in the map or key is null(wildcards)
+			
+//			 System.out.println("page_lang: "+page_lang);
+//			 System.out.println("language_base: "+language_base);
+			
 			if(page_lang != null && !language_base.equals(page_lang)) {//requested url exists and the language of that url does not match the session language 
 				String alternate_url = null;//REWRITE LOGIC BLOCK
 				 alternate_url = UrlMap.getURLanguageEquivalent(language_base, requri, fields);
@@ -192,11 +240,14 @@ public class MainFilter implements Filter {
 				 String uri = ((HttpServletRequest) request).getRequestURI();
 				 String base = url.substring(0, url.length() - uri.length()) + "/";
 //				 doRedirect(response, base+language_base+alternate_url);
+				 
+//				 System.out.println("CHANGE REDIRECTURL: checkIfNeedToReWriteURLCauseLanguage");
+//				 System.out.println("redirectURL: "+base+language_base+alternate_url);
 				 redirectURL = base+language_base+alternate_url;
 			}
 	}
 	private void checkIfNeedToReWriteURLCauseLanguageXML(ServletRequest request, ServletResponse response, String requri, List<Url> url_map) throws IOException {
-		String language_base = getSessionLanguage(request); // does not have any slashes 'en'
+		String language_base = getCurrentLang(request, null); // does not have any slashes 'en'
 		HashMap<String, String> urls = new HashMap<>();
 			urls = UrlMap.getUrlLanguageMappingsXML(url_map); // same as above but using getting with xml
 			String page_lang = urls.get(requri);//if page_lange is null here then the requested url isn't in the map or key is null(wildcards)

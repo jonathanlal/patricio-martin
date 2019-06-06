@@ -57,7 +57,7 @@ top: 12px !important;position:relative !important;
 
 <br>
 
-<c:if test="${param.v eq 1}">
+<c:if test="${empty param.v || param.v eq 1}">
 
 
 <div class="columns is-multiline is-centered">
@@ -80,7 +80,7 @@ top: 12px !important;position:relative !important;
 </div>
 </c:if> 
 
-<c:if test="${empty param.v || param.v eq 2}">
+<c:if test="${param.v eq 2}">
 <div class="box">
 <div class="content">
 <c:forEach items="${services}" var="s" varStatus="count">

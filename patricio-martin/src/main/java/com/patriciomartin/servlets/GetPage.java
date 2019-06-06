@@ -34,6 +34,8 @@ public class GetPage extends HttpServlet {
 		System.out.println("GET PAGE FIRED!");
 		
 		String page = request.getParameter("page");
+		
+		System.out.println("page: "+page);
 		String metaShare = null;
 		if(page == null || page.isEmpty()||page.startsWith("error.jsp")){
 			request.setAttribute("error", "${page} was null or empty or startsWith error!");
@@ -95,19 +97,27 @@ public class GetPage extends HttpServlet {
 			 String title = b.getString("meta.index.title");
 			 String desc = b.getString("meta.index.description");	 
 			 String url = null;
-			 
+			 System.out.println("page METAS: "+page);
 			 if(page.endsWith(".jsp") && !page.equals("error.jsp")) {
-				 System.out.println("FIRED!!!");
+	
 				 page = page.replace(".jsp", "");
 					 title = b.getString("meta."+page+".title");
 					 desc = b.getString("meta."+page+".description");
 					 url = "/"+b.getString("url."+page);
-				 
+					 
+		
 
 			 }else if(page.startsWith("project.jsp")){
+				
 				 String project = page.replace("project.jsp?p=", "");
 				 title = b.getString("meta.projects."+project+".title");
 				 desc = b.getString("meta.projects."+project+".description");
+				 url = "/"+b.getString("url.projects."+project);
+				 
+				 System.out.println("page: "+page);
+				 System.out.println("title: "+title);
+				 System.out.println("desc: "+desc);
+				 System.out.println("url: "+url);
 			 }
 			 
 			 metaShare = HtmlSnippets.customMetaTags(base+title, desc, null, url);
