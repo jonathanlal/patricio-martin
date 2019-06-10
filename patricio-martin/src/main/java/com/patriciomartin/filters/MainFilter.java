@@ -40,13 +40,13 @@ public class MainFilter implements Filter {
 	public void destroy() {}
 	
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-//		System.out.println("-------------------------------------");
-//		System.out.println("***************FILTER****************");
+		System.out.println("-------------------------------------");
+		System.out.println("***************FILTER****************");
 		 boolean continueChain = false;
 		 redirectURL = null;
 		 page = null;
 		String requri = ((HttpServletRequest) request).getRequestURI();
-		//System.out.println("filter hit with: "+requri);
+		System.out.println("filter hit with: "+requri);
 //		continueChain = false; //reset
 		if(Globals.IS_i18n)
 	 		requri = checkBaseURLLanguage(request, response, requri); // /es/ --> /en/ (returns URI without language base
@@ -75,8 +75,8 @@ public class MainFilter implements Filter {
 	}
 	private void decideFate(ServletRequest request, ServletResponse response, FilterChain chain, boolean continueChain) throws ServletException, IOException {
 		//System.out.println("continueChain: "+continueChain);
-//		System.out.println("***************FILTER****************");
-//		System.out.println("-------------------------------------");
+		System.out.println("***************FILTER****************");
+		System.out.println("-------------------------------------");
 
 //		 if(!response.isCommitted()) {
 		if(continueChain){	
@@ -136,16 +136,47 @@ public class MainFilter implements Filter {
 	 */
 	private String getCurrentLang(ServletRequest request, String lang_in_url) {
 		
+		//if lang in url not empty then that is the language.
+			//if empty then session is language
+				//if empty again then default
+		//else
+			//if empty then session is language
+				//if empty again then default
+		
+		System.out.println("getCurrentLang !!!!!!!!!!!");
+		if(lang_in_url != null) {
+			System.out.println("lang_in_url :" +lang_in_url);
+			return lang_in_url;
+		}else if(((HttpServletRequest) request).getSession().getAttribute("language") != null) {
+			System.out.println("session lang :" +(String) ((HttpServletRequest) request).getSession().getAttribute("language"));
+			return (String) ((HttpServletRequest) request).getSession().getAttribute("language");
+		}else {
+			System.out.println("DEFAULT LANG! ");
+			return Globals.DEFAULT_LANG;
+		}
+	
+			
+			
+			
+			
+			
+			
+			
+			
+		}
+		
 		//here we need to get the language of the URL also... if the langauge in the url is "es" 
 //		if(lang_in_url == null) {
-		HttpSession session = ((HttpServletRequest) request).getSession();
-		String current_lang = (String) session.getAttribute("language");
-			if(current_lang == null) {current_lang = Globals.DEFAULT_LANG;}
-		return current_lang;
+//		HttpSession session = ((HttpServletRequest) request).getSession();
+//		String current_lang = (String) session.getAttribute("language");
+//			if(current_lang == null) {
+//				System.out.println("CURRENT LANG IS NULL???");
+//				current_lang = Globals.DEFAULT_LANG;}
+//		return current_lang;
 //		}else {
 //			return lang_in_url;
 //		}
-	}
+//	}
 	private String checkBaseURLLanguage(ServletRequest request,ServletResponse response, String requri) throws IOException {
 	
 		String[] languages = Globals.LANGUAGES;
@@ -159,6 +190,7 @@ public class MainFilter implements Filter {
 		}
 		
 		String current_lang = getCurrentLang(request, base_in_url); //coool
+		System.out.println("current_lang: "+current_lang);
 		if(current_lang == null && hasBase) {
 			current_lang = base_in_url;
 			}
@@ -182,7 +214,7 @@ public class MainFilter implements Filter {
 			
 		}
 		else {
-//			System.out.println("CHANGE REDIRECTURL: DOES NOT HAVE BASE");
+			System.out.println("CHANGE REDIRECTURL: DOES NOT HAVE BASE");
 			//we only need to redirect here when we are doing like servlet actions and we want to rewrite the url after
 			redirectURL = "/"+current_lang+requri;
 		}
@@ -198,7 +230,7 @@ public class MainFilter implements Filter {
 		}else {return false;}
 	}
 	private void doRedirect(ServletResponse response, String requri) {
-//		System.out.println("DOING REDIRECT TO: "+requri);
+		System.out.println("DOING REDIRECT TO: "+requri);
 		 try {
 			((HttpServletResponse) response).sendRedirect(requri);
 			 return;
@@ -207,7 +239,7 @@ public class MainFilter implements Filter {
 		}
 	}
 	private void checkIfNeedToReWriteURLCauseLanguage(ServletRequest request, ServletResponse response, String requri, Field[] fields) throws IOException {
-		String language_base = getCurrentLang(request, null);// does not have any slashes 'en'
+
 		HashMap<String, String> urls = new HashMap<>();
 			urls = UrlMap.getUrlLanguageMappings(fields); // <'/about/', 'en'>
 			
@@ -228,10 +260,14 @@ public class MainFilter implements Filter {
 					requri = requri.replace("/"+base_in_url+"/", "/");
 				}
 			 
+				
 			String page_lang = urls.get(requri);//if page_lange is null here then the requested url isn't in the map or key is null(wildcards)
 			
-//			 System.out.println("page_lang: "+page_lang);
-//			 System.out.println("language_base: "+language_base);
+			
+			String language_base = getCurrentLang(request, base_in_url);// does not have any slashes 'en'
+			
+			 System.out.println("page_lang: "+page_lang);
+			 System.out.println("language_base: "+language_base);
 			
 			if(page_lang != null && !language_base.equals(page_lang)) {//requested url exists and the language of that url does not match the session language 
 				String alternate_url = null;//REWRITE LOGIC BLOCK
@@ -241,7 +277,7 @@ public class MainFilter implements Filter {
 				 String base = url.substring(0, url.length() - uri.length()) + "/";
 //				 doRedirect(response, base+language_base+alternate_url);
 				 
-//				 System.out.println("CHANGE REDIRECTURL: checkIfNeedToReWriteURLCauseLanguage");
+				 System.out.println("CHANGE REDIRECTURL: checkIfNeedToReWriteURLCauseLanguage");
 //				 System.out.println("redirectURL: "+base+language_base+alternate_url);
 				 redirectURL = base+language_base+alternate_url;
 			}

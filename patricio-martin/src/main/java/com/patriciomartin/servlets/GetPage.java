@@ -30,7 +30,9 @@ public class GetPage extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		System.out.println(" ");
+		System.out.println("..................................................");
+		System.out.println("################ GET PAGE SERVLET ################");
 		System.out.println("GET PAGE FIRED!");
 		
 		String page = request.getParameter("page");
@@ -75,21 +77,28 @@ public class GetPage extends HttpServlet {
 	
 		request.setAttribute("metaShare", metaShare);
 		request.setAttribute("steps", request.getContextPath());
+		
+		
+		System.out.println("################ GET PAGE SERVLET ################");
+		System.out.println("..................................................");
+		
 		RequestDispatcher rd = request.getRequestDispatcher(page);
 		rd.forward(request, response);
 	}
 
 	private String getMetaShareTags(String page, HttpServletRequest request) {
+		System.out.println(" ");
+		System.out.println("---------METAS--------");
 		String metaShare = null;
 		String base = "Patricio Martin - ";
-		
 		
 		if(Globals.IS_i18n) {
 			 System.out.println("PAGE: "+page);
 			HttpSession session = ((HttpServletRequest) request).getSession();
 			String current_lang = (String) session.getAttribute("language");
-			if(current_lang == null) {current_lang = Globals.DEFAULT_LANG;}
 			
+			if(current_lang == null) {current_lang = Globals.DEFAULT_LANG;}
+			 System.out.println("current_lang: "+current_lang);
 			 Locale l = new Locale(current_lang); // "es", "en" ...
 			 ResourceBundle b = ResourceBundle.getBundle("text", l);
 			 
@@ -97,7 +106,6 @@ public class GetPage extends HttpServlet {
 			 String title = b.getString("meta.index.title");
 			 String desc = b.getString("meta.index.description");	 
 			 String url = null;
-			 System.out.println("page METAS: "+page);
 			 if(page.endsWith(".jsp") && !page.equals("error.jsp")) {
 	
 				 page = page.replace(".jsp", "");
@@ -114,17 +122,22 @@ public class GetPage extends HttpServlet {
 				 desc = b.getString("meta.projects."+project+".description");
 				 url = "/"+b.getString("url.projects."+project);
 				 
-				 System.out.println("page: "+page);
-				 System.out.println("title: "+title);
-				 System.out.println("desc: "+desc);
-				 System.out.println("url: "+url);
+
 			 }
+			 System.out.println("****");
+			 System.out.println("	title: "+title);
+			 System.out.println("	desc: "+desc);
+			 System.out.println("	url: "+url);
+			 System.out.println("****");
 			 
 			 metaShare = HtmlSnippets.customMetaTags(base+title, desc, null, url);
 		}
 
 		 
 
+	
+		System.out.println("---------METAS--------");
+		System.out.println(" ");
 		
 		return metaShare;
 	}
