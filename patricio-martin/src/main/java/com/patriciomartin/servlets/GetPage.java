@@ -30,14 +30,14 @@ public class GetPage extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println(" ");
-		System.out.println("..................................................");
-		System.out.println("################ GET PAGE SERVLET ################");
-		System.out.println("GET PAGE FIRED!");
+//		System.out.println(" ");
+//		System.out.println("..................................................");
+//		System.out.println("################ GET PAGE SERVLET ################");
+//		System.out.println("GET PAGE FIRED!");
 		
 		String page = request.getParameter("page");
 		
-		System.out.println("page: "+page);
+//		System.out.println("page: "+page);
 		String metaShare = null;
 		if(page == null || page.isEmpty()||page.startsWith("error.jsp")){
 			request.setAttribute("error", "${page} was null or empty or startsWith error!");
@@ -79,26 +79,26 @@ public class GetPage extends HttpServlet {
 		request.setAttribute("steps", request.getContextPath());
 		
 		
-		System.out.println("################ GET PAGE SERVLET ################");
-		System.out.println("..................................................");
+//		System.out.println("################ GET PAGE SERVLET ################");
+//		System.out.println("..................................................");
 		
 		RequestDispatcher rd = request.getRequestDispatcher(page);
 		rd.forward(request, response);
 	}
 
 	private String getMetaShareTags(String page, HttpServletRequest request) {
-		System.out.println(" ");
-		System.out.println("---------METAS--------");
+//		System.out.println(" ");
+//		System.out.println("---------METAS--------");
 		String metaShare = null;
 		String base = "Patricio Martin - ";
 		
 		if(Globals.IS_i18n) {
-			 System.out.println("PAGE: "+page);
+//			 System.out.println("PAGE: "+page);
 			HttpSession session = ((HttpServletRequest) request).getSession();
 			String current_lang = (String) session.getAttribute("language");
 			
 			if(current_lang == null) {current_lang = Globals.DEFAULT_LANG;}
-			 System.out.println("current_lang: "+current_lang);
+//			 System.out.println("current_lang: "+current_lang);
 			 Locale l = new Locale(current_lang); // "es", "en" ...
 			 ResourceBundle b = ResourceBundle.getBundle("text", l);
 			 
@@ -124,11 +124,11 @@ public class GetPage extends HttpServlet {
 				 
 
 			 }
-			 System.out.println("****");
-			 System.out.println("	title: "+title);
-			 System.out.println("	desc: "+desc);
-			 System.out.println("	url: "+url);
-			 System.out.println("****");
+//			 System.out.println("****");
+//			 System.out.println("	title: "+title);
+//			 System.out.println("	desc: "+desc);
+//			 System.out.println("	url: "+url);
+//			 System.out.println("****");
 			 
 			 metaShare = HtmlSnippets.customMetaTags(base+title, desc, null, url);
 		}
@@ -136,8 +136,8 @@ public class GetPage extends HttpServlet {
 		 
 
 	
-		System.out.println("---------METAS--------");
-		System.out.println(" ");
+//		System.out.println("---------METAS--------");
+//		System.out.println(" ");
 		
 		return metaShare;
 	}

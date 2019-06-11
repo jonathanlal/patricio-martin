@@ -23,9 +23,15 @@
 	
 	<!-- GENERATED META SHARING TAGS -->
 	<c:if test="${not empty metaShare}">${metaShare}</c:if>
-	<!-- CANONICAL -->
-	<c:if test="${not empty canonical}">${canonical}</c:if>
-	<c:if test="${empty canonical}"><link rel="canonical" href="https://patriciomartin.com${requestScope['javax.servlet.forward.request_uri']}" /></c:if>
+	
+	<c:if test="${not empty canonical}">
+	<!-- NOT EMPTY CANONICAL -->
+	${canonical}
+	</c:if>
+	<c:if test="${empty canonical}">
+	<!-- EMPTY CANONICAL -->
+	<link rel="canonical" href="https://patriciomartin.com${requestScope['javax.servlet.forward.request_uri']}" />
+	</c:if>
 
     <!-- GOOGLE VERIFICATION -->
 	<!-- <meta name="google-site-verification" content="ada-xxxxxxxxxxxxxxxxxxxxxxxxx" />	 -->

@@ -34,25 +34,25 @@ import com.patriciomartin.objects.Envelope;
 
 public class SendEmail {
 	
-	//for each new type of email, define a variable for the subject here. (it's defined here because of the i18n implementation)
-	//if language is spanish then these variables are overridden by reflection
-	public static String email_contact_subject = "We have received your message and we will reply shortly!";
-	public static String email_contact_intro = "Thanks for contacting us. Here's a copy of the message you sent us:";
-	public static String email_contact_admin = "Here's a copy of the message they sent:";
-	
-	public static String email_newsletter_subject = "New newsletter signup!";
-	public static String email_newsletter_intro = "Someone signuped for the newsletter with the following email address:";
-	
-	
-	//used at the bottom of emails to users so that they don't reply to a noreply address...
-	public static String email_greeting = "Hello ";
-	public static String email_footer_confirm = "This is an automated email just to confirm that we got your message!";
-	public static String email_footer_noreply = "Please do not reply to this email.";
-	public static String email_footer_regards = "Sincerely,";
+//	//for each new type of email, define a variable for the subject here. (it's defined here because of the i18n implementation)
+//	//if language is spanish then these variables are overridden by reflection
+//	public static String email_contact_subject = "We have received your message and we will reply shortly!";
+//	public static String email_contact_intro = "Thanks for contacting us. Here's a copy of the message you sent us:";
+//	public static String email_contact_admin = "Here's a copy of the message they sent:";
+//	
+//	public static String email_newsletter_subject = "New newsletter signup!";
+//	public static String email_newsletter_intro = "Someone signuped for the newsletter with the following email address:";
+//	
+//	
+//	//used at the bottom of emails to users so that they don't reply to a noreply address...
+//	public static String email_greeting = "Hello ";
+//	public static String email_footer_confirm = "This is an automated email just to confirm that we got your message!";
+//	public static String email_footer_noreply = "Please do not reply to this email.";
+//	public static String email_footer_regards = "Sincerely,";
 	
 
 	
-	public void sendContactMail(Envelope visitor_env)  {
+	public void sendContactMail(Envelope visitor_env) throws IOException  {
 		
 		//CREATE USER CONTACT EMAIL & SEND
 		visitor_env = HtmlSnippets.createContactEmail(visitor_env);
@@ -80,7 +80,7 @@ public class SendEmail {
 		LeadManager lm = new LeadManager();
 		lm.newContact(visitor_env);
 	}
-  public void sendNewsLetterSignUpMail(String email) throws MalformedURLException {
+  public void sendNewsLetterSignUpMail(String email) throws IOException {
 	  
 		//SEND USER EMAIL -no need..."confirmed that you are now signed up" waste...
 	   System.out.println("Sending admin email");

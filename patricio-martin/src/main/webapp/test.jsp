@@ -15,7 +15,9 @@
 <section class="main">
 <div class="container">
 
-
+<c:forEach  items="${properties}" var="P">
+<p>${P.key}:${P.value}</p>
+</c:forEach>
 
 
 </div>

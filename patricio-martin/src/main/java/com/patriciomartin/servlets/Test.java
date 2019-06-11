@@ -1,11 +1,19 @@
 package com.patriciomartin.servlets;
 
 
+import java.io.ByteArrayInputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.lang.reflect.Field;
+import java.net.URL;
+import java.net.URLClassLoader;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
+import java.util.Properties;
+import java.util.ResourceBundle;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -17,7 +25,17 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 
+import com.google.cloud.storage.Storage;
+import com.google.cloud.storage.StorageOptions;
+import static java.nio.charset.StandardCharsets.UTF_8;
+import com.google.cloud.storage.Blob;
+import com.google.cloud.storage.Bucket;
+import com.google.cloud.storage.BucketInfo;
+
+
 import com.patriciomartin.models.Globals;
+import com.patriciomartin.models.GoogleStorage;
+import com.patriciomartin.models.UTF8Control;
 import com.patriciomartin.objects.Url;
 import com.patriciomartin.objects.Urls;
 
@@ -33,6 +51,60 @@ public class Test extends HttpServlet {
     }
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("hello");
+		
+	
+
+		String p = request.getParameter("x");
+		GoogleStorage gs = new GoogleStorage();
+		if(p == null) {
+			
+	     
+				
+				Properties prop = new Properties();
+				byte[] b = gs.readBlob(Globals.DEFAULT_BUCKET, "email.properties");
+		         prop.load(new ByteArrayInputStream(b));
+		         request.setAttribute("properties", prop);
+				
+			
+		}else if(p.equals("CREATE")) {
+		
+			gs.createBucket("booboo");
+		}else if(p.equals("UPLOAD")) {
+//			gs.createBlob(Globals.DEFAULT_BUCKET, "email.properties");
+		}else if(p.equals("READ")) {
+			Properties prop = new Properties();
+			byte[] b = gs.readBlob(Globals.DEFAULT_BUCKET, "email.properties");
+	         prop.load(new ByteArrayInputStream(b));
+
+	         // print the properties list from System.out
+	         prop.list(System.out);
+			
+			System.out.println("COOL : "+prop.get("main.test2"));
+//			String s = new String(b);
+//			System.out.println("s: "+s);
+//			String c = ClassLoader.getResource("resource-file.txt");
+//			URL path = new URL(c);
+//			try (FileOutputStream fos = new FileOutputStream()) {
+//				   fos.write(b);
+//				   //fos.close(); There is no more need for this line since you had created the instance of "fos" inside the try. And this will automatically close the OutputStream
+//		ResourceBundle bundle = ResourceBundle.getBundle("email", new UTF8Control());
+
+			
+//			File file = new File(s);
+//			URL[] urls = {file.toURI().toURL()};
+//			ClassLoader loader = new URLClassLoader(urls);
+//			
+//			Locale l = new Locale("en");
+//			ResourceBundle rb = ResourceBundle.getBundle("email.properties", l, loader);
+//			System.out.println("k: "+rb.getString("main.test"));
+			}
+
+		RequestDispatcher rd = request.getRequestDispatcher("test.jsp");
+		rd.forward(request, response);
+		}
+		
+		
+		
 //		String path = this.getClass().getClassLoader().getResource("").getPath();
 //		String fullPath = URLDecoder.decode(path, "UTF-8");
 //		String pathArr[] = fullPath.split(Globals.URL_MAPPINGS_LOCATION);
@@ -59,13 +131,30 @@ public class Test extends HttpServlet {
 //		System.out.println(fullPath);
 		
 //		String pathname;
-	    ReCaptcha c = ReCaptchaFactory.newReCaptcha("6LdnQKcUAAAAAC5zuGJEcDsDU555aKVt0ZQTfLOQ", "6LdnQKcUAAAAAI43aVbujpheAy4gXwEgUDvBVTp9", false);
-       
-	    String recaptcha = c.createRecaptchaHtml(null, null);
-	    request.setAttribute("captcha", recaptcha);
 		
-		RequestDispatcher rd = request.getRequestDispatcher("test.jsp");
-		rd.forward(request, response);
+		// Create your service object
+//		Storage storage = StorageOptions.getDefaultInstance().getService();
+//
+//		// Create a bucket
+//		String bucketName = "my_unique_bucket"; // Change this to something unique
+//		Bucket bucket = storage.create(BucketInfo.of(bucketName));
+//
+//		// Upload a blob to the newly created bucket
+//		BlobId blobId = BlobId.of(bucketName, "my_blob_name");
+//		BlobInfo blobInfo = BlobInfo.newBuilder(blobId).setContentType("text/plain").build();
+//		Blob blob = storage.create(blobInfo, "a simple blob".getBytes(UTF_8));
+
+		
+//	    ReCaptcha c = ReCaptchaFactory.newReCaptcha("6LdnQKcUAAAAAC5zuGJEcDsDU555aKVt0ZQTfLOQ", "6LdnQKcUAAAAAI43aVbujpheAy4gXwEgUDvBVTp9", false);
+//       
+//	    String recaptcha = c.createRecaptchaHtml(null, null);
+//	    request.setAttribute("captcha", recaptcha);
+//		
+//		RequestDispatcher rd = request.getRequestDispatcher("test.jsp");
+//		rd.forward(request, response);
+		
+		
+		
 //		System.out.println(Globals.getUrlMappingFile().exists());
 	
 		
@@ -74,7 +163,7 @@ public class Test extends HttpServlet {
 //		}
 //		
 		
-	}
+//	}
 		
 //		BufferedReader br = new BufferedReader(new FileReader(xmlFile));
 //		String line;

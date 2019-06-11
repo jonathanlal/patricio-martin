@@ -27,6 +27,8 @@ public class Mappings {
 	URL_TEST_ES = {"/test.jsp","test.jsp", "en"}, 
 	URL_THANKYOU_ES = {"/gracias/","thanks.jsp", "es"}, 
 	URL_THANKYOU_EN = {"/thank-you/","thanks.jsp", "en"}, 
-	WD_ADMIN_WILDCARD_EN = {"/wd-admin/","*", "*"},
-	WD_ADMIN_WILDCARD_ES = {"/wd-admina/","*", "*"};
+	GOOGLE_ADMIN_WILDCARD_EN = {"/_ah/","*", "*"}, //this doesnt work on production...
+	WD_ADMIN_WILDCARD_EN = {"/wd-admin/","*", "*"};
+	
+	
 }

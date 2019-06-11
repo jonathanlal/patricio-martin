@@ -1,7 +1,9 @@
 package com.patriciomartin.models;
 
+import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.Locale;
+import java.util.Properties;
 import java.util.ResourceBundle;
 import static j2html.TagCreator.*;
 
@@ -33,9 +35,9 @@ public class HtmlSnippets {
     "<meta property=\"og:image\" content=\""+image+"\">"+
     "<meta property=\"og:description\" content=\""+description+"\">"+
     "<meta property=\"og:type\" content=\"website\">"+
-    "<meta property=\"twitter:title\" content=\""+title+"\">" + 
-    "<meta property=\"twitter:description\" content=\""+description+"\">"+
-    "<meta property=\"twitter:image:src\" content=\""+image+"\">";
+    "<meta name=\"twitter:title\" content=\""+title+"\">" + 
+    "<meta name=\"twitter:description\" content=\""+description+"\">"+
+    "<meta name=\"twitter:image:src\" content=\""+image+"\">";
 	return metas;
 	}
 	
@@ -66,15 +68,15 @@ public class HtmlSnippets {
 		System.out.println(htmlMessage);
 		return htmlMessage;
 	}
-	private static String emailFoot(){
+	private static String emailFoot(Properties p){
 		
 		
 		
 		boolean isCID = Globals.EMAIL_SENDER_TYPE_GOOGLE;
 		
-		String htmlMessage = "<p style=\"color:#999999;\">"+SendEmail.email_footer_confirm+"</p>";
-		htmlMessage += "<p style=\"color:#999999;\">"+SendEmail.email_footer_noreply+"</p><br>";
-		htmlMessage += "<p style=\"color:#000000;\">"+SendEmail.email_footer_regards+"</p>";
+		String htmlMessage = "<p style=\"color:#999999;\">"+p.getProperty("footer.confirm")+"</p>";
+		htmlMessage += "<p style=\"color:#999999;\">"+p.getProperty("footer.noreply")+"</p><br>";
+		htmlMessage += "<p style=\"color:#000000;\">"+p.getProperty("footer.regards")+"</p>";
 		htmlMessage += "<p style=\"color:#000000;\"><b>"+Globals.BRAND+"<b></p>";
 		htmlMessage += "</div>"; //the opening tag is in emailHead();
 		
@@ -172,10 +174,10 @@ public class HtmlSnippets {
 				}
 			 }
 			 //same for every mail so do manually...(same thing as above line)
-			 SendEmail.email_greeting = b.getString("email.greeting");
-			 SendEmail.email_footer_confirm = b.getString("email.footer.confirm");
-			 SendEmail.email_footer_noreply = b.getString("email.footer.noreply");
-			 SendEmail.email_footer_regards = b.getString("email.footer.regards");
+//			 SendEmail.email_greeting = b.getString("email.greeting");
+//			 SendEmail.email_footer_confirm = b.getString("email.footer.confirm");
+//			 SendEmail.email_footer_noreply = b.getString("email.footer.noreply");
+//			 SendEmail.email_footer_regards = b.getString("email.footer.regards");
 		}
 		
 	}
@@ -184,22 +186,27 @@ public class HtmlSnippets {
 	
 	
 	//MOVE THIS METHOD OVER TO SENDEMAIL and keep all the html in this class...
-	public static Envelope createContactEmail(Envelope e) {
-		if(Globals.IS_i18n && e.getLang() != null) {
-		//i18n, whatever we put in the array below, will make it so that when you call overrideTextWithLanguageIfi18n(), the variable is overridden with whatever language
-		String[] overrides = {"email_contact_subject", "email_contact_intro"};
-		overrideTextWithLanguageIfi18n(e.getLang(), overrides); //really really cool lol
-		}
-		e.setSubject(SendEmail.email_contact_subject);// (important to do after the override method above)
+	public static Envelope createContactEmail(Envelope e) throws IOException {
+//		if(Globals.IS_i18n && e.getLang() != null) {
+//		//i18n, whatever we put in the array below, will make it so that when you call overrideTextWithLanguageIfi18n(), the variable is overridden with whatever language
+//		String[] overrides = {"email_contact_subject", "email_contact_intro"};
+//		overrideTextWithLanguageIfi18n(e.getLang(), overrides); //really really cool lol
+//		}
+		PropertyFactory pf = new PropertyFactory();
+		Properties p = pf.getPropertyFile("email", e.getLang());
+//		String subject = pf.getPropertyKey("email","contact.subject", e.getLang());
+		
+//		e.setSubject(SendEmail.email_contact_subject);// (important to do after the override method above)
+		e.setSubject(p.getProperty("contact.subject"));
 		String htmlMessage = emailHead();
 		if(e.isAdmin_flag()) {
 			//GREETING & INTRO PART
-			htmlMessage += "<h1 style=\"margin-top: 0px;color: #84A9E5;font-weight: bolder;text-align:center;font-size: 20px;\">"+SendEmail.email_greeting+e.getAdmin_name()+",</h1>";
-			htmlMessage += "<h3 style=\"color:#55C5AE;font-weight: bolder;\">"+SendEmail.email_contact_admin+"</h3>";	
+			htmlMessage += "<h1 style=\"margin-top: 0px;color: #84A9E5;font-weight: bolder;text-align:center;font-size: 20px;\">"+p.getProperty("greeting")+e.getAdmin_name()+",</h1>";
+			htmlMessage += "<h3 style=\"color:#55C5AE;font-weight: bolder;\">"+p.getProperty("contact.admin")+"</h3>";	
 		}else {
 			//GREETING & INTRO PART
-			htmlMessage += "<h1 style=\"margin-top: 0px;color: #84A9E5;font-weight: bolder;text-align:center;font-size: 20px;\">"+SendEmail.email_greeting+e.getVisitor_name()+",</h1>";
-			htmlMessage += "<h3 style=\"color:#55C5AE;font-weight: bolder;\">"+SendEmail.email_contact_intro+"</h3>";
+			htmlMessage += "<h1 style=\"margin-top: 0px;color: #84A9E5;font-weight: bolder;text-align:center;font-size: 20px;\">"+p.getProperty("greeting")+e.getVisitor_name()+",</h1>";
+			htmlMessage += "<h3 style=\"color:#55C5AE;font-weight: bolder;\">"+p.getProperty("contact.intro")+"</h3>";
 		}
 		//USER MSG COPY BOX
 		htmlMessage += "<div style=\"background-color: #FAFAFA;display: inline-block;padding: 20px;max-width: 700px;\"><p style=\"font-size:16px;\">\"";
@@ -212,23 +219,25 @@ public class HtmlSnippets {
 			}
 			htmlMessage += "<p style=\"color:#999999;\">And their name is: "+e.getVisitor_name()+"</p><br><hr>";
 		}
-		htmlMessage += emailFoot();
+		htmlMessage += emailFoot(p);
 		e.setBody(htmlMessage);
 		return e;
 	}
 	
 	
-	public static Envelope createNewsletterSignUpEmail(Envelope e) {
-		e.setSubject(SendEmail.email_contact_subject);// (important to do after the override method above)
+	public static Envelope createNewsletterSignUpEmail(Envelope e) throws IOException {
+		PropertyFactory pf = new PropertyFactory();
+		Properties p = pf.getPropertyFile("email", e.getLang());
+		e.setSubject(p.getProperty("newsletter.subject"));// (important to do after the override method above)
 		String htmlMessage = emailHead();
 		//GREETING & INTRO PART
-		htmlMessage += "<h1 style=\"margin-top: 0px;color: #84A9E5;font-weight: bolder;text-align:center;font-size: 20px;\">"+SendEmail.email_greeting+e.getAdmin_name()+",</h1>";
-		htmlMessage += "<h3 style=\"color:#55C5AE;font-weight: bolder;\">"+SendEmail.email_newsletter_intro+"</h3>";	
+		htmlMessage += "<h1 style=\"margin-top: 0px;color: #84A9E5;font-weight: bolder;text-align:center;font-size: 20px;\">"+p.getProperty("greeting")+e.getAdmin_name()+",</h1>";
+		htmlMessage += "<h3 style=\"color:#55C5AE;font-weight: bolder;\">"+p.getProperty("newsletter.intro")+"</h3>";	
 		//USER MSG COPY BOX
 		htmlMessage += "<div style=\"background-color: #FAFAFA;display: inline-block;padding: 20px;max-width: 700px;\"><p style=\"font-size:16px;\">\"";
 		htmlMessage += e.getVisitor_email();
 		htmlMessage += "\"</p></div><br>";
-		htmlMessage += emailFoot();
+		htmlMessage += emailFoot(p);
 		e.setBody(htmlMessage);
 		return e;
 	}

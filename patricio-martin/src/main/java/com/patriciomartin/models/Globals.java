@@ -24,6 +24,8 @@ public class Globals {
 	public static String[] LANGUAGES = {"en","es"}; //languages of the website
 	public static String URL_MAPPINGS_FILENAME = "url-mappings.xml"; //must be in the resources folder
 	
+	public static String DEFAULT_BUCKET = PROJECT_ID+".appspot.com";
+	
 	//DATABASE
 	public static String DB_INSTANCE_CONNECTION_NAME = "the-web-devil:europe-west1:the-web-devil"; //google cloud sql old:  
 	public static String DB_SCHEMA_NAME = "patricio_martin";
