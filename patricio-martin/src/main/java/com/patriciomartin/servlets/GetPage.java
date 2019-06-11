@@ -111,7 +111,7 @@ public class GetPage extends HttpServlet {
 				 page = page.replace(".jsp", "");
 					 title = b.getString("meta."+page+".title");
 					 desc = b.getString("meta."+page+".description");
-					 url = "/"+b.getString("url."+page);
+					 url = "/"+current_lang+"/"+b.getString("url."+page);
 					 
 		
 
@@ -120,7 +120,7 @@ public class GetPage extends HttpServlet {
 				 String project = page.replace("project.jsp?p=", "");
 				 title = b.getString("meta.projects."+project+".title");
 				 desc = b.getString("meta.projects."+project+".description");
-				 url = "/"+b.getString("url.projects."+project);
+				 url = "/"+current_lang+"/"+b.getString("url.projects."+project);
 				 
 
 			 }

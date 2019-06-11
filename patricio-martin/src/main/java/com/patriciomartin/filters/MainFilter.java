@@ -33,8 +33,12 @@ import com.patriciomartin.objects.Url;
 public class MainFilter implements Filter {
 	
 	 String page = null;
-//	 boolean doRedirect = false;
+	 String default_lang = Globals.DEFAULT_LANG; //it's init as the default lang but will change towhatever is set in the url
+	 String base_lang = null;
+	 boolean hasBase = false;
 	 String redirectURL = null;
+	 boolean isI18n = Globals.IS_i18n;
+	 boolean isI18nAndRewriteEnabled = Globals.REWRITE_i18n_URLS && isI18n; 
     public MainFilter() {}
 	public void init(FilterConfig fConfig) throws ServletException {}
 	public void destroy() {}
@@ -48,8 +52,8 @@ public class MainFilter implements Filter {
 		String requri = ((HttpServletRequest) request).getRequestURI();
 		System.out.println("filter hit with: "+requri);
 //		continueChain = false; //reset
-		if(Globals.IS_i18n)
-	 		requri = checkBaseURLLanguage(request, response, requri); // /es/ --> /en/ (returns URI without language base
+		if(isI18n)
+	 		requri = removeBaseLang(request, response, requri); // /es/ --> /en/ (returns URI without language base if it exists)
 			if(Globals.IS_URLMAPS_XML) { 
 				continueChain = doXML(request, response, chain, requri, continueChain);
 			}else {
@@ -69,7 +73,7 @@ public class MainFilter implements Filter {
 	private boolean doReflection(ServletRequest request, ServletResponse response, FilterChain chain, String requri, boolean continueChain) throws IOException, ServletException {
 		Field[] url_map = Mappings.class.getDeclaredFields(); //reflection
 		HashMap<String, String> urls = UrlMap.getUrlJspMappings(null, url_map);  //gets all url mappings via REFLECTION -> '/about/ , 'about.jsp'	
-		if(Globals.IS_i18n && Globals.REWRITE_i18n_URLS)//if website is multilingual and you want to rewrite the url because they requested the wrong language url (kinda a waste to do, shouldn't really do it to support an edge case)
+		if(isI18nAndRewriteEnabled)//if website is multilingual and you want to rewrite the url because they requested the wrong language url (kinda a waste to do, shouldn't really do it to support an edge case)
 	 	checkIfNeedToReWriteURLCauseLanguage(request, response, requri, url_map); //THIS WILL REWRITE THE URL IF SESSION VARIABLE IS ENGLISH PAGE AND THEY REQUEST THE SPANISH URL FOR ANOTHER PAGE - IT WILL CHANGE IT BACK TO ENGLISH BY GETTING THE ENGLISH URL
 		return wildCardOrServlet(request, response, chain, requri, urls, isWildCard(requri, url_map), continueChain);
 	}
@@ -144,8 +148,13 @@ public class MainFilter implements Filter {
 				//if empty again then default
 		
 		System.out.println("getCurrentLang !!!!!!!!!!!");
+		
+		System.out.println("lang_in_url :" +lang_in_url);
+		System.out.println("session lang :" +(String) ((HttpServletRequest) request).getSession().getAttribute("language"));
+		
 		if(lang_in_url != null) {
 			System.out.println("lang_in_url :" +lang_in_url);
+//			((HttpServletRequest) request).getSession().setAttribute("language",lang_in_url);
 			return lang_in_url;
 		}else if(((HttpServletRequest) request).getSession().getAttribute("language") != null) {
 			System.out.println("session lang :" +(String) ((HttpServletRequest) request).getSession().getAttribute("language"));
@@ -177,49 +186,75 @@ public class MainFilter implements Filter {
 //			return lang_in_url;
 //		}
 //	}
-	private String checkBaseURLLanguage(ServletRequest request,ServletResponse response, String requri) throws IOException {
-	
-		String[] languages = Globals.LANGUAGES;
-		String base_in_url = null;
-		boolean hasBase = false;
-		for(String lang: languages) {hasBase = Pattern.compile("\\/"+lang+"\\/").matcher(requri).find();
-			if(hasBase) {
-			base_in_url = lang;
-			break;
+	/**
+	 * takes the full requri and returns the language that is set, returns null if nothing is set
+	 * or if a language that isn't supported is set
+	 * 
+	 * @param requri
+	 * @return lang 'es','en', null
+	 */
+	private String getLangBaseFromUrl(String requri) {
+		String uri_lang = null;
+		//check uri and make sure that it has a language base and that it is a language we support
+		for(String lang: Globals.LANGUAGES) {
+			if(Pattern.compile("\\/"+lang+"\\/").matcher(requri).find()) {
+				uri_lang = lang;
+				break;
 			}
 		}
-		
-		String current_lang = getCurrentLang(request, base_in_url); //coool
-		System.out.println("current_lang: "+current_lang);
-		if(current_lang == null && hasBase) {
-			current_lang = base_in_url;
-			}
-//		System.out.println("requri: "+requri);
-//		System.out.println("hasBase : "+hasBase);
+		return uri_lang;
+	}
 	
-		if(hasBase) {	
-			//if session language is empty and base in url is different
+	
+	/**
+	 * takes the URI /es/acerca-de/ and returns /acerca-de/
+	 * if no language base is set, then set redirect to the same page but with default lang
+	 * 
+	 * 
+	 * 
+	 * @param request
+	 * @param response
+	 * @param requri
+	 * @return
+	 * @throws IOException
+	 */
+	private String removeBaseLang(ServletRequest request,ServletResponse response, String requri) throws IOException {
+	
 
-			if(!base_in_url.equals(current_lang)) {
-//				System.out.println("CURRENT LANG: "+current_lang);
-//				System.out.println("base_in_url: "+base_in_url);
-				HttpSession session = ((HttpServletRequest) request).getSession();
-				session.setAttribute("language", base_in_url);
-				//we need to make a check here
-				//this redirect is here because if the base language changes, then it will rewrite the url so it's in whatever language it needs to be
-				//
-				//System.out.println("CHANGE REDIRECTURL: HAS BASE");
-				//redirectURL = requri;
+		
+		String url_base_lang = getLangBaseFromUrl(requri); //es,en,null
+		
+		System.out.println("removeBaseLang()| url_base_lang: "+url_base_lang);
+		
+		
+		if(url_base_lang == null) {
+			
+			HashMap<String, String> urls = new HashMap<>();
+			Field[] fields = Mappings.class.getDeclaredFields(); 
+			urls = UrlMap.getUrlLanguageMappings(fields); // <'/about/', 'en'>
+			String page_lang_mapping = urls.get(requri);
+			System.out.println("removeBaseLang()| page_lang_mapping "+page_lang_mapping);
+			if(page_lang_mapping != null) {
+				base_lang = page_lang_mapping;
+				redirectURL = "/"+page_lang_mapping+requri;
+			}else {
+			base_lang = default_lang;
+			//we only need to redirect here when we are doing like servlet actions and we want to rewrite the url after
+			redirectURL = "/"+default_lang+requri;
 			}
 			
+			System.out.println("SETTING REDIRECT URL AS: "+redirectURL);
+			
+		}else {
+			base_lang = url_base_lang;
+			System.out.println("SETTING BASE_LANG AS: "+base_lang);
+			
+			HttpSession session = ((HttpServletRequest) request).getSession();
+			session.setAttribute("language", url_base_lang);
+			//if session language is empty and base in url is different
 		}
-		else {
-			System.out.println("CHANGE REDIRECTURL: DOES NOT HAVE BASE");
-			//we only need to redirect here when we are doing like servlet actions and we want to rewrite the url after
-			redirectURL = "/"+current_lang+requri;
-		}
-		
-		return requri.replace("/"+current_lang+"/", "/"); //replace it back to normal so that doesn't fuck up the hashmap check thing
+
+		return requri.replace("/"+base_lang+"/", "/"); //replace it back to normal so that doesn't fuck up the hashmap check thing
 	}
 	private boolean isWildCardXML(String url, List<Url> url_maps) {
 		if(UrlMap.getWildcardMappingsXML(url_maps).get(url) != null) {return true;
@@ -238,40 +273,51 @@ public class MainFilter implements Filter {
 			e.printStackTrace();
 		}
 	}
+	/**
+	 * This will take the current url, 
+	 * 
+	 * 
+	 * @param request
+	 * @param response
+	 * @param requri
+	 * @param fields
+	 * @throws IOException
+	 */
 	private void checkIfNeedToReWriteURLCauseLanguage(ServletRequest request, ServletResponse response, String requri, Field[] fields) throws IOException {
 
 		HashMap<String, String> urls = new HashMap<>();
 			urls = UrlMap.getUrlLanguageMappings(fields); // <'/about/', 'en'>
 			
-//			 System.out.println("requri: "+requri);
+			 System.out.println("X requri: "+requri);
 			 
 			 
-				String[] languages = Globals.LANGUAGES;
-				String base_in_url = null;
-				boolean hasBase = false;
-				for(String lang: languages) {
-					hasBase = Pattern.compile("\\/"+lang+"\\/").matcher(requri).find();
-					if(hasBase) {
-					base_in_url = lang;
-					break;
-					}
-				}
-				if(hasBase) {
-					requri = requri.replace("/"+base_in_url+"/", "/");
-				}
-			 
-				
-			String page_lang = urls.get(requri);//if page_lange is null here then the requested url isn't in the map or key is null(wildcards)
+//				String[] languages = Globals.LANGUAGES;
+//				String base_in_url = null;
+//				boolean hasBase = false;
+//				for(String lang: languages) {
+//					hasBase = Pattern.compile("\\/"+lang+"\\/").matcher(requri).find();
+//					if(hasBase) {
+//					base_in_url = lang;
+//					break;
+//					}
+//				}
+//				 System.out.println("X hasBase: "+hasBase);
+//				if(hasBase) {
+//					requri = requri.replace("/"+base_in_url+"/", "/");
+//				}
+				 System.out.println("X requri: "+requri);
+				//returns language of the url.... /acerca-de/ = 'es'
+			String page_lang_mapping = urls.get(requri);//if page_lange is null here then the requested url isn't in the map or key is null(wildcards)
+			//shouldn't we pass page_lang to getCurrentLang instead of Base_in_url.... would save from having to do all the shit above? 
+			 System.out.println("X page_lang_mapping: "+page_lang_mapping);
+			 System.out.println("X base_in_url: "+base_lang);
+			//String language_base = getCurrentLang(request, page_lang_mapping);// does not have any slashes 'en'
 			
-			
-			String language_base = getCurrentLang(request, base_in_url);// does not have any slashes 'en'
-			
-			 System.out.println("page_lang: "+page_lang);
-			 System.out.println("language_base: "+language_base);
-			
-			if(page_lang != null && !language_base.equals(page_lang)) {//requested url exists and the language of that url does not match the session language 
+			// System.out.println("language_base: "+language_base);
+			if(page_lang_mapping != null && !page_lang_mapping.equals(base_lang)) {//requested url exists and the language of that url does not match the base language 
 				String alternate_url = null;//REWRITE LOGIC BLOCK
-				 alternate_url = UrlMap.getURLanguageEquivalent(language_base, requri, fields);
+				 alternate_url = UrlMap.getURLanguageEquivalent(base_lang, requri, fields);
+				 System.out.println("alternate_url: "+alternate_url);
 				 StringBuffer url = ((HttpServletRequest) request).getRequestURL();
 				 String uri = ((HttpServletRequest) request).getRequestURI();
 				 String base = url.substring(0, url.length() - uri.length()) + "/";
@@ -279,7 +325,8 @@ public class MainFilter implements Filter {
 				 
 				 System.out.println("CHANGE REDIRECTURL: checkIfNeedToReWriteURLCauseLanguage");
 //				 System.out.println("redirectURL: "+base+language_base+alternate_url);
-				 redirectURL = base+language_base+alternate_url;
+				 redirectURL = base+base_lang+alternate_url;
+				 System.out.println("redirectURL: "+redirectURL);
 			}
 	}
 	private void checkIfNeedToReWriteURLCauseLanguageXML(ServletRequest request, ServletResponse response, String requri, List<Url> url_map) throws IOException {

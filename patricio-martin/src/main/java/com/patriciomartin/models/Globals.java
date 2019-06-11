@@ -17,7 +17,7 @@ public class Globals {
 	//CONFIG
 	public static String PROJECT_ID = "patricio-martin"; //the GOOGLE PROJECT ID WHICH IS ALSO USED AS THE DB NAME in the web devil sql server
 	public static boolean IS_i18n = true; //  internationalization is abbreviated as i18n, because there are 18 letters between "i" and "n."
-	public static boolean REWRITE_i18n_URLS = true; //if session variable lang is 'en' and user tries to access /acerca-de/ then it will rewrite url to /about/ (other wise it won't and only change page language)
+	public static boolean REWRITE_i18n_URLS = true; //if base url lang is 'en' and user tries to access /acerca-de/ then it will rewrite url to /about/ (other wise it won't and only change page language)
 	public static boolean EMAIL_SENDER_TYPE_GOOGLE = true; //Use java mail api and send via google or some other implementation (via mailgun for example)
 	public static boolean IS_URLMAPS_XML = false; //make false if you want to define your URL mappings in Mappings.java instead of url-mappings.xml (Mappings.java is like 20-100ms faster....)
 	public static String DEFAULT_LANG = "en"; //default language of the website
@@ -50,7 +50,7 @@ public class Globals {
 	
 	//DOMAIN INFO
 	public static String BRAND = "Patricio Martin";
-	public static String DOMAIN_FULL = "https://www.patriciomartin.com";
+	public static String DOMAIN_FULL = "https://patriciomartin.com";
 	public static String DOMAIN_NAKED = "patriciomartin.com";
 	public static String DOMAIN_APPSPOT = "patricio-martin.appspot.com";
 	public static String DOMAIN_APPSPOT_MAIL = "patricio-martin.appspotmail.com";
