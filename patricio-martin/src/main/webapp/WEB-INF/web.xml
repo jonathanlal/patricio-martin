@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:jsp="http://java.sun.com/xml/ns/javaee/jsp" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" version="3.1">
-   <security-constraint>
+  <security-constraint>
     <web-resource-collection>
       <web-resource-name>Patricio Martin</web-resource-name>
       <url-pattern>/*</url-pattern>
@@ -9,12 +9,9 @@
       <transport-guarantee>CONFIDENTIAL</transport-guarantee>
     </user-data-constraint>
   </security-constraint>
-  
-<!--   http://localhost:8080/es/inicio/;jsessionid=_ahset_0oPTiHqVQxymuGDfoxQ.node0 :::: https://stackoverflow.com/questions/29692353/how-to-prevent-adding-jsessionid-at-the-end-of-redirected-url-->
   <session-config>
     <tracking-mode>COOKIE</tracking-mode>
-</session-config>
- 
+  </session-config>
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>

@@ -1,16 +1,11 @@
 package com.patriciomartin.models;
 
-import static java.nio.charset.StandardCharsets.UTF_8;
-
-import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.io.StringReader;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
-
-import com.google.cloud.storage.Blob;
-import com.google.cloud.storage.BlobId;
-import com.google.cloud.storage.BlobInfo;
 
 /**
  * Manages the writing and reading of property files stored in Google Cloud Platform
@@ -47,7 +42,9 @@ public class PropertyFactory {
 		}
 		
 		Properties prop = new Properties();
-		prop.load(new ByteArrayInputStream(gs.readBlob(Globals.DEFAULT_BUCKET, filename+".properties")));
+		byte[] b = gs.readBlob(Globals.DEFAULT_BUCKET, filename+".properties");
+		String str = new String(b, StandardCharsets.UTF_8);
+		prop.load(new StringReader(str));
 		return prop;
 		
 	}
@@ -60,7 +57,9 @@ public class PropertyFactory {
 		}
 		
 		Properties prop = new Properties();
-		prop.load(new ByteArrayInputStream(gs.readBlob(Globals.DEFAULT_BUCKET, filename+".properties")));
+		byte[] b = gs.readBlob(Globals.DEFAULT_BUCKET, filename+".properties");
+		String str = new String(b, StandardCharsets.UTF_8);
+		prop.load(new StringReader(str));
 		
 		return prop.getProperty(key);
 		

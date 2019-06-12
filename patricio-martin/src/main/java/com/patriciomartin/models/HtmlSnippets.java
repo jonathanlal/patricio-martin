@@ -75,7 +75,7 @@ public class HtmlSnippets {
 		boolean isCID = Globals.EMAIL_SENDER_TYPE_GOOGLE;
 		
 		String htmlMessage = "<p style=\"color:#999999;\">"+p.getProperty("footer.confirm")+"</p>";
-		htmlMessage += "<p style=\"color:#999999;\">"+p.getProperty("footer.noreply")+"</p><br>";
+		htmlMessage += "<p style=\"color:#999999;\">"+p.getProperty("footer.noreply")+"</p>";
 		htmlMessage += "<p style=\"color:#000000;\">"+p.getProperty("footer.regards")+"</p>";
 		htmlMessage += "<p style=\"color:#000000;\"><b>"+Globals.BRAND+"<b></p>";
 		htmlMessage += "</div>"; //the opening tag is in emailHead();
@@ -94,6 +94,7 @@ public class HtmlSnippets {
 		//GOOGLE+
 		htmlMessage += "<a style=\"text-decoration:none;\" href=\""+Globals.SOCIAL_GOOGLEPLUS+"\"> ";
 		htmlMessage += "<img alt=\"Google\" ";
+		
 		htmlMessage +=  isCID ? "src=\"cid:"+Globals.EMAIL_GOOGLEPLUS+"\" />": "src=\"img/email/"+Globals.EMAIL_GOOGLEPLUS+"\" />";
 		htmlMessage += "</a>";
 		}
@@ -101,28 +102,28 @@ public class HtmlSnippets {
 		//TWITTER
 		htmlMessage += "<a style=\"text-decoration:none;\" href=\""+Globals.SOCIAL_TWITTER+"\"> ";
 		htmlMessage += "<img alt=\"Twitter\" ";
-		htmlMessage +=  isCID ? "src=\"cid:"+Globals.SOCIAL_TWITTER+"\" />": "src=\"img/email/"+Globals.SOCIAL_TWITTER+"\" />";
+		htmlMessage +=  isCID ? "src=\"cid:"+Globals.EMAIL_TWITTER+"\" />": "src=\"img/email/"+Globals.EMAIL_TWITTER+"\" />";
 		htmlMessage += "</a>";
 		}
 		if(Globals.EMAIL_INSTAGRAM_ON) {
 		//INSTAGRAM
 		htmlMessage += "<a style=\"text-decoration:none;\" href=\""+Globals.SOCIAL_INSTAGRAM+"\"> ";
 		htmlMessage += "<img alt=\"Instagram\" ";
-		htmlMessage +=  isCID ? "src=\"cid:"+Globals.SOCIAL_INSTAGRAM+"\" />": "src=\"img/email/"+Globals.SOCIAL_INSTAGRAM+"\" />";
+		htmlMessage +=  isCID ? "src=\"cid:"+Globals.EMAIL_INSTAGRAM+"\" />": "src=\"img/email/"+Globals.EMAIL_INSTAGRAM+"\" />";
 		htmlMessage += "</a>";
 		}
 		if(Globals.EMAIL_PINTEREST_ON) {
 		//PINTEREST
 		htmlMessage += "<a style=\"text-decoration:none;\" href=\""+Globals.SOCIAL_PINTEREST+"\"> ";
 		htmlMessage += "<img alt=\"Pinterest\" ";
-		htmlMessage +=  isCID ? "src=\"cid:"+Globals.SOCIAL_PINTEREST+"\" />": "src=\"img/email/"+Globals.SOCIAL_PINTEREST+"\" />";
+		htmlMessage +=  isCID ? "src=\"cid:"+Globals.EMAIL_PINTEREST+"\" />": "src=\"img/email/"+Globals.EMAIL_PINTEREST+"\" />";
 		htmlMessage += "</a>";
 		}
 		if(Globals.EMAIL_LINKEDIN_ON) {
 		//LINKEDIN
 		htmlMessage += "<a style=\"text-decoration:none;\" href=\""+Globals.SOCIAL_LINKEDIN+"\"> ";
 		htmlMessage += "<img alt=\"LinkedIn\" ";
-		htmlMessage +=  isCID ? "src=\"cid:"+Globals.SOCIAL_LINKEDIN+"\" />": "src=\"img/email/"+Globals.SOCIAL_LINKEDIN+"\" />";
+		htmlMessage +=  isCID ? "src=\"cid:"+Globals.EMAIL_LINKEDIN+"\" />": "src=\"img/email/"+Globals.EMAIL_LINKEDIN+"\" />";
 		htmlMessage += "</a>";
 		}
 		
@@ -136,7 +137,7 @@ public class HtmlSnippets {
 		 htmlMessage += "</div>";
 		//END EMAIL BODY
 		 
-			htmlMessage += p(join("This paragraph has", b("bold"), "and", i("italic"), "text.")).render(); //recreate all the emails with this stuff - it's fun.
+			//htmlMessage += p(join("This paragraph has", b("bold"), "and", i("italic"), "text.")).render(); //recreate all the emails with this stuff - it's fun.
 
 		 
 		 
@@ -197,15 +198,17 @@ public class HtmlSnippets {
 //		String subject = pf.getPropertyKey("email","contact.subject", e.getLang());
 		
 //		e.setSubject(SendEmail.email_contact_subject);// (important to do after the override method above)
-		e.setSubject(p.getProperty("contact.subject"));
+		String subject = p.getProperty("contact.subject");
+	
 		String htmlMessage = emailHead();
 		if(e.isAdmin_flag()) {
+			subject = p.getProperty("contact.admin.subject");
 			//GREETING & INTRO PART
-			htmlMessage += "<h1 style=\"margin-top: 0px;color: #84A9E5;font-weight: bolder;text-align:center;font-size: 20px;\">"+p.getProperty("greeting")+e.getAdmin_name()+",</h1>";
+			htmlMessage += "<h1 style=\"margin-top: 0px;color: #84A9E5;font-weight: bolder;text-align:center;font-size: 20px;\">"+p.getProperty("greeting")+" "+e.getAdmin_name()+",</h1>";
 			htmlMessage += "<h3 style=\"color:#55C5AE;font-weight: bolder;\">"+p.getProperty("contact.admin")+"</h3>";	
 		}else {
 			//GREETING & INTRO PART
-			htmlMessage += "<h1 style=\"margin-top: 0px;color: #84A9E5;font-weight: bolder;text-align:center;font-size: 20px;\">"+p.getProperty("greeting")+e.getVisitor_name()+",</h1>";
+			htmlMessage += "<h1 style=\"margin-top: 0px;color: #84A9E5;font-weight: bolder;text-align:center;font-size: 20px;\">"+p.getProperty("greeting")+" "+e.getVisitor_name()+",</h1>";
 			htmlMessage += "<h3 style=\"color:#55C5AE;font-weight: bolder;\">"+p.getProperty("contact.intro")+"</h3>";
 		}
 		//USER MSG COPY BOX
@@ -213,14 +216,15 @@ public class HtmlSnippets {
 		htmlMessage += e.getMsg();
 		htmlMessage += "\"</p></div><br>";
 		if(e.isAdmin_flag()) {
-			htmlMessage += "<hr><br><p style=\"color:#999999;\">Their contact email is: "+e.getVisitor_email()+"</p>";
+			htmlMessage += "<hr><br><p style=\"color:#999999;\">Email: "+e.getVisitor_email()+"</p>";
 			if(!e.getPhone().isEmpty()) {
-				htmlMessage += "<p style=\"color:#999999;\">Their phone number is: "+e.getPhone()+"</p>";
+				htmlMessage += "<p style=\"color:#999999;\">Telephone: "+e.getPhone()+"</p>";
 			}
-			htmlMessage += "<p style=\"color:#999999;\">And their name is: "+e.getVisitor_name()+"</p><br><hr>";
+			htmlMessage += "<p style=\"color:#999999;\">Name: "+e.getVisitor_name()+"</p><br><hr>";
 		}
 		htmlMessage += emailFoot(p);
 		e.setBody(htmlMessage);
+		e.setSubject(subject);
 		return e;
 	}
 	
@@ -231,7 +235,7 @@ public class HtmlSnippets {
 		e.setSubject(p.getProperty("newsletter.subject"));// (important to do after the override method above)
 		String htmlMessage = emailHead();
 		//GREETING & INTRO PART
-		htmlMessage += "<h1 style=\"margin-top: 0px;color: #84A9E5;font-weight: bolder;text-align:center;font-size: 20px;\">"+p.getProperty("greeting")+e.getAdmin_name()+",</h1>";
+		htmlMessage += "<h1 style=\"margin-top: 0px;color: #84A9E5;font-weight: bolder;text-align:center;font-size: 20px;\">"+p.getProperty("greeting")+" "+e.getAdmin_name()+",</h1>";
 		htmlMessage += "<h3 style=\"color:#55C5AE;font-weight: bolder;\">"+p.getProperty("newsletter.intro")+"</h3>";	
 		//USER MSG COPY BOX
 		htmlMessage += "<div style=\"background-color: #FAFAFA;display: inline-block;padding: 20px;max-width: 700px;\"><p style=\"font-size:16px;\">\"";

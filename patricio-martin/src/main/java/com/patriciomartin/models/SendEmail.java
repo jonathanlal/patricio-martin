@@ -114,6 +114,8 @@ public class SendEmail {
 		if(Globals.EMAIL_SENDER_TYPE_GOOGLE) {
 			try {
 				  System.out.println("Sending with google");
+				  System.out.println("Subject: "+subject);
+				  System.out.println("body: "+body);
 				sendWithGoogle(email, body, subject);
 			} catch (MalformedURLException e) {
 				e.printStackTrace();
