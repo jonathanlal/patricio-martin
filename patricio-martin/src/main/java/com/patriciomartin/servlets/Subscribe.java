@@ -24,14 +24,16 @@ public class Subscribe extends HttpServlet {
 		HttpSession session = request.getSession(true);
 		String language = (String) session.getAttribute("language");
 		if(language == null) {language = "en";}
-		System.out.println("SUBSCRIBE SERVLET HIT");
+		//System.out.println("SUBSCRIBE SERVLET HIT");
 		
 		String email = request.getParameter("email");
 		
-		
+		String captcha = request.getParameter("rcv3");
+		System.out.println("NEWSLETTER CAPTCHA - (TRUE TO SEND EMAIL): "+captcha);
+		if(captcha != null && captcha.equals("true")) {
 		SendEmail sm = new SendEmail();
 		sm.sendNewsLetterSignUpMail(email);
-		
+		}
 		
 		
 		
@@ -42,7 +44,7 @@ public class Subscribe extends HttpServlet {
 		}else {
 			url = "/es/gracias/";
 		}
-		System.out.println("REDIRECTING TO: "+url);
+		//System.out.println("REDIRECTING TO: "+url);
 		response.sendRedirect(url);
 		return;
 	

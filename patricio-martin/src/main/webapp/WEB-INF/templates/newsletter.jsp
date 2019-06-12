@@ -1,4 +1,3 @@
-
  <section id="newsletter" class="section" style="background-color:#E7E5E0;    padding-bottom: 4.3rem;">
   <div class="container">
     <div class="columns" style="margin-top:10px;">
@@ -9,9 +8,12 @@
 
       <div class="column">
       
+
       
       
-        <form action="/Subscribe" method="GET" accept-charset="utf-8">
+        <form action="/Subscribe" method="GET" accept-charset="utf-8" id="newsletterForm">
+        
+    
         
           <div class="field is-grouped">
           
@@ -37,3 +39,44 @@
     </div>
   </div>
 </section>
+
+
+        <script src="https://www.google.com/recaptcha/api.js?render=6LdnQKcUAAAAAC5zuGJEcDsDU555aKVt0ZQTfLOQ"></script>
+  <script>
+  grecaptcha.ready(function() {
+      grecaptcha.execute('6LdnQKcUAAAAAC5zuGJEcDsDU555aKVt0ZQTfLOQ', {action: 'newsletter'}).then(function(token) {
+    	  //console.log(token);
+    	  captchaCheck(token, 'newsletter', 'newsletterForm');
+      });
+  });
+  
+  function captchaCheck(token, action, formID){
+	  
+	  var http = new XMLHttpRequest();
+	  var url = '/CaptchaCheck';
+	  var params = 'token='+token+'&action='+action;
+	  http.open('POST', url, true);
+	  http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+	  http.onreadystatechange = function() {//Call a function when the state changes.
+	      if(http.readyState == 4 && http.status == 200) {
+	        
+	    	  var input = document.createElement("input");
+
+	    	  input.setAttribute("type", "hidden");
+
+	    	  input.setAttribute("name", "rcv3");
+
+	    	  input.setAttribute("value", http.responseText);
+
+	    	  //append to form element that you want .
+	    	  var form = document.getElementById(formID);
+	    	  form.insertBefore(input, form.firstChild);
+	    	  
+	    	  
+	      }
+	  }
+	  http.send(params);
+	  
+  }
+  
+  </script>

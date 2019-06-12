@@ -25,6 +25,9 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import com.google.cloud.storage.Storage;
 import com.google.cloud.storage.StorageOptions;
 import static java.nio.charset.StandardCharsets.UTF_8;
@@ -52,34 +55,44 @@ public class Test extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("hello");
 		
+		String jsonString = "{  \"success\": true,  \"challenge_ts\": \"2019-06-12T23:29:07Z\",  \"hostname\": \"patriciomartin.com\",  \"score\": 0.9,  \"action\": \"newsletter\"}";
 	
-
-		String p = request.getParameter("x");
-		GoogleStorage gs = new GoogleStorage();
-		if(p == null) {
-			
-	     
-				
-				Properties prop = new Properties();
-				byte[] b = gs.readBlob(Globals.DEFAULT_BUCKET, "email.properties");
-		         prop.load(new ByteArrayInputStream(b));
-		         request.setAttribute("properties", prop);
-				
-			
-		}else if(p.equals("CREATE")) {
+		try {
+		     JSONObject jo = new JSONObject(jsonString);
+		     
+		     String result = jo.get("success").toString();
+		     
+		}catch (JSONException e){
+			e.printStackTrace();
+		}
 		
-			gs.createBucket("booboo");
-		}else if(p.equals("UPLOAD")) {
-//			gs.createBlob(Globals.DEFAULT_BUCKET, "email.properties");
-		}else if(p.equals("READ")) {
-			Properties prop = new Properties();
-			byte[] b = gs.readBlob(Globals.DEFAULT_BUCKET, "email.properties");
-	         prop.load(new ByteArrayInputStream(b));
 
-	         // print the properties list from System.out
-	         prop.list(System.out);
-			
-			System.out.println("COOL : "+prop.get("main.test2"));
+//		String p = request.getParameter("x");
+//		GoogleStorage gs = new GoogleStorage();
+//		if(p == null) {
+//			
+//	     
+//				
+//				Properties prop = new Properties();
+//				byte[] b = gs.readBlob(Globals.DEFAULT_BUCKET, "email.properties");
+//		         prop.load(new ByteArrayInputStream(b));
+//		         request.setAttribute("properties", prop);
+//				
+//			
+//		}else if(p.equals("CREATE")) {
+//		
+//			gs.createBucket("booboo");
+//		}else if(p.equals("UPLOAD")) {
+////			gs.createBlob(Globals.DEFAULT_BUCKET, "email.properties");
+//		}else if(p.equals("READ")) {
+//			Properties prop = new Properties();
+//			byte[] b = gs.readBlob(Globals.DEFAULT_BUCKET, "email.properties");
+//	         prop.load(new ByteArrayInputStream(b));
+//
+//	         // print the properties list from System.out
+//	         prop.list(System.out);
+//			
+//			System.out.println("COOL : "+prop.get("main.test2"));
 //			String s = new String(b);
 //			System.out.println("s: "+s);
 //			String c = ClassLoader.getResource("resource-file.txt");
@@ -99,9 +112,9 @@ public class Test extends HttpServlet {
 //			System.out.println("k: "+rb.getString("main.test"));
 			}
 
-		RequestDispatcher rd = request.getRequestDispatcher("test.jsp");
-		rd.forward(request, response);
-		}
+//		RequestDispatcher rd = request.getRequestDispatcher("test.jsp");
+//		rd.forward(request, response);
+//		}
 		
 		
 		
