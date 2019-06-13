@@ -51,7 +51,7 @@ public class Globals {
 	public static String COOKIE_LOGIN = "patricio-martin_auth";
 	
 	//DOMAIN INFO
-	public static String BRAND = "Patricio Martin";
+	public static String BRAND = "Patricio Martin Arquitectos";
 	public static String DOMAIN_FULL = "https://patriciomartin.com";
 	public static String DOMAIN_NAKED = "patriciomartin.com";
 	public static String DOMAIN_APPSPOT = "patricio-martin.appspot.com";

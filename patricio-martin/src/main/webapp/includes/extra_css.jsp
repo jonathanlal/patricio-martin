@@ -1,5 +1,9 @@
 <style>
 
+.grecaptcha-badge{
+display:none !important; 
+}
+
 .single-hero-image-container {
  	min-height: unset !important;
 }
