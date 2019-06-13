@@ -15,8 +15,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.json.JSONObject;
 
-import net.tanesha.recaptcha.ReCaptchaImpl;
-import net.tanesha.recaptcha.ReCaptchaResponse;
 
 @WebServlet("/CaptchaCheck")
 public class CaptchaCheck extends HttpServlet {

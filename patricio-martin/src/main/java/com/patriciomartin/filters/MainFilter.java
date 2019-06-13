@@ -59,7 +59,7 @@ public class MainFilter implements Filter {
 			}else {
 				continueChain = doReflection(request, response, chain, requri,continueChain);
 			}
-			System.out.println("continueChain: "+continueChain);
+			//System.out.println("continueChain: "+continueChain);
 			decideFate(request, response, chain, continueChain);
 	}
 	private boolean doXML(ServletRequest request, ServletResponse response, FilterChain chain, String requri, boolean continueChain) throws IOException, ServletException {
@@ -107,8 +107,8 @@ public class MainFilter implements Filter {
 		
 		
 		page = urls.get(requri); //it will return null here for wildcard mappings because they have not call attribute. 
-		System.out.println("wildCardOrServlet requri: "+requri);
-		System.out.println("wildCardOrServlet page: "+page);
+		//System.out.println("wildCardOrServlet requri: "+requri);
+		//System.out.println("wildCardOrServlet page: "+page);
 		if(page == null || page.equals("*")) {  //if page is null at this point it means the url is not in map (with exception of wildcards)
 			check = true;
 			checkIfWildCardOrServlet(request, response, chain, isWildcard, continueChain);
@@ -119,7 +119,7 @@ public class MainFilter implements Filter {
 	 	 
 	}
 	private void checkIfWildCardOrServlet(ServletRequest request, ServletResponse response, FilterChain chain, boolean isWildcard, boolean continueChain) {
-		System.out.println("isWildcard:"+isWildcard);
+		//System.out.println("isWildcard:"+isWildcard);
 		if(isWildcard) {
 			continueChain = true;
 			try {
@@ -136,7 +136,7 @@ public class MainFilter implements Filter {
 //		return continueChain;
 	}
 	private void processWildCard(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-		System.out.println("processing wildcard!");
+		//System.out.println("processing wildcard!");
 		try {
 //		WDAdmin wd = new WDAdmin();
 //		wd.hello("hello");
