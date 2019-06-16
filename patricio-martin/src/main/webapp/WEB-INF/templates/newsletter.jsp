@@ -57,7 +57,7 @@
 	  var params = 'token='+token+'&action='+action;
 	  http.open('POST', url, true);
 	  http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-	  http.onreadystatechange = function() {//Call a function when the state changes.
+	  http.onreadystatechange = function() {
 	      if(http.readyState == 4 && http.status == 200) {
 	        
 	    	  var input = document.createElement("input");
@@ -68,7 +68,7 @@
 
 	    	  input.setAttribute("value", http.responseText);
 
-	    	  //append to form element that you want .
+	    	 
 	    	  var form = document.getElementById(formID);
 	    	  form.insertBefore(input, form.firstChild);
 	    	  
