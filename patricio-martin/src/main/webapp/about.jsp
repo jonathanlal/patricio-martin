@@ -20,6 +20,52 @@
         <p><fmt:message key="about.paragraph1"/></p>
         <p><fmt:message key="about.paragraph2"/></p>
         <p><fmt:message key="about.paragraph3"/></p>
+        
+        
+        <div class="columns">
+	  <div class="column">
+	    <div class="box">
+  <article class="media">
+    <div class="media-left"><figure class="image"><img src="/img/patricio.jpg" alt="Image"></figure></div>
+    <div class="media-content">
+      <div class="content">
+        <p><strong>Patricio Martin</strong> </p>
+         <p>Architect</p>
+      </div>
+    </div>
+  </article>
+</div>
+	  </div>
+	  <div class="column">
+	 	    <div class="box">
+  <article class="media">
+    <div class="media-left"><figure class="image"><img src="/img/Maribelcuevas.jpg" alt="Image"></figure></div>
+    <div class="media-content">
+      <div class="content">
+        <p><strong>Patricio Martin</strong> </p>
+         <p>Architect</p>
+      </div>
+    </div>
+  </article>
+</div>
+	  </div>
+	  <div class="column">
+	   	    <div class="box">
+  <article class="media">
+    <div class="media-left"><figure class="image"><img src="/img/santiagocalero.jpg" alt="Image"></figure></div>
+    <div class="media-content">
+      <div class="content">
+        <p><strong>Patricio Martin</strong> </p>
+         <p>Architect</p>
+      </div>
+    </div>
+  </article>
+</div>
+	  </div>
+		</div>
+        
+        
+        
         </div>
       </div>
     </div>
