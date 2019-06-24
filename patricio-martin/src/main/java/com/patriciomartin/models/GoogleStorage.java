@@ -2,6 +2,7 @@ package com.patriciomartin.models;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
 
+import com.google.api.gax.paging.Page;
 import com.google.cloud.storage.Blob;
 import com.google.cloud.storage.BlobId;
 import com.google.cloud.storage.BlobInfo;
@@ -41,7 +42,16 @@ public class GoogleStorage {
 	    Blob blob = getStorage().create(blobInfo, data);
 	    return blob;
 	  }
-	  
+	  public void createTextBlobListOfBlobsInBucket(String bucketName) throws UnsupportedEncodingException {
+		  Bucket bucket = getStorage().create(BucketInfo.of(bucketName));
+		  String text = "";
+		  String nl = " \n";
+		    Page<Blob> blobs = bucket.list();
+		    for (Blob blob : blobs.iterateAll()) {
+		      text += blob.getName()+nl;
+		    }
+		    createTextBlob(bucketName, "blobsInBucket-"+bucketName+".txt", text);
+		  }
 	 
 	  
 	  
