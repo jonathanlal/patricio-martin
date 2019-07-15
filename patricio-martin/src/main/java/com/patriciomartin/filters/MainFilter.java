@@ -97,17 +97,17 @@ public class MainFilter implements Filter {
 	
 		boolean check = false;
 		
-				//get the string between first occurance of /xxxxx/
-		Pattern pattern = Pattern.compile("\\/(.*?)\\/");
-		Matcher matcher = pattern.matcher(requri);
-		if (matcher.find()) {
-			requri = "/"+matcher.group(1)+"/";
-		}
+//				get the string between first occurance of /xxxxx/
+//		Pattern pattern = Pattern.compile("\\/(.*?)\\/");
+//		Matcher matcher = pattern.matcher(requri);
+//		if (matcher.find()) {
+//			requri = "/"+matcher.group(1)+"/";
+//		}
 		
 		
 		
 		page = urls.get(requri); //it will return null here for wildcard mappings because they have not call attribute. 
-		//System.out.println("wildCardOrServlet requri: "+requri);
+		System.out.println("wildCardOrServlet requri: "+requri);
 		//System.out.println("wildCardOrServlet page: "+page);
 		if(page == null || page.equals("*")) {  //if page is null at this point it means the url is not in map (with exception of wildcards)
 			check = true;
