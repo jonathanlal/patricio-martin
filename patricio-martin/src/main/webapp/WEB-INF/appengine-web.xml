@@ -4,5 +4,26 @@
   <threadsafe>true</threadsafe>
   <sessions-enabled>true</sessions-enabled>
   <runtime>java8</runtime>
+  
+      <static-files>
+      <include path="/**.jpg" expiration="23d 5h"/>
+       <include path="/**.js" expiration="23d 5h"/>
+         <include path="/**.jpeg" expiration="23d 5h"/>
+  <include path="/**.png" expiration="23d 5h"/>
+      <include path="/**.eot" expiration="23d 5h"/>
+       <include path="/**.svg" expiration="23d 5h"/>
+        <include path="/**.ttf" expiration="23d 5h"/>
+         <include path="/**.woff" expiration="23d 5h"/>
+          <include path="/**.woff2" expiration="23d 5h"/>
+          <include path="/**.js" expiration="23d 5h"/>
+                    <include path="/**.css" expiration="23d 5h"/>
+          <include path="/**.webmanifest" expiration="23d 5h"/>
+             <include path="/**.ico" expiration="23d 5h"/>
+                <include path="/**.xml" expiration="23d 5h"/>
+                   <include path="/**.txt" expiration="23d 5h"/>
+                    <include path="/**.html" expiration="23d 5h"/>
+                     <include path="/**.svg" expiration="23d 5h"/>
+</static-files>
+
 
 </appengine-web-app>

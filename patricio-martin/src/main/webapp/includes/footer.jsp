@@ -55,8 +55,8 @@ document.addEventListener('DOMContentLoaded', () => {
 <input type="hidden" value="<fmt:message key="cookie.consent.message"/>" id="cookieConsentMessage"/>
 
 <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
-<script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
-<script>
+<script defer src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
+<script defer>
 
 
 
@@ -81,8 +81,8 @@ window.cookieconsent.initialise({
 </script>
 
 
-  <script src="https://www.google.com/recaptcha/api.js?render=6LdnQKcUAAAAAC5zuGJEcDsDU555aKVt0ZQTfLOQ"></script>
-  <script>
+  <script defer src="https://www.google.com/recaptcha/api.js?render=6LdnQKcUAAAAAC5zuGJEcDsDU555aKVt0ZQTfLOQ"></script>
+  <script defer>
   grecaptcha.ready(function() {
       grecaptcha.execute('reCAPTCHA_site_key', {action: 'homepage'}).then(function(token) {
        alert(token);
