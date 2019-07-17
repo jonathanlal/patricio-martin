@@ -81,14 +81,6 @@ window.cookieconsent.initialise({
 </script>
 
 
-  <script defer src="https://www.google.com/recaptcha/api.js?render=6LdnQKcUAAAAAC5zuGJEcDsDU555aKVt0ZQTfLOQ"></script>
-  <script defer>
-  grecaptcha.ready(function() {
-      grecaptcha.execute('reCAPTCHA_site_key', {action: 'homepage'}).then(function(token) {
-       alert(token);
-      });
-  });
-  </script>
 
 </body>
 </html>
