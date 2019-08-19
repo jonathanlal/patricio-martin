@@ -26,11 +26,10 @@
 	  <div class="column">
 	    <div class="box">
   <article class="media">
-    <div class="media-left"><figure class="image"><img src="/img/patricio.jpg" alt="Image"></figure></div>
+    <div class="media-left"><figure class="image"><img src="/img/patricio-s.jpg" alt="Image"></figure></div>
     <div class="media-content">
-      <div class="content">
+      <div class="content" style="text-align: center;">
         <p><strong>Patricio Martin</strong> </p>
-         <p>Architect</p>
       </div>
     </div>
   </article>
@@ -41,9 +40,8 @@
   <article class="media">
     <div class="media-left"><figure class="image"><img src="/img/Maribelcuevas.jpg" alt="Image"></figure></div>
     <div class="media-content">
-      <div class="content">
-        <p><strong>Patricio Martin</strong> </p>
-         <p>Architect</p>
+      <div class="content" style="text-align: center;">
+        <p class="text-center"><strong>Maribel Cuevas</strong> </p>
       </div>
     </div>
   </article>
@@ -54,9 +52,8 @@
   <article class="media">
     <div class="media-left"><figure class="image"><img src="/img/santiagocalero.jpg" alt="Image"></figure></div>
     <div class="media-content">
-      <div class="content">
-        <p><strong>Patricio Martin</strong> </p>
-         <p>Architect</p>
+      <div class="content" style="text-align: center;">
+        <p><strong>Santiago Calero</strong> </p>
       </div>
     </div>
   </article>
