@@ -6,8 +6,8 @@
   <div class="hero-content">
     <div class="container">
       <h1 class="title hero-title"><fmt:message key="projects.hero.title"/></h1>
-		<%@ include file="WEB-INF/templates/pattern.jsp" %>
-      <p class="hero-subtitle"><fmt:message key="projects.hero.subtitle"/></p>
+<%-- 		<%@ include file="WEB-INF/templates/pattern.jsp" %> --%>
+<%--       <p class="hero-subtitle"><fmt:message key="projects.hero.subtitle"/></p> --%>
     </div>
   </div>
 </section>

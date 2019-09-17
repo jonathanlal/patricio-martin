@@ -28,8 +28,8 @@
   <div class="hero-content">
     <div class="container">
       <h1 class="title hero-title has-text-white" style="margin-bottom:10px;"><fmt:message key="contact.hero.title"/></h1>
-      <p class="hero-subtitle"><fmt:message key="contact.hero.subtitle"/></p>
-	  <%@ include file="WEB-INF/templates/pattern.jsp" %>
+<%--       <p class="hero-subtitle"><fmt:message key="contact.hero.subtitle"/></p> --%>
+<%-- 	  <%@ include file="WEB-INF/templates/pattern.jsp" %> --%>
     </div>
   </div>
 </section>

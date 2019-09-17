@@ -22,7 +22,7 @@ top: 3px !important;
 <section class="hero front-hero">
  <div class="front-hero-media">
     <video class="front-hero-video" muted autoplay loop playsinline>
-      <source src="https://storage.googleapis.com/patricio-martin.appspot.com/plot-6-2018.mp4" data-store="https://ivanballiniestates.com/wp-content/themes/ivan-ballini-v4/videos/20190322-jt.mp4" type="video/mp4">
+      <source src="https://storage.googleapis.com/patricio-martin.appspot.com/plot-14-v5-13.mp4" data-store="https://storage.googleapis.com/patricio-martin.appspot.com/plot-14-v5-4.mp4" type="video/mp4">
     </video>
  </div>
  	<div class="hero-overlay front-hero-overlay __web-inspector-hide-shortcut__"></div>
@@ -32,7 +32,7 @@ top: 3px !important;
     <div class="message is-1 is-shown"><p class="message-surtitle"><fmt:message key="index.hero.sTitle1"/></p><h1 class="title hero-title message-title"><fmt:message key="index.hero.lTitle1"/></h1></div>
     <div class="message is-2"><p class="message-surtitle"><fmt:message key="index.hero.sTitle2"/></p><h1 class="title hero-title message-title"><fmt:message key="index.hero.lTitle2"/></h1></div>
     </div>
-    <%@ include file="WEB-INF/templates/pattern.jsp" %>
+<%--     <%@ include file="WEB-INF/templates/pattern.jsp" %> --%>
     <div class="hero-subtitle front-hero-subtitle"><p><fmt:message key="index.hero.paragraph"/></p></div>
     <nav class="buttons front-hero-buttons">
       <a class="button is-info" href="<fmt:message key="url.projects"/>"><fmt:message key="index.hero.btnProjects"/><i class="fas fa-long-arrow-alt-right"></i></a>

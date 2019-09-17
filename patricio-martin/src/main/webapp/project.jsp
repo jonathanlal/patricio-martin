@@ -45,7 +45,7 @@
 				<div class="single-heading">
 				  <h1 class="title single-heading-title" style="color:black !important;"><fmt:message key="title"/></h1>
 				  <h2 class="location single-heading-location"><fmt:message key="subtitle"/></h2>
-				 <%@ include file="WEB-INF/templates/pattern.jsp" %>
+<%-- 				 <%@ include file="WEB-INF/templates/pattern.jsp" %> --%>
 				  <div class="single-heading-introduction"><fmt:message key="lead-paragraph"/></div>
 				  <div class="single-metas">
 				    <div class="single-meta">

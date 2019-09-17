@@ -9,7 +9,7 @@ public class Mappings {
 	URL_INDEX_EN = {"/","index.jsp", "en"},
 	URL_INDEX_ES = {"/inicio/","index.jsp", "es"},
 	URL_ABOUT_EN = {"/about/","about.jsp", "en"},
-	URL_ABOUT_ES = {"/acerca-de/","about.jsp", "es"},
+	URL_ABOUT_ES = {"/nosotros/","about.jsp", "es"},
 	URL_SERVICES_EN = {"/services/","services.jsp", "en"},
 	URL_SERVICES_ES = {"/servicios/","services.jsp", "es"},
 	URL_CONTACT_EN = {"/contact/","contact.jsp", "en"},

@@ -4,7 +4,7 @@
     <div class="box collaborate-box">
       <div class="box-content">
         <h4 class="title collaborate-title" style="color:black !important;"><fmt:message key="index.contact.title"/></h4>
-  		  <%@ include file="/WEB-INF/templates/pattern.jsp" %>
+<%--   		  <%@ include file="/WEB-INF/templates/pattern.jsp" %> --%>
         <div class="content collaborate-content">
           <p><fmt:message key="index.contact.paragraph"/></p>
         </div>

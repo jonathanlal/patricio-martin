@@ -8,7 +8,7 @@
     <div class="container">
       <h1 class="title hero-title has-text-white" style="margin-bottom:10px;">Error Page!</h1>
       <p class="hero-subtitle">${error}</p>
-		<%@ include file="WEB-INF/templates/pattern.jsp" %>
+<%-- 		<%@ include file="WEB-INF/templates/pattern.jsp" %> --%>
     </div>
   </div>
 </section>
