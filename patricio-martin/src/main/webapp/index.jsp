@@ -21,7 +21,7 @@ top: 3px !important;
 
 <section class="hero front-hero">
  <div class="front-hero-media">
-    <video class="front-hero-video" muted autoplay loop playsinline>
+    <video class="front-hero-video" muted autoplay loop playsinline preload="none" poster="/img/b2.jpg">
       <source src="https://storage.googleapis.com/patricio-martin.appspot.com/plot-14-v5-13.mp4" data-store="https://storage.googleapis.com/patricio-martin.appspot.com/plot-14-v5-4.mp4" type="video/mp4">
     </video>
  </div>
