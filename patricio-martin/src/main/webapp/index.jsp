@@ -17,12 +17,23 @@ font-family:'Soleil Bold' !important;
 .control.has-icons-left .icon, .control.has-icons-right .icon{
 top: 3px !important;
 }
+.videoOverlay{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 2;
+    background: black;
+    opacity: 0.5;
+}
 </style>
 
 <section class="hero front-hero">
  <div class="front-hero-media">
-    <video class="front-hero-video" muted autoplay loop playsinline preload="none" poster="/img/b2.jpg">
-      <source src="https://storage.googleapis.com/patricio-martin.appspot.com/plot-14-v5-13.mp4" data-store="https://storage.googleapis.com/patricio-martin.appspot.com/plot-14-v5-4.mp4" type="video/mp4">
+ <div class="videoOverlay"></div>
+    <video class="front-hero-video lazy" muted autoplay loop playsinline preload="none" poster="/img/pm-poster.png">
+      <source data-src="https://storage.googleapis.com/patricio-martin.appspot.com/plot-14-v5-13.mp4" type="video/mp4">
     </video>
  </div>
  	<div class="hero-overlay front-hero-overlay __web-inspector-hide-shortcut__"></div>
@@ -52,6 +63,37 @@ top: 3px !important;
 <script>
 //hero message cycle
 document.addEventListener("DOMContentLoaded",function(){const e="is-shown",s=3600;setTimeout(function t(){const n=document.getElementById("messages"),o=n.querySelectorAll(".message"),i=n.getElementsByClassName("message is-shown")[0],m=i.nextElementSibling?i.nextElementSibling:o[0];i.classList.remove(e),m.classList.add(e),setTimeout(t,s)},s)});
+</script>
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function() {
+	  var lazyVideos = [].slice.call(document.querySelectorAll("video.lazy"));
+
+	  if ("IntersectionObserver" in window) {
+	    var lazyVideoObserver = new IntersectionObserver(function(entries, observer) {
+	      entries.forEach(function(video) {
+	        if (video.isIntersecting) {
+	          for (var source in video.target.children) {
+	            var videoSource = video.target.children[source];
+	            if (typeof videoSource.tagName === "string" && videoSource.tagName === "SOURCE") {
+	              videoSource.src = videoSource.dataset.src;
+	            }
+	          }
+
+	          video.target.load();
+	          video.target.classList.remove("lazy");
+	          lazyVideoObserver.unobserve(video.target);
+	        }
+	      });
+	    });
+
+	    lazyVideos.forEach(function(lazyVideo) {
+	      lazyVideoObserver.observe(lazyVideo);
+	    });
+	  }
+	});
+
 </script>
 
 <%@ include file="WEB-INF/templates/contactCTA.jsp" %>
