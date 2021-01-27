@@ -25,7 +25,7 @@ top: 3px !important;
     left: 0px;
     z-index: 2;
     background: black;
-    opacity: 0.5;
+    opacity: 0.3;
 }
 </style>
 
